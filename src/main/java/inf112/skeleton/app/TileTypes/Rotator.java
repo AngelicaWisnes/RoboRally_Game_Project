@@ -1,14 +1,5 @@
 package inf112.skeleton.app.TileTypes;
 
-/**
- *
- * @Author Ingrid
- *
- */
-enum Rotation{
-    CW, CCW
-}
-
 public class Rotator extends Tile {
     Rotation rotation;
 

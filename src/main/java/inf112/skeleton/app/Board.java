@@ -35,22 +35,28 @@ public class Board {
         Random r = new Random();
         for (int i = 0; i < BOARDSIZE_X; i++) {
             for (int j = 0; j < BOARDSIZE_Y; j++) {
-                if (r.nextInt(7) == 0) {
+                if (r.nextInt(10) == 0) {
                     boardList[i][j] = new Conveyor(Direction.UP);
-                } else if (r.nextInt(7) == 1) {
+                } else if (r.nextInt(10) == 1) {
                     boardList[i][j] = new Conveyor(Direction.DOWN);
-                } else if (r.nextInt(7) == 2) {
+                } else if (r.nextInt(10) == 2) {
                     boardList[i][j] = new Conveyor(Direction.LEFT);
-                } else if (r.nextInt(7) == 3) {
+                } else if (r.nextInt(10) == 3) {
                     boardList[i][j] = new Conveyor(Direction.RIGHT);
-                } else if (r.nextInt(7) == 4) {
+                } else if (r.nextInt(10) == 4) {
                     boardList[i][j] = new DblConveyor(Direction.UP);
-                } else if (r.nextInt(7) == 5) {
+                } else if (r.nextInt(10) == 5) {
                     boardList[i][j] = new DblConveyor(Direction.DOWN);
-                } else if (r.nextInt(7) == 6) {
+                } else if (r.nextInt(10) == 6) {
                     boardList[i][j] = new DblConveyor(Direction.LEFT);
-                } else if (r.nextInt(7) == 7) {
+                } else if (r.nextInt(10) == 7) {
                     boardList[i][j] = new DblConveyor(Direction.RIGHT);
+                } else if (r.nextInt(10) == 8) {
+                    boardList[i][j] = new Pit();
+                } else if (r.nextInt(10) == 9) {
+                    boardList[i][j] = new Rotator(Rotation.CW);
+                } else if (r.nextInt(10) == 10) {
+                    boardList[i][j] = new Rotator(Rotation.CCW);
                 } else {
                     boardList[i][j] = new Floor();
                 }
