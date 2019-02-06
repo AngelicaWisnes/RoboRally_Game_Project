@@ -35,29 +35,30 @@ public class Board {
         Random r = new Random();
         for (int i = 0; i < BOARDSIZE_X; i++) {
             for (int j = 0; j < BOARDSIZE_Y; j++) {
-                if (r.nextInt(10) == 0) {
+                int random = r.nextInt(15);
+                if (random == 0) {
                     boardList[i][j] = new Conveyor(Direction.UP);
-                } else if (r.nextInt(10) == 1) {
+                } else if (random == 1) {
                     boardList[i][j] = new Conveyor(Direction.DOWN);
-                } else if (r.nextInt(10) == 2) {
+                } else if (random == 2) {
                     boardList[i][j] = new Conveyor(Direction.LEFT);
-                } else if (r.nextInt(10) == 3) {
+                } else if (random == 3) {
                     boardList[i][j] = new Conveyor(Direction.RIGHT);
-                } else if (r.nextInt(10) == 4) {
+                } else if (random == 4) {
                     boardList[i][j] = new DblConveyor(Direction.UP);
-                } else if (r.nextInt(10) == 5) {
+                } else if (random == 5) {
                     boardList[i][j] = new DblConveyor(Direction.DOWN);
-                } else if (r.nextInt(10) == 6) {
+                } else if (random == 6) {
                     boardList[i][j] = new DblConveyor(Direction.LEFT);
-                } else if (r.nextInt(10) == 7) {
+                } else if (random == 7) {
                     boardList[i][j] = new DblConveyor(Direction.RIGHT);
-                } else if (r.nextInt(10) == 8) {
+                } else if (random == 8) {
                     boardList[i][j] = new Pit();
-                } else if (r.nextInt(10) == 9) {
+                } else if (random == 9) {
                     boardList[i][j] = new Rotator(Rotation.CW);
-                } else if (r.nextInt(10) == 10) {
+                } else if (random == 10) {
                     boardList[i][j] = new Rotator(Rotation.CCW);
-                } else {
+                } else if (random > 10){
                     boardList[i][j] = new Floor();
                 }
             }
