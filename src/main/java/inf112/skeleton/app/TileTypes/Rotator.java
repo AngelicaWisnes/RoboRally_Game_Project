@@ -2,33 +2,29 @@ package inf112.skeleton.app.TileTypes;
 
 /**
  *
- * @Author Katarina
+ * @Author Ingrid
  *
  */
-enum Direction{
-    UP, DOWN, LEFT, RIGHT
+enum Rotation{
+    CW, CCW
 }
 
 public class Conveyor extends Tile {
-    Direction direction;
+    Rotation rotation;
 
-    public Conveyor(Direction direction) {
-        this.image = "conveyor";
-        this.direction = direction;
+    public Conveyor(Rotation rotation) {
+        this.image = "rotate";
+        this.rotation = rotation;
 
     }
 
     @Override
     public String getImage() {
-        if (direction == Direction.UP){
-            return image + "_up";
-        } else if (direction = Direction.DOWN){
-            return image + "_down";
-        } else if (direction = Direction.RIGHT){
-            return image + "_left";
-        } else if (direction = Direction.LEFT){
-            return image + "_right";
-        }
+        if (rotation = Rotation.CW){
+            return image + "_cw";
+        } else if (rotation = Rotation.CCW){
+            return image + "_ccw";
+
 
     }
 }

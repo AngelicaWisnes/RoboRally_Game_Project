@@ -2,19 +2,14 @@ package inf112.skeleton.app.TileTypes;
 
 /**
  *
- * @Author Magne
+ * @Author Stefan
  *
- * There are two types of Repairfields. Single and Double.
  *
  */
 
-public class Repair extends Tile{
-
-    String image = "factory";
-
-
-    public Repair() {
-
+public class Floor extends Tile{
+    public Floor() {
+        image = "factorytile";
     }
 
     @Override
