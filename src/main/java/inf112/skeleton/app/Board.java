@@ -26,8 +26,20 @@ public class Board {
     public int getBOARDSIZE_Y() {
         return BOARDSIZE_Y;
     }
+    //TODO create standard Tile board
+    private void populateTileBoard(int boardsizex, int boardsizey){
+        Random r = new Random();
+        for (int i = 0; i < boardsizex; i++){
+            for (int j = 0; j < boardsizey; j++){
+                if (r.nextInt() == 0){
+                    boardList[i][j] = new Repair();
+                } else if (r.nextInt() == 1){
+                    boardList[i][j] = new Conveyor();
+                }
+        }
+    }
 
-    //standard board
+    //standard int board
     private void populateBoard(int boardsizex, int boardsizey) {
         Random r = new Random();
         for (int i = 0; i < boardsizex; i++){
