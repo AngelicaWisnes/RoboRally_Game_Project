@@ -35,7 +35,7 @@ public class Board {
         Random r = new Random();
         for (int i = 0; i < BOARDSIZE_X; i++) {
             for (int j = 0; j < BOARDSIZE_Y; j++) {
-                int random = r.nextInt(15);
+                int random = r.nextInt(30);
                 if (random == 0) {
                     boardList[i][j] = new Conveyor(Direction.UP);
                 } else if (random == 1) {
