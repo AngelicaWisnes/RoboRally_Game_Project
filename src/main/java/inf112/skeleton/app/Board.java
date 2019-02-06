@@ -35,6 +35,10 @@ public class Board {
                     boardList[i][j] = new Repair();
                 } else if (r.nextInt() == 1){
                     boardList[i][j] = new Conveyor();
+                } else if (r.nextInt() == 2){
+                    boardList[i][j] = new Pit();
+                } else if (r.nextInt() == 3){
+                    boardList[i][j] = new Factory();
                 }
         }
     }
