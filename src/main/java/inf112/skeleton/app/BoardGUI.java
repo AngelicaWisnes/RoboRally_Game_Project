@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class BoardGUI extends ApplicationAdapter {
+    private Board board;
     private Texture robotImage;
     private Texture factoryTile;
     private Music factoryMusic;
@@ -23,6 +24,7 @@ public class BoardGUI extends ApplicationAdapter {
 
     @Override
     public void create() {
+        board = new Board(NTILES);
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
         factoryTile = new Texture(Gdx.files.internal("assets/img/factorytile.png"));
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
@@ -56,11 +58,7 @@ public class BoardGUI extends ApplicationAdapter {
         batch.setProjectionMatrix(camera.combined);
         // begin a new batch and draw tiles
         batch.begin();
-        for (int i = 0; i < NTILES; i++){
-            for (int j = 0; j < NTILES; j++){
-                batch.draw(factoryTile, TILESIZE*i, TILESIZE*j);
-            }
-        }
+        drawBoard();
         batch.draw(robotImage, robot.x, robot.y);
         batch.end();
 
@@ -75,6 +73,17 @@ public class BoardGUI extends ApplicationAdapter {
         if(robot.x > SCREENSIZE - TILESIZE) robot.x = SCREENSIZE - TILESIZE;
         if(robot.y < 0) robot.y = 0;
         if(robot.y > SCREENSIZE - TILESIZE) robot.y = SCREENSIZE - TILESIZE;
+    }
+    //TODO: Once tiles are implemented, uncomment and delete last lines
+    private void drawBoard() {
+        for (int i = 0; i < NTILES; i++){
+            for (int j = 0; j < NTILES; j++){
+                int current = board.getTile(i, j);
+                batch.draw(factoryTile, TILESIZE*i, TILESIZE*j);
+                //Tile current = board.getTile(i, j);
+                //batch.draw(current.getImage, TILESIZE*i, TILESIZE*j);
+            }
+        }
     }
 
     @Override
