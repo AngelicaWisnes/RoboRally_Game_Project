@@ -1,10 +1,15 @@
 package inf112.skeleton.app;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class BoardTests {
+
+    @Before
+    public void setUp() throws Exception {
+    }
 
     @Test
     public void checkBoardSize() {
@@ -12,11 +17,9 @@ public class BoardTests {
         int counter = 0;
         for (int i = 0; i < board.getBOARDSIZE_X(); i++){
             for (int j = 0; j < board.getBOARDSIZE_Y(); j++){
-                counter++;
+                counter ++;
             }
         }
-        assertEquals(25, counter);
+        assertEquals(5*5, counter);
     }
-
-    
 }
