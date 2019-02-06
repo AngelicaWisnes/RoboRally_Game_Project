@@ -78,10 +78,10 @@ public class BoardGUI extends ApplicationAdapter {
     private void drawBoard() {
         for (int i = 0; i < NTILES; i++){
             for (int j = 0; j < NTILES; j++){
-                int current = board.getTile(i, j);
-                batch.draw(factoryTile, TILESIZE*i, TILESIZE*j);
                 //Tile current = board.getTile(i, j);
                 //batch.draw(current.getImage, TILESIZE*i, TILESIZE*j);
+                int current = board.getTile(i, j);
+                batch.draw(factoryTile, TILESIZE*i, TILESIZE*j);
             }
         }
     }

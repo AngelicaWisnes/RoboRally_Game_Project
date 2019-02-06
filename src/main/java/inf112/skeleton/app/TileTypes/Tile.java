@@ -3,14 +3,10 @@ package inf112.skeleton.app.TileTypes;
 /**
  * @author Magne
  */
-public class Tile implements iTile{
-
-    public Tile() {
-
-    }
+public abstract class Tile implements iTile{
+    private String image;
+    private final int size;
 
     @Override
-    public String getImage() {
-        return null;
-    }
+    public abstract String getImage();
 }
