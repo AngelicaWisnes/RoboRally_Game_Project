@@ -1,17 +1,20 @@
 package inf112.skeleton.app.TileTypes;
 
 /**
- * @author Roger Wisnes
+ *
+ * @Author Stefan
+ *
+ *
  */
-public class Pit extends Tile {
 
-    public Pit() {
-        this.image = "pit";
-        this.size = 1;
+public class Floor extends Tile{
+    public Floor() {
+        image = "factorytile";
     }
 
     @Override
     public String getImage() {
+
         return image;
     }
 }

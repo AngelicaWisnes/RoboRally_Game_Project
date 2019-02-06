@@ -16,7 +16,6 @@ public class Repair extends Tile{
 
     @Override
     public String getImage() {
-
         return image;
     }
 }
