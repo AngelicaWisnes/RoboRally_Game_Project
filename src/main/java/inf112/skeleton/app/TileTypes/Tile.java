@@ -7,6 +7,9 @@ public abstract class Tile implements iTile{
     private String image;
     private final int size;
 
+    protected Tile() {
+    }
+
     @Override
     public abstract String getImage();
 }
