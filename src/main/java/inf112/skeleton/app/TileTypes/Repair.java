@@ -10,11 +10,8 @@ package inf112.skeleton.app.TileTypes;
 
 public class Repair extends Tile{
 
-    String image = "repair";
-
-
     public Repair() {
-
+        this.image = "repair";
     }
 
     @Override
