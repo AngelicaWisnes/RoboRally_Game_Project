@@ -57,11 +57,14 @@ public class BoardGUI extends ApplicationAdapter {
         textureMap.put("conveyor_down", new Texture(Gdx.files.internal("assets/img/conveyor_down.png")));
         textureMap.put("conveyor_left", new Texture(Gdx.files.internal("assets/img/conveyor_left.png")));
         textureMap.put("conveyor_right", new Texture(Gdx.files.internal("assets/img/conveyor_right.png")));
+        textureMap.put("dbl_conveyor_up", new Texture(Gdx.files.internal("assets/img/dbl_conveyor_up.png")));
+        textureMap.put("dbl_conveyor_down", new Texture(Gdx.files.internal("assets/img/dbl_conveyor_down.png")));
+        textureMap.put("dbl_conveyor_left", new Texture(Gdx.files.internal("assets/img/dbl_conveyor_left.png")));
+        textureMap.put("dbl_conveyor_right", new Texture(Gdx.files.internal("assets/img/dbl_conveyor_right.png")));
         textureMap.put("rotate_cw", new Texture(Gdx.files.internal("assets/img/rotate_cw.png")));
         textureMap.put("rotate_ccw", new Texture(Gdx.files.internal("assets/img/rotate_ccw.png")));
         textureMap.put("pit", new Texture(Gdx.files.internal("assets/img/pit.png")));
         textureMap.put("edge", new Texture(Gdx.files.internal("assets/img/pit.png")));
-
 
 
     }
