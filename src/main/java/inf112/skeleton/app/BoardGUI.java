@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class BoardGUI extends ApplicationAdapter {
+    private HashMap<String, Texture> textureMap;
     private Board board;
     private Texture robotImage;
     private Texture factoryTile;
@@ -25,8 +26,8 @@ public class BoardGUI extends ApplicationAdapter {
     @Override
     public void create() {
         board = new Board(NTILES);
+        textureMap = new HashMap<>();
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
-        factoryTile = new Texture(Gdx.files.internal("assets/img/factorytile.png"));
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
 
         // start the playback of the background music immediately
@@ -35,7 +36,7 @@ public class BoardGUI extends ApplicationAdapter {
 
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREENSIZE,SCREENSIZE);
+        camera.setToOrtho(false, SCREENSIZE, SCREENSIZE);
         batch = new SpriteBatch();
 
         // create a Rectangle to logically represent the robot
@@ -46,6 +47,20 @@ public class BoardGUI extends ApplicationAdapter {
         robot.height = TILESIZE;
     }
 
+
+    private void populateTextureMap(){
+        textureMap.put("factoryTile", new Texture(Gdx.files.internal("assets/img/factorytile.png")));
+        textureMap.put("conveyor_up", new Texture(Gdx.files.internal("assets/img/conveyor_up.png")));
+        textureMap.put("conveyor_down", new Texture(Gdx.files.internal("assets/img/conveyor_down.png")));
+        textureMap.put("conveyor_left", new Texture(Gdx.files.internal("assets/img/conveyor_left.png")));
+        textureMap.put("conveyor_right", new Texture(Gdx.files.internal("assets/img/conveyor_right.png")));
+        textureMap.put("rotate_cw", new Texture(Gdx.files.internal("assets/img/rotate_cw")));
+        textureMap.put("rotate_ccw", new Texture(Gdx.files.internal("assets/img/rotate_ccw")));
+        textureMap.put("pit", new Texture(Gdx.files.internal("assets/img/pit.png")));
+
+
+
+    }
 
     @Override
     public void render() {
