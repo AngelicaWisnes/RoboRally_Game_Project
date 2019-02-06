@@ -2,20 +2,27 @@ package inf112.skeleton.app;
 
 import java.util.Random;
 
+import inf112.skeleton.app.TileTypes.Tile;
+import inf112.skeleton.app.TileTypes.*;
+
+enum Direction {
+    UP, DOWN, LEFT, RIGHT
+}
+
+
 public class Board {
     private final int BOARDSIZE_X, BOARDSIZE_Y;
-    private final int[][] boardList;
-    //private final Tile[][] boardList = new Tile[BOARDSIZE_X][BOARDSIZE_Y];
+    private Tile[][] boardList = new Tile[BOARDSIZE_X][BOARDSIZE_Y];
 
 
-    public Board(int boardSize){
+    public Board(int boardSize) {
         this.BOARDSIZE_X = boardSize;
         this.BOARDSIZE_Y = boardSize;
-         boardList= new int[BOARDSIZE_X][BOARDSIZE_Y];
-         populateBoard(BOARDSIZE_X, BOARDSIZE_Y);
+        boardList = new Tile[BOARDSIZE_X][BOARDSIZE_Y];
+        populateTileBoard();
     }
 
-    public int getTile(int x, int y){
+    public Tile getTile(int x, int y) {
         return boardList[x][y];
     }
 
@@ -26,35 +33,28 @@ public class Board {
     public int getBOARDSIZE_Y() {
         return BOARDSIZE_Y;
     }
-    //TODO create standard Tile board
-    private void populateTileBoard(int boardsizex, int boardsizey){
-        Random r = new Random();
-        for (int i = 0; i < boardsizex; i++){
-            for (int j = 0; j < boardsizey; j++){
-                if (r.nextInt() == 0){
-                    boardList[i][j] = new Repair();
-                } else if (r.nextInt() == 1){
-                    boardList[i][j] = new Conveyor();
-                } else if (r.nextInt() == 2){
-                    boardList[i][j] = new Pit();
-                } else if (r.nextInt() == 3){
-                    boardList[i][j] = new Factory();
-                }
-        }
-    }
 
-    //standard int board
-    private void populateBoard(int boardsizex, int boardsizey) {
-        Random r = new Random();
-        for (int i = 0; i < boardsizex; i++){
-            for (int j = 0; j < boardsizey; j++){
-                boardList[i][j] = r.nextInt(5);
+    //TODO create standard Tile board
+    private void populateTileBoard() {
+        Random r = new Random(3);
+        for (int i = 0; i < BOARDSIZE_X; i++) {
+            for (int j = 0; j < BOARDSIZE_Y; j++) {
+                if (r.nextInt() == 0) {
+                    boardList[i][j] = new Conveyor(Direction.UP);
+                } else if (r.nextInt() == 1) {
+                    boardList[i][j] = new Conveyor(Direction.DOWN);
+                } else if (r.nextInt() == 2) {
+                    boardList[i][j] = new Conveyor(Direction.LEFT);
+                } else if (r.nextInt() == 3) {
+                    boardList[i][j] = new Conveyor(Direction.RIGHT);
+                }
             }
         }
     }
 
+
     //board based on input
-    private void populateBoard(String input){
+    private void populateBoard(String input) {
 
     }
 

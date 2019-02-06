@@ -9,6 +9,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import java.util.HashMap;
+import inf112.skeleton.app.TileTypes.Tile;
+
 
 public class BoardGUI extends ApplicationAdapter {
     private HashMap<String, Texture> textureMap;
@@ -57,6 +60,9 @@ public class BoardGUI extends ApplicationAdapter {
         textureMap.put("rotate_cw", new Texture(Gdx.files.internal("assets/img/rotate_cw")));
         textureMap.put("rotate_ccw", new Texture(Gdx.files.internal("assets/img/rotate_ccw")));
         textureMap.put("pit", new Texture(Gdx.files.internal("assets/img/pit.png")));
+        textureMap.put("edge", new Texture(Gdx.files.internal("assets/img/pit.png")));
+
+
 
     }
 
@@ -91,10 +97,8 @@ public class BoardGUI extends ApplicationAdapter {
     private void drawBoard() {
         for (int i = 0; i < NTILES; i++){
             for (int j = 0; j < NTILES; j++){
-                //Tile current = board.getTile(i, j);
-                //batch.draw(current.getImage, TILESIZE*i, TILESIZE*j);
-                int current = board.getTile(i, j);
-                batch.draw(factoryTile, TILESIZE*i, TILESIZE*j);
+                Tile current = board.getTile(i, j);
+                batch.draw(textureMap.get(current.getImage()), TILESIZE*i, TILESIZE*j);
             }
         }
     }

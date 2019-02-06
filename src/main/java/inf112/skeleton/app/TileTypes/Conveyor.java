@@ -22,11 +22,11 @@ public class Conveyor extends Tile {
     public String getImage() {
         if (direction == Direction.UP){
             return image + "_up";
-        } else if (direction = Direction.DOWN){
+        } else if (direction == Direction.DOWN){
             return image + "_down";
-        } else if (direction = Direction.RIGHT){
+        } else if (direction == Direction.RIGHT){
             return image + "_left";
-        } else if (direction = Direction.LEFT){
+        } else if (direction == Direction.LEFT){
             return image + "_right";
         }
 

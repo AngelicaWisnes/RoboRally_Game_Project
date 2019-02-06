@@ -9,10 +9,10 @@ enum Rotation{
     CW, CCW
 }
 
-public class Conveyor extends Tile {
+public class Rotator extends Tile {
     Rotation rotation;
 
-    public Conveyor(Rotation rotation) {
+    public Rotator(Rotation rotation) {
         this.image = "rotate";
         this.rotation = rotation;
 
@@ -20,11 +20,10 @@ public class Conveyor extends Tile {
 
     @Override
     public String getImage() {
-        if (rotation = Rotation.CW){
+        if (rotation == Rotation.CW){
             return image + "_cw";
-        } else if (rotation = Rotation.CCW){
+        } else if (rotation == Rotation.CCW){
             return image + "_ccw";
-
-
+        } else return "";
     }
 }
