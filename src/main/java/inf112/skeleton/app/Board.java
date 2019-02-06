@@ -5,14 +5,10 @@ import java.util.Random;
 import inf112.skeleton.app.TileTypes.Tile;
 import inf112.skeleton.app.TileTypes.*;
 
-enum Direction {
-    UP, DOWN, LEFT, RIGHT
-}
-
 
 public class Board {
     private final int BOARDSIZE_X, BOARDSIZE_Y;
-    private Tile[][] boardList = new Tile[BOARDSIZE_X][BOARDSIZE_Y];
+    private Tile[][] boardList;
 
 
     public Board(int boardSize) {

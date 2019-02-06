@@ -1,13 +1,12 @@
 package inf112.skeleton.app.TileTypes;
 
+import inf112.skeleton.app.Direction;
+
 /**
  *
  * @Author Katarina
  *
  */
-enum Direction{
-    UP, DOWN, LEFT, RIGHT
-}
 
 public class Conveyor extends Tile {
     Direction direction;
@@ -28,6 +27,8 @@ public class Conveyor extends Tile {
             return image + "_left";
         } else if (direction == Direction.LEFT){
             return image + "_right";
+        } else {
+            return "";
         }
 
     }
