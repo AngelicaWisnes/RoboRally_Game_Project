@@ -7,7 +7,7 @@ import inf112.skeleton.app.TileTypes.*;
 
 
 public class Board {
-    private final int BOARDSIZE_X, BOARDSIZE_Y;
+    private int BOARDSIZE_X, BOARDSIZE_Y;
     private Tile[][] boardList;
 
 
@@ -32,17 +32,19 @@ public class Board {
 
     //TODO create standard Tile board
     private void populateTileBoard() {
-        Random r = new Random(3);
+        Random r = new Random();
         for (int i = 0; i < BOARDSIZE_X; i++) {
             for (int j = 0; j < BOARDSIZE_Y; j++) {
-                if (r.nextInt() == 0) {
+                if (r.nextInt(3) == 0) {
                     boardList[i][j] = new Conveyor(Direction.UP);
-                } else if (r.nextInt() == 1) {
+                } else if (r.nextInt(3) == 1) {
                     boardList[i][j] = new Conveyor(Direction.DOWN);
-                } else if (r.nextInt() == 2) {
+                } else if (r.nextInt(3) == 2) {
                     boardList[i][j] = new Conveyor(Direction.LEFT);
-                } else if (r.nextInt() == 3) {
+                } else if (r.nextInt(3) == 3) {
                     boardList[i][j] = new Conveyor(Direction.RIGHT);
+                } else {
+                    boardList[i][j] = new Floor();
                 }
             }
         }

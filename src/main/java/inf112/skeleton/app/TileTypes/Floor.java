@@ -9,7 +9,7 @@ package inf112.skeleton.app.TileTypes;
 
 public class Floor extends Tile{
     public Floor() {
-        image = "factorytile";
+        image = "factoryTile";
     }
 
     @Override

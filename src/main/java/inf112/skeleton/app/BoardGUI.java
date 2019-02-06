@@ -32,7 +32,7 @@ public class BoardGUI extends ApplicationAdapter {
         textureMap = new HashMap<>();
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
-
+        populateTextureMap();
         // start the playback of the background music immediately
         factoryMusic.setLooping(true);
         factoryMusic.play();
@@ -57,8 +57,8 @@ public class BoardGUI extends ApplicationAdapter {
         textureMap.put("conveyor_down", new Texture(Gdx.files.internal("assets/img/conveyor_down.png")));
         textureMap.put("conveyor_left", new Texture(Gdx.files.internal("assets/img/conveyor_left.png")));
         textureMap.put("conveyor_right", new Texture(Gdx.files.internal("assets/img/conveyor_right.png")));
-        textureMap.put("rotate_cw", new Texture(Gdx.files.internal("assets/img/rotate_cw")));
-        textureMap.put("rotate_ccw", new Texture(Gdx.files.internal("assets/img/rotate_ccw")));
+        textureMap.put("rotate_cw", new Texture(Gdx.files.internal("assets/img/rotate_cw.png")));
+        textureMap.put("rotate_ccw", new Texture(Gdx.files.internal("assets/img/rotate_ccw.png")));
         textureMap.put("pit", new Texture(Gdx.files.internal("assets/img/pit.png")));
         textureMap.put("edge", new Texture(Gdx.files.internal("assets/img/pit.png")));
 
@@ -98,7 +98,8 @@ public class BoardGUI extends ApplicationAdapter {
         for (int i = 0; i < NTILES; i++){
             for (int j = 0; j < NTILES; j++){
                 Tile current = board.getTile(i, j);
-                batch.draw(textureMap.get(current.getImage()), TILESIZE*i, TILESIZE*j);
+                Texture t = textureMap.get(current.getImage());
+                batch.draw(t, TILESIZE*i, TILESIZE*j);
             }
         }
     }
