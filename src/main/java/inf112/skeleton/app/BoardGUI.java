@@ -9,8 +9,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import java.util.HashMap;
+import inf112.skeleton.app.TileTypes.Tile;
+
 
 public class BoardGUI extends ApplicationAdapter {
+    private HashMap<String, Texture> textureMap;
     private Board board;
     private Texture robotImage;
     private Texture factoryTile;
@@ -25,17 +29,17 @@ public class BoardGUI extends ApplicationAdapter {
     @Override
     public void create() {
         board = new Board(NTILES);
+        textureMap = new HashMap<>();
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
-        factoryTile = new Texture(Gdx.files.internal("assets/img/factorytile.png"));
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
-
+        populateTextureMap();
         // start the playback of the background music immediately
         factoryMusic.setLooping(true);
         factoryMusic.play();
 
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREENSIZE,SCREENSIZE);
+        camera.setToOrtho(false, SCREENSIZE, SCREENSIZE);
         batch = new SpriteBatch();
 
         // create a Rectangle to logically represent the robot
@@ -47,9 +51,27 @@ public class BoardGUI extends ApplicationAdapter {
     }
 
 
+    private void populateTextureMap(){
+        textureMap.put("factoryTile", new Texture(Gdx.files.internal("assets/img/factorytile.png")));
+        textureMap.put("conveyor_up", new Texture(Gdx.files.internal("assets/img/conveyor_up.png")));
+        textureMap.put("conveyor_down", new Texture(Gdx.files.internal("assets/img/conveyor_down.png")));
+        textureMap.put("conveyor_left", new Texture(Gdx.files.internal("assets/img/conveyor_left.png")));
+        textureMap.put("conveyor_right", new Texture(Gdx.files.internal("assets/img/conveyor_right.png")));
+        textureMap.put("dbl_conveyor_up", new Texture(Gdx.files.internal("assets/img/dbl_conveyor_up.png")));
+        textureMap.put("dbl_conveyor_down", new Texture(Gdx.files.internal("assets/img/dbl_conveyor_down.png")));
+        textureMap.put("dbl_conveyor_left", new Texture(Gdx.files.internal("assets/img/dbl_conveyor_left.png")));
+        textureMap.put("dbl_conveyor_right", new Texture(Gdx.files.internal("assets/img/dbl_conveyor_right.png")));
+        textureMap.put("rotate_cw", new Texture(Gdx.files.internal("assets/img/rotate_cw.png")));
+        textureMap.put("rotate_ccw", new Texture(Gdx.files.internal("assets/img/rotate_ccw.png")));
+        textureMap.put("pit", new Texture(Gdx.files.internal("assets/img/pit.png")));
+        textureMap.put("edge", new Texture(Gdx.files.internal("assets/img/pit.png")));
+
+
+    }
+
     @Override
     public void render() {
-        Gdx.gl.glClearColor(1, 1, 0.2f, 1);
+        Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // tell the camera to update its matrices.
         camera.update();
@@ -78,10 +100,9 @@ public class BoardGUI extends ApplicationAdapter {
     private void drawBoard() {
         for (int i = 0; i < NTILES; i++){
             for (int j = 0; j < NTILES; j++){
-                //Tile current = board.getTile(i, j);
-                //batch.draw(current.getImage, TILESIZE*i, TILESIZE*j);
-                int current = board.getTile(i, j);
-                batch.draw(factoryTile, TILESIZE*i, TILESIZE*j);
+                Tile current = board.getTile(i, j);
+                Texture t = textureMap.get(current.getImage());
+                batch.draw(t, TILESIZE*i, TILESIZE*j);
             }
         }
     }
