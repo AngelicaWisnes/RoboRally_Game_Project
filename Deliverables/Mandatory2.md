@@ -12,7 +12,7 @@ Members of the group:
 * Customer conatact:
   * Ingrid
   
-Summary: All five of us has basic knowledge about programming from INF100, 101 and 102, but Stefan knows quite a bit more than the rest of the group from working with different projects and internship(?). 
+Summary: 
 
 
 **Technical tools:**
