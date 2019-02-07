@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import java.util.HashMap;
 import inf112.skeleton.app.TileTypes.Tile;
+import inf112.skeleton.app.TileTypes.iTile;
 
 
 public class BoardGUI extends ApplicationAdapter {
@@ -100,7 +101,7 @@ public class BoardGUI extends ApplicationAdapter {
     private void drawBoard() {
         for (int i = 0; i < NTILES; i++){
             for (int j = 0; j < NTILES; j++){
-                Tile current = board.getTile(i, j);
+                iTile current = board.getTile(i, j);
                 Texture t = textureMap.get(current.getImage());
                 batch.draw(t, TILESIZE*i, TILESIZE*j);
             }
