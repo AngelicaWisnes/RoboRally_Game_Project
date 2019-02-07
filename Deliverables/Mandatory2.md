@@ -57,7 +57,7 @@ First code part
   * Distribute the work in the project board in github
 * Follow-up work:
   * Review in github project board
-* Sharing and storing common documents, charts and the codebase. Write a brief description of how your team is planning to organize the programming project
+* Sharing and storing common documents, charts and the codebase
   * Plan what to do in the meetings, write it down in google docs and github project board
 
 
