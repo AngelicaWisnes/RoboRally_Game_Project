@@ -3,13 +3,11 @@ package inf112.skeleton.app.TileTypes;
 /**
  * @author Roger Wisnes
  */
-public class Dock6 extends Tile {
 
-    public Dock6() {
-        this.image = "dock6";
-        this.size = 1;
+public class Dock extends Tile {
 
-
+    public Dock(int n) {
+        this.image = "dock" + n;
     }
 
     @Override
