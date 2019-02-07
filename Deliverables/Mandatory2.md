@@ -73,3 +73,4 @@ Repo:
 * New activities or tools for next exercise:
   * Create the card-class
 
+How we did: 
