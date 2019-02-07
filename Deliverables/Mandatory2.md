@@ -2,8 +2,9 @@
 **PART 1**
 
 Group info:
+
 Members of the group:
-Stefan, Roger, Katarina, Magne, Ingrid
+ Stefan, Roger, Katarina, Magne, Ingrid
 * Name:
   * team2bestteam
 * Team lead:
@@ -23,6 +24,7 @@ Summary: All five of us has basic knowledge about programming from INF100, 101 a
   * https://github.com/StefanEllenberger/team2-inf112/projects/1
 * Communication 
   * https://inf112-v19.slack.com/messages/GFTEPDZPA/
+
 
 **PART 2**
 
@@ -44,6 +46,7 @@ First code part
 1. Construct the cards
    1. Card-class
 
+
 **PART 3**
 
 * Meetings, and frequency of meetings: 
@@ -56,6 +59,7 @@ First code part
   * Review in github project board
 * Sharing and storing common documents, charts and the codebase. Write a brief description of how your team is planning to organize the programming project
   * Plan what to do in the meetings, write it down in google docs and github project board
+
 
 **SUMMARY**
 
