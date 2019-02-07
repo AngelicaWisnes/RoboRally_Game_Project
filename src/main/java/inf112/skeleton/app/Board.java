@@ -56,7 +56,9 @@ public class Board {
                     boardList[i][j] = new Rotator(Rotation.CW);
                 } else if (random == 10) {
                     boardList[i][j] = new Rotator(Rotation.CCW);
-                } else if (random > 10){
+                } else if (random == 11) {
+                    boardList[i][j] = new Flag();
+                } else if (random > 11){
                     boardList[i][j] = new Floor();
                 }
             }

@@ -68,6 +68,7 @@ public class BoardGUI extends ApplicationAdapter {
         textureMap.put("rotate_ccw", new Texture(Gdx.files.internal("assets/img/rotate_ccw.png")));
         textureMap.put("pit", new Texture(Gdx.files.internal("assets/img/pit.png")));
         textureMap.put("void", new Texture(Gdx.files.internal("assets/img/pit.png")));
+        textureMap.put("flag", new Texture(Gdx.files.internal("assets/img/flag.png")));
     }
 
     @Override
