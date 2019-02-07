@@ -14,7 +14,6 @@ public class Floor extends Tile{
 
     @Override
     public String getImage() {
-
         return image;
     }
 }

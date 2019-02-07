@@ -4,7 +4,7 @@ package inf112.skeleton.app.TileTypes;
  *
  * @Author Magne
  *
- * There are two types of Repairfields. Single and Double.
+ * There are two types of Repair fields. Single and Double.
  *
  */
 

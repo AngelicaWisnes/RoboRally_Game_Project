@@ -22,9 +22,7 @@ public abstract class Conveyor extends Tile {
             image = type + "_left";
         } else if (direction == Direction.LEFT) {
             image = type + "_right";
-        } else {
-            image = "";
-        }
+        } else throw new IllegalArgumentException("Illegal direction argument!");
     }
 
 
