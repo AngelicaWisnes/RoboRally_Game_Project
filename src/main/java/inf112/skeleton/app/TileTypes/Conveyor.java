@@ -2,34 +2,34 @@ package inf112.skeleton.app.TileTypes;
 
 import inf112.skeleton.app.Direction;
 
-/**
- *
- * @Author Katarina
- *
- */
+public abstract class Conveyor extends Tile {
 
-public class Conveyor extends Tile {
     Direction direction;
+    String image;
 
-    public Conveyor(Direction direction) {
-        this.image = "conveyor";
+    public Conveyor(Direction direction, String type) {
         this.direction = direction;
+        setImage(type);
 
     }
 
+    public void setImage(String type) {
+        if (direction == Direction.UP) {
+            image = type + "_up";
+        } else if (direction == Direction.DOWN) {
+            image = type + "_down";
+        } else if (direction == Direction.RIGHT) {
+            image = type + "_left";
+        } else if (direction == Direction.LEFT) {
+            image = type + "_right";
+        } else {
+            image = "";
+        }
+    }
+
+
     @Override
     public String getImage() {
-        if (direction == Direction.UP){
-            return image + "_up";
-        } else if (direction == Direction.DOWN){
-            return image + "_down";
-        } else if (direction == Direction.RIGHT){
-            return image + "_left";
-        } else if (direction == Direction.LEFT){
-            return image + "_right";
-        } else {
-            return "";
-        }
-
+        return this.image;
     }
 }
