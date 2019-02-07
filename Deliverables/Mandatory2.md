@@ -36,13 +36,13 @@ Spesifications:
 First code part
 “ A couple of good "first steps" are to show a two-dimensional game board, and place a piece on the board.”
 1. Show the board
-  1. Board-class
-  1. BoardGUI 
+   1. Board-class
+   1. BoardGUI 
 1. Place a tile on the board
-  1. Tile-class
-  1. A TileGUI that holds the tiles?
+   1. Tile-class
+   1. A TileGUI that holds the tiles?
 1. Construct the cards
-  1. Card-class
+   1. Card-class
 
 **PART 3**
 
