@@ -17,7 +17,7 @@ Summary: all of us has basic programming knowledge from INF100, INF101 and INF10
 
 **Technical tools:**
 * IDE
- * IntelliJ
+  * IntelliJ
 * Git
   * https://github.com/StefanEllenberger/team2-inf112/
 * Project board
@@ -32,20 +32,42 @@ Spesifications:
 * A brief description of the overall goal of the application. 
   * Construct a functional game based on the boardgame RoboRally
 * A list of requirements for the system based on the high level requirements reviewed in lecture. 
-  * LIST OF REQUIREMENTS:
-* A priority list of which requirements you want to include in the first iteration (ie until delivery of this assignment).
-  * Look further down
 
-First code part
-“ A couple of good "first steps" are to show a two-dimensional game board, and place a piece on the board.”
-1. Show the board
-   1. Board-class
-   1. BoardGUI 
-1. Place a tile on the board
-   1. Tile-class
-   1. A TileGUI that holds the tiles?
-1. Construct the cards
-   1. Card-class
+* LIST OF REQUIREMENTS:
+presentation
+-getting something onto the screen
+-finding/creating sprites
+-constructing a board
+-understanding how the camera works with the board
+-constructing different tiles that the board will consist of
+-constructing a robot figure to move around the static board, to understand position (x,y)
+
+cards 
+-construct cards that influence the game
+-create stacks for new, old and player cards
+-create logic for all cards, ensuring functionality for all cards was doable
+
+movement
+-creating a class for the robots with movement methods
+-creating a system to run through the different parts of the turns
+-creating a system that takes cards as input and moves robots
+-creating a player with cards and a robot
+
+tiles
+-creating logic for all tiles
+-deciding on a system for tiles to manipulate players
+--is the logic in the player, reacting to the tile type?
+--is the tile affecting change on the player?
+-if former, system for player to assess tile underneath and store needed information
+-if latter, implement system that allows tile/board to affect player
+
+win state
+-create ordered flag tiles 
+-create memory in player of which flags have been reached
+-end game if all flags have been reached in order
+
+
+We decided this was enough work for the forseeable future, and would probably change enough things from now until then that we didn't go any further into detail. A game where a player can pull cards, move from tile to tile and reach an end state via flags is considered a good MVP.
 
 
 **PART 3**
@@ -72,7 +94,16 @@ Repo:
 * New activities or tools for next exercise:
   * Create the card-class
 
-How we did: 
+When starting, we drew up some thoughts on what we thought the mechanisms would become, and what order they should be created in, to create a Minimum Viable Product. Initially we set a goal to finish the presentation portion and begin the card portion.
 
-We made a good plan for the week and we followed that plan and made a working board with different tiles and a moving piece on it. The only thing we weren't able to do from out project board was to make a card-class. 
-We know from our repo that we'll plan minimum working hours for working with the project outside our meetings(for each week). And we have know how much work to set up on the project board so all of it is completed in the end of the sprint. 
+
+**Week 1:**
+There was a bit more work that first anticipated not related to code. Setting up environments, getting familiar with the library, understanding how parts were connected, getting comfortable with Git and working as a team on the same pieces of code. Configurations meant having to reset or move the project, and each member of the team deleted and re-cloned the project at least once. Some code was written on one computer and commit by another, but towards the end of the week (08/02) we felt comfortable using the IDE and Git to pull and push code. We also wrote our first few tests, which were helpful in debugging. We have not yet looked into using pull requests, but hope to in the next week. 
+
+Setting up the initial code for displaying objects on screen went well, we followed a tutorial and tried to learn what each part did. From there, we started working on creating the interfaces and classes for the functionality we needed. We used a Github  Projects board to set up tasks, and worked as groups, pairs and individuals to finish the individual parts. The best work came when we all sat together and could draw plans, divide tasks and ask for help in person. We plan to continue pair programming and working in groups throughout the project. 
+
+We didn't quite reach our sprint target, as the initial setup and base board system was more complex than first anticipated. We did have an inkling going into the week that this would be the case, but we do plan to be more cautious when planning future sprints. 
+
+#Future weeks:
+Our next task is the card and robot systems. Because the functionality of the cards is tied to the robots, these two systems make sense to create at the same time. The main challenge for the card system will be to influence the robot, while the main challenge for the robot will be to read the board and know its position. These two systems will be the only post-its on the Project board for the week, as we think they'll both take a fair bit of planning and work. 
+
