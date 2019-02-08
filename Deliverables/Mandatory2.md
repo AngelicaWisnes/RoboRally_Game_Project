@@ -73,5 +73,6 @@ Repo:
   * Create the card-class
 
 How we did: 
+
 We made a good plan for the week and we followed that plan and made a working board with different tiles and a moving piece on it. The only thing we weren't able to do from out project board was to make a card-class. 
 We know from our repo that we'll plan minimum working hours for working with the project outside our meetings(for each week). And we have know how much work to set up on the project board so all of it is completed in the end of the sprint. 
