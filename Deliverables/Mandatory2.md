@@ -12,7 +12,7 @@ Members of the group:
 * Customer conatact:
   * Ingrid
   
-Summary: 
+Summary: all of us has basic programming knowledge from INF100, INF101 and INF102. Exept from Stefan who has worked with projects before so he has more experience than the rest of us.
 
 
 **Technical tools:**
@@ -32,6 +32,7 @@ Spesifications:
 * A brief description of the overall goal of the application. 
   * Construct a functional game based on the boardgame RoboRally
 * A list of requirements for the system based on the high level requirements reviewed in lecture. 
+  * LIST OF REQUIREMENTS:
 * A priority list of which requirements you want to include in the first iteration (ie until delivery of this assignment).
   * Look further down
 
@@ -72,3 +73,5 @@ Repo:
   * Create the card-class
 
 How we did: 
+We made a good plan for the week and we followed that plan and made a working board with different tiles and a moving piece on it. The only thing we weren't able to do from out project board was to make a card-class. 
+We know from our repo that we'll plan minimum working hours for working with the project outside our meetings(for each week). And we have know how much work to set up on the project board so all of it is completed in the end of the sprint. 
