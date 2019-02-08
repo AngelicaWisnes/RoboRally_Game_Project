@@ -1,4 +1,4 @@
-
+﻿
 **PART 1**
 
 Group info:
@@ -108,4 +108,3 @@ We didn't quite reach our sprint target, as the initial setup and base board sys
 
 **Future weeks:**
 Our next task is the card and robot systems. Because the functionality of the cards is tied to the robots, these two systems make sense to create at the same time. The main challenge for the card system will be to influence the robot, while the main challenge for the robot will be to read the board and know its position. These two systems will be the only post-its on the Project board for the week, as we think they'll both take a fair bit of planning and work. 
-
