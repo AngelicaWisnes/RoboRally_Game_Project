@@ -28,12 +28,10 @@ Summary: all of us has basic programming knowledge from INF100, INF101 and INF10
 
 **PART 2**
 
-Spesifications:
-* A brief description of the overall goal of the application. 
-  * Construct a functional game based on the boardgame RoboRally
-* LIST OF REQUIREMENTS:
+**LIST OF REQUIREMENTS:**
 
 We created a list of requirements that would act as a road map for our development, which we will review weekly.
+
 presentation  
 -getting something onto the screen  
 -finding/creating sprites  
@@ -67,7 +65,9 @@ win state
 -end game if all flags have been reached in order
 
 
-We decided to not go into too much more detail re: specs, as we would probably change enough things from now until we would start implementing these changes. We intend to be agile, and in each meeting will see what has made sense so far of our planning, and what needs to be rethought.  We consider a game where a player can pull cards, move from tile to tile and reach an end state via flags to be a good MVP.
+We decided to not go into too much more detail re: specs, as we would probably change enough things from now until we would start implementing these changes. 
+We intend to be agile, and in each meeting will see what has made sense so far of our planning, and what needs to be rethought.  
+We consider a game where a player can pull cards, move from tile to tile and reach an end state via flags to be a good MVP, and that is our first major goal to reach for. 
 
 
 
