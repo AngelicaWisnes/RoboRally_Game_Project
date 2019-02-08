@@ -60,7 +60,6 @@ First code part
 * Sharing and storing common documents, charts and the codebase
   * Plan what to do in the meetings, write it down in google docs and github project board
 
-
 **SUMMARY**
 
 Repo:
@@ -68,8 +67,7 @@ Repo:
   * The teamwork and planning
   * Getting the project going and having a program that works as anticipated
 * What didn’t work as expected:
-  * We had some problem with git 
-* What didn’t work at all:
+  * We had some problem with getting the program to run on all of our computers because of a problem with the mvn-app.iml file. We solved the problem by adding the file to .gitignore. 
 * New activities or tools for next exercise:
   * Create the card-class
 
