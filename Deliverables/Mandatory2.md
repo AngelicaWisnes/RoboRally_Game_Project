@@ -34,40 +34,42 @@ Spesifications:
 * A list of requirements for the system based on the high level requirements reviewed in lecture. 
 
 * LIST OF REQUIREMENTS:
-presentation
--getting something onto the screen
--finding/creating sprites
--constructing a board
--understanding how the camera works with the board
--constructing different tiles that the board will consist of
--constructing a robot figure to move around the static board, to understand position (x,y)
 
-cards 
--construct cards that influence the game
--create stacks for new, old and player cards
+presentation  
+-getting something onto the screen  
+-finding/creating sprites  
+-constructing a board  
+-understanding how the camera works with the board
+-constructing different tiles that the board will consist of   
+-constructing a robot figure to move around the static board, to understand position (x,y)  
+
+cards   
+-construct cards that influence the game  
+-create stacks for new, old and player cards  
 -create logic for all cards, ensuring functionality for all cards was doable
 
-movement
--creating a class for the robots with movement methods
--creating a system to run through the different parts of the turns
--creating a system that takes cards as input and moves robots
+movement  
+-creating a class for the robots with movement methods  
+-creating a system to run through the different parts of the turns  
+-creating a system that takes cards as input and moves robots  
 -creating a player with cards and a robot
 
-tiles
--creating logic for all tiles
--deciding on a system for tiles to manipulate players
---is the logic in the player, reacting to the tile type?
---is the tile affecting change on the player?
--if former, system for player to assess tile underneath and store needed information
+tiles  
+-creating logic for all tiles  
+-deciding on a system for tiles to manipulate players  
+--is the logic in the player, reacting to the tile type?  
+--is the tile affecting change on the player?  
+-if former, system for player to assess tile underneath and store needed information  
 -if latter, implement system that allows tile/board to affect player
 
-win state
--create ordered flag tiles 
--create memory in player of which flags have been reached
+win state  
+-create ordered flag tiles   
+-create memory in player of which flags have been reached  
 -end game if all flags have been reached in order
 
 
-We decided this was enough work for the forseeable future, and would probably change enough things from now until then that we didn't go any further into detail. A game where a player can pull cards, move from tile to tile and reach an end state via flags is considered a good MVP.
+We decided to not go into too much more detail re: specs, as we would probably change enough things from now until we would start implementing these changes. We intend to be agile, and in each meeting will see what has made sense so far of our planning, and what needs to be rethought.  We consider a game where a player can pull cards, move from tile to tile and reach an end state via flags to be a good MVP.
+
 
 
 **PART 3**
