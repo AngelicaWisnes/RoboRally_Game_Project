@@ -31,10 +31,9 @@ Summary: all of us has basic programming knowledge from INF100, INF101 and INF10
 Spesifications:
 * A brief description of the overall goal of the application. 
   * Construct a functional game based on the boardgame RoboRally
-* A list of requirements for the system based on the high level requirements reviewed in lecture. 
-
 * LIST OF REQUIREMENTS:
 
+We created a list of requirements that would act as a road map for our development, which we will review weekly.
 presentation  
 -getting something onto the screen  
 -finding/creating sprites  
@@ -77,9 +76,9 @@ We decided to not go into too much more detail re: specs, as we would probably c
 * Meetings, and frequency of meetings: 
   * 1-2 times a week
 * Communication between: 
-  * Facebook, slack
+  * Facebook, Slack
 * Labour distribution 
-  * Distribute the work in the project board in github
+  * Distribute the work in the project board in Github
 * Follow-up work:
   * Review in github project board
 * Sharing and storing common documents, charts and the codebase
@@ -90,11 +89,12 @@ We decided to not go into too much more detail re: specs, as we would probably c
 Repo:
 * What went well:
   * The teamwork and planning
-  * Getting the project going and having a program that works as anticipated
+  * Getting the project going and having a program that work as anticipated
 * What didn’t work as expected:
-  * We had some problem with getting the program to run on all of our computers because of a problem with the mvn-app.iml file. We solved the problem by adding the file to .gitignore. 
+  * We had some problem with getting the program to run on all of our computers because of a problem with the mvn-app.iml file. We solved the problem by adding the file to .gitignore. This was our first time using Maven, so there was a slight learning curve there.   
 * New activities or tools for next exercise:
   * Create the card-class
+  * Create the robot-class
 
 When starting, we drew up some thoughts on what we thought the mechanisms would become, and what order they should be created in, to create a Minimum Viable Product. Initially we set a goal to finish the presentation portion and begin the card portion.
 
@@ -106,6 +106,6 @@ Setting up the initial code for displaying objects on screen went well, we follo
 
 We didn't quite reach our sprint target, as the initial setup and base board system was more complex than first anticipated. We did have an inkling going into the week that this would be the case, but we do plan to be more cautious when planning future sprints. 
 
-#Future weeks:
+**Future weeks:**
 Our next task is the card and robot systems. Because the functionality of the cards is tied to the robots, these two systems make sense to create at the same time. The main challenge for the card system will be to influence the robot, while the main challenge for the robot will be to read the board and know its position. These two systems will be the only post-its on the Project board for the week, as we think they'll both take a fair bit of planning and work. 
 
