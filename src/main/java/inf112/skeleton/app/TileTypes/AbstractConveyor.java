@@ -2,12 +2,12 @@ package inf112.skeleton.app.TileTypes;
 
 import inf112.skeleton.app.Direction;
 
-public abstract class Conveyor extends Tile {
+public abstract class AbstractConveyor extends Tile {
 
     Direction direction;
     String image;
 
-    public Conveyor(Direction direction, String type) {
+    public AbstractConveyor(Direction direction, String type) {
         this.direction = direction;
         setImage(type);
 
