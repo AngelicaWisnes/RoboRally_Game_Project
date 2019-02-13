@@ -7,7 +7,7 @@ public abstract class AbstractTile implements iTile{
     protected String image;
     protected int size;
 
-    protected Tile() {
+    protected AbstractTile() {
     }
 
     @Override
