@@ -1,7 +1,7 @@
 package inf112.skeleton.app;
 
 import java.util.Random;
-import inf112.skeleton.app.TileTypes.Tile;
+import inf112.skeleton.app.TileTypes.AbstractTile;
 import inf112.skeleton.app.TileTypes.*;
 
 
@@ -13,7 +13,7 @@ public class Board {
     public Board(int boardSize) {
         this.BOARDSIZE_X = boardSize;
         this.BOARDSIZE_Y = boardSize;
-        boardList = new Tile[BOARDSIZE_X][BOARDSIZE_Y];
+        boardList = new AbstractTile[BOARDSIZE_X][BOARDSIZE_Y];
         populateTileBoard();
     }
 

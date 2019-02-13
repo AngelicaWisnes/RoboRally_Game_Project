@@ -2,7 +2,7 @@ package inf112.skeleton.app.TileTypes;
 
 import inf112.skeleton.app.Direction;
 
-public abstract class AbstractConveyor extends Tile {
+public abstract class AbstractConveyor extends AbstractTile {
 
     Direction direction;
     String image;

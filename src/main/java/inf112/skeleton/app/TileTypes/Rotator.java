@@ -1,6 +1,6 @@
 package inf112.skeleton.app.TileTypes;
 
-public class Rotator extends Tile {
+public class Rotator extends AbstractTile {
     Rotation rotation;
 
     public Rotator(Rotation rotation) {
