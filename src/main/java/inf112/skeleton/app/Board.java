@@ -56,9 +56,9 @@ public class Board {
                 } else if (random == 8) {
                     boardList[i][j] = new Pit();
                 } else if (random == 9) {
-                    boardList[i][j] = new Rotator(Rotation.CW);
+                    boardList[i][j] = new Rotator(Rotation.TURN_CLOCKWISE);
                 } else if (random == 10) {
-                    boardList[i][j] = new Rotator(Rotation.CCW);
+                    boardList[i][j] = new Rotator(Rotation.TURN_COUNTER_CLOCKWISE);
                 } else if (random == 11) {
                     boardList[i][j] = new Flag();
                 } else if (random > 11){

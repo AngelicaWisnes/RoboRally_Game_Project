@@ -13,9 +13,9 @@ public class Rotator extends AbstractTile {
 
     @Override
     public String getImage() {
-        if (rotation == Rotation.CW){
+        if (rotation == Rotation.TURN_CLOCKWISE){
             return image + "_cw";
-        } else if (rotation == Rotation.CCW){
+        } else if (rotation == Rotation.TURN_COUNTER_CLOCKWISE){
             return image + "_ccw";
         } else throw new IllegalArgumentException("Incorrect rotation argument!");
     }

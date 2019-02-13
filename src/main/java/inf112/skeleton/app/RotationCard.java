@@ -1,6 +1,7 @@
 package inf112.skeleton.app;
 
-import inf112.skeleton.app.TileTypes.Rotation;
+
+import inf112.skeleton.app.Enums.Rotation;
 
 public class RotationCard extends Card {
     private Rotation rotation;
