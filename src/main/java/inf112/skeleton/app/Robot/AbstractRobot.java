@@ -1,7 +1,8 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.Robot;
 
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
+import inf112.skeleton.app.Position;
 
 /**
  * @author Roger Wisnes
@@ -10,8 +11,9 @@ public abstract class AbstractRobot implements iRobot {
     private Position pos;
     private Direction dir;
 
-    protected AbstractRobot() {
-
+    protected AbstractRobot(Position pos, Direction dir) {
+        this.pos = pos;
+        this.dir = dir;
     }
 
     @Override

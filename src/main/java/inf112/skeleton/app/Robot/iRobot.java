@@ -1,7 +1,8 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.Robot;
 
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
+import inf112.skeleton.app.Position;
 
 public interface iRobot {
 
