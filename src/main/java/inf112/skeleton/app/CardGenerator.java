@@ -1,17 +1,25 @@
 package inf112.skeleton.app;
 
+import inf112.skeleton.app.Enums.Rotation;
+
 import java.util.ArrayList;
 
 public class CardGenerator {
     ArrayList<Card> cards;
 
+    public static void main(String[] args) {
+        CardGenerator cg = new CardGenerator();
+    }
+
     public CardGenerator() {
         cards = new ArrayList<>();
         createCards();
+        for (Card c : cards)
+            System.out.println(c.getPriority());
     }
 
     private void createCards() {
-        rotateRight();
+        rotateClockwise();
 /*
         rotateLeft();
         turnAround();
@@ -22,11 +30,10 @@ public class CardGenerator {
 */
     }
 
-    private void rotateRight() {
-        int startingValue = 490;
+    private void rotateClockwise() {
+        int startingValue = 80;
         for (int i = 0; i < 18; i++){
-            //cards.add(new Card(startingValue + (10*i)));
-
+            cards.add(new RotationCard(startingValue + (20*i), Rotation.TURN_CLOCKWISE));
         }
     }
 
