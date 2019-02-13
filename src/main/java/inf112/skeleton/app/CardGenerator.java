@@ -14,7 +14,6 @@ public class CardGenerator {
         return cards;
     }
 
-
     private static void createCards() {
         rotate(Rotation.TURN_COUNTER_CLOCKWISE, 70, 18, 20);
         rotate(Rotation.TURN_CLOCKWISE, 80, 18, 20);
