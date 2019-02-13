@@ -2,53 +2,43 @@ package inf112.skeleton.app;
 
 import inf112.skeleton.app.Enums.Rotation;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CardGenerator {
-    ArrayList<Card> cards;
+    private static ArrayList<Card> cards;
 
-    public static void main(String[] args) {
-        CardGenerator cg = new CardGenerator();
-    }
-
-    public CardGenerator() {
+    public static ArrayList<Card> getNewCardStack() {
         cards = new ArrayList<>();
         createCards();
-        for (Card c : cards)
-            System.out.println(c.getPriority());
+        return cards;
     }
 
-    private void createCards() {
-        rotateClockwise();
-/*
-        rotateLeft();
-        turnAround();
-        forwardOne();
-        forwardTwo();
-        forwardThree();
-        backwardOne();
-*/
+
+    private static void createCards() {
+        rotate(Rotation.TURN_COUNTER_CLOCKWISE, 70, 18, 20);
+        rotate(Rotation.TURN_CLOCKWISE, 80, 18, 20);
+        rotate(Rotation.TURN_AROUND, 10, 6, 10);
+        movement(1, 490, 18, false);
+        movement(2, 670, 12, false);
+        movement(3, 790, 6, false);
+        movement(1, 430, 6, true);
     }
 
-    private void rotateClockwise() {
-        int startingValue = 80;
-        for (int i = 0; i < 18; i++){
-            cards.add(new RotationCard(startingValue + (20*i), Rotation.TURN_CLOCKWISE));
+
+    private static void movement(int steps, int startingValue, int n, boolean backwards) {
+        for (int i = 0; i < n; i++) {
+            if (backwards) {
+                cards.add(new MoveBackwards(startingValue + (10 * i), steps + 1));
+            } else {
+                cards.add(new MoveForward(startingValue + (10 * i), steps + 1));
+            }
         }
     }
 
-    //18 rotasjon høyre
-
-    //18 rotasjon venstre
-
-    //6 rotasjon turn around
-
-    //18 1 frem
-
-    //12 2 frem
-
-    //6 3 frem
-
-    //6 1 bakover
-
+    private static void rotate(Rotation rotation, int startingValue, int n, int increment) {
+        for (int i = 0; i < n; i++) {
+            cards.add(new RotationCard(startingValue + (increment * i), rotation));
+        }
+    }
 }

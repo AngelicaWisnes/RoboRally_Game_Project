@@ -12,4 +12,9 @@ public abstract class Card {
     public int getPriority() {
         return priority;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
 }
