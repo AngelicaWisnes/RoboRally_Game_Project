@@ -10,4 +10,8 @@ public class RotationCard extends Card {
         super(priority);
         this.rotation = rotation;
     }
+
+    public Rotation getRotation() {
+        return rotation;
+    }
 }

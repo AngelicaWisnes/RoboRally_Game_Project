@@ -6,6 +6,7 @@ public abstract class Card {
 
 
     public Card(int priority) {
+        if (priority > 840 || priority < 10){throw new IllegalStateException();}
         this.priority = priority;
     }
 
