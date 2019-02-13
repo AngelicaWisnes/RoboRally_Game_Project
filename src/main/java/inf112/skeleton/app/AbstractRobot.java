@@ -16,10 +16,13 @@ public abstract class AbstractRobot implements iRobot {
 
     @Override
     public Direction rotate(Rotation rotation) {
-        if (rotation.equals(Rotation.TURN_AROUND)) return dir = dir.opposite();
-        if (rotation.equals(Rotation.TURN_CLOCKWISE)) return dir = dir.clockwise();
-        if (rotation.equals(Rotation.TURN_COUNTER_CLOCKWISE)) return dir = dir.counterClockwise();
-        throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
+        switch (rotation) {
+            case TURN_CLOCKWISE: return dir = dir.clockwise();
+            case TURN_COUNTER_CLOCKWISE: return dir = dir.counterClockwise();
+            case TURN_AROUND: return dir = dir.opposite();
+            default:
+                throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
+        }
     }
 
     @Override
