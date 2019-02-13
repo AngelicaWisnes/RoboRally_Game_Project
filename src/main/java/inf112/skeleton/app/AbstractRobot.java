@@ -3,8 +3,11 @@ package inf112.skeleton.app;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
 
+/**
+ * @author Roger Wisnes
+ */
 public abstract class AbstractRobot implements iRobot {
-    protected Position pos;
+    private Position pos;
     private Direction dir;
 
     protected AbstractRobot() {
@@ -21,6 +24,25 @@ public abstract class AbstractRobot implements iRobot {
 
     @Override
     public Position move(Direction direction, int spaces) {
-        return null;
+        if (spaces < 1 || spaces > 3){
+            throw new IllegalArgumentException("Must have valid spaces-input to move robot");
+        }
+
+        switch (direction) {
+            case UP:
+                pos.y -= spaces;
+                return pos;
+            case DOWN:
+                pos.y += spaces;
+                return pos;
+            case LEFT:
+                pos.x -= spaces;
+                return pos;
+            case RIGHT:
+                pos.x += spaces;
+                return pos;
+            default:
+                throw new IllegalArgumentException("Must have valid direction-input to move robot");
+        }
     }
 }
