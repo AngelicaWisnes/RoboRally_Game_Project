@@ -10,12 +10,10 @@ import inf112.skeleton.app.Position;
 public abstract class AbstractRobot implements iRobot {
     private Position pos;
     private Direction dir;
-    private int health;
 
     protected AbstractRobot(Position pos, Direction dir) {
         this.pos = pos;
         this.dir = dir;
-        this.health = 100;
     }
 
     @Override
