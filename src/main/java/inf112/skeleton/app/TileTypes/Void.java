@@ -3,13 +3,10 @@ package inf112.skeleton.app.TileTypes;
 /**
  * @author Roger Wisnes
  */
-public class Edge extends Tile {
+public class Void extends AbstractTile {
 
-    public Edge() {
-        this.image = "edge";
-        this.size = 1;
-
-
+    public Void() {
+        this.image = "void";
     }
 
     @Override

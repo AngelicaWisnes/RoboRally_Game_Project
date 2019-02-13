@@ -1,6 +1,6 @@
 package inf112.skeleton.app.TileTypes;
 
-public class Rotator extends Tile {
+public class Rotator extends AbstractTile {
     Rotation rotation;
 
     public Rotator(Rotation rotation) {
@@ -15,6 +15,6 @@ public class Rotator extends Tile {
             return image + "_cw";
         } else if (rotation == Rotation.CCW){
             return image + "_ccw";
-        } else return "";
+        } else throw new IllegalArgumentException("Incorrect rotation argument!");
     }
 }
