@@ -1,4 +1,4 @@
-package inf112.skeleton.app.TileTypes;
+package inf112.skeleton.app.Enums;
 
 /**
  *

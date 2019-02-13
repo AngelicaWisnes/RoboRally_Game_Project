@@ -1,5 +1,7 @@
 package inf112.skeleton.app.TileTypes;
 
+import inf112.skeleton.app.Enums.Rotation;
+
 public class Rotator extends AbstractTile {
     Rotation rotation;
 

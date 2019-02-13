@@ -1,5 +1,6 @@
 package inf112.skeleton.app;
 
+import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.TileTypes.AbstractConveyor;
 import inf112.skeleton.app.TileTypes.DblConveyor;
 import inf112.skeleton.app.TileTypes.SingleConveyor;
