@@ -12,8 +12,8 @@ public class Main {
         cfg.title = "RoboRally!";
         cfg.width = 640;
         cfg.height = 640;
-        cfg.addIcon("assets/img/icon16.png", Files.FileType.Internal);
-        cfg.addIcon("assets/img/icon128.png", Files.FileType.Internal);
+        cfg.addIcon("assets/img/icons/icon16.png", Files.FileType.Internal);
+        cfg.addIcon("assets/img/icons/icon128.png", Files.FileType.Internal);
         new LwjglApplication(new BoardGUI(), cfg);
     }
 }

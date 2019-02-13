@@ -8,7 +8,7 @@ import inf112.skeleton.app.Direction;
  *
  */
 
-public class SingleConveyor extends Conveyor {
+public class SingleConveyor extends AbstractConveyor {
     public SingleConveyor(Direction direction) {
         super(direction, "conveyor");
     }

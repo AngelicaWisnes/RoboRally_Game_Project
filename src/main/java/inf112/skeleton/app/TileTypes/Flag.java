@@ -1,15 +1,12 @@
 package inf112.skeleton.app.TileTypes;
 
 /**
- *
- * @Author Stefan
- *
- *
+ * @author Roger Wisnes
  */
+public class Flag extends Tile {
 
-public class Floor extends Tile{
-    public Floor() {
-        image = "factoryTile";
+    public Flag() {
+        this.image = "flag";
     }
 
     @Override

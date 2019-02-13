@@ -7,7 +7,6 @@ public class Pit extends Tile {
 
     public Pit() {
         this.image = "pit";
-        this.size = 1;
     }
 
     @Override

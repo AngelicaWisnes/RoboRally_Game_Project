@@ -10,19 +10,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import java.util.HashMap;
-import inf112.skeleton.app.TileTypes.Tile;
 import inf112.skeleton.app.TileTypes.iTile;
 
 
 public class BoardGUI extends ApplicationAdapter {
     private HashMap<String, Texture> textureMap;
-    private Board board;
     private Texture robotImage;
-    private Texture factoryTile;
+
+    private Board board;
     private Music factoryMusic;
     private SpriteBatch batch;
     private OrthographicCamera camera;
     private Rectangle robot;
+
     private final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE*NTILES;
@@ -33,7 +33,9 @@ public class BoardGUI extends ApplicationAdapter {
         textureMap = new HashMap<>();
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
+        // create textures and add to hashmap
         populateTextureMap();
+
         // start the playback of the background music immediately
         factoryMusic.setLooping(true);
         factoryMusic.play();
@@ -65,9 +67,8 @@ public class BoardGUI extends ApplicationAdapter {
         textureMap.put("rotate_cw", new Texture(Gdx.files.internal("assets/img/rotate_cw.png")));
         textureMap.put("rotate_ccw", new Texture(Gdx.files.internal("assets/img/rotate_ccw.png")));
         textureMap.put("pit", new Texture(Gdx.files.internal("assets/img/pit.png")));
-        textureMap.put("edge", new Texture(Gdx.files.internal("assets/img/pit.png")));
-
-
+        textureMap.put("void", new Texture(Gdx.files.internal("assets/img/pit.png")));
+        textureMap.put("flag", new Texture(Gdx.files.internal("assets/img/flag.png")));
     }
 
     @Override
@@ -79,12 +80,18 @@ public class BoardGUI extends ApplicationAdapter {
         // tell the SpriteBatch to render in the
         // coordinate system specified by the camera.
         batch.setProjectionMatrix(camera.combined);
+
         // begin a new batch and draw tiles
         batch.begin();
         drawBoard();
         batch.draw(robotImage, robot.x, robot.y);
         batch.end();
 
+        moveRobot();
+    }
+
+    private void moveRobot() {
+        //move the robot one tile in a direction
         if(Gdx.input.isKeyJustPressed(Keys.LEFT)) robot.x -= TILESIZE;
         if(Gdx.input.isKeyJustPressed(Keys.RIGHT)) robot.x += TILESIZE;
         if(Gdx.input.isKeyJustPressed(Keys.UP)) robot.y += TILESIZE;
@@ -97,7 +104,7 @@ public class BoardGUI extends ApplicationAdapter {
         if(robot.y < 0) robot.y = 0;
         if(robot.y > SCREENSIZE - TILESIZE) robot.y = SCREENSIZE - TILESIZE;
     }
-    //TODO: Once tiles are implemented, uncomment and delete last lines
+
     private void drawBoard() {
         for (int i = 0; i < NTILES; i++){
             for (int j = 0; j < NTILES; j++){
