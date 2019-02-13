@@ -1,6 +1,9 @@
 package inf112.skeleton.app;
 
 import java.util.Random;
+
+import inf112.skeleton.app.Enums.Direction;
+import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.TileTypes.AbstractTile;
 import inf112.skeleton.app.TileTypes.*;
 

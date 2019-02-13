@@ -1,6 +1,6 @@
 package inf112.skeleton.app.TileTypes;
 
-import inf112.skeleton.app.Direction;
+import inf112.skeleton.app.Enums.Direction;
 
 /**
  * @Author Magne
