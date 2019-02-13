@@ -3,7 +3,7 @@ package inf112.skeleton.app.TileTypes;
 /**
  * @author Magne
  */
-public abstract class Tile implements iTile{
+public abstract class AbstractTile implements iTile{
     protected String image;
     protected int size;
 
