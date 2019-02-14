@@ -28,9 +28,9 @@ public class CardGenerator {
     private static void movement(int steps, int startingValue, int n, boolean backwards) {
         for (int i = 0; i < n; i++) {
             if (backwards) {
-                cards.add(new MoveBackwards(startingValue + (10 * i), steps + 1));
+                cards.add(new MoveBackwards(startingValue + (10 * i), steps));
             } else {
-                cards.add(new MoveForward(startingValue + (10 * i), steps + 1));
+                cards.add(new MoveForward(startingValue + (10 * i), steps));
             }
         }
     }
