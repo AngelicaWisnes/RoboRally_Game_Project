@@ -14,9 +14,12 @@ public class Slot {
     public void unlockSlot(){
         this.locked = false;
     }
+    public boolean isLocked(){
+        return this.locked;
+    }
 
     public boolean isAvailable(){
-        return this.card.equals(null);
+        return this.card == null;
     }
 
     public void setCard(Card card){
