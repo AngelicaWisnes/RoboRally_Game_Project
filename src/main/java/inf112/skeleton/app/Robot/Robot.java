@@ -1,5 +1,6 @@
 package inf112.skeleton.app.Robot;
 
+import inf112.skeleton.app.Board;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Position;
 
@@ -9,5 +10,17 @@ import inf112.skeleton.app.Position;
 public class Robot extends AbstractRobot{
     public Robot(Position pos, Direction dir) {
         super(pos, dir);
+    }
+
+    public Robot(int playerN, Board board){
+        super(getPositionFromBoard(playerN, board), getDirectionFromBoard(playerN, board));
+    }
+    //TODO: return initial direction from board
+    private static Direction getDirectionFromBoard(int playerN, Board board) {
+        return null;
+    }
+    //TODO: return initial position from board
+    private static Position getPositionFromBoard(int playerN, Board board) {
+        return null;
     }
 }
