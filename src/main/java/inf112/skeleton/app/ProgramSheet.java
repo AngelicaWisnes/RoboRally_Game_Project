@@ -21,4 +21,31 @@ public class ProgramSheet {
         this.damage = 0;
         this.lives = 3;
     }
+
+    public void receiveCards(ArrayList<Card> cards){
+        this.cards = cards;
+    }
+
+    public Slot placeCard(Card card){
+        if (slot1.isAvailable()){
+            slot1.setCard(card);
+        }else if (slot2.isAvailable()){
+            slot2.setCard(card);
+        }else if (slot3.isAvailable()){
+            slot3.setCard(card);
+        }else if (slot4.isAvailable()){
+            slot4.setCard(card);
+        }else if (slot5.isAvailable()){
+            slot5.setCard(card);
+        }
+        return null;
+    }
+
+    public void clearUnlockedSlots(){
+        slot1.returnCard();
+        slot2.returnCard();
+        slot3.returnCard();
+        slot4.returnCard();
+        slot5.returnCard();
+    }
 }
