@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "RoboRally!";
-        cfg.width = 640;
-        cfg.height = 640;
+        cfg.width = 900;
+        cfg.height = 900;
         cfg.addIcon("assets/img/icons/icon16.png", Files.FileType.Internal);
         cfg.addIcon("assets/img/icons/icon128.png", Files.FileType.Internal);
         new LwjglApplication(new BoardGUI(), cfg);

@@ -26,6 +26,7 @@ public class BoardGUI extends ApplicationAdapter {
     private final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE*NTILES;
+    private final int OFFSET = (SCREENSIZE/2);
 
     @Override
     public void create() {
@@ -42,7 +43,8 @@ public class BoardGUI extends ApplicationAdapter {
 
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREENSIZE, SCREENSIZE);
+        camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
+
         batch = new SpriteBatch();
 
         // create a Rectangle to logically represent the robot
@@ -85,6 +87,7 @@ public class BoardGUI extends ApplicationAdapter {
         batch.begin();
         drawBoard();
         batch.draw(robotImage, robot.x, robot.y);
+        batch.draw(robotImage, 0,0);
         batch.end();
 
         moveRobot();
@@ -99,18 +102,20 @@ public class BoardGUI extends ApplicationAdapter {
 
 
         // make sure the robot stays within the screen bounds
-        if(robot.x < 0) robot.x = 0;
-        if(robot.x > SCREENSIZE - TILESIZE) robot.x = SCREENSIZE - TILESIZE;
-        if(robot.y < 0) robot.y = 0;
-        if(robot.y > SCREENSIZE - TILESIZE) robot.y = SCREENSIZE - TILESIZE;
+        if(robot.x < 0+ OFFSET) robot.x = 0+ OFFSET;
+        if(robot.x > SCREENSIZE - TILESIZE+ OFFSET) robot.x = SCREENSIZE - TILESIZE+ OFFSET;
+        if(robot.y < 0+ OFFSET) robot.y = 0+ OFFSET;
+        if(robot.y > SCREENSIZE - TILESIZE+ OFFSET) robot.y = SCREENSIZE - TILESIZE+ OFFSET;
     }
 
     private void drawBoard() {
+
+
         for (int i = 0; i < NTILES; i++){
             for (int j = 0; j < NTILES; j++){
                 iTile current = board.getTile(i, j);
                 Texture t = textureMap.get(current.getImage());
-                batch.draw(t, TILESIZE*i, TILESIZE*j);
+                batch.draw(t, TILESIZE*i + OFFSET, TILESIZE*j+OFFSET);
             }
         }
     }
