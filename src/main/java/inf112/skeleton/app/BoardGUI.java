@@ -8,6 +8,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import java.util.HashMap;
 import inf112.skeleton.app.TileTypes.iTile;
@@ -16,20 +20,32 @@ import inf112.skeleton.app.TileTypes.iTile;
 public class BoardGUI extends ApplicationAdapter {
     private HashMap<String, Texture> textureMap;
     private Texture robotImage;
+    private TiledMap map;
+    private OrthogonalTiledMapRenderer renderer;
+    private OrthographicCamera camera;
+
+
 
     private Board board;
     private Music factoryMusic;
     private SpriteBatch batch;
-    private OrthographicCamera camera;
     private Rectangle robot;
 
     private final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE*NTILES;
-    private final int OFFSET = (SCREENSIZE/2);
+    //private final int OFFSET = (SCREENSIZE/2);
+    private final int OFFSET = 0;
+
 
     @Override
     public void create() {
+        map = new TmxMapLoader().load("assets/maps/map.tmx");
+        renderer = new OrthogonalTiledMapRenderer(map);
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
+
+
         board = new Board(NTILES);
         textureMap = new HashMap<>();
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
@@ -42,8 +58,6 @@ public class BoardGUI extends ApplicationAdapter {
         factoryMusic.play();
 
         // create the camera and the SpriteBatch
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
 
         batch = new SpriteBatch();
 
@@ -78,14 +92,16 @@ public class BoardGUI extends ApplicationAdapter {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // tell the camera to update its matrices.
-        camera.update();
+        renderer.setView(camera);
+        renderer.render();
+        //camera.update();
         // tell the SpriteBatch to render in the
         // coordinate system specified by the camera.
         batch.setProjectionMatrix(camera.combined);
 
         // begin a new batch and draw tiles
         batch.begin();
-        drawBoard();
+        //drawBoard();
         batch.draw(robotImage, robot.x, robot.y);
         batch.draw(robotImage, 0,0);
         batch.end();
@@ -102,23 +118,23 @@ public class BoardGUI extends ApplicationAdapter {
 
 
         // make sure the robot stays within the screen bounds
-        if(robot.x < 0+ OFFSET) robot.x = 0+ OFFSET;
-        if(robot.x > SCREENSIZE - TILESIZE+ OFFSET) robot.x = SCREENSIZE - TILESIZE+ OFFSET;
-        if(robot.y < 0+ OFFSET) robot.y = 0+ OFFSET;
-        if(robot.y > SCREENSIZE - TILESIZE+ OFFSET) robot.y = SCREENSIZE - TILESIZE+ OFFSET;
-    }
+/*
+        if(robot.x > 0) robot.x = 0;
+        if(robot.x > SCREENSIZE - TILESIZE) robot.x = SCREENSIZE - TILESIZE;
+        if(robot.y < 0) robot.y = 0;
+        if(robot.y > SCREENSIZE - TILESIZE) robot.y = SCREENSIZE - TILESIZE;
+*/
 
-    private void drawBoard() {
+        if(Gdx.input.isKeyPressed(Keys.RIGHT)){
+            int x = (int)robot.x / 64;
+            int y = (int)robot.y / 64;
 
-
-        for (int i = 0; i < NTILES; i++){
-            for (int j = 0; j < NTILES; j++){
-                iTile current = board.getTile(i, j);
-                Texture t = textureMap.get(current.getImage());
-                batch.draw(t, TILESIZE*i + OFFSET, TILESIZE*j+OFFSET);
-            }
+            TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x,y  );
+            System.out.println(cell.getTile().getId());
         }
     }
+
+
 
     @Override
     public void dispose() {
