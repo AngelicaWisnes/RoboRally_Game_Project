@@ -1,5 +1,7 @@
 package inf112.skeleton.app;
 
+import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.CardGenerator;
 import org.junit.Test;
 
 import java.util.ArrayList;

@@ -1,5 +1,9 @@
 package inf112.skeleton.app;
 
+import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.MoveBackwards;
+import inf112.skeleton.app.Card.MoveForward;
+import inf112.skeleton.app.Card.RotationCard;
 import inf112.skeleton.app.Enums.Rotation;
 import org.junit.Test;
 

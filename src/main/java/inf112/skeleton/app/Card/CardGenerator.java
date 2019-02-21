@@ -1,8 +1,7 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.Card;
 
 import inf112.skeleton.app.Enums.Rotation;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CardGenerator {

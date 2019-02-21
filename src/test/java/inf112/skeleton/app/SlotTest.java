@@ -1,5 +1,8 @@
 package inf112.skeleton.app;
 
+import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.MoveForward;
+import inf112.skeleton.app.Card.Slot;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
