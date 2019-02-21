@@ -1,4 +1,6 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.Card;
+
+import inf112.skeleton.app.Card.Card;
 
 public class Slot {
     private Card card;
