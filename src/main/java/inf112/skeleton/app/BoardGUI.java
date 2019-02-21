@@ -13,7 +13,9 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
+
 import java.util.HashMap;
+
 import inf112.skeleton.app.TileTypes.iTile;
 
 
@@ -25,7 +27,6 @@ public class BoardGUI extends ApplicationAdapter {
     private OrthographicCamera camera;
 
 
-
     private Board board;
     private Music factoryMusic;
     private SpriteBatch batch;
@@ -33,7 +34,7 @@ public class BoardGUI extends ApplicationAdapter {
 
     private final int TILESIZE = 64;
     private final int NTILES = 10;
-    private final int SCREENSIZE = TILESIZE*NTILES;
+    private final int SCREENSIZE = TILESIZE * NTILES;
     //private final int OFFSET = (SCREENSIZE/2);
     private final int OFFSET = 0;
 
@@ -70,7 +71,7 @@ public class BoardGUI extends ApplicationAdapter {
     }
 
 
-    private void populateTextureMap(){
+    private void populateTextureMap() {
         textureMap.put("factoryTile", new Texture(Gdx.files.internal("assets/img/factorytile.png")));
         textureMap.put("conveyor_up", new Texture(Gdx.files.internal("assets/img/conveyor_up.png")));
         textureMap.put("conveyor_down", new Texture(Gdx.files.internal("assets/img/conveyor_down.png")));
@@ -89,7 +90,7 @@ public class BoardGUI extends ApplicationAdapter {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // tell the camera to update its matrices.
         renderer.setView(camera);
@@ -103,7 +104,7 @@ public class BoardGUI extends ApplicationAdapter {
         batch.begin();
         //drawBoard();
         batch.draw(robotImage, robot.x, robot.y);
-        batch.draw(robotImage, 0,0);
+        batch.draw(robotImage, 0, 0);
         batch.end();
 
         moveRobot();
@@ -111,10 +112,10 @@ public class BoardGUI extends ApplicationAdapter {
 
     private void moveRobot() {
         //move the robot one tile in a direction
-        if(Gdx.input.isKeyJustPressed(Keys.LEFT)) robot.x -= TILESIZE;
-        if(Gdx.input.isKeyJustPressed(Keys.RIGHT)) robot.x += TILESIZE;
-        if(Gdx.input.isKeyJustPressed(Keys.UP)) robot.y += TILESIZE;
-        if(Gdx.input.isKeyJustPressed(Keys.DOWN)) robot.y -= TILESIZE;
+        if (Gdx.input.isKeyJustPressed(Keys.LEFT)) robot.x -= TILESIZE;
+        if (Gdx.input.isKeyJustPressed(Keys.RIGHT)) robot.x += TILESIZE;
+        if (Gdx.input.isKeyJustPressed(Keys.UP)) robot.y += TILESIZE;
+        if (Gdx.input.isKeyJustPressed(Keys.DOWN)) robot.y -= TILESIZE;
 
 
         // make sure the robot stays within the screen bounds
@@ -125,15 +126,20 @@ public class BoardGUI extends ApplicationAdapter {
         if(robot.y > SCREENSIZE - TILESIZE) robot.y = SCREENSIZE - TILESIZE;
 */
 
-        if(Gdx.input.isKeyPressed(Keys.RIGHT)){
-            int x = (int)robot.x / 64;
-            int y = (int)robot.y / 64;
+        if (Gdx.input.isKeyJustPressed(Keys.RIGHT)) {
+            int x = (int) robot.x / 64;
+            int y = (int) robot.y / 64;
+            try {
+                TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
+                System.out.println(cell.getTile().getId());
 
-            TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x,y  );
-            System.out.println(cell.getTile().getId());
+            } catch (Exception e) {
+                System.out.println("du har dødd");
+
+            }
+
         }
     }
-
 
 
     @Override
