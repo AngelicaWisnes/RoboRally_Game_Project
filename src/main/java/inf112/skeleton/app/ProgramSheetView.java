@@ -13,7 +13,16 @@ public class ProgramSheetView {
         drawBackground(shape);
         drawCards(batch, textureMap, sheet);
         drawDamage(shape);
+        drawPower(shape);
 
+    }
+
+    private static void drawPower(ShapeRenderer shape) {
+        shape.begin(ShapeRenderer.ShapeType.Line);
+        shape.setColor(Color.RED);
+        float[] octagon = {1,3,3,1,6,1,8,3,8,6,6,8,3,8,1,6};
+        shape.polygon(octagon);
+        shape.end();
     }
 
     private static void drawDamage(ShapeRenderer shape) {
