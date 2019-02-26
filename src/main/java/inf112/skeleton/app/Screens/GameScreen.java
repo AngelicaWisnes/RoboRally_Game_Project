@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -31,6 +32,7 @@ public class GameScreen implements Screen {
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
 
+    private ShapeRenderer shape;
 
     private Texture robotImage;
     private Texture cardImage;
@@ -49,6 +51,7 @@ public class GameScreen implements Screen {
     private final int SCREENSIZE = TILESIZE * NTILES;
     //private final int OFFSET = (SCREENSIZE/2);
     private final int OFFSET = 0;
+
 
 
     public GameScreen(final RoboRally game) {
@@ -71,6 +74,7 @@ public class GameScreen implements Screen {
         // create the camera and the SpriteBatch
         batch = new SpriteBatch();
         HUDbatch = new SpriteBatch();
+        shape = new ShapeRenderer();
         // create a Rectangle to logically represent the robot
         robot = new Rectangle();
         robot.x = 0; // center the robot horizontally
@@ -97,9 +101,8 @@ public class GameScreen implements Screen {
         //drawBoard();
         batch.draw(robotImage, robot.x, robot.y);
         batch.end();
-        HUDbatch.begin();
-        ProgramSheetView.drawSheet(HUDbatch, textureMap, sheet);
-        HUDbatch.end();
+        ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, sheet);
+
         moveRobot();
 
     }
@@ -161,6 +164,7 @@ public class GameScreen implements Screen {
         robotImage.dispose();
         factoryMusic.dispose();
         batch.dispose();
+        shape.dispose();
     }
 
 }
