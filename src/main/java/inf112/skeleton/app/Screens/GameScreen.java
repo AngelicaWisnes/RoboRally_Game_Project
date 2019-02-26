@@ -20,6 +20,8 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import inf112.skeleton.app.Board;
+import inf112.skeleton.app.ProgramSheet;
+import inf112.skeleton.app.ProgramSheetView;
 
 public class GameScreen implements Screen {
     final RoboRally game;
@@ -32,6 +34,8 @@ public class GameScreen implements Screen {
 
     private Texture robotImage;
     private Texture cardImage;
+
+    private ProgramSheet sheet;
 
 
     private Board board;
@@ -54,8 +58,13 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
 
+        sheet = new ProgramSheet(1, board, map);
+
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
         cardImage = new Texture(Gdx.files.internal("assets/img/card.png"));
+
+        textureMap = new HashMap<>();
+        textureMap.put("card", cardImage);
 
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
 
@@ -89,8 +98,7 @@ public class GameScreen implements Screen {
         batch.draw(robotImage, robot.x, robot.y);
         batch.end();
         HUDbatch.begin();
-        HUDbatch.draw(cardImage, 0, 0, cardImage.getWidth()/5, cardImage.getHeight()/5);
-        HUDbatch.draw(cardImage, cardImage.getWidth()/5 + 10, 0, cardImage.getWidth()/5, cardImage.getHeight()/5);
+        ProgramSheetView.drawSheet(HUDbatch, textureMap, sheet);
         HUDbatch.end();
         moveRobot();
 

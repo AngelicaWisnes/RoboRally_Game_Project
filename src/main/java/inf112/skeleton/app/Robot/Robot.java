@@ -1,5 +1,6 @@
 package inf112.skeleton.app.Robot;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.Board;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Position;
@@ -12,7 +13,7 @@ public class Robot extends AbstractRobot{
         super(pos, dir);
     }
 
-    public Robot(int playerN, Board board){
+    public Robot(int playerN, Board board, TiledMap map){
         super(getPositionFromBoard(playerN, board), getDirectionFromBoard(playerN, board));
     }
     //TODO: return initial direction from board

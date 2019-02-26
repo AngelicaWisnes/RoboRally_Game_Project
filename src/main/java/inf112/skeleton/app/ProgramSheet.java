@@ -1,6 +1,8 @@
-package inf112.skeleton.app.Card;
+package inf112.skeleton.app;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.Board;
+import inf112.skeleton.app.Card.*;
 import inf112.skeleton.app.Robot.*;
 
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ public class ProgramSheet {
     private int damage;
     //Checkpoint checkpoint;
     private int lives;
+    private boolean powerDown;
     private ArrayList<Card> cards;
     private Slot slot1;
     private Slot slot2;
@@ -17,10 +20,11 @@ public class ProgramSheet {
     private Slot slot4;
     private Slot slot5;
 
-    public ProgramSheet(int playerN, Board board){
-        robot = new Robot(playerN, board);
+    public ProgramSheet(int playerN, Board board, TiledMap map){
+        robot = new Robot(playerN, board, map);
         this.damage = 0;
         this.lives = 3;
+        this.powerDown = false;
     }
 
     public void receiveCards(ArrayList<Card> cards){
@@ -49,4 +53,41 @@ public class ProgramSheet {
         slot4.returnCard();
         slot5.returnCard();
     }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public boolean isPowerDown() {
+        return powerDown;
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    public Slot getSlot1() {
+        return slot1;
+    }
+
+    public Slot getSlot2() {
+        return slot2;
+    }
+
+    public Slot getSlot3() {
+        return slot3;
+    }
+
+    public Slot getSlot4() {
+        return slot4;
+    }
+
+    public Slot getSlot5() {
+        return slot5;
+    }
+
 }
