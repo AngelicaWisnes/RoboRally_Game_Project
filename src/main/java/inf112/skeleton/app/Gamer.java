@@ -19,7 +19,11 @@ public class Gamer {
     public Gamer(TiledMap map, String name) {
         this.map = map;
         this.name = name;
-        //this.sheet = new ProgramSheet()
+        sheet = new ProgramSheet(1, new Board(0), map);
+    }
+
+    public void setCards(ArrayList<Card> cardsOnHand) {
+        this.cardsOnHand = cardsOnHand;
     }
 
 
