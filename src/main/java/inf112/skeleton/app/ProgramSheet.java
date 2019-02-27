@@ -21,33 +21,33 @@ public class ProgramSheet {
     private Slot slot4;
     private Slot slot5;
 
-    public ProgramSheet(int playerN, Board board, TiledMap map){
+    public ProgramSheet(int playerN, TiledMap map) {
         robot = new Robot(new Position(0, 0), Direction.LEFT, map);
-        this.damage = 0;
-        this.lives = 3;
-        this.powerDown = false;
+        damage = 0;
+        lives = 3;
+        powerDown = false;
     }
 
-    public void receiveCards(ArrayList<Card> cards){
+    public void receiveCards(ArrayList<Card> cards) {
         this.cards = cards;
     }
 
-    public Slot placeCard(Card card){
-        if (slot1.isAvailable()){
+    public Slot placeCard(Card card) {
+        if (slot1.isAvailable()) {
             slot1.setCard(card);
-        }else if (slot2.isAvailable()){
+        } else if (slot2.isAvailable()) {
             slot2.setCard(card);
-        }else if (slot3.isAvailable()){
+        } else if (slot3.isAvailable()) {
             slot3.setCard(card);
-        }else if (slot4.isAvailable()){
+        } else if (slot4.isAvailable()) {
             slot4.setCard(card);
-        }else if (slot5.isAvailable()){
+        } else if (slot5.isAvailable()) {
             slot5.setCard(card);
         }
         return null;
     }
 
-    public void clearUnlockedSlots(){
+    public void clearUnlockedSlots() {
         slot1.returnCard();
         slot2.returnCard();
         slot3.returnCard();
