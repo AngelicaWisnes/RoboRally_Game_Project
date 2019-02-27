@@ -14,17 +14,25 @@ public class ProgramSheet {
     private int lives;
     private boolean powerDown;
     private ArrayList<Card> cards;
-    private Slot slot1;
-    private Slot slot2;
-    private Slot slot3;
-    private Slot slot4;
-    private Slot slot5;
+    private Slot slot1 = new Slot();
+    private Slot slot2 = new Slot();
+    private Slot slot3 = new Slot();
+    private Slot slot4 = new Slot();
+    private Slot slot5 = new Slot();
+    private Slot[] slots =  {slot1, slot2, slot3, slot4, slot5};
 
     public ProgramSheet(int playerN, Board board, TiledMap map){
         robot = new Robot(playerN, board, map);
         this.damage = 0;
         this.lives = 3;
         this.powerDown = false;
+
+        ArrayList<Card> tempCards = CardGenerator.getNewCardStack();
+        this.slot1.setCard(tempCards.get(0));
+        this.slot2.setCard(tempCards.get(1));
+        this.slot3.setCard(tempCards.get(2));
+        this.slot4.setCard(tempCards.get(3));
+        this.slot5.setCard(tempCards.get(4));
     }
 
     public void receiveCards(ArrayList<Card> cards){
@@ -89,5 +97,7 @@ public class ProgramSheet {
     public Slot getSlot5() {
         return slot5;
     }
+
+    public Slot getSlot(int n) { return slots[n]; }
 
 }

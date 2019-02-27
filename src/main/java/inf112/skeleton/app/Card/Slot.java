@@ -24,6 +24,10 @@ public class Slot {
         return this.card == null;
     }
 
+    public Card getCard() {
+        return card;
+    }
+
     public void setCard(Card card){
         this.card = card;
     }

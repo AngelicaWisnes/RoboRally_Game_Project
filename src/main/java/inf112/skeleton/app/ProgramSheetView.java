@@ -4,6 +4,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.RotationCard;
+import inf112.skeleton.app.Enums.Rotation;
+import inf112.skeleton.app.Views.CardView;
 
 import java.util.HashMap;
 
@@ -11,13 +15,10 @@ public class ProgramSheetView {
 
     public static void drawSheet(SpriteBatch batch, ShapeRenderer shape, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
         drawBackground(shape);
-        batch.begin();
-        drawCards(batch, textureMap, sheet);
+        drawCards(batch, sheet, textureMap, shape);
         drawPower(batch, textureMap, sheet);
-        batch.end();
         drawDamage(shape);
         drawLives(shape);
-        shape.end();
     }
 
     private static void drawLives(ShapeRenderer shape) {
@@ -31,8 +32,9 @@ public class ProgramSheetView {
     }
 
     private static void drawPower(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
+        batch.begin();
         batch.draw(textureMap.get("powerdownoff"), 50, 275, 100, 100);
-
+        batch.end();
     }
 
     private static void drawDamage(ShapeRenderer shape) {
@@ -51,13 +53,12 @@ public class ProgramSheetView {
             shape.triangle(x1,y1,x2,y2,x3,y3);
         }
         shape.end();
-
     }
 
-    private static void drawCards(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
-        Texture cardImage = textureMap.get("card");
+    private static void drawCards(SpriteBatch batch, ProgramSheet sheet, HashMap<String, Texture> textureMap, ShapeRenderer shape) {
         for (int i = 0; i < 5; i++) {
-            batch.draw(cardImage, 70 + (160*i), 50, cardImage.getWidth() / 5, cardImage.getHeight() / 5);
+            Card card = sheet.getSlot(i).getCard();
+            CardView.drawCard(batch, card, textureMap, shape, i);
         }
     }
 

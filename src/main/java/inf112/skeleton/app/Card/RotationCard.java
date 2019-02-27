@@ -15,4 +15,25 @@ public class RotationCard extends Card {
     public Rotation getRotation() {
         return rotation;
     }
+
+    public String getKey() {
+        return this.getClass().getSimpleName() + this.rotation;
+    }
+
+    public String getDescription() {
+        if (this.rotation == Rotation.TURN_CLOCKWISE) {
+            return "Rotate Clockwise";
+        }
+        else if (this.rotation == Rotation.TURN_COUNTER_CLOCKWISE) {
+             return "Rotate Counter Clockwise";
+        }
+        else if (this.rotation == Rotation.TURN_AROUND) {
+            return"Turn Around";
+        }
+        else {
+            throw new IllegalStateException("rotation incorrect");
+        }
+
+    }
+
 }

@@ -1,9 +1,12 @@
 package inf112.skeleton.app.Card;
 
+import com.sun.prism.TextureMap;
+
+import java.util.HashMap;
+
 public abstract class Card {
 
     private int priority;
-
 
     public Card(int priority) {
         if (priority > 840 || priority < 10){throw new IllegalStateException();}
@@ -14,8 +17,9 @@ public abstract class Card {
         return priority;
     }
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName();
-    }
+    public abstract String getKey();
+    public abstract String getDescription();
+
+
+
 }

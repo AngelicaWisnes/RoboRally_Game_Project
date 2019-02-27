@@ -3,6 +3,8 @@ package inf112.skeleton.app.Card;
 import inf112.skeleton.app.Enums.Rotation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class CardGenerator {
     private static ArrayList<Card> cards;
@@ -10,6 +12,7 @@ public class CardGenerator {
     public static ArrayList<Card> getNewCardStack() {
         cards = new ArrayList<>();
         createCards();
+        Collections.shuffle(cards);
         return cards;
     }
 

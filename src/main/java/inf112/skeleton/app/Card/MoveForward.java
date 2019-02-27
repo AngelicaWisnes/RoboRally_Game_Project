@@ -8,4 +8,13 @@ public class MoveForward extends MovementCard {
 
         super(priority, steps);
     }
+
+    public String getKey() {
+        return this.getClass().getSimpleName();
+    }
+
+    public String getDescription() {
+        String description = "Forward " + super.steps;
+        return description;
+    }
 }

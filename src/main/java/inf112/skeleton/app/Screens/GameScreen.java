@@ -24,6 +24,8 @@ import inf112.skeleton.app.Board;
 import inf112.skeleton.app.ProgramSheet;
 import inf112.skeleton.app.ProgramSheetView;
 
+import javax.xml.soap.Text;
+
 public class GameScreen implements Screen {
     final RoboRally game;
 
@@ -52,7 +54,6 @@ public class GameScreen implements Screen {
     private final int OFFSET = 0;
 
 
-
     public GameScreen(final RoboRally game) {
         this.game = game;
         map = new TmxMapLoader().load("assets/maps/map.tmx");
@@ -71,6 +72,12 @@ public class GameScreen implements Screen {
         textureMap.put("card", new Texture(Gdx.files.internal("assets/img/card.png")));
         textureMap.put("powerdownon", new Texture(Gdx.files.internal("assets/img/powerdownon.png")));
         textureMap.put("powerdownoff", new Texture(Gdx.files.internal("assets/img/powerdownoff.png")));
+
+        textureMap.put("MoveForward", new Texture(Gdx.files.internal("assets/img/CardIcons/Forward.png")));
+        textureMap.put("MoveBackwards", new Texture(Gdx.files.internal("assets/img/CardIcons/Backwards.png")));
+        textureMap.put("RotationCardTURN_CLOCKWISE", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_ClockWise.png")));
+        textureMap.put("RotationCardTURN_COUNTER_CLOCKWISE", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Counter_Clockwise.png")));
+        textureMap.put("RotationCardTURN_AROUND", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Around.png")));
 
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
 
@@ -107,8 +114,6 @@ public class GameScreen implements Screen {
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, sheet);
 
         moveRobot();
-
-
     }
 
     private void moveRobot() {
@@ -172,4 +177,3 @@ public class GameScreen implements Screen {
     }
 
 }
-
