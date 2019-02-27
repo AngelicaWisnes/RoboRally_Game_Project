@@ -35,7 +35,6 @@ public class GameScreen implements Screen {
     private ShapeRenderer shape;
 
     private Texture robotImage;
-    private Texture cardImage;
 
     private ProgramSheet sheet;
 
@@ -64,10 +63,11 @@ public class GameScreen implements Screen {
         sheet = new ProgramSheet(1, board, map);
 
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
-        cardImage = new Texture(Gdx.files.internal("assets/img/card.png"));
 
         textureMap = new HashMap<>();
-        textureMap.put("card", cardImage);
+        textureMap.put("card", new Texture(Gdx.files.internal("assets/img/card.png")));
+        textureMap.put("powerdownon", new Texture(Gdx.files.internal("assets/img/powerdownon.png")));
+        textureMap.put("powerdownoff", new Texture(Gdx.files.internal("assets/img/powerdownoff.png")));
 
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
 

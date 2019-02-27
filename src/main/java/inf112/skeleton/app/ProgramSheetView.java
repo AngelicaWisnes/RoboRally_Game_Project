@@ -11,18 +11,17 @@ public class ProgramSheetView {
 
     public static void drawSheet(SpriteBatch batch, ShapeRenderer shape, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
         drawBackground(shape);
+        batch.begin();
         drawCards(batch, textureMap, sheet);
+        drawPower(batch, textureMap, sheet);
+        batch.end();
         drawDamage(shape);
-        drawPower(shape);
 
     }
 
-    private static void drawPower(ShapeRenderer shape) {
-        shape.begin(ShapeRenderer.ShapeType.Line);
-        shape.setColor(Color.RED);
-        float[] octagon = {1,3,3,1,6,1,8,3,8,6,6,8,3,8,1,6};
-        shape.polygon(octagon);
-        shape.end();
+    private static void drawPower(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
+        batch.draw(textureMap.get("powerdownoff"), 50, 275, 100, 100);
+
     }
 
     private static void drawDamage(ShapeRenderer shape) {
@@ -45,12 +44,10 @@ public class ProgramSheetView {
     }
 
     private static void drawCards(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
-        batch.begin();
         Texture cardImage = textureMap.get("card");
         for (int i = 0; i < 5; i++) {
             batch.draw(cardImage, 70 + (160*i), 50, cardImage.getWidth() / 5, cardImage.getHeight() / 5);
         }
-        batch.end();
     }
 
     private static void drawBackground(ShapeRenderer shape) {
