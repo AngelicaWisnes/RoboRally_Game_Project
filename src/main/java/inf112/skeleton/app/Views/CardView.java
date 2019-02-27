@@ -3,6 +3,7 @@ package inf112.skeleton.app.Views;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import inf112.skeleton.app.Card.Card;
@@ -32,9 +33,15 @@ public class CardView {
         batch.draw(textureMap.get(card.getKey()), 90 + 160 * pos, 90, 90, 90);
 
         font.setColor(Color.BLACK);
-        font.draw(batch, "priority, " + priority, 115 + 160 * pos, 210);
-        font.draw(batch, card.getDescription(), 90 + 160 * pos, 90);
+        GlyphLayout glyphLayout = new GlyphLayout();
+        glyphLayout.setText(font, "" + card.getPriority());
+        font.draw(batch, glyphLayout, (135  - glyphLayout.width)/2 + 160 * pos + 70, 210);
+
+        glyphLayout = new GlyphLayout();
+        glyphLayout.setText(font,card.getDescription());
+        font.draw(batch, glyphLayout, (135  - glyphLayout.width)/2 + 160 * pos + 70, 85);
 
         batch.end();
+
     }
 }

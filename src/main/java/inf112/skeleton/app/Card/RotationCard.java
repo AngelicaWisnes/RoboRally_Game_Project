@@ -22,10 +22,10 @@ public class RotationCard extends Card {
 
     public String getDescription() {
         if (this.rotation == Rotation.TURN_CLOCKWISE) {
-            return "Rotate Clockwise";
+            return "Turn Right";
         }
         else if (this.rotation == Rotation.TURN_COUNTER_CLOCKWISE) {
-             return "Rotate Counter Clockwise";
+             return "Turn Left";
         }
         else if (this.rotation == Rotation.TURN_AROUND) {
             return"Turn Around";
