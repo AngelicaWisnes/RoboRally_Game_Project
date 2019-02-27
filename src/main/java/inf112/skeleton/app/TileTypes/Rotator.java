@@ -11,6 +11,10 @@ public class Rotator extends AbstractTile {
 
     }
 
+    public Rotation getRotation() {
+        return rotation;
+    }
+
     @Override
     public String getImage() {
         if (rotation == Rotation.TURN_CLOCKWISE){

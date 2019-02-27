@@ -13,6 +13,9 @@ public abstract class AbstractConveyor extends AbstractTile {
 
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
 
     public void setImage(String type) {
         if (direction == Direction.UP) {
