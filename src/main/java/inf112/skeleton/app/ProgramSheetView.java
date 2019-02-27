@@ -17,40 +17,55 @@ public class ProgramSheetView {
         drawBackground(shape);
         drawCards(batch, sheet, textureMap, shape);
         drawPower(batch, textureMap, sheet);
-        drawDamage(shape);
-        drawLives(shape);
+        drawDamage(shape, sheet);
+        drawLives(shape, sheet);
     }
 
-    private static void drawLives(ShapeRenderer shape) {
+    private static void drawLives(ShapeRenderer shape, ProgramSheet sheet) {
+        int lives = sheet.getLives();
         shape.begin(ShapeRenderer.ShapeType.Filled); //I'm using the Filled ShapeType, but remember you have three of them
-        shape.setColor(Color.GREEN);
-        shape.circle(375, 330, 30);
-        shape.setColor(Color.DARK_GRAY);
-        shape.circle(450, 330, 30);
+        if (lives < 1) shape.setColor(Color.DARK_GRAY);
+        else shape.setColor(Color.GREEN);
         shape.circle(525, 330, 30);
+        if (lives < 2) shape.setColor(Color.DARK_GRAY);
+        shape.circle(450, 330, 30);
+        if (lives < 3) shape.setColor(Color.DARK_GRAY);
+        shape.circle(375, 330, 30);
         shape.end();
     }
 
     private static void drawPower(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
         batch.begin();
-        batch.draw(textureMap.get("powerdownoff"), 50, 275, 100, 100);
+        batch.draw(sheet.isPowerDown() ? textureMap.get("powerdownon") : textureMap.get("powerdownoff"), 50, 275, 100, 100);
         batch.end();
+
+
     }
 
-    private static void drawDamage(ShapeRenderer shape) {
+    private static void drawDamage(ShapeRenderer shape, ProgramSheet sheet) {
         shape.begin(ShapeRenderer.ShapeType.Filled);
-        shape.setColor(Color.DARK_GRAY);
-        for (int i = 0; i < 10; i++){
+        //int damage = sheet.getDamage();
+        int unDamaged = 10;
+        unDamaged -= sheet.getDamage();
+        for (int i = 9; i >= 0; i--) {
             int x1 = 5 + 25 + 42 + (i * 84);
             int y1 = 240;
 
-            int x2 = x1-20;
+            int x2 = x1 - 20;
             int y2 = 270;
 
-            int x3 = x1+20;
+            int x3 = x1 + 20;
             int y3 = 270;
-            if (i > 6){shape.setColor(Color.YELLOW);}
-            shape.triangle(x1,y1,x2,y2,x3,y3);
+
+            if (i == 0) {
+                shape.setColor(Color.RED);
+            } else if (unDamaged <= i){
+                shape.setColor(Color.YELLOW);
+            } else {
+                shape.setColor(Color.DARK_GRAY);
+            }
+            if (unDamaged == 0){shape.setColor(Color.RED);}
+            shape.triangle(x1, y1, x2, y2, x3, y3);
         }
         shape.end();
     }
