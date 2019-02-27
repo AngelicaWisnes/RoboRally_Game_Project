@@ -16,7 +16,18 @@ public class ProgramSheetView {
         drawPower(batch, textureMap, sheet);
         batch.end();
         drawDamage(shape);
+        drawLives(shape);
+        shape.end();
+    }
 
+    private static void drawLives(ShapeRenderer shape) {
+        shape.begin(ShapeRenderer.ShapeType.Filled); //I'm using the Filled ShapeType, but remember you have three of them
+        shape.setColor(Color.GREEN);
+        shape.circle(375, 330, 30);
+        shape.setColor(Color.DARK_GRAY);
+        shape.circle(450, 330, 30);
+        shape.circle(525, 330, 30);
+        shape.end();
     }
 
     private static void drawPower(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
