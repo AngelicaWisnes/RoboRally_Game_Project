@@ -6,7 +6,7 @@ import inf112.skeleton.app.Enums.Rotation;
 import java.util.HashMap;
 
 public class ID_Translator {
-    static HashMap<Integer, iTile> translator;
+    static HashMap<Integer, iTile> translator = new HashMap<>();
 
     static {
         translator.put(1, new Floor());
