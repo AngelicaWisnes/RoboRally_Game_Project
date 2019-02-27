@@ -59,7 +59,10 @@ public class GameScreen implements Screen {
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
+        //camera.zoom += 0.002f;
+        camera.translate(-280, -550);
 
+        //camera.position.set(camera.viewportHeight / 2f, camera.viewportWidth / 2f, 0);
         sheet = new ProgramSheet(1, board, map);
 
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
@@ -89,12 +92,12 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // tell the camera to update its matrices.
+        camera.update();
         renderer.setView(camera);
         renderer.render();
 
         //camera.update();
-        // tell the SpriteBatch to render in the
-        // coordinate system specified by the camera.
+        // tell the SpriteBatch to render in the coordinate system specified by the camera.
         batch.setProjectionMatrix(camera.combined);
         // begin a new batch and draw tiles
         batch.begin();
@@ -104,6 +107,7 @@ public class GameScreen implements Screen {
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, sheet);
 
         moveRobot();
+
 
     }
 
@@ -143,8 +147,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        factoryMusic.setLooping(true);
-        factoryMusic.play();
+        /*factoryMusic.setLooping(true);
+        factoryMusic.play();*/
     }
 
     @Override

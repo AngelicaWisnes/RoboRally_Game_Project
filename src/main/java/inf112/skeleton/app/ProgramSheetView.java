@@ -31,7 +31,7 @@ public class ProgramSheetView {
     }
 
     private static void drawPower(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
-        batch.draw(textureMap.get("powerdownoff"), 50, 275, 100, 100);
+        batch.draw(textureMap.get("powerdownon"), 50, 275, 100, 100);
 
     }
 
@@ -47,7 +47,7 @@ public class ProgramSheetView {
 
             int x3 = x1+20;
             int y3 = 270;
-            if (i == 9){shape.setColor(Color.YELLOW);}
+            if (i > 6){shape.setColor(Color.YELLOW);}
             shape.triangle(x1,y1,x2,y2,x3,y3);
         }
         shape.end();
