@@ -31,9 +31,6 @@ public abstract class AbstractRobot implements iRobot {
     public Position getPos() { return pos; }
 
 
-    /**
-     * This is a temporary method for moving the robot with the help of arrow-keys from keyboard.
-     */
     public void keyboardMoveRobot() {
         //move the robot one tile in a direction
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
