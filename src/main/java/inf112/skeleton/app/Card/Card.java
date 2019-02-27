@@ -1,9 +1,5 @@
 package inf112.skeleton.app.Card;
 
-import com.sun.prism.TextureMap;
-
-import java.util.HashMap;
-
 public abstract class Card {
 
     private int priority;

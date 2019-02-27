@@ -100,7 +100,7 @@ public class GameScreen implements Screen {
         batch.begin();
         //drawBoard();
         robot.keyboardMoveRobot();
-        robot.moveRobot();
+        //robot.moveRobot();
         batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, sheet);
