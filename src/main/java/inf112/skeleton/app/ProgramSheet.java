@@ -3,6 +3,7 @@ package inf112.skeleton.app;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.Board;
 import inf112.skeleton.app.Card.*;
+import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Robot.*;
 
 import java.util.ArrayList;
@@ -21,18 +22,19 @@ public class ProgramSheet {
     private Slot slot5 = new Slot();
     private Slot[] slots =  {slot1, slot2, slot3, slot4, slot5};
 
-    public ProgramSheet(int playerN, Board board, TiledMap map){
-        robot = new Robot(playerN, board, map);
-        this.damage = 0;
-        this.lives = 3;
-        this.powerDown = false;
-
+    public ProgramSheet(int playerN, TiledMap map) {
+        robot = new Robot(new Position(0, 0), Direction.LEFT, map);
+        damage = 0;
+        lives = 3;
+        powerDown = false;
         ArrayList<Card> tempCards = CardGenerator.getNewCardStack();
-        this.slot1.setCard(tempCards.get(0));
-        this.slot2.setCard(tempCards.get(1));
-        this.slot3.setCard(tempCards.get(2));
-        this.slot4.setCard(tempCards.get(3));
-        this.slot5.setCard(tempCards.get(4));
+        this.slot1.setCard(tempCards.get(1));
+        this.slot2.setCard(tempCards.get(2));
+        this.slot3.setCard(tempCards.get(3));
+        this.slot4.setCard(tempCards.get(4));
+        this.slot5.setCard(tempCards.get(5));
+
+
     }
 
     public void receiveCards(ArrayList<Card> cards){

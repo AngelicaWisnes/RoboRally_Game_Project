@@ -1,5 +1,6 @@
 package inf112.skeleton.app.Robot;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Position;
@@ -7,17 +8,13 @@ import inf112.skeleton.app.Position;
 public interface iRobot {
 
     /**
-     * Rotate the robot
-     * @param rotation the rotation-Enum describing how turning-direction
-     * @return the new direction
+     * Get the position of the robot
+     * @return the position
      */
-    Direction rotate(Rotation rotation);
+    Position getPos();
 
     /**
-     * Move the robot in the given direction
-     * @param direction given from Program-card or Game-board
-     * @param spaces number of spaces to move
-     * @return the new position
+     * This is a temporary method for moving the robot with the help of arrow-keys from keyboard.
      */
-    Position move(Direction direction, int spaces);
+    void keyboardMoveRobot();
 }

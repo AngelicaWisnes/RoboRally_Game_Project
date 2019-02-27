@@ -1,9 +1,7 @@
 package inf112.skeleton.app.Screens;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,19 +10,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.TimeUtils;
 import inf112.skeleton.app.Board;
+import inf112.skeleton.app.Enums.Direction;
+import inf112.skeleton.app.Position;
 import inf112.skeleton.app.ProgramSheet;
 import inf112.skeleton.app.ProgramSheetView;
-
-import javax.xml.soap.Text;
+import inf112.skeleton.app.Robot.Robot;
 
 public class GameScreen implements Screen {
     final RoboRally game;
@@ -45,13 +38,14 @@ public class GameScreen implements Screen {
     private Music factoryMusic;
     private SpriteBatch batch;
     private SpriteBatch HUDbatch;
-    private Rectangle robot;
+    private Robot robot;
 
-    private final int TILESIZE = 64;
+    public static final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE * NTILES;
     //private final int OFFSET = (SCREENSIZE/2);
     private final int OFFSET = 0;
+
 
 
     public GameScreen(final RoboRally game) {
@@ -64,7 +58,7 @@ public class GameScreen implements Screen {
         camera.translate(-280, -550);
 
         //camera.position.set(camera.viewportHeight / 2f, camera.viewportWidth / 2f, 0);
-        sheet = new ProgramSheet(1, board, map);
+        sheet = new ProgramSheet(1, map);
 
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
 
@@ -86,11 +80,7 @@ public class GameScreen implements Screen {
         HUDbatch = new SpriteBatch();
         shape = new ShapeRenderer();
         // create a Rectangle to logically represent the robot
-        robot = new Rectangle();
-        robot.x = 0; // center the robot horizontally
-        robot.y = 0; // bottom left corner of the robot is 20 pixels above the bottom screen edge
-        robot.width = TILESIZE;
-        robot.height = TILESIZE;
+        robot = new Robot(new Position(0, 0), Direction.LEFT, map);
 
     }
 
@@ -109,42 +99,13 @@ public class GameScreen implements Screen {
         // begin a new batch and draw tiles
         batch.begin();
         //drawBoard();
-        batch.draw(robotImage, robot.x, robot.y);
+        robot.keyboardMoveRobot();
+        robot.moveRobot();
+        batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, sheet);
-
-        moveRobot();
     }
 
-    private void moveRobot() {
-        //move the robot one tile in a direction
-        if (Gdx.input.isKeyJustPressed(Keys.LEFT)) robot.x -= TILESIZE;
-        if (Gdx.input.isKeyJustPressed(Keys.RIGHT)) robot.x += TILESIZE;
-        if (Gdx.input.isKeyJustPressed(Keys.UP)) robot.y += TILESIZE;
-        if (Gdx.input.isKeyJustPressed(Keys.DOWN)) robot.y -= TILESIZE;
-
-
-/*
-        if(robot.x > 0) robot.x = 0;
-        if(robot.x > SCREENSIZE - TILESIZE) robot.x = SCREENSIZE - TILESIZE;
-        if(robot.y < 0) robot.y = 0;
-        if(robot.y > SCREENSIZE - TILESIZE) robot.y = SCREENSIZE - TILESIZE;
-*/
-
-        if (Gdx.input.isKeyJustPressed(Keys.RIGHT) || Gdx.input.isKeyJustPressed(Keys.LEFT) || Gdx.input.isKeyJustPressed(Keys.UP) || Gdx.input.isKeyJustPressed(Keys.DOWN)) {
-            int x = (int) robot.x / 64;
-            int y = (int) robot.y / 64;
-            try {
-                TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
-                System.out.println(cell.getTile().getId());
-
-            } catch (Exception e) {
-                System.out.println("du har dødd");
-
-            }
-
-        }
-    }
 
     @Override
     public void resize(int width, int height) {
@@ -177,3 +138,4 @@ public class GameScreen implements Screen {
     }
 
 }
+
