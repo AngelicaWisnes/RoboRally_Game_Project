@@ -8,6 +8,7 @@ import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Position;
 import inf112.skeleton.app.Screens.GameScreen;
+import inf112.skeleton.app.TileTypes.*;
 
 /**
  * @author Roger Wisnes
@@ -16,10 +17,10 @@ public abstract class AbstractRobot implements iRobot {
     private TiledMap map;
     private Position pos;
     private Direction dir;
-    private int playerID, width, height;
+    private int width, height;
 
 
-    protected AbstractRobot(Position pos, Direction dir, TiledMap map) {
+    AbstractRobot(Position pos, Direction dir, TiledMap map) {
         this.map = map;
         this.pos = pos;
         this.width = GameScreen.TILESIZE;
@@ -31,28 +32,36 @@ public abstract class AbstractRobot implements iRobot {
     public Position getPos() { return pos; }
 
 
+
+    public void moveRobot(){
+        iTile currentTile = getTileOnCurrentPos();
+
+        if (currentTile instanceof Rotator){ rotate(((Rotator) currentTile).getRotation()); }
+        if (currentTile instanceof SingleConveyor) { move(((SingleConveyor) currentTile).getDirection(), 1);}
+        if (currentTile instanceof DblConveyor) { move(((DblConveyor) currentTile).getDirection(), 2);}
+    }
+
     public void keyboardMoveRobot() {
         //move the robot one tile in a direction
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) move(Direction.RIGHT, 1);
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) move(Direction.UP, 1);
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(Direction.DOWN, 1);
+    }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)
-                || Gdx.input.isKeyJustPressed(Input.Keys.LEFT)
-                || Gdx.input.isKeyJustPressed(Input.Keys.UP)
-                || Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            int x = pos.getX() / GameScreen.TILESIZE;
-            int y = pos.getY() / GameScreen.TILESIZE;
-            try {
-                TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
-                System.out.println(cell.getTile().getId());
-
-            } catch (Exception e) {
-                System.out.println("du har dødd");
-            }
-
+    private iTile getTileOnCurrentPos() {
+        //move the robot one tile in a direction
+        int x = pos.getX() / GameScreen.TILESIZE;
+        int y = pos.getY() / GameScreen.TILESIZE;
+        int tileID = -1;
+        try {
+            TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
+            tileID = cell.getTile().getId();
+        } catch (Exception e) {
+            System.out.println("du har dødd");
         }
+
+        return ID_Translator.translate_ID(tileID);
     }
 
     /**
