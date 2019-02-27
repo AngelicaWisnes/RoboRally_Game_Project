@@ -1,9 +1,10 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import inf112.skeleton.app.Card.Card;
 import inf112.skeleton.app.Robot.iRobot;
 
-import javax.smartcardio.Card;
+
 import java.util.ArrayList;
 
 public class Gamer {
