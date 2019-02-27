@@ -9,5 +9,5 @@ public interface iRobot {
 
     Position getPos();
 
-    void keyboardMoveRobot(TiledMap map);
+    void keyboardMoveRobot();
 }

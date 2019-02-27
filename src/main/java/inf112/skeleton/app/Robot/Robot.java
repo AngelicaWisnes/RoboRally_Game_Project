@@ -9,19 +9,5 @@ import inf112.skeleton.app.Position;
  * @author Roger Wisnes
  */
 public class Robot extends AbstractRobot{
-    public Robot(Position pos, Direction dir) {
-        super(pos, dir);
-    }
-
-    public Robot(int playerN, Board board, TiledMap map){
-        super(getPositionFromBoard(playerN, board), getDirectionFromBoard(playerN, board));
-    }
-    //TODO: return initial direction from board
-    private static Direction getDirectionFromBoard(int playerN, Board board) {
-        return null;
-    }
-    //TODO: return initial position from board
-    private static Position getPositionFromBoard(int playerN, Board board) {
-        return null;
-    }
+    public Robot(Position pos, Direction dir, TiledMap map) { super(pos, dir, map); }
 }

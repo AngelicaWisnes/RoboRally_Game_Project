@@ -18,7 +18,7 @@ public class AbstractRobotTest {
     public void rotatingClockwiseFromRightShouldReturnDown() {
         Position pos = new Position(5,5);
         Direction dir = Direction.RIGHT;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_CLOCKWISE), Direction.DOWN);
     }
@@ -27,7 +27,7 @@ public class AbstractRobotTest {
     public void rotatingClockwiseFromDownShouldReturnLeft() {
         Position pos = new Position(5,5);
         Direction dir = Direction.DOWN;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_CLOCKWISE), Direction.LEFT);
     }
@@ -36,7 +36,7 @@ public class AbstractRobotTest {
     public void rotatingClockwiseFromLeftShouldReturnUp() {
         Position pos = new Position(5,5);
         Direction dir = Direction.LEFT;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_CLOCKWISE), Direction.UP);
     }
@@ -45,7 +45,7 @@ public class AbstractRobotTest {
     public void rotatingClockwiseFromUpShouldReturnRight() {
         Position pos = new Position(5,5);
         Direction dir = Direction.UP;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_CLOCKWISE), Direction.RIGHT);
     }
@@ -54,7 +54,7 @@ public class AbstractRobotTest {
     public void rotatingCounterclockwiseFromRightShouldReturnUp() {
         Position pos = new Position(5,5);
         Direction dir = Direction.RIGHT;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_COUNTER_CLOCKWISE), Direction.UP);
     }
@@ -63,7 +63,7 @@ public class AbstractRobotTest {
     public void rotatingCounterclockwiseFromDownShouldReturnRight() {
         Position pos = new Position(5,5);
         Direction dir = Direction.DOWN;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_COUNTER_CLOCKWISE), Direction.RIGHT);
     }
@@ -72,7 +72,7 @@ public class AbstractRobotTest {
     public void rotatingCounterclockwiseFromLeftShouldReturnDown() {
         Position pos = new Position(5,5);
         Direction dir = Direction.LEFT;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_COUNTER_CLOCKWISE), Direction.DOWN);
     }
@@ -81,7 +81,7 @@ public class AbstractRobotTest {
     public void rotatingCounterclockwiseFromUpShouldReturnLeft() {
         Position pos = new Position(5,5);
         Direction dir = Direction.UP;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_COUNTER_CLOCKWISE), Direction.LEFT);
     }
@@ -90,7 +90,7 @@ public class AbstractRobotTest {
     public void rotatingAroundFromUpShouldReturnDown() {
         Position pos = new Position(5,5);
         Direction dir = Direction.UP;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_AROUND), Direction.DOWN);
     }
@@ -99,7 +99,7 @@ public class AbstractRobotTest {
     public void rotatingAroundFromRightShouldReturnLeft() {
         Position pos = new Position(5,5);
         Direction dir = Direction.RIGHT;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_AROUND), Direction.LEFT);
     }
@@ -108,7 +108,7 @@ public class AbstractRobotTest {
     public void rotatingAroundFromDownShouldReturnUp() {
         Position pos = new Position(5,5);
         Direction dir = Direction.DOWN;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_AROUND), Direction.UP);
     }
@@ -117,7 +117,7 @@ public class AbstractRobotTest {
     public void rotatingAroundFromLeftShouldReturnRight() {
         Position pos = new Position(5,5);
         Direction dir = Direction.LEFT;
-        AbstractRobot robot = new Robot(pos, dir);
+        //AbstractRobot robot = new Robot(pos, dir);
 
         //assertEquals(robot.rotate(Rotation.TURN_AROUND), Direction.RIGHT);
     }
