@@ -3,6 +3,7 @@ package inf112.skeleton.app;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.Board;
 import inf112.skeleton.app.Card.*;
+import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Robot.*;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class ProgramSheet {
     private Slot slot5;
 
     public ProgramSheet(int playerN, Board board, TiledMap map){
-        robot = new Robot(playerN, board, map);
+        robot = new Robot(new Position(0, 0), Direction.LEFT, map);
         this.damage = 0;
         this.lives = 3;
         this.powerDown = false;

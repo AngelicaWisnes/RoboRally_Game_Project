@@ -13,12 +13,14 @@ import inf112.skeleton.app.Screens.GameScreen;
  * @author Roger Wisnes
  */
 public abstract class AbstractRobot implements iRobot {
+    private TiledMap map;
     private Position pos;
     private Direction dir;
     private int playerID, width, height;
 
 
-    protected AbstractRobot(Position pos, Direction dir) {
+    protected AbstractRobot(Position pos, Direction dir, TiledMap map) {
+        this.map = map;
         this.pos = pos;
         this.width = GameScreen.TILESIZE;
         this.height = GameScreen.TILESIZE;
@@ -28,7 +30,11 @@ public abstract class AbstractRobot implements iRobot {
 
     public Position getPos() { return pos; }
 
-    public void keyboardMoveRobot(TiledMap map) {
+
+    /**
+     * This is a temporary method for moving the robot with the help of arrow-keys from keyboard.
+     */
+    public void keyboardMoveRobot() {
         //move the robot one tile in a direction
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) move(Direction.RIGHT, 1);

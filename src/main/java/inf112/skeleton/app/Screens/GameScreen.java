@@ -74,7 +74,7 @@ public class GameScreen implements Screen {
         HUDbatch = new SpriteBatch();
         shape = new ShapeRenderer();
         // create a Rectangle to logically represent the robot
-        robot = new Robot(new Position(0, 0), Direction.LEFT);
+        robot = new Robot(new Position(0, 0), Direction.LEFT, map);
 
     }
 
@@ -93,7 +93,7 @@ public class GameScreen implements Screen {
         // begin a new batch and draw tiles
         batch.begin();
         //drawBoard();
-        robot.keyboardMoveRobot(map);
+        robot.keyboardMoveRobot();
         batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, sheet);
