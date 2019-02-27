@@ -31,7 +31,7 @@ public class ProgramSheetView {
     }
 
     private static void drawPower(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
-        batch.draw(textureMap.get("powerdownon"), 50, 275, 100, 100);
+        batch.draw(textureMap.get("powerdownoff"), 50, 275, 100, 100);
 
     }
 
