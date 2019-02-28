@@ -1,4 +1,4 @@
-package inf112.skeleton.app.Card;
+package inf112.skeleton.app.ProgramSheet;
 
 import inf112.skeleton.app.Card.Card;
 

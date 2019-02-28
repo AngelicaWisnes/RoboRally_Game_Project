@@ -1,9 +1,9 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.ProgramSheet;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import inf112.skeleton.app.Board;
 import inf112.skeleton.app.Card.*;
 import inf112.skeleton.app.Enums.Direction;
+import inf112.skeleton.app.Position;
 import inf112.skeleton.app.Robot.*;
 
 import java.util.ArrayList;

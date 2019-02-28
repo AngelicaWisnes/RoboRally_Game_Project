@@ -1,13 +1,11 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.Views;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import inf112.skeleton.app.Card.Card;
-import inf112.skeleton.app.Card.RotationCard;
-import inf112.skeleton.app.Enums.Rotation;
-import inf112.skeleton.app.Views.CardView;
+import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 
 import java.util.HashMap;
 

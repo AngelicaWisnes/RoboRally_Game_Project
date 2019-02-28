@@ -12,11 +12,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import inf112.skeleton.app.Board;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Position;
-import inf112.skeleton.app.ProgramSheet;
-import inf112.skeleton.app.ProgramSheetView;
+import inf112.skeleton.app.ProgramSheet.ProgramSheet;
+import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Robot.Robot;
 
 public class GameScreen implements Screen {
@@ -34,7 +33,6 @@ public class GameScreen implements Screen {
     private ProgramSheet sheet;
 
 
-    private Board board;
     private Music factoryMusic;
     private SpriteBatch batch;
     private SpriteBatch HUDbatch;
@@ -98,7 +96,6 @@ public class GameScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
         // begin a new batch and draw tiles
         batch.begin();
-        //drawBoard();
         robot.keyboardMoveRobot();
         //robot.moveRobot();
         batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
