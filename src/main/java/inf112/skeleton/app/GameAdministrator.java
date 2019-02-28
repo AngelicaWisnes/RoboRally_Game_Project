@@ -2,6 +2,7 @@ package inf112.skeleton.app;
 
 import inf112.skeleton.app.Card.Card;
 import inf112.skeleton.app.Card.CardGenerator;
+import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,8 +44,14 @@ public class GameAdministrator {
         // Clean up any end-of-turn effects
     }
 
-    private static void dealCards() {
-
+    private static void dealCards(Gamer gamer) {
+        int damage = gamer.getSheet().getDamage();
+        ArrayList<Card> cards = new ArrayList<>();
+        for (int i = 0; i < 9 - damage; i++) {
+            if (cardStack.size() == 0) reuseTrashedCards();
+            cards.add(cardStack.pop());
+        }
+        gamer.setCards(cards);
     }
 
 }
