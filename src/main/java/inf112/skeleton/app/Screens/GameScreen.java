@@ -13,7 +13,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import inf112.skeleton.app.Enums.Direction;
-import inf112.skeleton.app.Position;
+import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Robot.Robot;

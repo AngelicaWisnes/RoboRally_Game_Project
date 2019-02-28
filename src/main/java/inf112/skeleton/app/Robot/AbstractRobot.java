@@ -6,7 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
-import inf112.skeleton.app.Position;
+import inf112.skeleton.app.Helpers.TileIDTranslator;
+import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.*;
 
@@ -61,7 +62,7 @@ public abstract class AbstractRobot implements iRobot {
             System.out.println("du har dødd");
         }
 
-        return ID_Translator.translate_ID(tileID);
+        return TileIDTranslator.translate_ID(tileID);
     }
 
     /**

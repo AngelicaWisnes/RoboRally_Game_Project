@@ -1,11 +1,12 @@
-package inf112.skeleton.app.TileTypes;
+package inf112.skeleton.app.Helpers;
 
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
+import inf112.skeleton.app.TileTypes.*;
 
 import java.util.HashMap;
 
-public class ID_Translator {
+public class TileIDTranslator {
     static HashMap<Integer, iTile> translator = new HashMap<>();
 
     static {
