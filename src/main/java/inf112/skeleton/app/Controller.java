@@ -1,6 +1,6 @@
 package inf112.skeleton.app;
 
-import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.CardGenerator;
 
 import java.util.ArrayList;
@@ -26,13 +26,13 @@ public class Controller {
 
 
     private void dealCards() {
-        List<Card> cards = CardGenerator.getNewCardStack();
-        List<Card> firstHand = new ArrayList<>(cards.subList(0,9));
+        List<AbstractCard> cards = CardGenerator.getNewCardStack();
+        List<AbstractCard> firstHand = new ArrayList<>(cards.subList(0,9));
         gamer.setCards(firstHand);
 
         int i = 0;
 
-        for (Card card : gamer.cardsOnHand) {
+        for (AbstractCard card : gamer.cardsOnHand) {
             System.out.println(i++ + " " + card);
         }
     }

@@ -1,10 +1,10 @@
 package inf112.skeleton.app.Card;
 
-public abstract class Card {
+public abstract class AbstractCard {
 
     private int priority;
 
-    public Card(int priority) {
+    public AbstractCard(int priority) {
         if (priority > 840 || priority < 10){throw new IllegalStateException();}
         this.priority = priority;
     }

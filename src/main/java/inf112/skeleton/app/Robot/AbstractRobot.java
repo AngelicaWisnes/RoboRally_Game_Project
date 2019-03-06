@@ -65,7 +65,7 @@ public abstract class AbstractRobot implements IRobot {
      * @param card the card that is to influence the robot
      * moves the robot as the card dictates
      */
-    public void cardMovesRobot(Card card) {
+    public void cardMovesRobot(AbstractCard card) {
        if (card instanceof MoveBackwards) {
            move(Direction.DOWN, 1);
        }

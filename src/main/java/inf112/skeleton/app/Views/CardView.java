@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.AbstractCard;
 
 import java.util.HashMap;
 
@@ -22,7 +22,7 @@ public class CardView {
         this.cardHeight = cardHeight;
     }
 
-    public static void drawCard(SpriteBatch batch, Card card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos) {
+    public static void drawCard(SpriteBatch batch, AbstractCard card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos) {
         if (card == null)
             return;
         int priority = card.getPriority();

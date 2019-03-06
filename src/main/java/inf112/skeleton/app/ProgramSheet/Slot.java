@@ -1,9 +1,9 @@
 package inf112.skeleton.app.ProgramSheet;
 
-import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.AbstractCard;
 
 public class Slot {
-    private Card card;
+    private AbstractCard card;
     private boolean locked;
 
     public Slot(){
@@ -24,18 +24,18 @@ public class Slot {
         return this.card == null;
     }
 
-    public Card getCard() {
+    public AbstractCard getCard() {
         return card;
     }
 
-    public void setCard(Card card){
+    public void setCard(AbstractCard card){
         this.card = card;
     }
     /**
      * Removes card from slot, returns card to calling method.
      */
-    public Card returnCard(){
-        Card temp = this.card;
+    public AbstractCard returnCard(){
+        AbstractCard temp = this.card;
         if (!this.locked){
             this.card = null;
         }

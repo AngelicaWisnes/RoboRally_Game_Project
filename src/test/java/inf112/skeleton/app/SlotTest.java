@@ -1,6 +1,6 @@
 package inf112.skeleton.app;
 
-import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.MoveForward;
 import inf112.skeleton.app.ProgramSheet.Slot;
 import org.junit.Test;
@@ -42,7 +42,7 @@ public class SlotTest {
     @Test
     public void unlockedSlotReleasesCorrectCard() {
         Slot slot = new Slot();
-        Card card = new MoveForward(50, 2);
+        AbstractCard card = new MoveForward(50, 2);
         slot.setCard(card);
         assertEquals(card, slot.returnCard());
     }

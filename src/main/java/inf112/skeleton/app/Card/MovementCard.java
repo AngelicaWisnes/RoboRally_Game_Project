@@ -1,8 +1,6 @@
 package inf112.skeleton.app.Card;
 
-import inf112.skeleton.app.Card.Card;
-
-public abstract class MovementCard extends Card {
+public abstract class MovementCard extends AbstractCard {
     protected int steps;
 
     public MovementCard(int priority, int steps) {

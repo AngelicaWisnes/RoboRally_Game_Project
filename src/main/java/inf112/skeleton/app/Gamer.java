@@ -1,11 +1,10 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Gamer {
@@ -14,7 +13,7 @@ public class Gamer {
     private ProgramSheet sheet;
     private String name;
 
-    List<Card> cardsOnHand;
+    List<AbstractCard> cardsOnHand;
 
 
     public Gamer(TiledMap map, String name) {
@@ -23,7 +22,7 @@ public class Gamer {
         sheet = new ProgramSheet(1, map);
     }
 
-    public void setCards(List<Card> cardsOnHand) {
+    public void setCards(List<AbstractCard> cardsOnHand) {
         this.cardsOnHand = cardsOnHand;
     }
 

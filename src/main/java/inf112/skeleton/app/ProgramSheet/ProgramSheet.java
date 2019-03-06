@@ -14,7 +14,7 @@ public class ProgramSheet {
     //Checkpoint checkpoint;
     private int lives;
     private boolean powerDown;
-    private ArrayList<Card> cards;
+    private ArrayList<AbstractCard> cards;
     private Slot slot1 = new Slot();
     private Slot slot2 = new Slot();
     private Slot slot3 = new Slot();
@@ -31,11 +31,11 @@ public class ProgramSheet {
 
     }
 
-    public void receiveCards(ArrayList<Card> cards){
+    public void receiveCards(ArrayList<AbstractCard> cards){
         this.cards = cards;
     }
 
-    public Slot placeCard(Card card){
+    public Slot placeCard(AbstractCard card){
         if (slot1.isAvailable()){
             slot1.setCard(card);
         }else if (slot2.isAvailable()){
@@ -70,7 +70,7 @@ public class ProgramSheet {
         return powerDown;
     }
 
-    public ArrayList<Card> getCards() {
+    public ArrayList<AbstractCard> getCards() {
         return cards;
     }
 
