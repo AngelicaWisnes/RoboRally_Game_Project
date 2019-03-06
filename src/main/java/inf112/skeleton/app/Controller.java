@@ -5,6 +5,7 @@ import inf112.skeleton.app.Card.CardGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Controller {
 
@@ -29,12 +30,21 @@ public class Controller {
         List<Card> firstHand = new ArrayList<>(cards.subList(0,8));
         gamer.setCards(firstHand);
 
+        int i = 0;
+
         for (Card card : gamer.cardsOnHand) {
-            System.out.println(card);
+            System.out.println(i++ + " " + card);
         }
     }
 
     private void selectCard() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Select 5 cards");
+
+        for (int i = 0; i < 5; i++) {
+            int input = scan.nextInt();
+            gamer.getSheet().placeCard(gamer.cardsOnHand.get(input));
+        }
 
     }
 

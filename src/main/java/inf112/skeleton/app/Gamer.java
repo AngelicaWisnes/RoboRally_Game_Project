@@ -26,4 +26,8 @@ public class Gamer {
     public void setCards(List<Card> cardsOnHand) {
         this.cardsOnHand = cardsOnHand;
     }
+
+    public ProgramSheet getSheet() {
+        return sheet;
+    }
 }
