@@ -65,7 +65,7 @@ public abstract class AbstractRobot implements IRobot {
         }
     }
 
-    private iTile getTileOnCurrentPos() {
+    private ITile getTileOnCurrentPos() {
         //move the robot one tile in a direction
         int x = pos.getX() / GameScreen.TILESIZE;
         int y = pos.getY() / GameScreen.TILESIZE;

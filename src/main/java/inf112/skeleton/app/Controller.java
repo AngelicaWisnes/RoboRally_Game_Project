@@ -13,7 +13,6 @@ public class Controller {
 
     public Controller(Gamer gamer) {
        this.gamer = gamer;
-
     }
 
     public void runGame() {
