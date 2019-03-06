@@ -1,6 +1,6 @@
 package inf112.skeleton.app.TileTypes;
 
-public interface iTile {
+public interface ITile {
 
     /**
      * Returns string for look-up in image dictionary

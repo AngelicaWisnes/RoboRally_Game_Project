@@ -14,7 +14,7 @@ import inf112.skeleton.app.TileTypes.*;
 /**
  * @author Roger Wisnes
  */
-public abstract class AbstractRobot implements iRobot {
+public abstract class AbstractRobot implements IRobot {
     private TiledMap map;
     private Position pos;
     private Direction dir;
@@ -35,7 +35,7 @@ public abstract class AbstractRobot implements iRobot {
 
 
     public void moveRobot(){
-        iTile currentTile = getTileOnCurrentPos();
+        ITile currentTile = getTileOnCurrentPos();
 
         if (currentTile instanceof Rotator){ rotate(((Rotator) currentTile).getRotation()); }
         if (currentTile instanceof SingleConveyor) { move(((SingleConveyor) currentTile).getDirection(), 1);}
@@ -50,7 +50,7 @@ public abstract class AbstractRobot implements iRobot {
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(Direction.DOWN, 1);
     }
 
-    private iTile getTileOnCurrentPos() {
+    private ITile getTileOnCurrentPos() {
         //move the robot one tile in a direction
         int x = pos.getX() / GameScreen.TILESIZE;
         int y = pos.getY() / GameScreen.TILESIZE;

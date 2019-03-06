@@ -7,7 +7,7 @@ import inf112.skeleton.app.TileTypes.*;
 import java.util.HashMap;
 
 public class TileIDTranslator {
-    static HashMap<Integer, iTile> translator = new HashMap<>();
+    static HashMap<Integer, ITile> translator = new HashMap<>();
 
     static {
         translator.put(1, new Floor());
@@ -29,7 +29,7 @@ public class TileIDTranslator {
         // translator.put(2, new Rotator(Rotation.TURN_AROUND));
     }
 
-    public static iTile translate_ID(int id) {
+    public static ITile translate_ID(int id) {
         return translator.get(id);
     }
 }

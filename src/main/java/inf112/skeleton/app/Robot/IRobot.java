@@ -2,7 +2,7 @@ package inf112.skeleton.app.Robot;
 
 import inf112.skeleton.app.Helpers.Position;
 
-public interface iRobot {
+public interface IRobot {
 
     /**
      * Get the position of the robot

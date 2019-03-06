@@ -9,7 +9,7 @@ import inf112.skeleton.app.Robot.*;
 import java.util.ArrayList;
 
 public class ProgramSheet {
-    private iRobot robot;
+    private IRobot robot;
     private int damage;
     //Checkpoint checkpoint;
     private int lives;
