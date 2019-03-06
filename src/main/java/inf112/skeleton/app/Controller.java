@@ -4,6 +4,7 @@ import inf112.skeleton.app.Card.Card;
 import inf112.skeleton.app.Card.CardGenerator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
@@ -15,18 +16,26 @@ public class Controller {
     }
 
     public void runGame() {
-        while (true) {
+        //while (true) {
             dealCards(); // 9
-           // selectCard(); // 5
+            selectCard(); // 5
            // playCards();
 
-        }
+        //}
     }
 
     private void dealCards() {
-        ArrayList<Card> cards = CardGenerator.getNewCardStack();
-        ArrayList<Card> firstHand = (ArrayList<Card>) cards.subList(0,8);
+        List<Card> cards = CardGenerator.getNewCardStack();
+        List<Card> firstHand = new ArrayList<>(cards.subList(0,8));
         gamer.setCards(firstHand);
+
+        for (Card card : gamer.cardsOnHand) {
+            System.out.println(card);
+        }
+    }
+
+    private void selectCard() {
+
     }
 
 }

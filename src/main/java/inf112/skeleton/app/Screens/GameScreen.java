@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Helpers.Position;
@@ -39,6 +40,7 @@ public class GameScreen implements Screen {
     private SpriteBatch HUDbatch;
     private Robot robot;
     private Gamer gamer;
+    private Controller controller;
 
     public static final int TILESIZE = 64;
     private final int NTILES = 10;
@@ -82,6 +84,9 @@ public class GameScreen implements Screen {
         // create a Rectangle to logically represent the robot
         robot = new Robot(new Position(0, 0), Direction.LEFT, map);
         gamer = new Gamer(map, "Player1");
+        controller = new Controller(gamer);
+        controller.runGame();
+
 
     }
 

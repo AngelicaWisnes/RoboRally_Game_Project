@@ -6,6 +6,7 @@ import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Gamer {
 
@@ -13,7 +14,7 @@ public class Gamer {
     private ProgramSheet sheet;
     private String name;
 
-    ArrayList<Card> cardsOnHand = new ArrayList<>();
+    List<Card> cardsOnHand;
 
 
     public Gamer(TiledMap map, String name) {
@@ -22,7 +23,7 @@ public class Gamer {
         sheet = new ProgramSheet(1, map);
     }
 
-    public void setCards(ArrayList<Card> cardsOnHand) {
+    public void setCards(List<Card> cardsOnHand) {
         this.cardsOnHand = cardsOnHand;
     }
 }
