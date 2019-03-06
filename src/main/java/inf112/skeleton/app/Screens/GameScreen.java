@@ -96,7 +96,7 @@ public class GameScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
         // begin a new batch and draw tiles
         batch.begin();
-        robot.keyboardMoveRobot();
+        robot.moveRobotByKeyboard();
         //robot.moveRobot();
         batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
         batch.end();

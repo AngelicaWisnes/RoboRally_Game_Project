@@ -11,6 +11,7 @@ import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.*;
 
+
 /**
  * @author Roger Wisnes
  */
@@ -30,19 +31,26 @@ public abstract class AbstractRobot implements IRobot {
         this.dir = dir;
     }
 
-    public Position getPos() { return pos; }
-
-
-
-    public void moveRobot(){
-        ITile currentTile = getTileOnCurrentPos();
-
-        if (currentTile instanceof Rotator){ rotate(((Rotator) currentTile).getRotation()); }
-        if (currentTile instanceof SingleConveyor) { move(((SingleConveyor) currentTile).getDirection(), 1);}
-        if (currentTile instanceof DblConveyor) { move(((DblConveyor) currentTile).getDirection(), 2);}
+    public Position getPos() {
+        return pos;
     }
 
-    public void keyboardMoveRobot() {
+
+    public void moveRobotByTile() {
+        ITile currentTile = getTileOnCurrentPos();
+
+        if (currentTile instanceof Rotator) {
+            rotate(((Rotator) currentTile).getRotation());
+        }
+        if (currentTile instanceof SingleConveyor) {
+            move(((SingleConveyor) currentTile).getDirection(), 1);
+        }
+        if (currentTile instanceof DblConveyor) {
+            move(((DblConveyor) currentTile).getDirection(), 2);
+        }
+    }
+
+    public void moveRobotByKeyboard() {
         //move the robot one tile in a direction
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) move(Direction.RIGHT, 1);
@@ -67,7 +75,8 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Rotate the robot
-     * @param rotation the rotation-Enum describing how turning-direction
+     *
+     * @param rotation the rotation-Enum describing the turning-direction
      * @return the new direction
      */
     private Direction rotate(Rotation rotation) {
@@ -81,13 +90,22 @@ public abstract class AbstractRobot implements IRobot {
     }
 
     /**
+     * Helper-method for testing rotate-method
+     */
+    public Direction testRotation(Rotation rotation) {
+        return rotate(rotation);
+    }
+
+
+    /**
      * Move the robot in the given direction
-     * @param direction given from keyboardMoveRobot
-     * @param spaces number of spaces to move
+     *
+     * @param direction given from moveRobotByKeyboard
+     * @param spaces    number of spaces to move
      * @return the new position
      */
     private Position move(Direction direction, int spaces) {
-        if (spaces < 1 || spaces > 3){
+        if (spaces < 1 || spaces > 3) {
             throw new IllegalArgumentException("Must have valid spaces-input to move robot");
         }
 
@@ -99,5 +117,12 @@ public abstract class AbstractRobot implements IRobot {
             default:
                 throw new IllegalArgumentException("Must have valid direction-input to move robot");
         }
+    }
+
+    /**
+     * Helper-method for testing move-method
+     */
+    private Position testMove(Direction direction, int spaces) {
+        return move(direction, spaces);
     }
 }
