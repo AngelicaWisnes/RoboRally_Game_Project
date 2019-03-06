@@ -23,6 +23,8 @@ public class CardView {
     }
 
     public static void drawCard(SpriteBatch batch, Card card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos) {
+        if (card == null)
+            return;
         int priority = card.getPriority();
         shape.begin(ShapeRenderer.ShapeType.Filled); //I'm using the Filled ShapeType, but remember you have three of them
         shape.setColor(Color.WHITE);

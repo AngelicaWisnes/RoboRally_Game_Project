@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import inf112.skeleton.app.Card.*;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Helpers.TileIDTranslator;
@@ -50,7 +51,21 @@ public abstract class AbstractRobot implements IRobot {
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(Direction.DOWN, 1);
     }
 
-    private ITile getTileOnCurrentPos() {
+    public void cardMovesRobot(Card card) {
+       if (card instanceof MoveBackwards) {
+           move(Direction.DOWN, 1);
+       }
+
+       if (card instanceof MoveForward) {
+           move(Direction.UP, ((MoveForward) card).getSteps());
+        }
+
+       if (card instanceof RotationCard) {
+
+        }
+    }
+
+    private iTile getTileOnCurrentPos() {
         //move the robot one tile in a direction
         int x = pos.getX() / GameScreen.TILESIZE;
         int y = pos.getY() / GameScreen.TILESIZE;

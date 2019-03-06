@@ -10,4 +10,8 @@ public abstract class MovementCard extends Card {
         if (steps > 3 || steps < 1){throw new IllegalStateException();}
         this.steps = steps;
     }
+
+    public int getSteps() {
+        return this.steps;
+    }
 }

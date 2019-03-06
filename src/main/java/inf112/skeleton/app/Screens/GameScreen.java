@@ -85,7 +85,6 @@ public class GameScreen implements Screen {
         robot = new Robot(new Position(0, 0), Direction.LEFT, map);
         gamer = new Gamer(map, "Player1");
         controller = new Controller(gamer);
-        controller.runGame();
 
 
     }
@@ -98,6 +97,7 @@ public class GameScreen implements Screen {
         camera.update();
         renderer.setView(camera);
         renderer.render();
+        controller.runGame();
 
         //camera.update();
         // tell the SpriteBatch to render in the coordinate system specified by the camera.
@@ -108,7 +108,7 @@ public class GameScreen implements Screen {
         //robot.moveRobot();
         batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
         batch.end();
-        ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, sheet);
+        ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
     }
 
 

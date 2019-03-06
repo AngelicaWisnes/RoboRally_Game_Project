@@ -20,14 +20,15 @@ public class Controller {
         //while (true) {
             dealCards(); // 9
             selectCard(); // 5
-           // playCards();
+            playCards();
 
         //}
     }
 
+
     private void dealCards() {
         List<Card> cards = CardGenerator.getNewCardStack();
-        List<Card> firstHand = new ArrayList<>(cards.subList(0,8));
+        List<Card> firstHand = new ArrayList<>(cards.subList(0,9));
         gamer.setCards(firstHand);
 
         int i = 0;
@@ -44,8 +45,13 @@ public class Controller {
         for (int i = 0; i < 5; i++) {
             int input = scan.nextInt();
             gamer.getSheet().placeCard(gamer.cardsOnHand.get(input));
+
         }
 
+    }
+
+    private void playCards() {
+        //gamer.getSheet().getSlot1().getCard().;
     }
 
 }
