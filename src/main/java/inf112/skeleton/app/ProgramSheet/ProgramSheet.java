@@ -27,12 +27,6 @@ public class ProgramSheet {
         damage = 0;
         lives = 3;
         powerDown = false;
-        ArrayList<Card> tempCards = CardGenerator.getNewCardStack();
-        this.slot1.setCard(tempCards.get(1));
-        this.slot2.setCard(tempCards.get(2));
-        this.slot3.setCard(tempCards.get(3));
-        this.slot4.setCard(tempCards.get(4));
-        this.slot5.setCard(tempCards.get(5));
 
 
     }
