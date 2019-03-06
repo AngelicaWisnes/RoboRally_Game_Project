@@ -13,5 +13,5 @@ public interface IRobot {
     /**
      * This is a temporary method for moving the robot with the help of arrow-keys from keyboard.
      */
-    void keyboardMoveRobot();
+    void moveRobotByKeyboard();
 }
