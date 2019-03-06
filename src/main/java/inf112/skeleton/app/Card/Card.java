@@ -13,7 +13,16 @@ public abstract class Card {
         return priority;
     }
 
+    /**
+     * @return the value for the hash map lookup
+     * of the texture to be used for the card
+     */
     public abstract String getKey();
+
+    /**
+     * @return the simple text description
+     * of the card
+     */
     public abstract String getDescription();
 
 

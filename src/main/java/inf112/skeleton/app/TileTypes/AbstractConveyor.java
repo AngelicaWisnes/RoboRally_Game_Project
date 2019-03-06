@@ -13,10 +13,17 @@ public abstract class AbstractConveyor extends AbstractTile {
 
     }
 
+    /**
+     * @return the direction of the conveyor
+     */
     public Direction getDirection() {
         return direction;
     }
 
+    /**
+     * @param type the type of the conveyor
+     * sets the image of the conveyor when constructed
+     */
     public void setImage(String type) {
         if (direction == Direction.UP) {
             image = type + "_up";
@@ -33,6 +40,9 @@ public abstract class AbstractConveyor extends AbstractTile {
     }
 
 
+    /**
+     * @return the image string of the conveyor
+     */
     @Override
     public String getImage() {
         return image;

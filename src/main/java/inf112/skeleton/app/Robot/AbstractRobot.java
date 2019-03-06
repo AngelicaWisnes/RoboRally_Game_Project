@@ -31,10 +31,16 @@ public abstract class AbstractRobot implements IRobot {
         this.dir = dir;
     }
 
+    /**
+     * @return the current position
+     */
     public Position getPos() { return pos; }
 
 
-
+    /**
+     * The method that is called to see if a tile
+     * should influence the robot.
+     */
     public void moveRobot(){
         ITile currentTile = getTileOnCurrentPos();
 
@@ -43,6 +49,10 @@ public abstract class AbstractRobot implements IRobot {
         if (currentTile instanceof DblConveyor) { move(((DblConveyor) currentTile).getDirection(), 2);}
     }
 
+    /**
+     * A method that allows user to move robot
+     * with keyboard, useful for testing manually
+     */
     public void keyboardMoveRobot() {
         //move the robot one tile in a direction
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
@@ -51,6 +61,10 @@ public abstract class AbstractRobot implements IRobot {
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(Direction.DOWN, 1);
     }
 
+    /**
+     * @param card the card that is to influence the robot
+     * moves the robot as the card dictates
+     */
     public void cardMovesRobot(Card card) {
        if (card instanceof MoveBackwards) {
            move(Direction.DOWN, 1);
@@ -65,6 +79,9 @@ public abstract class AbstractRobot implements IRobot {
         }
     }
 
+    /**
+     * @return the tile object at the position of the robot
+     */
     private ITile getTileOnCurrentPos() {
         //move the robot one tile in a direction
         int x = pos.getX() / GameScreen.TILESIZE;
