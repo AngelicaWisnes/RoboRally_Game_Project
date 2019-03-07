@@ -12,14 +12,26 @@ import static org.junit.Assert.*;
 public class CardTest {
 
     @Test
-    public void cardHasRotation(){
-        AbstractCard card = new RotationCard(50, Rotation.TURN_CLOCKWISE);
+    public void cardHasRotationCW(){
+        AbstractCard card = new RotationCard(90, Rotation.TURN_CLOCKWISE);
         assertEquals(Rotation.TURN_CLOCKWISE, ((RotationCard) card).getRotation());
     }
+
     @Test
-    public void cardHasPriority(){
-        AbstractCard card = new RotationCard(50, Rotation.TURN_CLOCKWISE);
-        assertEquals(50, card.getPriority());
+    public void cardHasPriorityCW(){
+        AbstractCard card = new RotationCard(90, Rotation.TURN_CLOCKWISE);
+        assertEquals(90, card.getPriority());
+    }
+
+    @Test
+    public void cardHasRotationCCW(){
+        AbstractCard card = new RotationCard(70, Rotation.TURN_COUNTER_CLOCKWISE);
+        assertEquals(Rotation.TURN_COUNTER_CLOCKWISE, ((RotationCard) card).getRotation());
+    }
+    @Test
+    public void cardHasPriorityCCW(){
+        AbstractCard card = new RotationCard(70, Rotation.TURN_COUNTER_CLOCKWISE);
+        assertEquals(70, card.getPriority());
     }
 
     @Test
@@ -58,10 +70,23 @@ public class CardTest {
         assertEquals(840, card.getPriority());
     }
 
+    @Test
+    public void backwardCardHasPriorityLow3Steps() {
+        AbstractCard card = new MoveBackwards(430, 1);
+        assertEquals(430, card.getPriority());
+    }
+
+    @Test
+    public void backwardCardHasPriorityHigh3Steps() {
+        AbstractCard card = new MoveBackwards(480, 1);
+        assertEquals(480, card.getPriority());
+    }
+
     @Test(expected = IllegalStateException.class)
     public void cardStepAttributeTest() {
         new MoveForward(55, 5);
     }
+
     @Test(expected = IllegalStateException.class)
     public void cardPriorityAttributeTest() {
         new MoveBackwards(10000, 1);
