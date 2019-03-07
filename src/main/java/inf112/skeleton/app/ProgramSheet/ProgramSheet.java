@@ -32,6 +32,7 @@ public class ProgramSheet {
     }
 
     public void receiveCards(ArrayList<AbstractCard> cards){
+
         this.cards = cards;
     }
 
