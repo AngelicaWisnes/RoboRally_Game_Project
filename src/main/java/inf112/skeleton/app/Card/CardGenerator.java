@@ -3,13 +3,12 @@ package inf112.skeleton.app.Card;
 import inf112.skeleton.app.Enums.Rotation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class CardGenerator {
-    private static ArrayList<Card> cards;
+    private static ArrayList<AbstractCard> cards;
 
-    public static ArrayList<Card> getNewCardStack() {
+    public static ArrayList<AbstractCard> getNewCardStack() {
         cards = new ArrayList<>();
         createCards();
         Collections.shuffle(cards);

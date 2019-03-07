@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 
 import java.util.HashMap;
@@ -70,7 +70,7 @@ public class ProgramSheetView {
 
     private static void drawCards(SpriteBatch batch, ProgramSheet sheet, HashMap<String, Texture> textureMap, ShapeRenderer shape) {
         for (int i = 0; i < 5; i++) {
-            Card card = sheet.getSlot(i).getCard();
+            AbstractCard card = sheet.getSlot(i).getCard();
             CardView.drawCard(batch, card, textureMap, shape, i);
         }
     }

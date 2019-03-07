@@ -1,6 +1,6 @@
 package inf112.skeleton.app.Card;
 
-// Card
+// AbstractCard
 import inf112.skeleton.app.Card.MovementCard;
 
 public class MoveBackwards extends MovementCard {
