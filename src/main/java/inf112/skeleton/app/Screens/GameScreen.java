@@ -98,7 +98,7 @@ public class GameScreen implements Screen {
         renderer.setView(camera);
         renderer.render();
 
-        //controller.runGame();
+        controller.runGame();
 
         //camera.update();
         // tell the SpriteBatch to render in the coordinate system specified by the camera.
