@@ -25,7 +25,6 @@ public class CardGeneratorTest {
 
         for (AbstractCard c : newCardStack) {
             ints.add(c.getPriority());
-            System.out.println(c);
         }
         assertEquals(newCardStack.size(), ints.size());
     }
