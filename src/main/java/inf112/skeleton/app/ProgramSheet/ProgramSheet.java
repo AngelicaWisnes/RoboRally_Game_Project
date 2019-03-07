@@ -28,7 +28,6 @@ public class ProgramSheet {
         lives = 3;
         powerDown = false;
 
-
     }
 
     public void receiveCards(ArrayList<AbstractCard> cards){
