@@ -16,8 +16,6 @@
 
 * [Meetings](https://github.com/inf112-v19/The_Terminators/blob/master/Deliverables/Meetings.md)
 
-* Set up 4-5 points to follow up.
-
 * Codebase
     * We usually program together in pairs, so not everyone get to commit as often, but everyone contributes to the code. Not all work can be connected directly to a commit. Examples on this is one group member that has made all the different maps we will use later on. 
     * Note on commits: When using branching, every time one merges the branch onto master, all commits are added, as well as an extra commit that handles the merging of the branches. This is why there are several similar “Merge branch master of…”, but these are created by Git. 
@@ -47,6 +45,7 @@
 * Since last time we have done a lot. Compared to last time, our game now implements an own-designed map from Tiled. We have changed the camera to show the player-cards as well as the board. 1 player now gets 5 cards.
 
 
+
 **PART 3**
 
 * We have done a variety between test driven programming, and “try-fail”, and then making tests. We do not commit/push when the code does not compile.
@@ -60,5 +59,5 @@
 **Comments**
 * As per the Agile Software Development [page 23] we consider unit tests to be documentation, as have thus focused on writing readable code and keeping comments to areas we feel need extra explanation, as well as all abstract methods in abstract classes and interfaces.
  
-[Class diagram](https://github.com/inf112-v19/The_Terminators/blob/master/Deliverables/Class_Diagram.pdf)
+* [Class diagram](https://github.com/inf112-v19/The_Terminators/blob/master/Deliverables/Class_Diagram.pdf)
 
