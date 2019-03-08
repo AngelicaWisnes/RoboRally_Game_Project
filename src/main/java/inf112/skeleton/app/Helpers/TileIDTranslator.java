@@ -34,5 +34,8 @@ public class TileIDTranslator {
     }
 }
 
-        // Laser med vegg 		= 	id 109\
-        // Laser uten vegg 		= 	id 94\
+    /**
+     * Future tiles
+     * Laser med vegg 		= 	id 109\
+     * Laser uten vegg 		= 	id 94\
+     */

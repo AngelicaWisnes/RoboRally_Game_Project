@@ -69,7 +69,7 @@ public class GameScreen implements Screen {
         camera.translate(-280, -550);
 
         //camera.position.set(camera.viewportHeight / 2f, camera.viewportWidth / 2f, 0);
-        sheet = new ProgramSheet(1, map);
+        sheet = new ProgramSheet(map);
 
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
         fillTextureMap();
@@ -136,7 +136,7 @@ public class GameScreen implements Screen {
             controller.runGame(state);
             state = CardState.DEALTCARDS;
         }
-        if (state.equals(CardState.DEALTCARDS) && !gamer.getSheet().getSlot5().isAvailable()){
+        if (state.equals(CardState.DEALTCARDS) && gamer.getSheet().allSlotsAreFilled()){
             state = CardState.SELECTEDCARDS;
         }
         if (state.equals(CardState.SELECTEDCARDS)){

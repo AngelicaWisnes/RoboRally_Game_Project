@@ -6,23 +6,19 @@ import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Robot.*;
 
-import java.util.ArrayList;
-
 public class ProgramSheet {
     private IRobot robot;
     private int damage;
-    //Checkpoint checkpoint;
     private int lives;
     private boolean powerDown;
-    private ArrayList<AbstractCard> cards;
     private Slot slot1 = new Slot();
     private Slot slot2 = new Slot();
     private Slot slot3 = new Slot();
     private Slot slot4 = new Slot();
     private Slot slot5 = new Slot();
-    private Slot[] slots =  {slot1, slot2, slot3, slot4, slot5};
+    private Slot[] slots = {slot1, slot2, slot3, slot4, slot5};
 
-    public ProgramSheet(int playerN, TiledMap map) {
+    public ProgramSheet(TiledMap map) {
         robot = new Robot(new Position(0, 0), Direction.LEFT, map);
         damage = 0;
         lives = 3;
@@ -30,29 +26,27 @@ public class ProgramSheet {
 
     }
 
-    public IRobot getRobot(){return this.robot;}
-
-    public void receiveCards(ArrayList<AbstractCard> cards){
-
-        this.cards = cards;
+    public IRobot getRobot() {
+        return this.robot;
     }
 
-    public Slot placeCard(AbstractCard card){
-        if (slot1.isAvailable()){
+
+    public Slot placeCard(AbstractCard card) {
+        if (slot1.isAvailable()) {
             slot1.setCard(card);
-        }else if (slot2.isAvailable()){
+        } else if (slot2.isAvailable()) {
             slot2.setCard(card);
-        }else if (slot3.isAvailable()){
+        } else if (slot3.isAvailable()) {
             slot3.setCard(card);
-        }else if (slot4.isAvailable()){
+        } else if (slot4.isAvailable()) {
             slot4.setCard(card);
-        }else if (slot5.isAvailable()){
+        } else if (slot5.isAvailable()) {
             slot5.setCard(card);
         }
         return null;
     }
 
-    public void clearUnlockedSlots(){
+    public void clearUnlockedSlots() {
         slot1.returnCard();
         slot2.returnCard();
         slot3.returnCard();
@@ -72,30 +66,12 @@ public class ProgramSheet {
         return powerDown;
     }
 
-    public ArrayList<AbstractCard> getCards() {
-        return cards;
+    public boolean allSlotsAreFilled() {
+        return !slot1.isAvailable() && !slot2.isAvailable() && !slot3.isAvailable() && !slot4.isAvailable() && !slot5.isAvailable();
     }
 
-    public Slot getSlot1() {
-        return slot1;
+    public Slot getSlot(int n) {
+        return slots[n];
     }
-
-    public Slot getSlot2() {
-        return slot2;
-    }
-
-    public Slot getSlot3() {
-        return slot3;
-    }
-
-    public Slot getSlot4() {
-        return slot4;
-    }
-
-    public Slot getSlot5() {
-        return slot5;
-    }
-
-    public Slot getSlot(int n) { return slots[n]; }
 
 }

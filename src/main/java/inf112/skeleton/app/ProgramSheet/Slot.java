@@ -6,21 +6,23 @@ public class Slot {
     private AbstractCard card;
     private boolean locked;
 
-    public Slot(){
+    public Slot() {
         this.locked = false;
     }
 
-    public void lockSlot(){
+    public void lockSlot() {
         this.locked = true;
     }
-    public void unlockSlot(){
+
+    public void unlockSlot() {
         this.locked = false;
     }
-    public boolean isLocked(){
+
+    public boolean isLocked() {
         return this.locked;
     }
 
-    public boolean isAvailable(){
+    public boolean isAvailable() {
         return this.card == null;
     }
 
@@ -28,15 +30,16 @@ public class Slot {
         return card;
     }
 
-    public void setCard(AbstractCard card){
+    public void setCard(AbstractCard card) {
         this.card = card;
     }
+
     /**
      * Removes card from slot, returns card to calling method.
      */
-    public AbstractCard returnCard(){
+    public AbstractCard returnCard() {
         AbstractCard temp = this.card;
-        if (!this.locked){
+        if (!this.locked) {
             this.card = null;
         }
         return temp;

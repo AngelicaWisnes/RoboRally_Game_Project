@@ -9,7 +9,7 @@ import inf112.skeleton.app.Enums.CardState;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller {
+public class Controller implements IController{
 
 
    private Gamer gamer;
@@ -70,5 +70,6 @@ public class Controller {
             gamer.getSheet().getRobot().cardMovesRobot(gamer.getSheet().getSlot(i).getCard());
         }
     }
+
 
 }

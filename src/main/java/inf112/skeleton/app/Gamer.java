@@ -20,13 +20,16 @@ public class Gamer {
     public Gamer(TiledMap map, String name) {
         this.map = map;
         this.name = name;
-        sheet = new ProgramSheet(1, map);
+        sheet = new ProgramSheet(map);
     }
 
     public void setCards(List<AbstractCard> cardsOnHand) {
         this.cardsOnHand = cardsOnHand;
     }
-    public List<AbstractCard> getCards(){return this.cardsOnHand;}
+
+    public List<AbstractCard> getCards() {
+        return this.cardsOnHand;
+    }
 
     public ProgramSheet getSheet() {
         return sheet;
