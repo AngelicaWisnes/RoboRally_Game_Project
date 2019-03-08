@@ -67,18 +67,14 @@ public abstract class AbstractRobot implements IRobot {
      */
     public void cardMovesRobot(AbstractCard card) {
        if (card instanceof MoveBackwards) {
-           System.out.println("robot moves down");
-           move(Direction.DOWN, 1);
+           this.pos = move(Direction.DOWN, 1);
        }
 
        if (card instanceof MoveForward) {
-           System.out.println("robot moves up");
-           move(Direction.UP, ((MoveForward) card).getSteps());
+           this.pos = move(Direction.UP, ((MoveForward) card).getSteps());
         }
 
        if (card instanceof RotationCard) {
-           System.out.println("robot rotate");
-
         }
     }
 

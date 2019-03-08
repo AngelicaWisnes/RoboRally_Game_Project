@@ -18,9 +18,11 @@ import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
+import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Robot.Robot;
+
 
 
 public class GameScreen implements Screen {
@@ -42,7 +44,7 @@ public class GameScreen implements Screen {
     private Music factoryMusic;
     private SpriteBatch batch;
     private SpriteBatch HUDbatch;
-    private Robot robot;
+    private IRobot robot;
     private Gamer gamer;
     private Controller controller;
 
@@ -79,8 +81,9 @@ public class GameScreen implements Screen {
         HUDbatch = new SpriteBatch();
         shape = new ShapeRenderer();
         // create a Rectangle to logically represent the robot
-        robot = new Robot(new Position(0, 0), Direction.LEFT, map);
+        //robot = new Robot(new Position(0, 0), Direction.LEFT, map);
         gamer = new Gamer(map, "Player1");
+        robot = gamer.getSheet().getRobot();
         controller = new Controller(gamer);
 
 
@@ -115,7 +118,7 @@ public class GameScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
         // begin a new batch and draw tiles
         batch.begin();
-        robot.moveRobotByKeyboard();
+        //robot.moveRobotByKeyboard();
         //robot.moveRobot();
         batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
         batch.end();
@@ -133,6 +136,16 @@ public class GameScreen implements Screen {
             controller.runGame(state);
             state = CardState.DEALTCARDS;
         }
+        if (state.equals(CardState.DEALTCARDS) && !gamer.getSheet().getSlot5().isAvailable()){
+            state = CardState.SELECTEDCARDS;
+        }
+        if (state.equals(CardState.SELECTEDCARDS)){
+            camera.zoom -= 0.6;
+            camera.translate(0, 390);
+            controller.runGame(state);
+            state = CardState.PAUSED;
+        }
+
     }
 
 

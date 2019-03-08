@@ -30,6 +30,8 @@ public class ProgramSheet {
 
     }
 
+    public IRobot getRobot(){return this.robot;}
+
     public void receiveCards(ArrayList<AbstractCard> cards){
 
         this.cards = cards;
