@@ -21,13 +21,12 @@ public class CardView {
         this.cardWidth = cardWidth;
         this.cardHeight = cardHeight;
     }
-    @SuppressWarnings("Duplicates")
     public static void drawCardForSheet(SpriteBatch batch, AbstractCard card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos) {
         if (card == null)
             return;
-        shape.begin(ShapeRenderer.ShapeType.Filled); //I'm using the Filled ShapeType, but remember you have three of them
+        shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect(70 + 160 * pos, 50, 130, 180); //assuming you have created those x, y, width and height variables
+        shape.rect(70 + 160 * pos, 50, 130, 180);
         shape.end();
 
         batch.begin();
@@ -45,29 +44,28 @@ public class CardView {
         batch.end();
 
     }
-    @SuppressWarnings("Duplicates")
     public static void drawCardForHand(SpriteBatch batch, AbstractCard card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos){
         if (card == null){
             return;
         }
         int y = 350;
-        shape.begin(ShapeRenderer.ShapeType.Filled); //I'm using the Filled ShapeType, but remember you have three of them
+        shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect(100 * pos + 10, 50+y, 85, 120); //assuming you have created those x, y, width and height variables
+        shape.rect(10 + 100 * pos, 50+y, 85, 120);
         shape.end();
 
         batch.begin();
-        batch.draw(textureMap.get(card.getKey()), 100 * pos + 20, 90+y, 65, 65);
+        batch.draw(textureMap.get(card.getKey()), 20 + 100 * pos, 90+y, 65, 65);
 
 
-        font.setColor(Color.RED);
+        font.setColor(Color.BLACK);
         GlyphLayout glyphLayout = new GlyphLayout();
         glyphLayout.setText(font, "" + card.getPriority());
         font.draw(batch, glyphLayout, (225 - glyphLayout.width)/2 * pos + 40, 85+y);
         glyphLayout = new GlyphLayout();
         glyphLayout.setText(font,card.getDescription());
-        font.draw(batch, glyphLayout, (260  - glyphLayout.width)/2 * pos + 22, 70+y);
-
+        int x = (10 + 100 * pos) + 85/2;
+        font.draw(batch, glyphLayout, x - (glyphLayout.width/2),70+y);
         batch.end();
     }
 

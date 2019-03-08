@@ -13,15 +13,11 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import inf112.skeleton.app.Controller;
-import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Gamer;
-import inf112.skeleton.app.Helpers.Position;
-import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
-import inf112.skeleton.app.Robot.Robot;
 
 
 
@@ -36,11 +32,6 @@ public class GameScreen implements Screen {
 
     private ShapeRenderer shape;
 
-    private Texture robotImage;
-
-    private ProgramSheet sheet;
-
-
     private Music factoryMusic;
     private SpriteBatch batch;
     private SpriteBatch HUDbatch;
@@ -51,10 +42,6 @@ public class GameScreen implements Screen {
     public static final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE * NTILES;
-    //private final int OFFSET = (SCREENSIZE/2);
-    private final int OFFSET = 0;
-
-    boolean handled = false;
 
 
 
@@ -68,10 +55,6 @@ public class GameScreen implements Screen {
         //camera.zoom += 0.002f;
         camera.translate(-280, -550);
 
-        //camera.position.set(camera.viewportHeight / 2f, camera.viewportWidth / 2f, 0);
-        sheet = new ProgramSheet(map);
-
-        robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
         fillTextureMap();
 
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
@@ -80,8 +63,6 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         HUDbatch = new SpriteBatch();
         shape = new ShapeRenderer();
-        // create a Rectangle to logically represent the robot
-        //robot = new Robot(new Position(0, 0), Direction.LEFT, map);
         gamer = new Gamer(map, "Player1");
         robot = gamer.getSheet().getRobot();
         controller = new Controller(gamer);
@@ -91,6 +72,7 @@ public class GameScreen implements Screen {
 
     private void fillTextureMap() {
         textureMap = new HashMap<>();
+        textureMap.put("robot", new Texture(Gdx.files.internal("assets/img/robot.png")));
         textureMap.put("card", new Texture(Gdx.files.internal("assets/img/card.png")));
         textureMap.put("powerdownon", new Texture(Gdx.files.internal("assets/img/powerdownon.png")));
         textureMap.put("powerdownoff", new Texture(Gdx.files.internal("assets/img/powerdownoff.png")));
@@ -106,21 +88,16 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        // tell the camera to update its matrices.
         camera.update();
         renderer.setView(camera);
         renderer.render();
 
         controller.runGame(this.state);
 
-        //camera.update();
-        // tell the SpriteBatch to render in the coordinate system specified by the camera.
         batch.setProjectionMatrix(camera.combined);
-        // begin a new batch and draw tiles
         batch.begin();
-        //robot.moveRobotByKeyboard();
-        //robot.moveRobot();
-        batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
+        //robot.keyboardMovesRobot();
+        batch.draw(textureMap.get("robot"), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
         if (state.equals(CardState.DEALTCARDS)){
@@ -173,7 +150,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        robotImage.dispose();
         factoryMusic.dispose();
         batch.dispose();
         shape.dispose();

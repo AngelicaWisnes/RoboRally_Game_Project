@@ -41,7 +41,7 @@ public abstract class AbstractRobot implements IRobot {
      * The method that is called to see if a tile
      * should influence the robot.
      */
-    public void moveRobot(){
+    public void tileMovesRobot(){
         ITile currentTile = getTileOnCurrentPos();
 
         if (currentTile instanceof Rotator){ rotate(((Rotator) currentTile).getRotation()); }
@@ -53,7 +53,7 @@ public abstract class AbstractRobot implements IRobot {
      * A method that allows user to move robot
      * with keyboard, useful for testing manually
      */
-    public void moveRobotByKeyboard() {
+    public void keyboardMovesRobot() {
         //move the robot one tile in a direction
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) move(Direction.RIGHT, 1);
@@ -67,14 +67,21 @@ public abstract class AbstractRobot implements IRobot {
      */
     public void cardMovesRobot(AbstractCard card) {
        if (card instanceof MoveBackwards) {
-           this.pos = move(Direction.DOWN, 1);
+           this.pos = move(dir.opposite(), 1);
        }
 
        if (card instanceof MoveForward) {
-           this.pos = move(Direction.UP, ((MoveForward) card).getSteps());
+           this.pos = move(dir, ((MoveForward) card).getSteps());
         }
 
        if (card instanceof RotationCard) {
+           if (((RotationCard) card).getRotation().equals(Rotation.TURN_CLOCKWISE)){
+               this.dir = this.dir.clockwise();
+           } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_COUNTER_CLOCKWISE)){
+               this.dir = this.dir.counterClockwise();
+           } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_AROUND)){
+               this.dir = this.dir.opposite();
+           }
         }
     }
 

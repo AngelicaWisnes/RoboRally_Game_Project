@@ -19,7 +19,7 @@ public class ProgramSheet {
     private Slot[] slots = {slot1, slot2, slot3, slot4, slot5};
 
     public ProgramSheet(TiledMap map) {
-        robot = new Robot(new Position(0, 0), Direction.LEFT, map);
+        robot = new Robot(new Position(0, 0), Direction.UP, map);
         damage = 0;
         lives = 3;
         powerDown = false;
@@ -44,6 +44,19 @@ public class ProgramSheet {
             slot5.setCard(card);
         }
         return null;
+    }
+    public void removeLastCard(){
+        if (!slot5.isAvailable()){
+            slot5.removeCard();
+        } else if (!slot4.isAvailable()){
+            slot4.removeCard();
+        } else if (!slot3.isAvailable()){
+            slot3.removeCard();
+        } else if (!slot2.isAvailable()){
+            slot2.removeCard();
+        } else if (!slot1.isAvailable()){
+            slot1.removeCard();
+        }
     }
 
     public void clearUnlockedSlots() {

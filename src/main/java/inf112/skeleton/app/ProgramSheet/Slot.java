@@ -30,6 +30,12 @@ public class Slot {
         return card;
     }
 
+    public void removeCard(){
+        if (this.locked == false){
+            this.card = null;
+        }
+    }
+
     public void setCard(AbstractCard card) {
         this.card = card;
     }
