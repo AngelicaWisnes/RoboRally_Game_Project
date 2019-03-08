@@ -2,12 +2,13 @@ package inf112.skeleton.app;
 
 import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.CardGenerator;
+import inf112.skeleton.app.Enums.CardState;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Controller {
+
 
    private Gamer gamer;
 
@@ -15,37 +16,25 @@ public class Controller {
        this.gamer = gamer;
     }
 
-    public void runGame() {
-        //while (true) {
-            dealCards(); // 9
-            selectCard(); // 5
+    public void runGame(CardState state) {
+        if (state.equals(CardState.NOCARDS)){
+            dealCards();
+        } else if (state.equals(CardState.DEALTCARDS)){
+            selectCard();
+        } else if (state.equals(CardState.SELECTEDCARDS)) {
             playCards();
-
-        //}
+        }
     }
 
 
     private void dealCards() {
         List<AbstractCard> cards = CardGenerator.getNewCardStack();
-        List<AbstractCard> firstHand = new ArrayList<>(cards.subList(0,9));
-        gamer.setCards(firstHand);
-
-        int i = 0;
-
-        for (AbstractCard card : gamer.cardsOnHand) {
-            System.out.println(i++ + " " + card);
-        }
+        List<AbstractCard> nineCards = new ArrayList<>(cards.subList(0,9));
+        gamer.setCards(nineCards);
     }
 
     private void selectCard() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Select 5 cards");
-
-        for (int i = 0; i < 5; i++) {
-            int input = scan.nextInt();
-            gamer.getSheet().placeCard(gamer.cardsOnHand.get(input));
-
-        }
+        //gamer.getSheet().placeCard(gamer.cardsOnHand.get(input));
 
     }
 

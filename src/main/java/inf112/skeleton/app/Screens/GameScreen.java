@@ -14,14 +14,18 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.Direction;
+import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
+import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Robot.Robot;
 
+
 public class GameScreen implements Screen {
     final RoboRally game;
+    private CardState state;
 
     private HashMap<String, Texture> textureMap;
     private TiledMap map;
@@ -48,10 +52,13 @@ public class GameScreen implements Screen {
     //private final int OFFSET = (SCREENSIZE/2);
     private final int OFFSET = 0;
 
+    boolean handled = false;
+
 
 
     public GameScreen(final RoboRally game) {
         this.game = game;
+        this.state = CardState.NOCARDS;
         map = new TmxMapLoader().load("assets/maps/map.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
@@ -63,17 +70,7 @@ public class GameScreen implements Screen {
         sheet = new ProgramSheet(1, map);
 
         robotImage = new Texture(Gdx.files.internal("assets/img/robot.png"));
-
-        textureMap = new HashMap<>();
-        textureMap.put("card", new Texture(Gdx.files.internal("assets/img/card.png")));
-        textureMap.put("powerdownon", new Texture(Gdx.files.internal("assets/img/powerdownon.png")));
-        textureMap.put("powerdownoff", new Texture(Gdx.files.internal("assets/img/powerdownoff.png")));
-
-        textureMap.put("MoveForward", new Texture(Gdx.files.internal("assets/img/CardIcons/Forward.png")));
-        textureMap.put("MoveBackwards", new Texture(Gdx.files.internal("assets/img/CardIcons/Backwards.png")));
-        textureMap.put("RotationCardTURN_CLOCKWISE", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_ClockWise.png")));
-        textureMap.put("RotationCardTURN_COUNTER_CLOCKWISE", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Counter_Clockwise.png")));
-        textureMap.put("RotationCardTURN_AROUND", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Around.png")));
+        fillTextureMap();
 
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
 
@@ -89,6 +86,19 @@ public class GameScreen implements Screen {
 
     }
 
+    private void fillTextureMap() {
+        textureMap = new HashMap<>();
+        textureMap.put("card", new Texture(Gdx.files.internal("assets/img/card.png")));
+        textureMap.put("powerdownon", new Texture(Gdx.files.internal("assets/img/powerdownon.png")));
+        textureMap.put("powerdownoff", new Texture(Gdx.files.internal("assets/img/powerdownoff.png")));
+        textureMap.put("MoveForward", new Texture(Gdx.files.internal("assets/img/CardIcons/Forward.png")));
+        textureMap.put("MoveBackwards", new Texture(Gdx.files.internal("assets/img/CardIcons/Backwards.png")));
+        textureMap.put("RotationCardTURN_CLOCKWISE", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_ClockWise.png")));
+        textureMap.put("RotationCardTURN_COUNTER_CLOCKWISE", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Counter_Clockwise.png")));
+        textureMap.put("RotationCardTURN_AROUND", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Around.png")));
+
+    }
+
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -98,7 +108,7 @@ public class GameScreen implements Screen {
         renderer.setView(camera);
         renderer.render();
 
-        controller.runGame();
+        controller.runGame(this.state);
 
         //camera.update();
         // tell the SpriteBatch to render in the coordinate system specified by the camera.
@@ -110,6 +120,19 @@ public class GameScreen implements Screen {
         batch.draw(robotImage, robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
+        if (state.equals(CardState.DEALTCARDS)){
+            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
+        }
+        stateBasedMovement();
+    }
+
+    private void stateBasedMovement() {
+        if (state.equals(CardState.NOCARDS)){
+            camera.zoom += 0.6;
+            camera.translate(0, -390);
+            controller.runGame(state);
+            state = CardState.DEALTCARDS;
+        }
     }
 
 

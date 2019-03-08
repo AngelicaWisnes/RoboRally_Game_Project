@@ -5,6 +5,7 @@ import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Gamer {
@@ -25,6 +26,7 @@ public class Gamer {
     public void setCards(List<AbstractCard> cardsOnHand) {
         this.cardsOnHand = cardsOnHand;
     }
+    public List<AbstractCard> getCards(){return this.cardsOnHand;}
 
     public ProgramSheet getSheet() {
         return sheet;

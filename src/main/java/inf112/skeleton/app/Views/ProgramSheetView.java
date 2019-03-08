@@ -71,7 +71,7 @@ public class ProgramSheetView {
     private static void drawCards(SpriteBatch batch, ProgramSheet sheet, HashMap<String, Texture> textureMap, ShapeRenderer shape) {
         for (int i = 0; i < 5; i++) {
             AbstractCard card = sheet.getSlot(i).getCard();
-            CardView.drawCard(batch, card, textureMap, shape, i);
+            CardView.drawCardForSheet(batch, card, textureMap, shape, i);
         }
     }
 
