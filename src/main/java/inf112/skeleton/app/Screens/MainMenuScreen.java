@@ -36,7 +36,7 @@ public class MainMenuScreen implements Screen {
         game.batch.begin();
         game.font.draw(game.batch, "Main Menu ", 100, 350);
         game.font.draw(game.batch, "Press any button to begin game...", 100, 250);
-        game.font.draw(game.batch, "Press alt + f4 to quit", 100, 150);
+        game.font.draw(game.batch, "Use numbers 1-9 to select cards", 100, 150);
         game.batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {

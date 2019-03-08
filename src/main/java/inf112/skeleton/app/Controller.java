@@ -17,7 +17,6 @@ public class Controller implements IController {
     private int[] keys = {8, 9, 10, 11, 12, 13, 14, 15, 16};
     private boolean[] selected = new boolean[9];
     private final int KEY_OFFSET = 8; //Gdx.input.key is offset by 8
-    private int current = 0;
 
 
     public Controller(Gamer gamer) {
@@ -48,7 +47,6 @@ public class Controller implements IController {
             if (Gdx.input.isKeyJustPressed(key) && selected[selectedKey] == false) {
                 gamer.getSheet().placeCard(gamer.cardsOnHand.get(selectedKey));
                 selected[selectedKey] = true;
-                current++;
             }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.FORWARD_DEL)) {
