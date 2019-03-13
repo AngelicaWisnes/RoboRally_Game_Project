@@ -1,4 +1,5 @@
 package inf112.skeleton.app.Screens;
+
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
@@ -18,7 +19,6 @@ import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
-
 
 
 public class GameScreen implements Screen {
@@ -44,10 +44,9 @@ public class GameScreen implements Screen {
     private final int SCREENSIZE = TILESIZE * NTILES;
 
 
-
     public GameScreen(final RoboRally game) {
         this.game = game;
-        this.state = CardState.NOCARDS;
+        state = CardState.NOCARDS;
         map = new TmxMapLoader().load("assets/maps/map.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
@@ -92,7 +91,7 @@ public class GameScreen implements Screen {
         renderer.setView(camera);
         renderer.render();
 
-        controller.runGame(this.state);
+        controller.runGame(state);
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
@@ -100,23 +99,23 @@ public class GameScreen implements Screen {
         batch.draw(textureMap.get("robot"), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
-        if (state.equals(CardState.DEALTCARDS)){
+        if (state.equals(CardState.DEALTCARDS)) {
             DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
         }
         stateBasedMovement();
     }
 
     private void stateBasedMovement() {
-        if (state.equals(CardState.NOCARDS)){
+        if (state.equals(CardState.NOCARDS)) {
             camera.zoom += 0.6;
             camera.translate(0, -390);
             controller.runGame(state);
             state = CardState.DEALTCARDS;
         }
-        if (state.equals(CardState.DEALTCARDS) && gamer.getSheet().allSlotsAreFilled()){
+        if (state.equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
             state = CardState.SELECTEDCARDS;
         }
-        if (state.equals(CardState.SELECTEDCARDS)){
+        if (state.equals(CardState.SELECTEDCARDS)) {
             camera.zoom -= 0.6;
             camera.translate(0, 390);
             controller.runGame(state);
