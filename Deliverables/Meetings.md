@@ -24,6 +24,7 @@ Next sprint:
 * have robot know which is under 
 * more tests for classes
 
+
 **06.03.19** 
 
 Previous sprint completed tasks:
@@ -40,3 +41,40 @@ What are we doing:
 * make sure all code is being used, and if not, removed
 
 next meeting 13.03.19
+
+
+**14.03.19**
+Previous sprint completed tasks:
+* delivered oblig 3
+
+* Magne:
+  * created flags and doc
+  * made a new map
+  * oversikt over alle Tiles
+  
+* Roger:
+  * tried to test TiledMap
+  * created checkpoints 
+  * robot can die and be reset
+  
+* Ingrid:
+  * have to press enter to start round
+  * robot point in different directions
+  
+* Stefan:
+  * 
+  
+* Katarina:
+  * 
+  
+Next sprint:
+* finnish round logic
+* tiles move robot
+
+next meeting 21.03.19
+
+
+
+
+
+
