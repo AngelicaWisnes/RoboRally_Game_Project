@@ -42,6 +42,7 @@ public class GameScreen implements Screen {
     public static final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE * NTILES;
+    private final double STARTZOOM = 1.0;
 
 
     public GameScreen(final RoboRally game) {
@@ -65,7 +66,6 @@ public class GameScreen implements Screen {
         gamer = new Gamer(map, "Player1");
         robot = gamer.getSheet().getRobot();
         controller = new Controller(gamer);
-
 
     }
 
@@ -125,21 +125,33 @@ public class GameScreen implements Screen {
         stateBasedMovement();
     }
 
+    //TODO: zoome ut gradvis
+    //
     private void stateBasedMovement() {
         if (state.equals(CardState.NOCARDS)) {
-            camera.zoom += 0.6;
-            camera.translate(0, -390);
+
+            camera.zoom += 0.005;
+            camera.translate(0, -3.25f);
             controller.runGame(state);
-            state = CardState.DEALTCARDS;
+
+            if (camera.zoom >= 1.6) {
+                state = CardState.DEALTCARDS;
+            }
         }
+
+
         if (state.equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
             state = CardState.SELECTEDCARDS;
         }
         if (state.equals(CardState.SELECTEDCARDS)) {
-            camera.zoom -= 0.6;
-            camera.translate(0, 390);
+            camera.zoom -= 0.005;
+            System.out.println(camera.zoom);
+            camera.translate(0, 2.9f);
             controller.runGame(state);
-            state = CardState.PAUSED;
+
+            if (camera.zoom <= 1.0) {
+                state = CardState.PAUSED;
+            }
         }
 
     }
