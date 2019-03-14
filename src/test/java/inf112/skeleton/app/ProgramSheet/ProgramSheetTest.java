@@ -7,31 +7,31 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 public class ProgramSheetTest {
 
+    private Slot slot;
+
+    @Before
+    public void initialize() {
+        slot = new Slot();
+    }
+
     @Test
     public void receiveCards() {
+
     }
 
     @Test
     public void placeCard() {
-        Slot slot = new Slot();
         if (slot.isAvailable()) {
             slot.setCard(new MoveForward(450,1));
         }
-
     }
 
     @Test
     public void clearUnlockedSlots() {
-
+        slot.returnCard();
+        
     }
-
-    @Test
-    public void isPowerDown() {
-
-    }
-
 }
