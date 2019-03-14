@@ -5,8 +5,8 @@ package inf112.skeleton.app.TileTypes;
  */
 public class Flag extends AbstractTile {
 
-    public Flag() {
-        this.image = "flag";
+    public Flag(int id) {
+        this.image = "flag" + id;
     }
 
     @Override

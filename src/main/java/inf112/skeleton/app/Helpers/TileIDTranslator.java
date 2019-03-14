@@ -14,8 +14,11 @@ public class TileIDTranslator {
         translator.put(315, new Pit());
         translator.put(14, new Repair()); // Single Repair
         translator.put(29, new Repair()); // Double Repair
-        // translator.put(1, new Void());
-        // translator.put(1, new Dock(1));
+        //translator.put(1, new Void());
+        translator.put(3, new Dock(1));
+        translator.put(4, new Flag(1));     //green flag
+        translator.put(9, new Flag(2));     //yellow flag
+        translator.put(10, new Flag(3));    //blue flag
         translator.put(60, new DblConveyor(Direction.LEFT));
         translator.put(83, new DblConveyor(Direction.RIGHT));
         translator.put(5, new DblConveyor(Direction.DOWN));

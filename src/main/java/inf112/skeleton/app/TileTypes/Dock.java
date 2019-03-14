@@ -6,8 +6,8 @@ package inf112.skeleton.app.TileTypes;
 
 public class Dock extends AbstractTile {
 
-    public Dock(int n) {
-        this.image = "dock" + n;
+    public Dock(int id) {
+        this.image = "dock" + id;
     }
 
     @Override
