@@ -1,24 +1,25 @@
 package inf112.skeleton.app;
 
-import inf112.skeleton.app.Card.Card;
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.CardGenerator;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class GameAdministrator {
 
 
-    private static Stack<Card> cardStack = new Stack<>();
-    private static Stack<Card> trashedCardStack = new Stack<>();
+    private static Stack<AbstractCard> cardStack = new Stack<>();
+    private static Stack<AbstractCard> trashedCardStack = new Stack<>();
     static {
         cardStack.addAll(CardGenerator.getNewCardStack());
         Collections.shuffle(cardStack);
     }
 
-    public static void returnCardsToDealer(ArrayList<Card> returnedCards) {
+    public static void returnCardsToDealer(List<AbstractCard> returnedCards) {
         trashedCardStack.addAll(returnedCards);
     }
 
@@ -46,7 +47,7 @@ public class GameAdministrator {
 
     private static void dealCards(Gamer gamer) {
         int damage = gamer.getSheet().getDamage();
-        ArrayList<Card> cards = new ArrayList<>();
+        List<AbstractCard> cards = new ArrayList<>();
         for (int i = 0; i < 9 - damage; i++) {
             if (cardStack.size() == 0) reuseTrashedCards();
             cards.add(cardStack.pop());
