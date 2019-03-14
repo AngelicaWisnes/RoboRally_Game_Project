@@ -5,7 +5,7 @@ import com.badlogic.gdx.Input;
 import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.CardGenerator;
 import inf112.skeleton.app.Enums.CardState;
-import net.java.games.input.Component;
+import inf112.skeleton.app.Enums.RoundState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,7 @@ public class Controller implements IController {
     private Stack<AbstractCard> selectedCards = new Stack<>();
     private ArrayList<Integer> selectedKeys = new ArrayList<>();
     private boolean gamerReady = false;
+    private int roundCounter = 0;
 
 
     public Controller(Gamer gamer) {
@@ -27,14 +28,40 @@ public class Controller implements IController {
     }
 
     @Override
-    public void runGame(CardState state) {
-        if (state.equals(CardState.NOCARDS)) {
+    public void runGame(CardState cardState, RoundState roundState) {
+        if (cardState.equals(CardState.NOCARDS)) {
             dealCards();
-        } else if (state.equals(CardState.DEALTCARDS)) {
+        } else if (cardState.equals(CardState.DEALTCARDS)) {
             selectCard();
-        } else if (state.equals(CardState.SELECTEDCARDS)) {
-            playCards();
+        } else if (cardState.equals(CardState.PAUSED)) {
+            System.out.println("card state is paused");
+            startRound(roundState);
         }
+    }
+
+    private void startRound(RoundState roundState) {
+        if (roundState.equals(RoundState.NONE)) {
+            System.out.println("none state");
+            roundState = RoundState.PART1;
+
+        } else if (roundState.equals(RoundState.PART1)) {
+            System.out.println("part 1 state");
+            playCard();
+            gamer.getSheet().getRobot().tileMovesRobot(roundState);
+            roundState = RoundState.PART2;
+
+        } else if (roundState.equals(RoundState.PART2)) {
+
+        } else if (roundState.equals(RoundState.PART3)) {
+
+        }else if (roundState.equals(RoundState.PART4)) {
+
+        }
+
+    }
+
+    private void playCard() {
+        gamer.getSheet().getRobot().cardMovesRobot(gamer.getSheet().getSlot(roundCounter++).getCard());
     }
 
 

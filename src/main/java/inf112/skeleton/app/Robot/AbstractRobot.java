@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Card.*;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
+import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Helpers.TileIDTranslator;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Screens.GameScreen;
@@ -25,24 +26,15 @@ public abstract class AbstractRobot implements IRobot {
     AbstractRobot(Position pos, Direction dir, TiledMap map) {
         this.map = map;
         this.pos = pos;
-        width = GameScreen.TILESIZE;
-        height = GameScreen.TILESIZE;
+        this.width = GameScreen.TILESIZE;
+        this.height = GameScreen.TILESIZE;
 
         this.dir = dir;
     }
 
     /**
-     * @return the current direction
-     */
-    @Override
-    public Direction getDir() {
-        return dir;
-    }
-
-    /**
      * @return the current position
      */
-    @Override
     public Position getPos() {
         return pos;
     }
@@ -52,18 +44,28 @@ public abstract class AbstractRobot implements IRobot {
      * The method that is called to see if a tile
      * should influence the robot.
      */
-    @Override
-    public void tileMovesRobot() {
+    public void tileMovesRobot(RoundState roundState) {
         ITile currentTile = getTileOnCurrentPos();
 
-        if (currentTile instanceof Rotator) {
-            rotate(((Rotator) currentTile).getRotation());
-        }
-        if (currentTile instanceof SingleConveyor) {
-            move(((SingleConveyor) currentTile).getDirection(), 1);
-        }
-        if (currentTile instanceof DblConveyor) {
-            move(((DblConveyor) currentTile).getDirection(), 2);
+        if (roundState.equals(RoundState.PART1)) {
+            if (currentTile instanceof DblConveyor) {
+                move(((DblConveyor) currentTile).getDirection(), 1);
+            }
+
+        } else if (roundState.equals(RoundState.PART2)) {
+            if (currentTile instanceof DblConveyor) {
+                move(((DblConveyor) currentTile).getDirection(), 1);
+            } else if (currentTile instanceof SingleConveyor) {
+                move(((SingleConveyor) currentTile).getDirection(), 1);
+            }
+
+        } else if (roundState.equals(RoundState.PART3)) {
+            // pushers push if active
+
+        } else if (roundState.equals(RoundState.PART4)) {
+            if (currentTile instanceof Rotator) {
+                rotate(((Rotator) currentTile).getRotation());
+            }
         }
     }
 
@@ -71,47 +73,34 @@ public abstract class AbstractRobot implements IRobot {
      * A method that allows user to move robot
      * with keyboard, useful for testing manually
      */
-    @Override
     public void keyboardMovesRobot() {
         //move the robot one tile in a direction
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            move(dir, 1);
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            move(dir.opposite(), 1);
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-            rotate(Rotation.TURN_COUNTER_CLOCKWISE);
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            rotate(Rotation.TURN_CLOCKWISE);
-        }
-
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) move(Direction.RIGHT, 1);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) move(Direction.UP, 1);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(Direction.DOWN, 1);
     }
 
     /**
      * @param card the card that is to influence the robot
      *             moves the robot as the card dictates
      */
-    @Override
     public void cardMovesRobot(AbstractCard card) {
         if (card instanceof MoveBackwards) {
-            pos = move(dir.opposite(), 1);
+            this.pos = move(dir.opposite(), 1);
         }
 
         if (card instanceof MoveForward) {
-            pos = move(dir, ((MoveForward) card).getSteps());
+            this.pos = move(dir, ((MoveForward) card).getSteps());
         }
 
         if (card instanceof RotationCard) {
             if (((RotationCard) card).getRotation().equals(Rotation.TURN_CLOCKWISE)) {
-                dir = dir.clockwise();
+                this.dir = this.dir.clockwise();
             } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_COUNTER_CLOCKWISE)) {
-                dir = dir.counterClockwise();
+                this.dir = this.dir.counterClockwise();
             } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_AROUND)) {
-                dir = dir.opposite();
+                this.dir = this.dir.opposite();
             }
         }
     }
@@ -128,7 +117,7 @@ public abstract class AbstractRobot implements IRobot {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
             tileID = cell.getTile().getId();
         } catch (Exception e) {
-            System.out.println("you have died");
+            System.out.println("du har dødd");
         }
 
         return TileIDTranslator.translate_ID(tileID);

@@ -5,19 +5,12 @@ package inf112.skeleton.app.TileTypes;
  */
 public class Flag extends AbstractTile {
 
-    private static int id;
-
-    public Flag(int id) {
-        this.id = id;
-        this.image = "flag" + id;
+    public Flag() {
+        this.image = "flag";
     }
 
     @Override
     public String getImage() {
         return image;
-    }
-
-    public int getID(int id) {
-        return this.id;
     }
 }
