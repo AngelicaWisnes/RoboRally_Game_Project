@@ -18,6 +18,7 @@ import inf112.skeleton.app.TileTypes.*;
  */
 public abstract class AbstractRobot implements IRobot {
     private TiledMap map;
+    private Position[] checkpointPos = new Position[10];
     private Position pos;
 
     @Override
@@ -26,22 +27,22 @@ public abstract class AbstractRobot implements IRobot {
     }
 
     private Direction dir;
-    private int width, height;
+    private int width, height, checkpointID;
 
 
     AbstractRobot(Position pos, Direction dir, TiledMap map) {
         this.map = map;
-        this.pos = pos;
-        width = GameScreen.TILESIZE;
-        height = GameScreen.TILESIZE;
-
+        this.width = GameScreen.TILESIZE;
+        this.height = GameScreen.TILESIZE;
         this.dir = dir;
+
+        this.checkpointID = 0;
+        this.checkpointPos[checkpointID] = this.pos = pos;
     }
 
     /**
      * @return the current position
      */
-    @Override
     public Position getPos() {
         return pos;
     }
@@ -55,24 +56,14 @@ public abstract class AbstractRobot implements IRobot {
     public void tileMovesRobot(RoundState roundState) {
         ITile currentTile = getTileOnCurrentPos();
         if (roundState.equals(RoundState.PART1)) {
-            if (currentTile instanceof DblConveyor) {
-                move(((DblConveyor) currentTile).getDirection(), 1);
-            }
-
+            if (currentTile instanceof DblConveyor) move(((DblConveyor) currentTile).getDirection(), 1);
         } else if (roundState.equals(RoundState.PART2)) {
-            if (currentTile instanceof DblConveyor) {
-                move(((DblConveyor) currentTile).getDirection(), 1);
-            } else if (currentTile instanceof SingleConveyor) {
-                move(((SingleConveyor) currentTile).getDirection(), 1);
-            }
-
+            if (currentTile instanceof DblConveyor) move(((DblConveyor) currentTile).getDirection(), 1);
+            else if (currentTile instanceof SingleConveyor) move(((SingleConveyor) currentTile).getDirection(), 1);
         } else if (roundState.equals(RoundState.PART3)) {
             // pushers push if active
-
         } else if (roundState.equals(RoundState.PART4)) {
-            if (currentTile instanceof Rotator) {
-                rotate(((Rotator) currentTile).getRotation());
-            }
+            if (currentTile instanceof Rotator) rotate(((Rotator) currentTile).getRotation());
         }
     }
 
@@ -104,21 +95,16 @@ public abstract class AbstractRobot implements IRobot {
      */
     @Override
     public void cardMovesRobot(AbstractCard card) {
-        if (card instanceof MoveBackwards) {
-            pos = move(dir.opposite(), 1);
-        }
-
-        if (card instanceof MoveForward) {
-            pos = move(dir, ((MoveForward) card).getSteps());
-        }
+        if (card instanceof MoveBackwards) this.pos = move(dir.opposite(), 1);
+        if (card instanceof MoveForward) this.pos = move(dir, ((MoveForward) card).getSteps());
 
         if (card instanceof RotationCard) {
             if (((RotationCard) card).getRotation().equals(Rotation.TURN_CLOCKWISE)) {
-                dir = dir.clockwise();
+                this.dir = this.dir.clockwise();
             } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_COUNTER_CLOCKWISE)) {
-                dir = dir.counterClockwise();
+                this.dir = this.dir.counterClockwise();
             } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_AROUND)) {
-                dir = dir.opposite();
+                this.dir = this.dir.opposite();
             }
         }
     }
@@ -130,15 +116,15 @@ public abstract class AbstractRobot implements IRobot {
         //move the robot one tile in a direction
         int x = pos.getX() / GameScreen.TILESIZE;
         int y = pos.getY() / GameScreen.TILESIZE;
-        int tileID = -1;
+        int tileID;
         try {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
             tileID = cell.getTile().getId();
+            return TileIDTranslator.translate_ID(tileID);
         } catch (Exception e) {
-            System.out.println("du har dødd");
+            System.out.println("you have died");
+            return null;
         }
-
-        return TileIDTranslator.translate_ID(tileID);
     }
 
     /**
@@ -176,26 +162,34 @@ public abstract class AbstractRobot implements IRobot {
      * @return the new position
      */
     private Position move(Direction direction, int spaces) {
-        if (spaces < 1 || spaces > 3) {
-            throw new IllegalArgumentException("Must have valid spaces-input to move robot");
+        if (spaces < 1 || spaces > 3) throw new IllegalArgumentException("Invalid spaces-input to move");
+
+        while (spaces-- > 0) {
+            switch (direction) {
+                case UP:
+                    pos.setY(height);
+                    break;
+                case DOWN:
+                    pos.setY(-height);
+                    break;
+                case LEFT:
+                    pos.setX(-width);
+                    break;
+                case RIGHT:
+                    pos.setX(width);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Must have valid direction-input to move robot");
+            }
+
+            if (hasJustDied()) return checkpointPos[checkpointID];
         }
 
-        switch (direction) {
-            case UP:
-                pos.setY(spaces * GameScreen.TILESIZE);
-                return pos;
-            case DOWN:
-                pos.setY(-spaces * GameScreen.TILESIZE);
-                return pos;
-            case LEFT:
-                pos.setX(-spaces * GameScreen.TILESIZE);
-                return pos;
-            case RIGHT:
-                pos.setX(spaces * GameScreen.TILESIZE);
-                return pos;
-            default:
-                throw new IllegalArgumentException("Must have valid direction-input to move robot");
-        }
+        return pos;
+    }
+
+    private boolean hasJustDied() {
+        return getTileOnCurrentPos() == null;
     }
 
     /**
