@@ -25,63 +25,94 @@ public abstract class AbstractRobot implements IRobot {
     AbstractRobot(Position pos, Direction dir, TiledMap map) {
         this.map = map;
         this.pos = pos;
-        this.width = GameScreen.TILESIZE;
-        this.height = GameScreen.TILESIZE;
+        width = GameScreen.TILESIZE;
+        height = GameScreen.TILESIZE;
 
         this.dir = dir;
     }
 
     /**
+     * @return the current direction
+     */
+    @Override
+    public Direction getDir() {
+        return dir;
+    }
+
+    /**
      * @return the current position
      */
-    public Position getPos() { return pos; }
+    @Override
+    public Position getPos() {
+        return pos;
+    }
 
 
     /**
      * The method that is called to see if a tile
      * should influence the robot.
      */
-    public void tileMovesRobot(){
+    @Override
+    public void tileMovesRobot() {
         ITile currentTile = getTileOnCurrentPos();
 
-        if (currentTile instanceof Rotator){ rotate(((Rotator) currentTile).getRotation()); }
-        if (currentTile instanceof SingleConveyor) { move(((SingleConveyor) currentTile).getDirection(), 1);}
-        if (currentTile instanceof DblConveyor) { move(((DblConveyor) currentTile).getDirection(), 2);}
+        if (currentTile instanceof Rotator) {
+            rotate(((Rotator) currentTile).getRotation());
+        }
+        if (currentTile instanceof SingleConveyor) {
+            move(((SingleConveyor) currentTile).getDirection(), 1);
+        }
+        if (currentTile instanceof DblConveyor) {
+            move(((DblConveyor) currentTile).getDirection(), 2);
+        }
     }
 
     /**
      * A method that allows user to move robot
      * with keyboard, useful for testing manually
      */
+    @Override
     public void keyboardMovesRobot() {
         //move the robot one tile in a direction
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) move(Direction.RIGHT, 1);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) move(Direction.UP, 1);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(Direction.DOWN, 1);
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            move(dir, 1);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            move(dir.opposite(), 1);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+            rotate(Rotation.TURN_COUNTER_CLOCKWISE);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+            rotate(Rotation.TURN_CLOCKWISE);
+        }
+
     }
 
     /**
      * @param card the card that is to influence the robot
-     * moves the robot as the card dictates
+     *             moves the robot as the card dictates
      */
+    @Override
     public void cardMovesRobot(AbstractCard card) {
-       if (card instanceof MoveBackwards) {
-           this.pos = move(dir.opposite(), 1);
-       }
-
-       if (card instanceof MoveForward) {
-           this.pos = move(dir, ((MoveForward) card).getSteps());
+        if (card instanceof MoveBackwards) {
+            pos = move(dir.opposite(), 1);
         }
 
-       if (card instanceof RotationCard) {
-           if (((RotationCard) card).getRotation().equals(Rotation.TURN_CLOCKWISE)){
-               this.dir = this.dir.clockwise();
-           } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_COUNTER_CLOCKWISE)){
-               this.dir = this.dir.counterClockwise();
-           } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_AROUND)){
-               this.dir = this.dir.opposite();
-           }
+        if (card instanceof MoveForward) {
+            pos = move(dir, ((MoveForward) card).getSteps());
+        }
+
+        if (card instanceof RotationCard) {
+            if (((RotationCard) card).getRotation().equals(Rotation.TURN_CLOCKWISE)) {
+                dir = dir.clockwise();
+            } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_COUNTER_CLOCKWISE)) {
+                dir = dir.counterClockwise();
+            } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_AROUND)) {
+                dir = dir.opposite();
+            }
         }
     }
 
@@ -97,7 +128,7 @@ public abstract class AbstractRobot implements IRobot {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
             tileID = cell.getTile().getId();
         } catch (Exception e) {
-            System.out.println("du har dødd");
+            System.out.println("you have died");
         }
 
         return TileIDTranslator.translate_ID(tileID);
@@ -105,14 +136,18 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Rotate the robot
+     *
      * @param rotation the rotation-Enum describing how turning-direction
      * @return the new direction
      */
     private Direction rotate(Rotation rotation) {
         switch (rotation) {
-            case TURN_CLOCKWISE: return dir = dir.clockwise();
-            case TURN_COUNTER_CLOCKWISE: return dir = dir.counterClockwise();
-            case TURN_AROUND: return dir = dir.opposite();
+            case TURN_CLOCKWISE:
+                return dir = dir.clockwise();
+            case TURN_COUNTER_CLOCKWISE:
+                return dir = dir.counterClockwise();
+            case TURN_AROUND:
+                return dir = dir.opposite();
             default:
                 throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
         }
@@ -128,8 +163,9 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Move the robot in the given direction
+     *
      * @param direction given from keyboardMoveRobot
-     * @param spaces number of spaces to move
+     * @param spaces    number of spaces to move
      * @return the new position
      */
     private Position move(Direction direction, int spaces) {
@@ -138,10 +174,18 @@ public abstract class AbstractRobot implements IRobot {
         }
 
         switch (direction) {
-            case UP: pos.setY(spaces * GameScreen.TILESIZE); return pos;
-            case DOWN: pos.setY(-spaces * GameScreen.TILESIZE); return pos;
-            case LEFT: pos.setX(-spaces * GameScreen.TILESIZE); return pos;
-            case RIGHT: pos.setX(spaces * GameScreen.TILESIZE); return pos;
+            case UP:
+                pos.setY(spaces * GameScreen.TILESIZE);
+                return pos;
+            case DOWN:
+                pos.setY(-spaces * GameScreen.TILESIZE);
+                return pos;
+            case LEFT:
+                pos.setX(-spaces * GameScreen.TILESIZE);
+                return pos;
+            case RIGHT:
+                pos.setX(spaces * GameScreen.TILESIZE);
+                return pos;
             default:
                 throw new IllegalArgumentException("Must have valid direction-input to move robot");
         }
