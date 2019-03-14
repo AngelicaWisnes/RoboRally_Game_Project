@@ -74,19 +74,10 @@ public abstract class AbstractRobot implements IRobot {
     @Override
     public void keyboardMovesRobot() {
         //move the robot one tile in a direction
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            move(dir, 1);
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            move(dir.opposite(), 1);
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-            rotate(Rotation.TURN_COUNTER_CLOCKWISE);
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            rotate(Rotation.TURN_CLOCKWISE);
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) move(dir, 1);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(dir.opposite(), 1);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) rotate(Rotation.TURN_COUNTER_CLOCKWISE);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) rotate(Rotation.TURN_CLOCKWISE);
     }
 
     /**
