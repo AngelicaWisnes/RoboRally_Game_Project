@@ -47,7 +47,7 @@ public class GameScreen implements Screen {
     public GameScreen(final RoboRally game) {
         this.game = game;
         state = CardState.NOCARDS;
-        map = new TmxMapLoader().load("assets/maps/map.tmx");
+        map = new TmxMapLoader().load("assets/maps/test_flag.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
