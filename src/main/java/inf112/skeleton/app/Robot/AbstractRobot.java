@@ -19,6 +19,12 @@ import inf112.skeleton.app.TileTypes.*;
 public abstract class AbstractRobot implements IRobot {
     private TiledMap map;
     private Position pos;
+
+    @Override
+    public Direction getDir() {
+        return dir;
+    }
+
     private Direction dir;
     private int width, height;
 
@@ -26,8 +32,8 @@ public abstract class AbstractRobot implements IRobot {
     AbstractRobot(Position pos, Direction dir, TiledMap map) {
         this.map = map;
         this.pos = pos;
-        this.width = GameScreen.TILESIZE;
-        this.height = GameScreen.TILESIZE;
+        width = GameScreen.TILESIZE;
+        height = GameScreen.TILESIZE;
 
         this.dir = dir;
     }
@@ -35,6 +41,7 @@ public abstract class AbstractRobot implements IRobot {
     /**
      * @return the current position
      */
+    @Override
     public Position getPos() {
         return pos;
     }
@@ -44,6 +51,7 @@ public abstract class AbstractRobot implements IRobot {
      * The method that is called to see if a tile
      * should influence the robot.
      */
+    @Override
     public void tileMovesRobot(RoundState roundState) {
         ITile currentTile = getTileOnCurrentPos();
 
@@ -73,34 +81,45 @@ public abstract class AbstractRobot implements IRobot {
      * A method that allows user to move robot
      * with keyboard, useful for testing manually
      */
+    @Override
     public void keyboardMovesRobot() {
         //move the robot one tile in a direction
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) move(Direction.LEFT, 1);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) move(Direction.RIGHT, 1);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) move(Direction.UP, 1);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(Direction.DOWN, 1);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            move(dir, 1);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            move(dir.opposite(), 1);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+            rotate(Rotation.TURN_COUNTER_CLOCKWISE);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+            rotate(Rotation.TURN_CLOCKWISE);
+        }
     }
 
     /**
      * @param card the card that is to influence the robot
      *             moves the robot as the card dictates
      */
+    @Override
     public void cardMovesRobot(AbstractCard card) {
         if (card instanceof MoveBackwards) {
-            this.pos = move(dir.opposite(), 1);
+            pos = move(dir.opposite(), 1);
         }
 
         if (card instanceof MoveForward) {
-            this.pos = move(dir, ((MoveForward) card).getSteps());
+            pos = move(dir, ((MoveForward) card).getSteps());
         }
 
         if (card instanceof RotationCard) {
             if (((RotationCard) card).getRotation().equals(Rotation.TURN_CLOCKWISE)) {
-                this.dir = this.dir.clockwise();
+                dir = dir.clockwise();
             } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_COUNTER_CLOCKWISE)) {
-                this.dir = this.dir.counterClockwise();
+                dir = dir.counterClockwise();
             } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_AROUND)) {
-                this.dir = this.dir.opposite();
+                dir = dir.opposite();
             }
         }
     }

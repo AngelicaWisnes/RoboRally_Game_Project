@@ -74,7 +74,10 @@ public class GameScreen implements Screen {
 
     private void fillTextureMap() {
         textureMap = new HashMap<>();
-        textureMap.put("robot", new Texture(Gdx.files.internal("assets/img/robot.png")));
+        textureMap.put("robot_north", new Texture(Gdx.files.internal("assets/img/robot_north.png")));
+        textureMap.put("robot_east", new Texture(Gdx.files.internal("assets/img/robot_east.png")));
+        textureMap.put("robot_south", new Texture(Gdx.files.internal("assets/img/robot_south.png")));
+        textureMap.put("robot_west", new Texture(Gdx.files.internal("assets/img/robot_west.png")));
         textureMap.put("card", new Texture(Gdx.files.internal("assets/img/card.png")));
         textureMap.put("powerdownon", new Texture(Gdx.files.internal("assets/img/powerdownon.png")));
         textureMap.put("powerdownoff", new Texture(Gdx.files.internal("assets/img/powerdownoff.png")));
@@ -99,7 +102,24 @@ public class GameScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         //robot.keyboardMovesRobot();
-        batch.draw(textureMap.get("robot"), robot.getPos().getX(), robot.getPos().getY());
+        robot.keyboardMovesRobot();
+        String robotString = "";
+        switch (gamer.getSheet().getRobot().getDir()) {
+            case UP:
+                robotString = "robot_north";
+                break;
+            case RIGHT:
+                robotString = "robot_east";
+                break;
+            case DOWN:
+                robotString = "robot_south";
+                break;
+            case LEFT:
+                robotString = "robot_west";
+                break;
+        }
+
+        batch.draw(textureMap.get(robotString), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
         if (cardState.equals(CardState.DEALTCARDS)) {
@@ -115,7 +135,7 @@ public class GameScreen implements Screen {
 
             camera.zoom += 0.005;
             camera.translate(0, -3.25f);
-            controller.runGame(cardState);
+            controller.runGame(cardState, roundState);
 
             if (camera.zoom >= 1.6) {
                 cardState = CardState.DEALTCARDS;
@@ -130,7 +150,7 @@ public class GameScreen implements Screen {
             camera.zoom -= 0.005;
             System.out.println(camera.zoom);
             camera.translate(0, 2.9f);
-            controller.runGame(cardState);
+            controller.runGame(cardState, roundState);
 
             if (camera.zoom <= 1.0) {
                 cardState = CardState.PAUSED;
