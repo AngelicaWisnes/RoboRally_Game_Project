@@ -27,6 +27,8 @@ public class Gamer {
         this.cardsOnHand = cardsOnHand;
     }
 
+    public void resetCards(){cardsOnHand = new ArrayList<>();}
+
     public List<AbstractCard> getCards() {
         return this.cardsOnHand;
     }

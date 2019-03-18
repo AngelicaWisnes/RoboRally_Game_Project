@@ -15,47 +15,80 @@ public class Controller implements IController {
 
 
     private Gamer gamer;
+    private CardState cardState;
+    private RoundState roundState;
     private int[] keys = {8, 9, 10, 11, 12, 13, 14, 15, 16};
     private final int KEY_OFFSET = 8; //Gdx.input.key is offset by 8
-    private Stack<AbstractCard> selectedCards = new Stack<>();
     private ArrayList<Integer> selectedKeys = new ArrayList<>();
     private boolean gamerReady = false;
     private int roundCounter = 0;
 
 
-    public Controller(Gamer gamer) {
+    public Controller(Gamer gamer, StateHolder stateHolder) {
         this.gamer = gamer;
+        this.cardState = stateHolder.getCardState();
+        this.roundState = stateHolder.getRoundState();
     }
 
     @Override
-    public void runGame(CardState cardState, RoundState roundState) {
-        if (cardState.equals(CardState.NOCARDS)) {
+    public StateHolder runGame(StateHolder states) {
+        this.cardState = states.getCardState();
+        this.roundState = states.getRoundState();
+
+        if (this.cardState.equals(CardState.NOCARDS)) {
+            gamer.resetCards();
             dealCards();
-        } else if (cardState.equals(CardState.DEALTCARDS)) {
+        } else if (this.cardState.equals(CardState.DEALINGCARDS)) {
+            //waiting for cards to be dealt
+        } else if (this.cardState.equals(CardState.DEALTCARDS)) {
             selectCard();
-        } else if (cardState.equals(CardState.PAUSED)) {
-            System.out.println("card state is paused");
-            startRound(roundState);
+        } else if (this.cardState.equals(CardState.SELECTEDCARDS)) {
+            //waiting for screen to reset
+        } else if (this.cardState.equals(CardState.PLAYINGCARDS)){
+            if (roundCounter < 5){
+                startRound();
+            } else {
+                //RESET
+                resetRound();
+            }
         }
+        return new StateHolder(this.cardState, this.roundState);
     }
 
-    private void startRound(RoundState roundState) {
-        if (roundState.equals(RoundState.NONE)) {
-            System.out.println("none state");
-            roundState = RoundState.PART1;
+    private void resetRound() {
+        roundCounter = 0;
+        roundState = RoundState.NONE;
+        cardState = CardState.NOCARDS;
+        gamer.getSheet().clearUnlockedSlots();
+        gamer.resetCards();
+        selectedKeys = new ArrayList<>();
+        gamerReady = false;
 
-        } else if (roundState.equals(RoundState.PART1)) {
-            System.out.println("part 1 state");
+    }
+
+    private void startRound() {
+        if (roundState.equals(RoundState.NONE)) {
+            roundState = RoundState.PART1;
+        } else if (this.roundState.equals(RoundState.PART1)) {
             playCard();
             gamer.getSheet().getRobot().tileMovesRobot(roundState);
             roundState = RoundState.PART2;
-
+            System.out.println("part 1");
         } else if (roundState.equals(RoundState.PART2)) {
-
+            //express conveyors move 1
+            gamer.getSheet().getRobot().tileMovesRobot(roundState);
+            roundState = RoundState.PART3;
+            System.out.println("part 2");
         } else if (roundState.equals(RoundState.PART3)) {
-
+            //all conveyors move 1
+            gamer.getSheet().getRobot().tileMovesRobot(roundState);
+            roundState = RoundState.PART4;
+            System.out.println("part 3");
         }else if (roundState.equals(RoundState.PART4)) {
-
+            //gears rotate
+            gamer.getSheet().getRobot().tileMovesRobot(roundState);
+            roundState = RoundState.NONE;
+            System.out.println("part 4");
         }
 
     }
@@ -94,15 +127,9 @@ public class Controller implements IController {
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && gamer.getSheet().allSlotsAreFilled()) {
             gamerReady = true;
-
         }
     }
 
-    private void playCards() {
-        for (int i = 0; i < 5; i++) {
-            gamer.getSheet().getRobot().cardMovesRobot(gamer.getSheet().getSlot(i).getCard());
-        }
-    }
 
 
 }

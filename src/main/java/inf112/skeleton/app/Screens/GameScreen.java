@@ -13,19 +13,22 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.utils.TimeUtils;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Robot.IRobot;
+import inf112.skeleton.app.StateHolder;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
 
 
 public class GameScreen implements Screen {
     final RoboRally game;
-    private CardState cardState;
-    private RoundState roundState;
+    private StateHolder states;
+
+    private long previousMovementTime = TimeUtils.millis();
 
     private HashMap<String, Texture> textureMap;
     private TiledMap map;
@@ -41,6 +44,8 @@ public class GameScreen implements Screen {
     private Gamer gamer;
     private Controller controller;
 
+    private int roundCounter = 0;
+
     public static final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE * NTILES;
@@ -49,8 +54,8 @@ public class GameScreen implements Screen {
 
     public GameScreen(final RoboRally game) {
         this.game = game;
-        cardState = CardState.NOCARDS;
-        roundState = RoundState.NONE;
+        this.states = new StateHolder(CardState.NOCARDS, RoundState.NONE);
+
         map = new TmxMapLoader().load("assets/maps/map.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
@@ -68,7 +73,7 @@ public class GameScreen implements Screen {
         shape = new ShapeRenderer();
         gamer = new Gamer(map, "Player1");
         robot = gamer.getSheet().getRobot();
-        controller = new Controller(gamer);
+        controller = new Controller(gamer, states);
 
     }
 
@@ -96,12 +101,11 @@ public class GameScreen implements Screen {
         camera.update();
         renderer.setView(camera);
         renderer.render();
-
-        controller.runGame(cardState, roundState);
+        this.states = controller.runGame(states);
+        stateBasedMovement();
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        //robot.keyboardMovesRobot();
         robot.keyboardMovesRobot();
         String robotString = "";
         switch (gamer.getSheet().getRobot().getDir()) {
@@ -122,38 +126,30 @@ public class GameScreen implements Screen {
         batch.draw(textureMap.get(robotString), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
-        if (cardState.equals(CardState.DEALTCARDS)) {
-            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
-        }
-        stateBasedMovement();
     }
 
-    //TODO: zoome ut gradvis
-    //
     private void stateBasedMovement() {
-        if (cardState.equals(CardState.NOCARDS)) {
-
+        if (this.states.getCardState().equals(CardState.NOCARDS)) {
             camera.zoom += 0.005;
             camera.translate(0, -3.25f);
-            controller.runGame(cardState, roundState);
-
             if (camera.zoom >= 1.6) {
-                cardState = CardState.DEALTCARDS;
+                this.states.setCardState(CardState.DEALTCARDS);
             }
         }
-
-
-        if (cardState.equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
-            cardState = CardState.SELECTEDCARDS;
+        if (this.states.getCardState().equals(CardState.DEALTCARDS)) {
+            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
         }
-        if (cardState.equals(CardState.SELECTEDCARDS)) {
-            camera.zoom -= 0.005;
-            System.out.println(camera.zoom);
-            camera.translate(0, 2.9f);
-            controller.runGame(cardState, roundState);
 
-            if (camera.zoom <= 1.0) {
-                cardState = CardState.PAUSED;
+        if (this.states.getCardState().equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
+            this.states.setCardState(CardState.SELECTEDCARDS);
+        }
+
+        if (this.states.getCardState().equals(CardState.SELECTEDCARDS)) {
+            if (camera.zoom > 1.0) {
+                camera.zoom -= 0.005;
+                camera.translate(0, 3.25f);
+            } else {
+                this.states.setCardState(CardState.PLAYINGCARDS);
             }
         }
 
