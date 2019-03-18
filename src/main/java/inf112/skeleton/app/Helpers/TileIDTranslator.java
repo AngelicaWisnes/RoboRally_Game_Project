@@ -16,16 +16,18 @@ public class TileIDTranslator {
         translator.put(29, new Repair()); // Double Repair
         // translator.put(1, new Void());
         // translator.put(1, new Dock(1));
-        translator.put(60, new DblConveyor(Direction.LEFT));
-        translator.put(83, new DblConveyor(Direction.RIGHT));
-        translator.put(5, new DblConveyor(Direction.DOWN));
-        translator.put(138, new DblConveyor(Direction.UP));
-        translator.put(71, new SingleConveyor(Direction.LEFT));
-        translator.put(72, new SingleConveyor(Direction.RIGHT));
-        translator.put(137, new SingleConveyor(Direction.DOWN));
-        translator.put(6, new SingleConveyor(Direction.UP));
+        translator.put(61, new DblConveyor(Direction.LEFT));
+        translator.put(84, new DblConveyor(Direction.RIGHT));
+        translator.put(6, new DblConveyor(Direction.DOWN));
+        translator.put(139, new DblConveyor(Direction.UP));
+        translator.put(72, new SingleConveyor(Direction.LEFT));
+        translator.put(73, new SingleConveyor(Direction.RIGHT));
+        translator.put(138, new SingleConveyor(Direction.DOWN));
+        translator.put(7, new SingleConveyor(Direction.UP));
         translator.put(278, new Rotator(Rotation.TURN_CLOCKWISE));
         translator.put(245, new Rotator(Rotation.TURN_COUNTER_CLOCKWISE));
+        translator.put(129, new Rotator(Rotation.TURN_COUNTER_CLOCKWISE));
+
         // translator.put(2, new Rotator(Rotation.TURN_AROUND));
     }
 

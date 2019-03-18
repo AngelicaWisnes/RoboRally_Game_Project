@@ -3,6 +3,7 @@ package inf112.skeleton.app;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import inf112.skeleton.app.Card.AbstractCard;
+import inf112.skeleton.app.Card.BlankCard;
 import inf112.skeleton.app.Card.CardGenerator;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.RoundState;
@@ -127,6 +128,10 @@ public class Controller implements IController {
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && gamer.getSheet().allSlotsAreFilled()) {
             gamerReady = true;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+            gamer.getSheet().placeCard(new BlankCard(11));
         }
     }
 

@@ -54,7 +54,8 @@ public abstract class AbstractRobot implements IRobot {
     @Override
     public void tileMovesRobot(RoundState roundState) {
         ITile currentTile = getTileOnCurrentPos();
-
+        System.out.println("current tile is: " + currentTile);
+        System.out.println("current round is: " + roundState);
         if (roundState.equals(RoundState.PART1)) {
             if (currentTile instanceof DblConveyor) {
                 move(((DblConveyor) currentTile).getDirection(), 1);
@@ -73,6 +74,7 @@ public abstract class AbstractRobot implements IRobot {
         } else if (roundState.equals(RoundState.PART4)) {
             if (currentTile instanceof Rotator) {
                 rotate(((Rotator) currentTile).getRotation());
+                System.out.println(((Rotator) currentTile).getRotation());
             }
         }
     }
@@ -135,6 +137,7 @@ public abstract class AbstractRobot implements IRobot {
         try {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
             tileID = cell.getTile().getId();
+            System.out.println("tile id before translation: " + tileID);
         } catch (Exception e) {
             System.out.println("du har dødd");
         }
