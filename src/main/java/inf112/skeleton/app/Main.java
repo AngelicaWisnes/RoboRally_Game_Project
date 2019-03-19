@@ -12,9 +12,10 @@ public class Main {
     public static void main(String[] args) {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "RoboRally!";
-        int resolution = java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
-        float multiplier = resolution / 96f; //standard windows pixel value
-        System.out.println("multiplier = " + multiplier);
+        //either resolution (W10) or HDPI (OSX Retina) must be used to get proper sized screen
+        //cfg.useHDPI = true; //comment out if W10
+        int resolution = java.awt.Toolkit.getDefaultToolkit().getScreenResolution(); //comment out if OSX Retina
+        float multiplier = resolution / 96f; //comment out if OSX Retina
         if (Toolkit.getDefaultToolkit().getScreenSize().width * multiplier / 20 * 12 > Toolkit.getDefaultToolkit().getScreenSize().height * multiplier){
             cfg.height = Math.round(Toolkit.getDefaultToolkit().getScreenSize().height * multiplier * 0.9f);
             cfg.width = cfg.height / 12 * 20;
@@ -22,7 +23,7 @@ public class Main {
             cfg.width = Math.round(Toolkit.getDefaultToolkit().getScreenSize().width * multiplier * 0.9f);
             cfg.height = cfg.width / 20 * 12;
         }
-        //cfg.useHDPI = true;
+
         //cfg.fullscreen = true;
         //cfg.vSyncEnabled = true;
         cfg.addIcon("assets/img/icons/icon16.png", Files.FileType.Internal);

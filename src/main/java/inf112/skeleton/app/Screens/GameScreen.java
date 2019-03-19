@@ -64,15 +64,10 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-
-/*
-        float newHeight = Gdx.graphics.getWidth() / 20f * 12f * 0.9f;
-        float newWidth = newHeight / 12 * 20;
-        System.out.println(newHeight);
-        System.out.println(newWidth);
-        camera.translate(-newWidth, -newHeight);
-*/
-
+        float newX = 64; //Gdx.graphics.getWidth() / 2 - (16*64) / 2;
+        float newY = Gdx.graphics.getHeight() / 2 - (12*64) / 2;
+        camera.translate(-newX, -newY);
+        //camera.zoom = 1.25f;
 
 
 
@@ -105,7 +100,7 @@ public class GameScreen implements Screen {
         textureMap.put("RotationCardTURN_COUNTER_CLOCKWISE", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Counter_Clockwise.png")));
         textureMap.put("RotationCardTURN_AROUND", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Around.png")));
         textureMap.put("Blank card", new Texture(Gdx.files.internal("assets/img/CardIcons/Blank.png")));
-
+        textureMap.put("sheet", new Texture(Gdx.files.internal("assets/img/sheet.png")));
     }
 
     @Override

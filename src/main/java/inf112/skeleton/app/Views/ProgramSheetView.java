@@ -1,5 +1,6 @@
 package inf112.skeleton.app.Views;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,11 +13,19 @@ import java.util.HashMap;
 public class ProgramSheetView {
 
     public static void drawSheet(SpriteBatch batch, ShapeRenderer shape, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
-        drawBackground(shape);
+        /*drawBackground(shape);
         drawCards(batch, sheet, textureMap, shape);
         drawPower(batch, textureMap, sheet);
         drawDamage(shape, sheet);
-        drawLives(shape, sheet);
+        drawLives(shape, sheet);*/
+        drawImage(batch, textureMap);
+    }
+
+    private static void drawImage(SpriteBatch batch, HashMap<String, Texture> textureMap) {
+        batch.begin();
+        //TODO remove magic number (which is tile width x 16 tiles x 2 spacer tiles
+        batch.draw(textureMap.get("sheet"), 64*18, Gdx.graphics.getHeight() / 2 - (64 * 6), 400, 64*12);
+        batch.end();
     }
 
     private static void drawLives(ShapeRenderer shape, ProgramSheet sheet) {
