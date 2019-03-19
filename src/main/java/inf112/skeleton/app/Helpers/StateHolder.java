@@ -1,4 +1,4 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.Helpers;
 
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.RoundState;

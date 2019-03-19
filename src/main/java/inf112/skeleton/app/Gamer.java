@@ -14,7 +14,7 @@ public class Gamer {
     private ProgramSheet sheet;
     private String name;
 
-    List<AbstractCard> cardsOnHand;
+    private List<AbstractCard> cardsOnHand;
 
 
     public Gamer(TiledMap map, String name) {
@@ -25,7 +25,9 @@ public class Gamer {
 
     public void setCards(List<AbstractCard> cardsOnHand) {
         this.cardsOnHand = cardsOnHand;
-    }
+    }{}
+
+    public AbstractCard getCard(int i){return this.cardsOnHand.get(i);}
 
     public void resetCards(){cardsOnHand = new ArrayList<>();}
 

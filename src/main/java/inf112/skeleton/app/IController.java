@@ -1,7 +1,6 @@
 package inf112.skeleton.app;
 
-import inf112.skeleton.app.Enums.CardState;
-import inf112.skeleton.app.Enums.RoundState;
+import inf112.skeleton.app.Helpers.StateHolder;
 
 public interface IController {
     StateHolder runGame(StateHolder states);

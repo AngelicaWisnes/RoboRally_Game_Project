@@ -13,22 +13,21 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.utils.TimeUtils;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Robot.IRobot;
-import inf112.skeleton.app.StateHolder;
+import inf112.skeleton.app.Helpers.StateHolder;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
+import inf112.skeleton.app.Views.StateTextView;
 
 
 public class GameScreen implements Screen {
     final RoboRally game;
     private StateHolder states;
 
-    private long previousMovementTime = TimeUtils.millis();
 
     private HashMap<String, Texture> textureMap;
     private TiledMap map;
@@ -44,8 +43,6 @@ public class GameScreen implements Screen {
     private Gamer gamer;
     private Controller controller;
 
-    private int roundCounter = 0;
-
     public static final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE * NTILES;
@@ -60,7 +57,6 @@ public class GameScreen implements Screen {
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
-        //camera.zoom += 0.002f;
         camera.translate(-280, -550);
 
         fillTextureMap();
@@ -102,11 +98,11 @@ public class GameScreen implements Screen {
         camera.update();
         renderer.setView(camera);
         renderer.render();
+
         this.states = controller.runGame(states);
         stateBasedMovement();
 
         batch.setProjectionMatrix(camera.combined);
-        batch.begin();
         robot.keyboardMovesRobot();
         String robotString = "";
         switch (gamer.getSheet().getRobot().getDir()) {
@@ -124,15 +120,27 @@ public class GameScreen implements Screen {
                 break;
         }
 
+        batch.begin();
         batch.draw(textureMap.get(robotString), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
+
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
+        StateTextView.drawStates(HUDbatch, states);
+        sleep(100);
+    }
+
+    private void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void stateBasedMovement() {
         if (this.states.getCardState().equals(CardState.NOCARDS)) {
-            camera.zoom += 0.005;
-            camera.translate(0, -3.25f);
+            camera.zoom += 0.005 * 60;
+            camera.translate(0, -3.25f * 60);
             if (camera.zoom >= 1.6) {
                 this.states.setCardState(CardState.DEALTCARDS);
             }
@@ -147,15 +155,13 @@ public class GameScreen implements Screen {
 
         if (this.states.getCardState().equals(CardState.SELECTEDCARDS)) {
             if (camera.zoom > 1.0) {
-                camera.zoom -= 0.005;
-                camera.translate(0, 3.25f);
+                camera.zoom -= 0.005 * 60;
+                camera.translate(0, 3.25f*60);
             } else {
                 this.states.setCardState(CardState.PLAYINGCARDS);
             }
         }
-
     }
-
 
     @Override
     public void resize(int width, int height) {
@@ -185,6 +191,4 @@ public class GameScreen implements Screen {
         batch.dispose();
         shape.dispose();
     }
-
 }
-

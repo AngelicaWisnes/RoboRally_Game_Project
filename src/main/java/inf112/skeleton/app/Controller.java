@@ -7,10 +7,10 @@ import inf112.skeleton.app.Card.BlankCard;
 import inf112.skeleton.app.Card.CardGenerator;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.RoundState;
+import inf112.skeleton.app.Helpers.StateHolder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Controller implements IController {
 
@@ -111,7 +111,7 @@ public class Controller implements IController {
 
             if (Gdx.input.isKeyJustPressed(key)) {
                 if (!selectedKeys.contains(selectedKey) && selectedKeys.size() < 5) {
-                    gamer.getSheet().placeCard(gamer.cardsOnHand.get(selectedKey));
+                    gamer.getSheet().placeCard(gamer.getCard(selectedKey));
                     selectedKeys.add(selectedKey);
                 }
             }
