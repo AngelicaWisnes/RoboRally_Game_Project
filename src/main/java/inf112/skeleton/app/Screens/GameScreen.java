@@ -5,14 +5,15 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.utils.BufferUtils;
+import com.badlogic.gdx.utils.ScreenUtils;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.RoundState;
@@ -53,11 +54,27 @@ public class GameScreen implements Screen {
         this.game = game;
         this.states = new StateHolder(CardState.NOCARDS, RoundState.NONE);
 
-        map = new TmxMapLoader().load("assets/maps/map.tmx");
+        map = new TmxMapLoader().load("assets/maps/newFormatMap.tmx");
+
+        MapProperties prop = map.getProperties();
+
+
+
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
-        camera.translate(-280, -550);
+        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+
+/*
+        float newHeight = Gdx.graphics.getWidth() / 20f * 12f * 0.9f;
+        float newWidth = newHeight / 12 * 20;
+        System.out.println(newHeight);
+        System.out.println(newWidth);
+        camera.translate(-newWidth, -newHeight);
+*/
+
+
+
 
         fillTextureMap();
 
@@ -99,9 +116,9 @@ public class GameScreen implements Screen {
         renderer.setView(camera);
         renderer.render();
 
-        this.states = controller.runGame(states);
+        /*this.states = controller.runGame(states);
         stateBasedMovement();
-
+*/
         batch.setProjectionMatrix(camera.combined);
         robot.keyboardMovesRobot();
         String robotString = "";
@@ -126,7 +143,22 @@ public class GameScreen implements Screen {
 
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
         StateTextView.drawStates(HUDbatch, states);
+        screenshot();
         sleep(100);
+    }
+
+    private void screenshot() {
+        byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
+
+// this loop makes sure the whole screenshot is opaque and looks exactly like what the user is seeing
+        for(int i = 4; i < pixels.length; i += 4) {
+            pixels[i - 1] = (byte) 255;
+        }
+
+        Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);
+        BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
+        PixmapIO.writePNG(Gdx.files.external("mypixmap.png"), pixmap);
+        pixmap.dispose();
     }
 
     private void sleep(int ms) {
