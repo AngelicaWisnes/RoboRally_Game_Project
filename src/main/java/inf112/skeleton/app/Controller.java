@@ -39,6 +39,7 @@ public class Controller implements IController {
         if (this.cardState.equals(CardState.NOCARDS)) {
             gamer.resetCards();
             dealCards();
+            this.cardState = CardState.DEALTCARDS;
         } else if (this.cardState.equals(CardState.DEALINGCARDS)) {
             //waiting for cards to be dealt
         } else if (this.cardState.equals(CardState.DEALTCARDS)) {

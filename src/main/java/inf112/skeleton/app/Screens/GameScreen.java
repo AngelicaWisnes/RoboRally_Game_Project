@@ -5,14 +5,15 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.utils.BufferUtils;
+import com.badlogic.gdx.utils.ScreenUtils;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.RoundState;
@@ -53,11 +54,20 @@ public class GameScreen implements Screen {
         this.game = game;
         this.states = new StateHolder(CardState.NOCARDS, RoundState.NONE);
 
-        map = new TmxMapLoader().load("assets/maps/map.tmx");
+        map = new TmxMapLoader().load("assets/maps/newFormatMap.tmx");
+
+        MapProperties prop = map.getProperties();
+
+
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);
-        camera.translate(-280, -550);
+        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        float newX = 64; //Gdx.graphics.getWidth() / 2 - (16*64) / 2;
+        float newY = Gdx.graphics.getHeight() / 2 - (12 * 64) / 2;
+        camera.translate(-newX, -newY);
+        //camera.zoom = 1.25f;
+
 
         fillTextureMap();
 
@@ -88,7 +98,11 @@ public class GameScreen implements Screen {
         textureMap.put("RotationCardTURN_COUNTER_CLOCKWISE", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Counter_Clockwise.png")));
         textureMap.put("RotationCardTURN_AROUND", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Around.png")));
         textureMap.put("Blank card", new Texture(Gdx.files.internal("assets/img/CardIcons/Blank.png")));
-
+        textureMap.put("sheet", new Texture(Gdx.files.internal("assets/img/sheet.png")));
+        textureMap.put("lifeon", new Texture(Gdx.files.internal("assets/img/lifeon.png")));
+        textureMap.put("damageoff", new Texture(Gdx.files.internal("assets/img/damageoff.png")));
+        textureMap.put("damageon", new Texture(Gdx.files.internal("assets/img/damageon.png")));
+        textureMap.put("damagered", new Texture(Gdx.files.internal("assets/img/damagered.png")));
     }
 
     @Override
@@ -126,45 +140,26 @@ public class GameScreen implements Screen {
 
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
         StateTextView.drawStates(HUDbatch, states);
-        sleep(100);
+        this.states = controller.runGame(states);
+        stateBasedMovement();
+
+        sleep(500);
     }
 
-    private void sleep(int ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void stateBasedMovement() {
-        if (this.states.getCardState().equals(CardState.NOCARDS)) {
-            camera.zoom += 0.005 * 60;
-            camera.translate(0, -3.25f * 60);
-            if (camera.zoom >= 1.6) {
-                this.states.setCardState(CardState.DEALTCARDS);
-            }
-        }
-        if (this.states.getCardState().equals(CardState.DEALTCARDS)) {
-            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
-        }
-
         if (this.states.getCardState().equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
             this.states.setCardState(CardState.SELECTEDCARDS);
-        }
-
-        if (this.states.getCardState().equals(CardState.SELECTEDCARDS)) {
-            if (camera.zoom > 1.0) {
-                camera.zoom -= 0.005 * 60;
-                camera.translate(0, 3.25f*60);
-            } else {
-                this.states.setCardState(CardState.PLAYINGCARDS);
-            }
+        } else if (this.states.getCardState().equals(CardState.DEALTCARDS) ) {
+            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
+        } else if (this.states.getCardState().equals(CardState.SELECTEDCARDS)) {
+            this.states.setCardState(CardState.PLAYINGCARDS);
         }
     }
 
     @Override
     public void resize(int width, int height) {
+
     }
 
     @Override
@@ -191,4 +186,25 @@ public class GameScreen implements Screen {
         batch.dispose();
         shape.dispose();
     }
+
+    private void screenshot() {
+        byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
+        for (int i = 4; i < pixels.length; i += 4) {
+            pixels[i - 1] = (byte) 255;
+        }
+
+        Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);
+        BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
+        PixmapIO.writePNG(Gdx.files.external("mypixmap.png"), pixmap);
+        pixmap.dispose();
+    }
+
+    private void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

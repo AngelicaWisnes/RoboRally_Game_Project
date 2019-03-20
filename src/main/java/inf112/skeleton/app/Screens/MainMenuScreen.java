@@ -16,7 +16,7 @@ public class MainMenuScreen implements Screen {
         this.game = game;
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 900, 900);
+        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
     }
 
@@ -34,9 +34,9 @@ public class MainMenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Main Menu ", 100, 350);
-        game.font.draw(game.batch, "Press any button to begin game...", 100, 250);
-        game.font.draw(game.batch, "Use numbers 1-9 to select cards", 100, 150);
+        game.font.draw(game.batch, "Main Menu ",150, Gdx.graphics.getHeight()/2 + 150);
+        game.font.draw(game.batch, "Press any button to begin game...", 150, Gdx.graphics.getHeight()/2);
+        game.font.draw(game.batch, "Use numbers 1-9 to select cards", 150, Gdx.graphics.getHeight()/2 - 150);
         game.batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {
