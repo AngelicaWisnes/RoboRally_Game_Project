@@ -12,7 +12,24 @@ public class Position {
 
     public int getY() { return y; }
 
-    public void setX(int x) { this.x += x; }
+    public void setX(int x) { this.x = x; }
 
-    public void setY(int y) { this.y += y; }
+    public void setY(int y) { this.y = y; }
+
+    /**
+     * Sets both x and y
+     * @param x
+     * @param y
+     */
+    public void setXY(int x, int y) {
+        setX(x);
+        setY(y);
+    }
+
+    /**
+     * Creates a new Position with same x- and y-value as this
+     * @return new position
+     */
+    public Position clone() { return new Position(this.x, this.y); }
+
 }

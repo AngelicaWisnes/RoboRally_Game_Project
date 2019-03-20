@@ -10,6 +10,7 @@ import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Helpers.TileIDTranslator;
 import inf112.skeleton.app.Helpers.Position;
+import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.*;
 
@@ -18,34 +19,28 @@ import inf112.skeleton.app.TileTypes.*;
  */
 public abstract class AbstractRobot implements IRobot {
     private TiledMap map;
-    private Position pos;
-
-    @Override
-    public Direction getDir() {
-        return dir;
-    }
-
+    private Position pos, checkpoint;
     private Direction dir;
-    private int width, height;
-
+    private int width, height, lastVisitedFlag;
 
     AbstractRobot(Position pos, Direction dir, TiledMap map) {
         this.map = map;
-        this.pos = pos;
-        width = GameScreen.TILESIZE;
-        height = GameScreen.TILESIZE;
-
+        this.width = GameScreen.TILESIZE;
+        this.height = GameScreen.TILESIZE;
         this.dir = dir;
+
+        this.lastVisitedFlag = 0;
+        this.pos = pos;
+        this.checkpoint = pos.clone();
     }
 
     /**
      * @return the current position
      */
-    @Override
-    public Position getPos() {
-        return pos;
-    }
+    public Position getPos() { return pos; }
 
+    @Override
+    public Direction getDir() { return dir; }
 
     /**
      * The method that is called to see if a tile
@@ -55,24 +50,14 @@ public abstract class AbstractRobot implements IRobot {
     public void tileMovesRobot(RoundState roundState) {
         ITile currentTile = getTileOnCurrentPos();
         if (roundState.equals(RoundState.PART1)) {
-            if (currentTile instanceof DblConveyor) {
-                move(((DblConveyor) currentTile).getDirection(), 1);
-            }
-
+            if (currentTile instanceof DblConveyor) move(((DblConveyor) currentTile).getDirection(), 1);
         } else if (roundState.equals(RoundState.PART2)) {
-            if (currentTile instanceof DblConveyor) {
-                move(((DblConveyor) currentTile).getDirection(), 1);
-            } else if (currentTile instanceof SingleConveyor) {
-                move(((SingleConveyor) currentTile).getDirection(), 1);
-            }
-
+            if (currentTile instanceof DblConveyor) move(((DblConveyor) currentTile).getDirection(), 1);
+            else if (currentTile instanceof SingleConveyor) move(((SingleConveyor) currentTile).getDirection(), 1);
         } else if (roundState.equals(RoundState.PART3)) {
             // pushers push if active
-
         } else if (roundState.equals(RoundState.PART4)) {
-            if (currentTile instanceof Rotator) {
-                rotate(((Rotator) currentTile).getRotation());
-            }
+            if (currentTile instanceof Rotator) rotate(((Rotator) currentTile).getRotation());
         }
     }
 
@@ -83,19 +68,10 @@ public abstract class AbstractRobot implements IRobot {
     @Override
     public void keyboardMovesRobot() {
         //move the robot one tile in a direction
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            move(dir, 1);
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            move(dir.opposite(), 1);
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-            rotate(Rotation.TURN_COUNTER_CLOCKWISE);
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            rotate(Rotation.TURN_CLOCKWISE);
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) move(dir, 1);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(dir.opposite(), 1);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) rotate(Rotation.TURN_COUNTER_CLOCKWISE);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) rotate(Rotation.TURN_CLOCKWISE);
     }
 
     /**
@@ -104,21 +80,16 @@ public abstract class AbstractRobot implements IRobot {
      */
     @Override
     public void cardMovesRobot(AbstractCard card) {
-        if (card instanceof MoveBackwards) {
-            pos = move(dir.opposite(), 1);
-        }
-
-        if (card instanceof MoveForward) {
-            pos = move(dir, ((MoveForward) card).getSteps());
-        }
+        if (card instanceof MoveBackwards) this.pos = move(dir.opposite(), 1);
+        if (card instanceof MoveForward) this.pos = move(dir, ((MoveForward) card).getSteps());
 
         if (card instanceof RotationCard) {
             if (((RotationCard) card).getRotation().equals(Rotation.TURN_CLOCKWISE)) {
-                dir = dir.clockwise();
+                this.dir = this.dir.clockwise();
             } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_COUNTER_CLOCKWISE)) {
-                dir = dir.counterClockwise();
+                this.dir = this.dir.counterClockwise();
             } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_AROUND)) {
-                dir = dir.opposite();
+                this.dir = this.dir.opposite();
             }
         }
     }
@@ -130,15 +101,29 @@ public abstract class AbstractRobot implements IRobot {
         //move the robot one tile in a direction
         int x = pos.getX() / GameScreen.TILESIZE;
         int y = pos.getY() / GameScreen.TILESIZE;
-        int tileID = -1;
+        int tileID;
         try {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
             tileID = cell.getTile().getId();
+            return TileIDTranslator.translate_ID(tileID);
         } catch (Exception e) {
-            System.out.println("du har dødd");
+            System.out.println("you have died");
+            return null;
+        }
+    }
+
+    /**
+     * Repairs the robot
+     *
+     */
+    private void repairRobot(SingleRepair singleRepair, DoubleRepair doubleRepair) {
+        if (getTileOnCurrentPos() == singleRepair) {
+            //discard 1 damage token
         }
 
-        return TileIDTranslator.translate_ID(tileID);
+        if (getTileOnCurrentPos() == doubleRepair) {
+            //discard 1 damage && draw 1 option card
+        }
     }
 
     /**
@@ -149,24 +134,12 @@ public abstract class AbstractRobot implements IRobot {
      */
     private Direction rotate(Rotation rotation) {
         switch (rotation) {
-            case TURN_CLOCKWISE:
-                return dir = dir.clockwise();
-            case TURN_COUNTER_CLOCKWISE:
-                return dir = dir.counterClockwise();
-            case TURN_AROUND:
-                return dir = dir.opposite();
-            default:
-                throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
+            case TURN_CLOCKWISE: return dir = dir.clockwise();
+            case TURN_COUNTER_CLOCKWISE: return dir = dir.counterClockwise();
+            case TURN_AROUND: return dir = dir.opposite();
+            default: throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
         }
     }
-
-    /**
-     * Helper-method for testing rotate-method
-     */
-    public Direction testRotation(Rotation rotation) {
-        return rotate(rotation);
-    }
-
 
     /**
      * Move the robot in the given direction
@@ -176,32 +149,48 @@ public abstract class AbstractRobot implements IRobot {
      * @return the new position
      */
     private Position move(Direction direction, int spaces) {
-        if (spaces < 1 || spaces > 3) {
-            throw new IllegalArgumentException("Must have valid spaces-input to move robot");
+        if (spaces < 1 || spaces > 3) throw new IllegalArgumentException("Invalid spaces-input to move");
+
+        while (spaces-- > 0) {
+            switch (direction) {
+                case UP: pos.setY(pos.getY() + height); break;
+                case DOWN: pos.setY(pos.getY() - height); break;
+                case LEFT: pos.setX(pos.getX() - width); break;
+                case RIGHT: pos.setX(pos.getX() + width); break;
+                default: throw new IllegalArgumentException("Must have valid direction-input to move robot");
+            }
+
+            if (hasJustDied()) return killRobot();
         }
 
-        switch (direction) {
-            case UP:
-                pos.setY(spaces * GameScreen.TILESIZE);
-                return pos;
-            case DOWN:
-                pos.setY(-spaces * GameScreen.TILESIZE);
-                return pos;
-            case LEFT:
-                pos.setX(-spaces * GameScreen.TILESIZE);
-                return pos;
-            case RIGHT:
-                pos.setX(spaces * GameScreen.TILESIZE);
-                return pos;
-            default:
-                throw new IllegalArgumentException("Must have valid direction-input to move robot");
-        }
+        return pos;
+    }
+
+    /**
+     * Checks if robot has just died.
+     * @return true if dead, false otherwise
+     */
+    private boolean hasJustDied() {
+        ITile currentTile = getTileOnCurrentPos();
+        return currentTile == null || currentTile instanceof Pit;
+    }
+
+    /**
+     * Reset robot after death.
+     * @return position of last checkpoint
+     */
+    private Position killRobot(){
+        pos.setXY(checkpoint.getX(), checkpoint.getY());
+        return pos;
     }
 
     /**
      * Helper-method for testing move-method
      */
-    private Position testMove(Direction direction, int spaces) {
-        return move(direction, spaces);
-    }
+    private Position testMove(Direction direction, int spaces) { return move(direction, spaces); }
+
+    /**
+     * Helper-method for testing rotate-method
+     */
+    public Direction testRotation(Rotation rotation) { return rotate(rotation); }
 }
