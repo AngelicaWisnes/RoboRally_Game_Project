@@ -111,6 +111,13 @@ public abstract class AbstractRobot implements IRobot {
     }
 
     /**
+     * Repairs the robot
+     *
+     */
+    private void repairRobot() {
+    }
+
+    /**
      * Rotate the robot
      *
      * @param rotation the rotation-Enum describing how turning-direction

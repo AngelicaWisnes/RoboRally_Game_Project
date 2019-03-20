@@ -8,7 +8,7 @@ package inf112.skeleton.app.TileTypes;
  *
  */
 
-public class Repair extends AbstractTile {
+public abstract class Repair extends AbstractTile {
 
     public Repair() {
         this.image = "repair";
