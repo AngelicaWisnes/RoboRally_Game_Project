@@ -57,8 +57,6 @@ public class GameScreen implements Screen {
         map = new TmxMapLoader().load("assets/maps/newFormatMap.tmx");
 
         MapProperties prop = map.getProperties();
-
-
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
