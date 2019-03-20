@@ -165,20 +165,8 @@ public abstract class AbstractRobot implements IRobot {
      * @return position of last checkpoint
      */
     private Position killRobot(){
-        System.out.println(pos.getX() + " -> " + checkpoint.getX());
-        System.out.println(pos.getY() + " -> " + checkpoint.getY());
         pos.setX(checkpoint.getX());
-        System.out.println(pos.getX() + " -> " + checkpoint.getX());
-        System.out.println(pos.getY() + " -> " + checkpoint.getY());
         pos.setY(checkpoint.getY());
-        System.out.println(pos.getX() + " -> " + checkpoint.getX());
-        System.out.println(pos.getY() + " -> " + checkpoint.getY());
-        pos.setX(0);
-        System.out.println(pos.getX() + " -> " + checkpoint.getX());
-        System.out.println(pos.getY() + " -> " + checkpoint.getY());
-        pos.setY(0);
-        System.out.println(pos.getX() + " -> " + checkpoint.getX());
-        System.out.println(pos.getY() + " -> " + checkpoint.getY());
         return pos;
     }
 
