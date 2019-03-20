@@ -26,11 +26,11 @@ public class CardView {
             return;
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect(70 + 160 * pos, 50, 130, 180);
+        shape.rect(1165 + 80 * pos, 605, 130/2, 180/2);
         shape.end();
 
         batch.begin();
-        batch.draw(textureMap.get(card.getKey()), 90 + 160 * pos, 90, 90, 90);
+        batch.draw(textureMap.get(card.getKey()), 1170 + 80 * pos, 635, 90/2, 90/2);
 
         font.setColor(Color.BLACK);
         GlyphLayout glyphLayout = new GlyphLayout();

@@ -101,6 +101,10 @@ public class GameScreen implements Screen {
         textureMap.put("RotationCardTURN_AROUND", new Texture(Gdx.files.internal("assets/img/CardIcons/Turn_Around.png")));
         textureMap.put("Blank card", new Texture(Gdx.files.internal("assets/img/CardIcons/Blank.png")));
         textureMap.put("sheet", new Texture(Gdx.files.internal("assets/img/sheet.png")));
+        textureMap.put("lifeon", new Texture(Gdx.files.internal("assets/img/lifeon.png")));
+        textureMap.put("damageoff", new Texture(Gdx.files.internal("assets/img/damageoff.png")));
+        textureMap.put("damageon", new Texture(Gdx.files.internal("assets/img/damageon.png")));
+        textureMap.put("damagered", new Texture(Gdx.files.internal("assets/img/damagered.png")));
     }
 
     @Override
@@ -111,9 +115,9 @@ public class GameScreen implements Screen {
         renderer.setView(camera);
         renderer.render();
 
-        /*this.states = controller.runGame(states);
+        this.states = controller.runGame(states);
         stateBasedMovement();
-*/
+
         batch.setProjectionMatrix(camera.combined);
         robot.keyboardMovesRobot();
         String robotString = "";
@@ -144,8 +148,6 @@ public class GameScreen implements Screen {
 
     private void screenshot() {
         byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
-
-// this loop makes sure the whole screenshot is opaque and looks exactly like what the user is seeing
         for(int i = 4; i < pixels.length; i += 4) {
             pixels[i - 1] = (byte) 255;
         }
