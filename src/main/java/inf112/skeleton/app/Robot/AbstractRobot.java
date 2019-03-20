@@ -18,17 +18,9 @@ import inf112.skeleton.app.TileTypes.*;
  */
 public abstract class AbstractRobot implements IRobot {
     private TiledMap map;
-    private Position[] checkpointPos = new Position[10];
-    private Position pos;
-
-    @Override
-    public Direction getDir() {
-        return dir;
-    }
-
+    private Position pos, checkpoint;
     private Direction dir;
-    private int width, height, checkpointID;
-
+    private int width, height, lastVisitedFlag;
 
     AbstractRobot(Position pos, Direction dir, TiledMap map) {
         this.map = map;
@@ -36,17 +28,17 @@ public abstract class AbstractRobot implements IRobot {
         this.height = GameScreen.TILESIZE;
         this.dir = dir;
 
-        this.checkpointID = 0;
-        this.checkpointPos[checkpointID] = this.pos = pos;
+        this.lastVisitedFlag = 0;
+        this.pos = this.checkpoint = pos;
     }
 
     /**
      * @return the current position
      */
-    public Position getPos() {
-        return pos;
-    }
+    public Position getPos() { return pos; }
 
+    @Override
+    public Direction getDir() { return dir; }
 
     /**
      * The method that is called to see if a tile
@@ -126,24 +118,12 @@ public abstract class AbstractRobot implements IRobot {
      */
     private Direction rotate(Rotation rotation) {
         switch (rotation) {
-            case TURN_CLOCKWISE:
-                return dir = dir.clockwise();
-            case TURN_COUNTER_CLOCKWISE:
-                return dir = dir.counterClockwise();
-            case TURN_AROUND:
-                return dir = dir.opposite();
-            default:
-                throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
+            case TURN_CLOCKWISE: return dir = dir.clockwise();
+            case TURN_COUNTER_CLOCKWISE: return dir = dir.counterClockwise();
+            case TURN_AROUND: return dir = dir.opposite();
+            default: throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
         }
     }
-
-    /**
-     * Helper-method for testing rotate-method
-     */
-    public Direction testRotation(Rotation rotation) {
-        return rotate(rotation);
-    }
-
 
     /**
      * Move the robot in the given direction
@@ -157,36 +137,44 @@ public abstract class AbstractRobot implements IRobot {
 
         while (spaces-- > 0) {
             switch (direction) {
-                case UP:
-                    pos.setY(height);
-                    break;
-                case DOWN:
-                    pos.setY(-height);
-                    break;
-                case LEFT:
-                    pos.setX(-width);
-                    break;
-                case RIGHT:
-                    pos.setX(width);
-                    break;
-                default:
-                    throw new IllegalArgumentException("Must have valid direction-input to move robot");
+                case UP: pos.setY(height); break;
+                case DOWN: pos.setY(-height); break;
+                case LEFT: pos.setX(-width); break;
+                case RIGHT: pos.setX(width); break;
+                default: throw new IllegalArgumentException("Must have valid direction-input to move robot");
             }
 
-            if (hasJustDied()) return checkpointPos[checkpointID];
+            if (hasJustDied()) return killRobot();
         }
 
         return pos;
     }
 
+    /**
+     * Checks if robot has just died.
+     * @return true if dead, false otherwise
+     */
     private boolean hasJustDied() {
-        return getTileOnCurrentPos() == null;
+        ITile currentTile = getTileOnCurrentPos();
+        return currentTile == null || currentTile instanceof Pit;
+    }
+
+    /**
+     * Reset robot after death.
+     * @return position of last checkpoint
+     */
+    private Position killRobot(){
+        pos = checkpoint;
+        return pos;
     }
 
     /**
      * Helper-method for testing move-method
      */
-    private Position testMove(Direction direction, int spaces) {
-        return move(direction, spaces);
-    }
+    private Position testMove(Direction direction, int spaces) { return move(direction, spaces); }
+
+    /**
+     * Helper-method for testing rotate-method
+     */
+    public Direction testRotation(Rotation rotation) { return rotate(rotation); }
 }
