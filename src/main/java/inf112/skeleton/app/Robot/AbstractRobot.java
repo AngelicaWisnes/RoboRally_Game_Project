@@ -187,7 +187,7 @@ public abstract class AbstractRobot implements IRobot {
     /**
      * Helper-method for testing move-method
      */
-    private Position testMove(Direction direction, int spaces) { return move(direction, spaces); }
+    public Position testMove(Direction direction, int spaces) { return move(direction, spaces); }
 
     /**
      * Helper-method for testing rotate-method
