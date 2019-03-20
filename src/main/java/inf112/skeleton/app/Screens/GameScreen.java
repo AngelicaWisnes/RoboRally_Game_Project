@@ -53,7 +53,7 @@ public class GameScreen implements Screen {
         this.game = game;
         this.states = new StateHolder(CardState.NOCARDS, RoundState.NONE);
 
-        map = new TmxMapLoader().load("assets/maps/map.tmx");
+        map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREENSIZE * 2, SCREENSIZE * 2);

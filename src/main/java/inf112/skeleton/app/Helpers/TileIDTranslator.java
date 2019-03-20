@@ -10,25 +10,39 @@ public class TileIDTranslator {
     static HashMap<Integer, ITile> translator = new HashMap<>();
 
     static {
-        translator.put(1, new Floor());
+        translator.put(145, new Floor());
+        // translator.put(147, new Dock());
+        // translator.put(160, new Dock(1)); // Docking Area
+        //translator.put(148, new Flag(1));
+        //translator.put(154, new Flag(2));
+        //translator.put(929, new Flag(3));
         translator.put(315, new Pit());
-        translator.put(14, new Repair()); // Single Repair
-        translator.put(29, new Repair()); // Double Repair
-        // translator.put(1, new Void());
-        // translator.put(1, new Dock(1));
-        translator.put(61, new DblConveyor(Direction.LEFT));
-        translator.put(84, new DblConveyor(Direction.RIGHT));
-        translator.put(6, new DblConveyor(Direction.DOWN));
-        translator.put(139, new DblConveyor(Direction.UP));
-        translator.put(72, new SingleConveyor(Direction.LEFT));
-        translator.put(73, new SingleConveyor(Direction.RIGHT));
-        translator.put(138, new SingleConveyor(Direction.DOWN));
-        translator.put(7, new SingleConveyor(Direction.UP));
-        translator.put(278, new Rotator(Rotation.TURN_CLOCKWISE));
-        translator.put(245, new Rotator(Rotation.TURN_COUNTER_CLOCKWISE));
-        translator.put(129, new Rotator(Rotation.TURN_COUNTER_CLOCKWISE));
 
-        // translator.put(2, new Rotator(Rotation.TURN_AROUND));
+        translator.put(158, new Repair()); // Single Repair
+        translator.put(173, new Repair()); // Double Repair
+
+        translator.put(1350, new Rotator(Rotation.TURN_CLOCKWISE));
+        translator.put(1317, new Rotator(Rotation.TURN_COUNTER_CLOCKWISE));
+
+        translator.put(151, new SingleConveyor(Direction.UP));
+        translator.put(282, new SingleConveyor(Direction.DOWN));
+        translator.put(216, new SingleConveyor(Direction.LEFT));
+        translator.put(217, new SingleConveyor(Direction.RIGHT));
+
+        translator.put(283, new DblConveyor(Direction.UP));
+        translator.put(150, new DblConveyor(Direction.DOWN));
+        translator.put(205, new DblConveyor(Direction.LEFT));
+        translator.put(228, new DblConveyor(Direction.RIGHT));
+
+        /*
+        translator.put(909, new Laser());
+        translator.put(929, new Laser());
+        translator.put(928, new Laser());
+
+        translator.put(646, new Laser());
+        translator.put(1206, new Laser());
+        translator.put(674, new Laser());
+        */
     }
 
     public static ITile translate_ID(int id) {
