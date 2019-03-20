@@ -10,6 +10,7 @@ import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Helpers.TileIDTranslator;
 import inf112.skeleton.app.Helpers.Position;
+import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.*;
 
@@ -114,7 +115,14 @@ public abstract class AbstractRobot implements IRobot {
      * Repairs the robot
      *
      */
-    private void repairRobot() {
+    private void repairRobot(SingleRepair singleRepair, DoubleRepair doubleRepair) {
+        if (getTileOnCurrentPos() == singleRepair) {
+            //discard 1 damage token
+        }
+
+        if (getTileOnCurrentPos() == doubleRepair) {
+            //discard 1 damage && draw 1 option card
+        }
     }
 
     /**
