@@ -29,7 +29,8 @@ public abstract class AbstractRobot implements IRobot {
         this.dir = dir;
 
         this.lastVisitedFlag = 0;
-        this.pos = this.checkpoint = pos;
+        this.pos = pos;
+        this.checkpoint = pos.clone();
     }
 
     /**
@@ -137,10 +138,10 @@ public abstract class AbstractRobot implements IRobot {
 
         while (spaces-- > 0) {
             switch (direction) {
-                case UP: pos.setY(height); break;
-                case DOWN: pos.setY(-height); break;
-                case LEFT: pos.setX(-width); break;
-                case RIGHT: pos.setX(width); break;
+                case UP: pos.setY(pos.getY() + height); break;
+                case DOWN: pos.setY(pos.getY() - height); break;
+                case LEFT: pos.setX(pos.getX() - width); break;
+                case RIGHT: pos.setX(pos.getX() + width); break;
                 default: throw new IllegalArgumentException("Must have valid direction-input to move robot");
             }
 
@@ -164,7 +165,20 @@ public abstract class AbstractRobot implements IRobot {
      * @return position of last checkpoint
      */
     private Position killRobot(){
-        pos = checkpoint;
+        System.out.println(pos.getX() + " -> " + checkpoint.getX());
+        System.out.println(pos.getY() + " -> " + checkpoint.getY());
+        pos.setX(checkpoint.getX());
+        System.out.println(pos.getX() + " -> " + checkpoint.getX());
+        System.out.println(pos.getY() + " -> " + checkpoint.getY());
+        pos.setY(checkpoint.getY());
+        System.out.println(pos.getX() + " -> " + checkpoint.getX());
+        System.out.println(pos.getY() + " -> " + checkpoint.getY());
+        pos.setX(0);
+        System.out.println(pos.getX() + " -> " + checkpoint.getX());
+        System.out.println(pos.getY() + " -> " + checkpoint.getY());
+        pos.setY(0);
+        System.out.println(pos.getX() + " -> " + checkpoint.getX());
+        System.out.println(pos.getY() + " -> " + checkpoint.getY());
         return pos;
     }
 

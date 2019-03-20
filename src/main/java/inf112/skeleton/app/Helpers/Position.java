@@ -12,9 +12,9 @@ public class Position {
 
     public int getY() { return y; }
 
-    public void setX(int x) { this.x += x; }
+    public void setX(int x) { this.x = x; }
 
-    public void setY(int y) { this.y += y; }
+    public void setY(int y) { this.y = y; }
 
     /**
      * Creates a new Position with same x- and y-value as this
