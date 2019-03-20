@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class ProgramSheetView {
 
     public static void drawSheet(SpriteBatch batch, ShapeRenderer shape, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
-        drawImage(batch, textureMap);
+        //drawImage(batch, textureMap);
         drawPower(batch, textureMap, sheet);
         drawLives(batch, textureMap, sheet);
         drawDamage(batch, textureMap, sheet);

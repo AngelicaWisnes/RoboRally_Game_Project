@@ -142,6 +142,9 @@ public class GameScreen implements Screen {
 
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
         StateTextView.drawStates(HUDbatch, states);
+        this.states = controller.runGame(states);
+        stateBasedMovement();
+
         screenshot();
         sleep(100);
     }
