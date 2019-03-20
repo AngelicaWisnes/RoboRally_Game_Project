@@ -15,4 +15,12 @@ public class Position {
     public void setX(int x) { this.x += x; }
 
     public void setY(int y) { this.y += y; }
+
+    /**
+     * Creates a new Position with same x- and y-value as parameter
+     * @param p position to be cloned
+     * @return new position
+     */
+    public Position clone(Position p) { return new Position(p.getX(), p.getY()); }
+
 }
