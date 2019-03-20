@@ -17,6 +17,16 @@ public class Position {
     public void setY(int y) { this.y = y; }
 
     /**
+     * Sets both x and y
+     * @param x
+     * @param y
+     */
+    public void set(int x, int y) {
+        setX(x);
+        setY(y);
+    }
+
+    /**
      * Creates a new Position with same x- and y-value as this
      * @return new position
      */
