@@ -129,6 +129,7 @@ public class Controller implements IController {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
             gamer.getSheet().placeCard(new BlankCard(11));
+            System.out.println("pressed space");
         }
     }
 

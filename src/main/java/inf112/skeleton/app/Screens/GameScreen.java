@@ -54,7 +54,7 @@ public class GameScreen implements Screen {
         this.game = game;
         this.states = new StateHolder(CardState.NOCARDS, RoundState.NONE);
 
-        map = new TmxMapLoader().load("assets/maps/newFormatMap.tmx");
+        map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
 
         MapProperties prop = map.getProperties();
         renderer = new OrthogonalTiledMapRenderer(map);
@@ -111,8 +111,6 @@ public class GameScreen implements Screen {
         renderer.setView(camera);
         renderer.render();
 
-        this.states = controller.runGame(states);
-        stateBasedMovement();
 
         batch.setProjectionMatrix(camera.combined);
         robot.keyboardMovesRobot();
@@ -141,7 +139,7 @@ public class GameScreen implements Screen {
         this.states = controller.runGame(states);
         stateBasedMovement();
 
-        sleep(500);
+        sleep(100);
     }
 
 
