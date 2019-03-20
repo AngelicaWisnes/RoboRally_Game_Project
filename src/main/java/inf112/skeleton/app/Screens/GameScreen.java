@@ -59,16 +59,14 @@ public class GameScreen implements Screen {
         MapProperties prop = map.getProperties();
 
 
-
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         float newX = 64; //Gdx.graphics.getWidth() / 2 - (16*64) / 2;
-        float newY = Gdx.graphics.getHeight() / 2 - (12*64) / 2;
+        float newY = Gdx.graphics.getHeight() / 2 - (12 * 64) / 2;
         camera.translate(-newX, -newY);
         //camera.zoom = 1.25f;
-
 
 
         fillTextureMap();
@@ -145,58 +143,23 @@ public class GameScreen implements Screen {
         this.states = controller.runGame(states);
         stateBasedMovement();
 
-        screenshot();
-        sleep(100);
+        sleep(500);
     }
 
-    private void screenshot() {
-        byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
-        for(int i = 4; i < pixels.length; i += 4) {
-            pixels[i - 1] = (byte) 255;
-        }
-
-        Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);
-        BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
-        PixmapIO.writePNG(Gdx.files.external("mypixmap.png"), pixmap);
-        pixmap.dispose();
-    }
-
-    private void sleep(int ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void stateBasedMovement() {
-        if (this.states.getCardState().equals(CardState.NOCARDS)) {
-            camera.zoom += 0.005 * 60;
-            camera.translate(0, -3.25f * 60);
-            if (camera.zoom >= 1.6) {
-                this.states.setCardState(CardState.DEALTCARDS);
-            }
-        }
-        if (this.states.getCardState().equals(CardState.DEALTCARDS)) {
-            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
-        }
-
         if (this.states.getCardState().equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
             this.states.setCardState(CardState.SELECTEDCARDS);
-        }
-
-        if (this.states.getCardState().equals(CardState.SELECTEDCARDS)) {
-            if (camera.zoom > 1.0) {
-                camera.zoom -= 0.005 * 60;
-                camera.translate(0, 3.25f*60);
-            } else {
-                this.states.setCardState(CardState.PLAYINGCARDS);
-            }
+        } else if (this.states.getCardState().equals(CardState.DEALTCARDS) ) {
+            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
+        } else if (this.states.getCardState().equals(CardState.SELECTEDCARDS)) {
+            this.states.setCardState(CardState.PLAYINGCARDS);
         }
     }
 
     @Override
     public void resize(int width, int height) {
+
     }
 
     @Override
@@ -223,4 +186,25 @@ public class GameScreen implements Screen {
         batch.dispose();
         shape.dispose();
     }
+
+    private void screenshot() {
+        byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
+        for (int i = 4; i < pixels.length; i += 4) {
+            pixels[i - 1] = (byte) 255;
+        }
+
+        Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);
+        BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
+        PixmapIO.writePNG(Gdx.files.external("mypixmap.png"), pixmap);
+        pixmap.dispose();
+    }
+
+    private void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
