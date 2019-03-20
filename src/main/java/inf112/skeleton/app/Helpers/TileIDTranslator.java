@@ -11,15 +11,15 @@ public class TileIDTranslator {
 
     static {
         translator.put(145, new Floor());
-        // translator.put(147, new Dock());
-        // translator.put(160, new Dock(1)); // Docking Area
+        translator.put(160, new DockArea());
+        translator.put(147, new Dock(1));
         //translator.put(148, new Flag(1));
         //translator.put(154, new Flag(2));
         //translator.put(929, new Flag(3));
         translator.put(315, new Pit());
 
-        translator.put(158, new Repair()); // Single Repair
-        translator.put(173, new Repair()); // Double Repair
+        translator.put(158, new SingleRepair()); // Single Repair
+        translator.put(173, new DoubleRepair()); // Double Repair
 
         translator.put(1350, new Rotator(Rotation.TURN_CLOCKWISE));
         translator.put(1317, new Rotator(Rotation.TURN_COUNTER_CLOCKWISE));
