@@ -21,7 +21,7 @@ public class Position {
      * @param x
      * @param y
      */
-    public void set(int x, int y) {
+    public void setXY(int x, int y) {
         setX(x);
         setY(y);
     }
