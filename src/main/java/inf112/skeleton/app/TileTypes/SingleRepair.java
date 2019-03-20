@@ -1,8 +1,8 @@
 package inf112.skeleton.app.TileTypes;
 
-public class DoubleRepair extends Repair {
+public class SingleRepair extends Repair {
 
-    public DoubleRepair() {
+    public SingleRepair() {
         this.image = "singleRepair";
     }
 
@@ -10,4 +10,5 @@ public class DoubleRepair extends Repair {
     public String getImage() {
         return image;
     }
+
 }
