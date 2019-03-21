@@ -23,7 +23,7 @@ public abstract class AbstractRobotGetSet implements IRobot {
 
     public int getLives() { return lives; }
 
-    public void setDamage(int damage) { this.damage += damage; }
+    public void setDamage(int damage) { this.damage = damage; }
 
     public void setLives(int lives) { this.lives = lives; }
 
@@ -38,10 +38,7 @@ public abstract class AbstractRobotGetSet implements IRobot {
     /**
      * Repairs the robot
      */
-    protected void repair(int repairQty) {
-        setDamage(-repairQty);
-        if (damage < 0) damage = 0;
-    }
+    protected void repair(int repairQty) { setDamage(damage - repairQty < 0 ? 0 : damage - repairQty); }
 
     /**
      * Update the correspondance between current position and checkpoint.
