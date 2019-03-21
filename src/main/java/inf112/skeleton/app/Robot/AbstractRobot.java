@@ -48,17 +48,22 @@ public abstract class AbstractRobot implements IRobot {
      */
     @Override
     public void tileMovesRobot(RoundState roundState) {
-        ITile currentTile = getTileOnCurrentPos();
-        if (roundState.equals(RoundState.PART1)) {
-            if (currentTile instanceof DblConveyor) move(((DblConveyor) currentTile).getDirection(), 1);
-        } else if (roundState.equals(RoundState.PART2)) {
-            if (currentTile instanceof DblConveyor) move(((DblConveyor) currentTile).getDirection(), 1);
-            else if (currentTile instanceof SingleConveyor) move(((SingleConveyor) currentTile).getDirection(), 1);
-        } else if (roundState.equals(RoundState.PART3)) {
-            // pushers push if active
-        } else if (roundState.equals(RoundState.PART4)) {
-            if (currentTile instanceof Rotator) rotate(((Rotator) currentTile).getRotation());
+        ITile curTile = getTileOnCurrentPos();
+        switch (roundState) {
+            case PART1:
+                if (curTile instanceof DblConveyor) move(((DblConveyor) curTile).getDirection(), 1);
+                break;
+            case PART2:
+                if (curTile instanceof AbstractConveyor) move(((AbstractConveyor) curTile).getDirection(), 1);
+                break;
+            case PART3:
+                break;
+            case PART4:
+                if (curTile instanceof Rotator) rotate(((Rotator) curTile).getRotation());
+                break;
+            case NONE: break;
         }
+
     }
 
     /**
@@ -80,18 +85,9 @@ public abstract class AbstractRobot implements IRobot {
      */
     @Override
     public void cardMovesRobot(AbstractCard card) {
-        if (card instanceof MoveBackwards) this.pos = move(dir.opposite(), 1);
-        if (card instanceof MoveForward) this.pos = move(dir, ((MoveForward) card).getSteps());
-
-        if (card instanceof RotationCard) {
-            if (((RotationCard) card).getRotation().equals(Rotation.TURN_CLOCKWISE)) {
-                this.dir = this.dir.clockwise();
-            } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_COUNTER_CLOCKWISE)) {
-                this.dir = this.dir.counterClockwise();
-            } else if (((RotationCard) card).getRotation().equals(Rotation.TURN_AROUND)) {
-                this.dir = this.dir.opposite();
-            }
-        }
+        if (card instanceof MoveBackwards) move(dir.opposite(), 1);
+        if (card instanceof MoveForward) move(dir, ((MoveForward) card).getSteps());
+        if (card instanceof RotationCard) rotate(((RotationCard) card).getRotation());
     }
 
     /**
@@ -114,7 +110,6 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Repairs the robot
-     *
      */
     private void repairRobot(SingleRepair singleRepair, DoubleRepair doubleRepair) {
         if (getTileOnCurrentPos() == singleRepair) {
@@ -168,6 +163,7 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Checks if robot has just died.
+     *
      * @return true if dead, false otherwise
      */
     private boolean hasJustDied() {
@@ -177,9 +173,10 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Reset robot after death.
+     *
      * @return position of last checkpoint
      */
-    private Position killRobot(){
+    private Position killRobot() {
         pos.setXY(checkpoint.getX(), checkpoint.getY());
         return pos;
     }
@@ -187,7 +184,7 @@ public abstract class AbstractRobot implements IRobot {
     /**
      * Helper-method for testing move-method
      */
-    private Position testMove(Direction direction, int spaces) { return move(direction, spaces); }
+    public Position testMove(Direction direction, int spaces) { return move(direction, spaces); }
 
     /**
      * Helper-method for testing rotate-method
