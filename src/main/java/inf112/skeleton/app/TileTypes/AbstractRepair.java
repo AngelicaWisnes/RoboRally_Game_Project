@@ -4,13 +4,13 @@ package inf112.skeleton.app.TileTypes;
  *
  * @Author Magne
  *
- * There are two types of Repair fields. Single and Double.
+ * There are two types of AbstractRepair fields. Single and Double.
  *
  */
 
-public abstract class Repair extends AbstractTile {
+public abstract class AbstractRepair extends AbstractTile {
 
-    public Repair() {
+    public AbstractRepair() {
         this.image = "repair";
     }
 

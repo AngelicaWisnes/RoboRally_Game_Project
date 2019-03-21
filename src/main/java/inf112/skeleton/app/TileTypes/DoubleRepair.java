@@ -1,6 +1,6 @@
 package inf112.skeleton.app.TileTypes;
 
-public class DoubleRepair extends Repair {
+public class DoubleRepair extends AbstractRepair {
 
     public DoubleRepair() {
         this.image = "singleRepair";

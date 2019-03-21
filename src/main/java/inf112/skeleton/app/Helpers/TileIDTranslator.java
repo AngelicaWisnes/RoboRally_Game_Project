@@ -20,8 +20,8 @@ public class TileIDTranslator {
 
         translator.put(315, new Pit());
 
-        translator.put(158, new SingleRepair()); // Single Repair
-        translator.put(173, new DoubleRepair()); // Double Repair
+        translator.put(158, new SingleRepair()); // Single AbstractRepair
+        translator.put(173, new DoubleRepair()); // Double AbstractRepair
 
         translator.put(1350, new Rotator(Rotation.TURN_CLOCKWISE));
         translator.put(1317, new Rotator(Rotation.TURN_COUNTER_CLOCKWISE));
@@ -36,15 +36,18 @@ public class TileIDTranslator {
         translator.put(205, new DblConveyor(Direction.LEFT));
         translator.put(228, new DblConveyor(Direction.RIGHT));
 
-        /*
-        translator.put(909, new Laser());
-        translator.put(929, new Laser());
-        translator.put(928, new Laser());
+        translator.put(929, new LaserWall(Direction.RIGHT));        //LaserWall m/vegg høyre
+        translator.put(909, new LaserWall(Direction.LEFT));         //LaserWall m/vegg venstre
+        translator.put(910, new Laser());                           //Laser u/vegg horisontal
 
-        translator.put(646, new Laser());
-        translator.put(1206, new Laser());
-        translator.put(674, new Laser());
-        */
+        translator.put(646, new LaserWall(Direction.UP));           //LaserWall m/vegg oppe
+        translator.put(1206, new LaserWall(Direction.DOWN));        //LaserWall m/vegg nede
+        translator.put(674, new Laser());                           //Laser u/vegg vertikal
+
+        translator.put(166, new Wall(Direction.UP));                //vegg oppe
+        translator.put(261, new Wall(Direction.DOWN));              //vegg nede
+        translator.put(230, new Wall(Direction.LEFT));              //vegg venstre
+        translator.put(284, new Wall(Direction.RIGHT));             //vegg høyre
     }
 
     public static ITile translate_ID(int id) {
@@ -54,6 +57,6 @@ public class TileIDTranslator {
 
     /**
      * Future tiles
-     * Laser med vegg 		= 	id 109\
-     * Laser uten vegg 		= 	id 94\
+     * LaserWall med vegg 		= 	id 109\
+     * LaserWall uten vegg 		= 	id 94\
      */

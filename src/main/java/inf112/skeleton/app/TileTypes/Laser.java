@@ -1,14 +1,14 @@
 package inf112.skeleton.app.TileTypes;
 
-public class SingleRepair extends AbstractRepair {
 
-    public SingleRepair() {
-        this.image = "singleRepair";
+public class Laser extends AbstractTile {
+
+    public Laser() {
+        this.image = "laserwall";
     }
 
     @Override
     public String getImage() {
         return image;
     }
-
 }
