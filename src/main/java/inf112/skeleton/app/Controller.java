@@ -73,19 +73,19 @@ public class Controller implements IController {
             roundState = RoundState.PART1;
         } else if (this.roundState.equals(RoundState.PART1)) {
             playCard();
-            gamer.getSheet().getRobot().tileMovesRobot(roundState);
+            gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART2;
         } else if (roundState.equals(RoundState.PART2)) {
             //express conveyors move 1
-            gamer.getSheet().getRobot().tileMovesRobot(roundState);
+            gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART3;
         } else if (roundState.equals(RoundState.PART3)) {
             //all conveyors move 1
-            gamer.getSheet().getRobot().tileMovesRobot(roundState);
+            gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART4;
         }else if (roundState.equals(RoundState.PART4)) {
             //gears rotate
-            gamer.getSheet().getRobot().tileMovesRobot(roundState);
+            gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.NONE;
         }
 

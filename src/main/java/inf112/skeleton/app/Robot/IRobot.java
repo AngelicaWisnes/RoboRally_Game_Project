@@ -19,9 +19,13 @@ public interface IRobot {
     /**
      * This is a temporary method for moving the robot with the help of arrow-keys from keyboard.
      */
-    void tileMovesRobot(RoundState roundState);
+    void tileRobotImpact(RoundState roundState);
 
     void keyboardMovesRobot();
 
     void cardMovesRobot(AbstractCard card);
+
+    int getDamage();
+
+    int getLives();
 }

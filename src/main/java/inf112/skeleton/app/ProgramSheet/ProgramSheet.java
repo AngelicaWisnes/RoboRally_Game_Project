@@ -8,8 +8,6 @@ import inf112.skeleton.app.Robot.*;
 
 public class ProgramSheet {
     private IRobot robot;
-    private int damage;
-    private int lives;
     private boolean powerDown;
     private Slot slot1 = new Slot();
     private Slot slot2 = new Slot();
@@ -20,14 +18,16 @@ public class ProgramSheet {
 
     public ProgramSheet(TiledMap map) {
         robot = new Robot(new Position(0, 0), Direction.UP, map);
-        damage = 0;
-        lives = 3;
         powerDown = false;
 
     }
 
     public IRobot getRobot() {
         return this.robot;
+    }
+
+    public int getDamage() {
+        return this.robot.getDamage();
     }
 
 
@@ -67,12 +67,9 @@ public class ProgramSheet {
         slot5.returnCard();
     }
 
-    public int getDamage() {
-        return damage;
-    }
 
     public int getLives() {
-        return lives;
+        return this.robot.getLives();
     }
 
     public boolean isPowerDown() {
