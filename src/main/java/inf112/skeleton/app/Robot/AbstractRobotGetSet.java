@@ -6,7 +6,7 @@ import inf112.skeleton.app.Helpers.Position;
 /**
  * @author Roger Wisnes
  */
-public abstract class AbstractRobot implements IRobot {
+public abstract class AbstractRobotGetSet implements IRobot {
     protected Position pos, checkpoint;
     protected Direction dir;
     protected int lastVisitedFlag, damage, lives;

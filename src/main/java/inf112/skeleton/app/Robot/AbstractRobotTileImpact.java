@@ -19,7 +19,7 @@ import inf112.skeleton.app.TileTypes.*;
 /**
  * @author Roger Wisnes
  */
-public abstract class AbstractRobotTileImpact extends AbstractRobot {
+public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
     private TiledMap map;
     private int width, height;
 
