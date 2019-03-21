@@ -13,7 +13,7 @@ public class Main {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "RoboRally!";
         //either resolution (W10) or HDPI (OSX Retina) must be used to get proper sized screen
-        //cfg.useHDPI = true; //comment out if W10
+        cfg.useHDPI = true; //comment out if W10
         int resolution = java.awt.Toolkit.getDefaultToolkit().getScreenResolution(); //comment out if OSX Retina
         float multiplier = resolution / 96f; //comment out if OSX Retina
         if (Toolkit.getDefaultToolkit().getScreenSize().width * multiplier / 20 * 12 > Toolkit.getDefaultToolkit().getScreenSize().height * multiplier){
