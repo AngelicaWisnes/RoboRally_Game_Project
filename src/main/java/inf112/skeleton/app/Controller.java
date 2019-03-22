@@ -87,12 +87,13 @@ public class Controller implements IController {
             //gears rotate
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.NONE;
+            roundCounter++;
         }
 
     }
 
     private void playCard() {
-        gamer.getSheet().getRobot().cardMovesRobot(gamer.getSheet().getSlot(roundCounter++).getCard());
+        gamer.getSheet().getRobot().cardMovesRobot(gamer.getSheet().getSlot(roundCounter).getCard());
     }
 
 

@@ -11,12 +11,12 @@ public class StateTextView {
     public static void drawStates(SpriteBatch batch, StateHolder states){
         StringBuilder sb = new StringBuilder();
         sb.append(states.getCardState());
-        sb.append("\n");
+        sb.append("           ");
         sb.append(states.getRoundState());
         batch.begin();
         font.getData().setScale(3, 3);
         font.setColor(Color.WHITE);
-        font.draw(batch, sb.toString(), 100, 100);
+        font.draw(batch, sb.toString(), 100, 50);
         batch.end();
 
     }
