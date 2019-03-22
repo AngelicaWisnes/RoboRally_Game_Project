@@ -50,7 +50,7 @@ public class GameScreen implements Screen {
     public static final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE * NTILES;
-    private final double STARTZOOM = 1.0;
+    private final float RESETZOOM = 1.08f;
 
 
     public GameScreen(final RoboRally game) {
@@ -64,7 +64,7 @@ public class GameScreen implements Screen {
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         viewport = new FitViewport(26, 14);
         camera.translate(0, -100);
-        camera.zoom = 1.08f;
+        camera.zoom = RESETZOOM;
 
 
         fillTextureMap();
@@ -105,11 +105,14 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        if (Gdx.input.isKeyPressed(Input.Keys.MINUS)){
+        if (Gdx.input.isKeyPressed(Input.Keys.Z)){
             camera.zoom += 0.01;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.PERIOD)){
+        if (Gdx.input.isKeyPressed(Input.Keys.X)){
             camera.zoom -= 0.01;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.R)){
+            camera.zoom = RESETZOOM;
         }
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
