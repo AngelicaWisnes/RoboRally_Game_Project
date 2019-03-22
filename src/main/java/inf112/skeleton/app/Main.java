@@ -20,7 +20,6 @@ public class Main {
             cfg.width = Math.round(Toolkit.getDefaultToolkit().getScreenSize().width * 0.9f);
             cfg.height = cfg.width / 26 * 14;
         }
-
         //cfg.fullscreen = true;
         //cfg.vSyncEnabled = true;
         cfg.addIcon("assets/img/icons/icon16.png", Files.FileType.Internal);
