@@ -13,15 +13,12 @@ public class Main {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "RoboRally!";
         //either resolution (W10) or HDPI (OSX Retina) must be used to get proper sized screen
-        cfg.useHDPI = true; //comment out if W10
-        int resolution = java.awt.Toolkit.getDefaultToolkit().getScreenResolution(); //comment out if OSX Retina
-        float multiplier = resolution / 96f; //comment out if OSX Retina
-        if (Toolkit.getDefaultToolkit().getScreenSize().width * multiplier / 20 * 12 > Toolkit.getDefaultToolkit().getScreenSize().height * multiplier){
-            cfg.height = Math.round(Toolkit.getDefaultToolkit().getScreenSize().height * multiplier * 0.9f);
-            cfg.width = cfg.height / 12 * 20;
+        if (Toolkit.getDefaultToolkit().getScreenSize().width / 26 * 14 > Toolkit.getDefaultToolkit().getScreenSize().height){
+            cfg.height = Math.round(Toolkit.getDefaultToolkit().getScreenSize().height * 0.9f);
+            cfg.width = cfg.height / 14 * 26;
         } else {
-            cfg.width = Math.round(Toolkit.getDefaultToolkit().getScreenSize().width * multiplier * 0.9f);
-            cfg.height = cfg.width / 20 * 12;
+            cfg.width = Math.round(Toolkit.getDefaultToolkit().getScreenSize().width * 0.9f);
+            cfg.height = cfg.width / 26 * 14;
         }
 
         //cfg.fullscreen = true;

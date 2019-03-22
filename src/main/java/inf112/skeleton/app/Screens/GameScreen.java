@@ -14,6 +14,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.*;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.RoundState;
@@ -34,6 +35,7 @@ public class GameScreen implements Screen {
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
+    private Viewport viewport;
 
     private ShapeRenderer shape;
 
@@ -56,15 +58,12 @@ public class GameScreen implements Screen {
 
         map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
 
-        MapProperties prop = map.getProperties();
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-        float newX = 64; //Gdx.graphics.getWidth() / 2 - (16*64) / 2;
-        float newY = Gdx.graphics.getHeight() / 2 - (12 * 64) / 2;
-        camera.translate(-newX, -newY);
-        //camera.zoom = 1.25f;
+        viewport = new FitViewport(26, 14);
+        camera.translate(26*4, 0);
+        camera.zoom = 1.25f;
 
 
         fillTextureMap();
@@ -155,6 +154,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+        viewport.update(width, height);
+        camera.update();
 
     }
 

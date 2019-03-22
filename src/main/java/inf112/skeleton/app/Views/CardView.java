@@ -56,7 +56,8 @@ public class CardView {
         }
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect((1170 + 75 * pos) + x, 250 + y, 65, 90);
+
+        //shape.rect((500 + 75 * pos) + x, 250 + y, 65, 90);
         shape.end();
 
         batch.begin();

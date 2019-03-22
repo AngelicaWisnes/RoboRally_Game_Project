@@ -18,6 +18,5 @@ public class DealtCardsView {
             AbstractCard card = cards.get(i);
             CardView.drawCardForHand(batch, card, textureMap, shape, i);
         }
-
     }
 }

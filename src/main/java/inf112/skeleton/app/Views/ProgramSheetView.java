@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class ProgramSheetView {
 
     public static void drawSheet(SpriteBatch batch, ShapeRenderer shape, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
-        //drawImage(batch, textureMap);
+        drawImage(batch, textureMap);
         drawPower(batch, textureMap, sheet);
         drawLives(batch, textureMap, sheet);
         drawDamage(batch, textureMap, sheet);
@@ -23,7 +23,7 @@ public class ProgramSheetView {
     private static void drawImage(SpriteBatch batch, HashMap<String, Texture> textureMap) {
         batch.begin();
         //TODO remove magic number (which is tile width x 16 tiles x 2 spacer tiles
-        batch.draw(textureMap.get("sheet"), 64 * 18, Gdx.graphics.getHeight() / 2 - (64 * 6), 400, 64 * 12);
+        batch.draw(textureMap.get("sheet"), 950, 64, 375, 630);
         batch.end();
     }
 

@@ -5,18 +5,24 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.awt.*;
 
 public class MainMenuScreen implements Screen {
 
     final RoboRally game;
 
     OrthographicCamera camera;
+    Viewport viewport;
 
     public MainMenuScreen(final RoboRally game) {
         this.game = game;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
 
     }
 
@@ -50,6 +56,8 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void resize(int i, int i1) {
+        viewport.update(i, i1);
+        camera.update();
 
     }
 
