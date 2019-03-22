@@ -73,6 +73,28 @@ Next sprint:
 
 next meeting 21.03.19
 
+**21.03.19**
+Previous sprint completed tasks:
+Stefan: 
+* dele ut kort
+* jobbet med designet i libGdx 
+
+Roger:
+* checkpoints, når robot dør mister den liv og flyttes til start 
+
+Magne:
+* jobbet med finalMap
+
+Katarina:
+* spillrunder
+
+Next sprint:
+Roger:
+* flytt lives og damage fra ProgramSheet til Robot
+
+next meeting 28.03.19
+
+
 
 
 
