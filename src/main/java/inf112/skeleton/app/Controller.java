@@ -132,6 +132,7 @@ public class Controller implements IController {
             gamer.getSheet().placeCard(new BlankCard(11));
             System.out.println("pressed space");
         }
+
     }
 
 

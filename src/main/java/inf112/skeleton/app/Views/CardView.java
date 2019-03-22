@@ -26,21 +26,21 @@ public class CardView {
             return;
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect(960 + 75 * pos, 465, 60, 90);
+        shape.rect(100 + 960 + 75 * pos, 50 + 465, 60, 90);
         shape.end();
 
         batch.begin();
-        batch.draw(textureMap.get(card.getKey()), 970 + 75 * pos, 510, 40, 40);
+        batch.draw(textureMap.get(card.getKey()), 100 + 970 + 75 * pos, 50 + 510, 40, 40);
 
         font.setColor(Color.RED);
         GlyphLayout glyphLayout = new GlyphLayout();
         glyphLayout.setText(font, "" + card.getPriority());
         //font.draw(batch, glyphLayout, (2250  - glyphLayout.width)/2 + (80 * pos + 70), 642);
-        font.draw(batch, glyphLayout, 975 + 75*pos,505);
+        font.draw(batch, glyphLayout, 100 + 975 + 75*pos,505 + 50);
         glyphLayout = new GlyphLayout();
         glyphLayout.setText(font,card.getDescription());
         //font.draw(batch, glyphLayout, (2250  - glyphLayout.width)/2 + (80 * pos + 70), 622);
-        font.draw(batch, glyphLayout, 965 + 75*pos, 490);
+        font.draw(batch, glyphLayout, 100 + 965 + 75*pos, 490 + 50);
         batch.end();
 
     }
@@ -56,19 +56,19 @@ public class CardView {
         }
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect(960 + 75 * pos + x, 165 + y, 60, 90);
+        shape.rect(100 + 960 + 75 * pos + x, 165 + y + 50, 60, 90);
         shape.end();
 
         batch.begin();
-        batch.draw(textureMap.get(card.getKey()), 970 + 75 * pos + x, 210 + y, 40, 40);
+        batch.draw(textureMap.get(card.getKey()), 100 + 970 + 75 * pos + x, 210 + y + 50, 40, 40);
 
         font.setColor(Color.RED);
         GlyphLayout glyphLayout = new GlyphLayout();
         glyphLayout.setText(font, "" + card.getPriority());
-        font.draw(batch, glyphLayout, 975 + 75*pos + x,205+y);
+        font.draw(batch, glyphLayout, 100 + 975 + 75*pos + x,205+y + 50);
         glyphLayout = new GlyphLayout();
         glyphLayout.setText(font,card.getDescription());
-        font.draw(batch, glyphLayout, 965 + 75*pos + x, 190+y);
+        font.draw(batch, glyphLayout, 100 + 965 + 75*pos + x, 190+y+50);
         batch.end();
     }
 

@@ -3,6 +3,7 @@ package inf112.skeleton.app.Screens;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.*;
@@ -62,8 +63,8 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         viewport = new FitViewport(26, 14);
-        camera.translate(26*4, 0);
-        camera.zoom = 1.25f;
+        camera.translate(0, -100);
+        camera.zoom = 1.08f;
 
 
         fillTextureMap();
@@ -104,6 +105,13 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        if (Gdx.input.isKeyPressed(Input.Keys.MINUS)){
+            camera.zoom += 0.01;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.PERIOD)){
+            camera.zoom -= 0.01;
+        }
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
@@ -111,7 +119,9 @@ public class GameScreen implements Screen {
         renderer.render();
 
 
+        shape.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
+        HUDbatch.setProjectionMatrix(camera.combined);
         robot.keyboardMovesRobot();
         String robotString = "";
         switch (gamer.getSheet().getRobot().getDir()) {

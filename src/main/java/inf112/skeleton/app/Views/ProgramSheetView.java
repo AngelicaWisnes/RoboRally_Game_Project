@@ -30,15 +30,15 @@ public class ProgramSheetView {
     private static void drawLives(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
         int lives = sheet.getLives();
         batch.begin();
-        batch.draw(lives > 0 ? textureMap.get("lifeon") : textureMap.get("lifeoff"), 960, 580, 60, 60);
-        batch.draw(lives > 1 ? textureMap.get("lifeon") : textureMap.get("lifeoff"), 1040, 580, 60, 60);
-        batch.draw(lives > 2 ? textureMap.get("lifeon") : textureMap.get("lifeoff"), 1120, 580, 60, 60);
+        batch.draw(lives > 0 ? textureMap.get("lifeon") : textureMap.get("lifeoff"), 960+100, 580+50, 60, 60);
+        batch.draw(lives > 1 ? textureMap.get("lifeon") : textureMap.get("lifeoff"), 1040+100, 580+50, 60, 60);
+        batch.draw(lives > 2 ? textureMap.get("lifeon") : textureMap.get("lifeoff"), 1120+100, 580+50, 60, 60);
         batch.end();
     }
 
     private static void drawPower(SpriteBatch batch, HashMap<String, Texture> textureMap, ProgramSheet sheet) {
         batch.begin();
-        batch.draw(sheet.isPowerDown() ? textureMap.get("powerdownon") : textureMap.get("powerdownoff"), 1210, 560, 100, 100);
+        batch.draw(sheet.isPowerDown() ? textureMap.get("powerdownon") : textureMap.get("powerdownoff"), 1210+100, 560+50, 100, 100);
         batch.end();
     }
 
@@ -46,19 +46,19 @@ public class ProgramSheetView {
         batch.begin();
         if (sheet.getDamage() == 10) {
             for (int i = 0; i < 10; i++){
-                batch.draw(textureMap.get("damagered"), 1155 + (i*40), 820, 36, 32);
+                batch.draw(textureMap.get("damagered"), 100 + 1155 + (i*40), 820 + 50, 36, 32);
             }
             return;
         }
         for (int i = 0; i < 9; i++) {
             if (9 - i > sheet.getDamage()) {
-                batch.draw(textureMap.get("damageoff"), 1000 + (i * 35), 650, 27, 24);
+                batch.draw(textureMap.get("damageoff"), 100 + 1000 + (i * 35), 650 + 50, 27, 24);
             } else {
-                batch.draw(textureMap.get("damageon"), 1000 + (i * 35), 650, 27, 24);
+                batch.draw(textureMap.get("damageon"), 100 + 1000 + (i * 35), 650 + 50, 27, 24);
 
             }
         }
-        batch.draw(textureMap.get("damagered"), 965, 650, 27, 24);
+        batch.draw(textureMap.get("damagered"), 100 + 965, 650 + 50, 27, 24);
         batch.end();
 
     }
