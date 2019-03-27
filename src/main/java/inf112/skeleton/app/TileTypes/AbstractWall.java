@@ -6,7 +6,7 @@ public abstract class AbstractWall extends AbstractTile {
 
     Direction direction;
 
-    public AbstractWall(Direction direction, String type) {
+    public AbstractWall(Direction direction) {
         this.direction = direction;
 
     }
@@ -17,8 +17,6 @@ public abstract class AbstractWall extends AbstractTile {
     public Direction getDirection() {
         return direction;
     }
-
-
 
     /**
      * @return the image string of the conveyor
