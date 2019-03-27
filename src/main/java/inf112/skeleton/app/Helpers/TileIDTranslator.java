@@ -15,8 +15,8 @@ public class TileIDTranslator {
         translator.put(147, new Dock(1));
 
         translator.put(148, new Flag(1));
-        translator.put(154, new Flag(2));
-        translator.put(929, new Flag(3));
+        translator.put(153, new Flag(2));
+        translator.put(154, new Flag(3));
 
         translator.put(315, new Pit());
 

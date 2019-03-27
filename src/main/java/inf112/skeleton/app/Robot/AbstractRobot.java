@@ -47,8 +47,11 @@ public abstract class AbstractRobot implements IRobot {
 
 
     protected void setFlagID(int flagID) {
+        System.out.println("Test 1");
         if (flagID == lastVisitedFlag + 1) {
+            System.out.println("Test 2");
             lastVisitedFlag = flagID;
+            System.out.println(flagID + " " + lastVisitedFlag      );
             setPositionCheckpointCorrespondance(checkpoint, pos);
             System.out.println("Just updated flagID to " + lastVisitedFlag);
         }
