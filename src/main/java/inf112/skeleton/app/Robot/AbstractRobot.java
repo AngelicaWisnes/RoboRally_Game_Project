@@ -81,11 +81,15 @@ public abstract class AbstractRobot implements IRobot {
                 if (tile instanceof AbstractConveyor) move(((AbstractConveyor) tile).getDirection(), 1);
                 break;
             case PART3:
+                // Pushers
                 break;
             case PART4:
                 if (tile instanceof Rotator) rotate(((Rotator) tile).getRotation());
                 break;
             case PART5:
+                // Lasers
+                break;
+            case PART6:
                 if (tile instanceof Flag) setFlagID(((Flag) tile).getId());
                 else if (tile instanceof AbstractRepair) programSheet.repair(((AbstractRepair) tile).getRepairQty());
                 break;
