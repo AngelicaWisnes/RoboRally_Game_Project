@@ -1,5 +1,7 @@
 package inf112.skeleton.app.Helpers;
 
+import inf112.skeleton.app.Enums.Direction;
+
 public class Position {
     private int x, y;
 
@@ -18,8 +20,8 @@ public class Position {
 
     /**
      * Sets both x and y
-     * @param x
-     * @param y
+     * @param x value
+     * @param y value
      */
     public void setXY(int x, int y) {
         setX(x);
@@ -31,5 +33,15 @@ public class Position {
      * @return new position
      */
     public Position clone() { return new Position(this.x, this.y); }
+
+    public Position getNeighbour(Direction dir, int size) {
+        switch (dir) {
+            case UP: return new Position(this.x, this.y + size);
+            case DOWN: return new Position(this.x, this.y - size);
+            case LEFT: return new Position(this.x - size, this.y);
+            case RIGHT: return new Position(this.x + size, this.y);
+            default: throw new IllegalArgumentException("Must have valid direction-input to move robot");
+        }
+    }
 
 }

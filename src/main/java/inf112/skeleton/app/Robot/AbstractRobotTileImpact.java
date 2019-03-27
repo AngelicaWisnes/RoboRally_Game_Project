@@ -129,15 +129,9 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
         if (spaces < 1 || spaces > 3) throw new IllegalArgumentException("Invalid spaces-input to move");
 
         while (spaces-- > 0) {
-            if (hasWall(direction)) continue;
+            //if (hasWall(direction)) continue;
 
-            switch (direction) {
-                case UP: pos.setY(pos.getY() + TILESIZE); break;
-                case DOWN: pos.setY(pos.getY() - TILESIZE); break;
-                case LEFT: pos.setX(pos.getX() - TILESIZE); break;
-                case RIGHT: pos.setX(pos.getX() + TILESIZE); break;
-                default: throw new IllegalArgumentException("Must have valid direction-input to move robot");
-            }
+            pos = pos.getNeighbour(direction, TILESIZE);
 
             if (hasJustDied()) return setPositionCheckpointCorrespondance(pos, checkpoint);
         }
