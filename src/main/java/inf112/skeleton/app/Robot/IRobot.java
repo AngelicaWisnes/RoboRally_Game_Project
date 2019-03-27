@@ -24,8 +24,4 @@ public interface IRobot {
     void keyboardMovesRobot();
 
     void cardMovesRobot(AbstractCard card);
-
-    int getDamage();
-
-    int getLives();
 }

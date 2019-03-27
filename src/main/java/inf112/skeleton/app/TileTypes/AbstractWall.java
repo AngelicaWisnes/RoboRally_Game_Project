@@ -4,7 +4,7 @@ import inf112.skeleton.app.Enums.Direction;
 
 public abstract class AbstractWall extends AbstractTile {
 
-    Direction direction;
+    private Direction direction;
 
     public AbstractWall(Direction direction) {
         this.direction = direction;
@@ -25,4 +25,11 @@ public abstract class AbstractWall extends AbstractTile {
     public String getImage() {
         return image;
     }
+
+    /**
+     * Checks if tile has wall in a given direction
+     * @param dir Direction to check
+     * @return
+     */
+    public boolean hasWall(Direction dir) { return dir == this.direction; }
 }

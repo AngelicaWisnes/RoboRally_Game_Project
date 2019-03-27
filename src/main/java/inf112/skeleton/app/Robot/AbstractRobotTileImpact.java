@@ -13,6 +13,7 @@ import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Helpers.TileIDTranslator;
+import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.*;
 
@@ -23,12 +24,11 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
     private TiledMap map;
     private final int TILESIZE = GameScreen.TILESIZE;
 
-    AbstractRobotTileImpact(Position pos, Direction dir, TiledMap map) {
+    AbstractRobotTileImpact(Position pos, Direction dir, TiledMap map, ProgramSheet programSheet) {
         this.map = map;
         this.dir = dir;
+        this.programSheet = programSheet;
 
-        this.lastVisitedFlag = damage = 0;
-        this.lives = 3;
         this.pos = pos;
         this.checkpoint = pos.clone();
     }
@@ -39,22 +39,22 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
      */
     @Override
     public void tileRobotImpact(RoundState roundState) {
-        ITile curTile = getTileOnPos(pos);
+        ITile tile = getTileOnPos(pos);
         switch (roundState) {
             case PART1:
-                if (curTile instanceof DblConveyor) move(((DblConveyor) curTile).getDirection(), 1);
+                if (tile instanceof DblConveyor) move(((DblConveyor) tile).getDirection(), 1);
                 break;
             case PART2:
-                if (curTile instanceof AbstractConveyor) move(((AbstractConveyor) curTile).getDirection(), 1);
+                if (tile instanceof AbstractConveyor) move(((AbstractConveyor) tile).getDirection(), 1);
                 break;
             case PART3:
                 break;
             case PART4:
-                if (curTile instanceof Rotator) rotate(((Rotator) curTile).getRotation());
+                if (tile instanceof Rotator) rotate(((Rotator) tile).getRotation());
                 break;
             case PART5:
-                if (curTile instanceof Flag) setFlagID(((Flag) curTile).getId());
-                else if (curTile instanceof AbstractRepair) repair(((AbstractRepair) curTile).getRepairQty());
+                if (tile instanceof Flag) setFlagID(((Flag) tile).getId());
+                else if (tile instanceof AbstractRepair) programSheet.repair(((AbstractRepair) tile).getRepairQty());
                 break;
             case NONE: break;
         }
@@ -89,13 +89,11 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
      * @return the tile object at the position of the robot
      */
     private ITile getTileOnPos(Position p) {
-        //move the robot one tile in a direction
         int x = p.getX() / GameScreen.TILESIZE;
         int y = p.getY() / GameScreen.TILESIZE;
-        int tileID;
         try {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
-            tileID = cell.getTile().getId();
+            int tileID = cell.getTile().getId();
             return TileIDTranslator.translate_ID(tileID);
         } catch (Exception e) {
             System.out.println("you have died");
@@ -131,6 +129,7 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
         while (spaces-- > 0) {
             if (hasWall(direction)) continue;
 
+
             pos = pos.getNeighbour(direction, TILESIZE);
 
             if (hasJustDied()) return setPositionCheckpointCorrespondance(pos, checkpoint);
@@ -139,11 +138,16 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
         return pos;
     }
 
+    /**
+     * Check if there is a wall in the given direction
+     * @param direction to check
+     * @return
+     */
     private boolean hasWall(Direction direction) {
         ITile cur = getTileOnPos(pos);
         ITile nbr = getTileOnPos(pos.getNeighbour(direction, TILESIZE));
-        return (nbr instanceof AbstractWall && ((AbstractWall) nbr).getDirection() == direction.opposite())
-               || (cur instanceof AbstractWall && ((AbstractWall) cur).getDirection() == direction);
+        return (nbr instanceof AbstractWall && ((AbstractWall) nbr).hasWall(direction.opposite()))
+               || (cur instanceof AbstractWall && ((AbstractWall) cur).hasWall(direction));
     }
 
     /**

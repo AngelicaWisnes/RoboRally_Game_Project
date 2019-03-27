@@ -15,21 +15,15 @@ public class ProgramSheet {
     private Slot slot4 = new Slot();
     private Slot slot5 = new Slot();
     private Slot[] slots = {slot1, slot2, slot3, slot4, slot5};
+    private int lives, damage, lastVisitedFlag;
+    private final int MAX_DAMAGE = 10;
 
     public ProgramSheet(TiledMap map) {
-        robot = new Robot(new Position(0, 0), Direction.UP, map);
+        robot = new Robot(new Position(0, 0), Direction.UP, map, this);
         powerDown = false;
-
+        lives = 3;
+        damage = lastVisitedFlag = 0;
     }
-
-    public IRobot getRobot() {
-        return this.robot;
-    }
-
-    public int getDamage() {
-        return this.robot.getDamage();
-    }
-
 
     public Slot placeCard(AbstractCard card) {
         if (slot1.isAvailable()) {
@@ -67,17 +61,31 @@ public class ProgramSheet {
         slot5.returnCard();
     }
 
+    public IRobot getRobot() {
+        return this.robot;
+    }
 
     public int getLives() {
-        return this.robot.getLives();
+        return this.lives;
     }
+
+    public void setLives(int lives) { this.lives = lives; }
+
+    public int getDamage() { return this.damage; }
+
+    public void setDamage(int damage) { this.damage = damage; }
+
+    public void repair(int repairQty) { setDamage(damage - repairQty < 0 ? 0 : damage - repairQty); }
+
+
 
     public boolean isPowerDown() {
         return powerDown;
     }
 
     public boolean allSlotsAreFilled() {
-        return !slot1.isAvailable() && !slot2.isAvailable() && !slot3.isAvailable() && !slot4.isAvailable() && !slot5.isAvailable();
+        return !slot1.isAvailable() && !slot2.isAvailable() && !slot3.isAvailable()
+               && !slot4.isAvailable() && !slot5.isAvailable();
     }
 
     public Slot getSlot(int n) {

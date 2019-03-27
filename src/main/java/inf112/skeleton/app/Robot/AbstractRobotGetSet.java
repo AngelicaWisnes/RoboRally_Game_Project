@@ -2,6 +2,7 @@ package inf112.skeleton.app.Robot;
 
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Helpers.Position;
+import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 
 /**
  * @author Roger Wisnes
@@ -9,7 +10,8 @@ import inf112.skeleton.app.Helpers.Position;
 public abstract class AbstractRobotGetSet implements IRobot {
     protected Position pos, checkpoint;
     protected Direction dir;
-    protected int lastVisitedFlag, damage, lives;
+    protected int lastVisitedFlag;
+    protected ProgramSheet programSheet;
 
     /**
      * @return the current position
@@ -19,13 +21,6 @@ public abstract class AbstractRobotGetSet implements IRobot {
     @Override
     public Direction getDir() { return dir; }
 
-    public int getDamage() { return damage; }
-
-    public int getLives() { return lives; }
-
-    public void setDamage(int damage) { this.damage = damage; }
-
-    public void setLives(int lives) { this.lives = lives; }
 
     protected void setFlagID(int flagID) {
         if (flagID == lastVisitedFlag + 1) {
@@ -34,11 +29,6 @@ public abstract class AbstractRobotGetSet implements IRobot {
             System.out.println("Just updated flagID to " + lastVisitedFlag);
         }
     }
-
-    /**
-     * Repairs the robot
-     */
-    protected void repair(int repairQty) { setDamage(damage - repairQty < 0 ? 0 : damage - repairQty); }
 
     /**
      * Update the correspondance between current position and checkpoint.
