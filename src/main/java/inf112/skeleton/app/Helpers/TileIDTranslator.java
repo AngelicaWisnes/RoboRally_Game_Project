@@ -11,8 +11,12 @@ public class TileIDTranslator {
 
     static {
         translator.put(145, new Floor());
-        translator.put(160, new DockArea());
+        translator.put(277, new DockArea());
         translator.put(147, new Dock(1));
+        translator.put(159, new Dock(2));
+        translator.put(171, new Dock(3));
+        translator.put(149, new Dock(4));
+        translator.put(161, new Dock(5));
 
         translator.put(148, new Flag(1));
         translator.put(153, new Flag(2));
