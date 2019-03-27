@@ -15,8 +15,19 @@ public class ProgramSheet {
     private Slot slot4 = new Slot();
     private Slot slot5 = new Slot();
     private Slot[] slots = {slot1, slot2, slot3, slot4, slot5};
-    private int lives, damage, lastVisitedFlag;
+    private int lives;
+    private int damage;
+
+    private int lastVisitedFlag;
     private final int MAX_DAMAGE = 10;
+
+    public int getLastVisitedFlag() {
+        return lastVisitedFlag;
+    }
+
+    public void setLastVisitedFlag(int lastVisitedFlag) {
+        this.lastVisitedFlag = lastVisitedFlag;
+    }
 
     public ProgramSheet(TiledMap map) {
         robot = new Robot(new Position(0, 0), Direction.UP, map, this);
@@ -39,16 +50,17 @@ public class ProgramSheet {
         }
         return null;
     }
-    public void removeLastCard(){
-        if (!slot5.isAvailable()){
+
+    public void removeLastCard() {
+        if (!slot5.isAvailable()) {
             slot5.removeCard();
-        } else if (!slot4.isAvailable()){
+        } else if (!slot4.isAvailable()) {
             slot4.removeCard();
-        } else if (!slot3.isAvailable()){
+        } else if (!slot3.isAvailable()) {
             slot3.removeCard();
-        } else if (!slot2.isAvailable()){
+        } else if (!slot2.isAvailable()) {
             slot2.removeCard();
-        } else if (!slot1.isAvailable()){
+        } else if (!slot1.isAvailable()) {
             slot1.removeCard();
         }
     }
@@ -62,21 +74,28 @@ public class ProgramSheet {
     }
 
     public IRobot getRobot() {
-        return this.robot;
+        return robot;
     }
 
     public int getLives() {
-        return this.lives;
+        return lives;
     }
 
-    public void setLives(int lives) { this.lives = lives; }
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
 
-    public int getDamage() { return this.damage; }
+    public int getDamage() {
+        return damage;
+    }
 
-    public void setDamage(int damage) { this.damage = damage; }
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
-    public void repair(int repairQty) { setDamage(damage - repairQty < 0 ? 0 : damage - repairQty); }
-
+    public void repair(int repairQty) {
+        setDamage(damage - repairQty < 0 ? 0 : damage - repairQty);
+    }
 
 
     public boolean isPowerDown() {
@@ -85,7 +104,7 @@ public class ProgramSheet {
 
     public boolean allSlotsAreFilled() {
         return !slot1.isAvailable() && !slot2.isAvailable() && !slot3.isAvailable()
-               && !slot4.isAvailable() && !slot5.isAvailable();
+                && !slot4.isAvailable() && !slot5.isAvailable();
     }
 
     public Slot getSlot(int n) {
