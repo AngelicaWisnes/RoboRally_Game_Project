@@ -25,7 +25,6 @@ public abstract class AbstractRobot implements IRobot {
     private final int TILESIZE = GameScreen.TILESIZE;
     private Position pos, checkpoint;
     private Direction dir;
-    private int lastVisitedFlag;
     private ProgramSheet programSheet;
 
     AbstractRobot(Position pos, Direction dir, TiledMap map, ProgramSheet programSheet) {
@@ -47,8 +46,9 @@ public abstract class AbstractRobot implements IRobot {
 
 
     protected void setFlagID(int flagID) {
+        int lastVisitedFlag = programSheet.getLastVisitedFlag();
         if (flagID == lastVisitedFlag + 1) {
-            lastVisitedFlag = flagID;
+            programSheet.setLastVisitedFlag(flagID);
             setPositionCheckpointCorrespondance(checkpoint, pos);
             System.out.println("Just updated flagID to " + lastVisitedFlag);
         }
