@@ -86,6 +86,14 @@ public class Controller implements IController {
         }else if (roundState.equals(RoundState.PART4)) {
             //gears rotate
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
+            roundState = RoundState.PART5;
+        }else if (roundState.equals(RoundState.PART5)) {
+            //gears rotate
+            gamer.getSheet().getRobot().tileRobotImpact(roundState);
+            roundState = RoundState.PART6;
+        }else if (roundState.equals(RoundState.PART5)) {
+            //gears rotate
+            gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.NONE;
         }
 
