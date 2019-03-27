@@ -27,36 +27,41 @@ public class Controller implements IController {
 
     public Controller(Gamer gamer, StateHolder stateHolder) {
         this.gamer = gamer;
-        this.cardState = stateHolder.getCardState();
-        this.roundState = stateHolder.getRoundState();
+        cardState = stateHolder.getCardState();
+        roundState = stateHolder.getRoundState();
     }
 
     @Override
     public StateHolder runGame(StateHolder states) {
-        this.cardState = states.getCardState();
-        this.roundState = states.getRoundState();
+        cardState = states.getCardState();
+        roundState = states.getRoundState();
 
-        if (this.cardState.equals(CardState.NOCARDS)) {
+        if (cardState.equals(CardState.NOCARDS)) {
             gamer.resetCards();
             dealCards();
-            this.cardState = CardState.DEALTCARDS;
-        } else if (this.cardState.equals(CardState.DEALINGCARDS)) {
+            cardState = CardState.DEALTCARDS;
+        } else if (cardState.equals(CardState.DEALINGCARDS)) {
             //waiting for cards to be dealt
-        } else if (this.cardState.equals(CardState.DEALTCARDS)) {
+        } else if (cardState.equals(CardState.DEALTCARDS)) {
             selectCard();
-        } else if (this.cardState.equals(CardState.SELECTEDCARDS)) {
+        } else if (cardState.equals(CardState.SELECTEDCARDS)) {
             //waiting for screen to reset
-        } else if (this.cardState.equals(CardState.PLAYINGCARDS)){
-            if (roundCounter < 5){
+        } else if (cardState.equals(CardState.PLAYINGCARDS)) {
+            if (roundCounter < 5) {
                 startRound();
             } else {
                 //RESET
                 resetRound();
             }
         }
-        return new StateHolder(this.cardState, this.roundState);
+        return new StateHolder(cardState, roundState);
     }
 
+    /*
+    public boolean endGame() {
+
+    }
+*/
     private void resetRound() {
         roundCounter = 0;
         roundState = RoundState.NONE;
@@ -71,7 +76,7 @@ public class Controller implements IController {
     private void startRound() {
         if (roundState.equals(RoundState.NONE)) {
             roundState = RoundState.PART1;
-        } else if (this.roundState.equals(RoundState.PART1)) {
+        } else if (roundState.equals(RoundState.PART1)) {
             playCard();
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART2;
@@ -83,7 +88,7 @@ public class Controller implements IController {
             //all conveyors move 1
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART4;
-        }else if (roundState.equals(RoundState.PART4)) {
+        } else if (roundState.equals(RoundState.PART4)) {
             //gears rotate
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART5;
@@ -135,12 +140,11 @@ public class Controller implements IController {
             gamerReady = true;
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             gamer.getSheet().placeCard(new BlankCard(11));
             System.out.println("pressed space");
         }
     }
-
 
 
 }
