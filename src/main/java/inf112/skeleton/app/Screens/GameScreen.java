@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
+import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Robot.IRobot;
@@ -52,7 +53,7 @@ public class GameScreen implements Screen {
 
     public GameScreen(final RoboRally game) {
         this.game = game;
-        this.states = new StateHolder(CardState.NOCARDS, RoundState.NONE);
+        states = new StateHolder(CardState.NOCARDS, RoundState.NONE, GameState.GAMING);
 
         map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
 
@@ -111,6 +112,10 @@ public class GameScreen implements Screen {
         renderer.setView(camera);
         renderer.render();
 
+        if (states.getGameState().equals(GameState.GAME_OVER)) {
+            return;
+        }
+
 
         batch.setProjectionMatrix(camera.combined);
         robot.keyboardMovesRobot();
@@ -136,7 +141,7 @@ public class GameScreen implements Screen {
 
         ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
         StateTextView.drawStates(HUDbatch, states);
-        this.states = controller.runGame(states);
+        states = controller.runGame(states);
         stateBasedMovement();
 
         sleep(100);
@@ -144,12 +149,12 @@ public class GameScreen implements Screen {
 
 
     private void stateBasedMovement() {
-        if (this.states.getCardState().equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
-            this.states.setCardState(CardState.SELECTEDCARDS);
-        } else if (this.states.getCardState().equals(CardState.DEALTCARDS) ) {
+        if (states.getCardState().equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
+            states.setCardState(CardState.SELECTEDCARDS);
+        } else if (states.getCardState().equals(CardState.DEALTCARDS)) {
             DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
-        } else if (this.states.getCardState().equals(CardState.SELECTEDCARDS)) {
-            this.states.setCardState(CardState.PLAYINGCARDS);
+        } else if (states.getCardState().equals(CardState.SELECTEDCARDS)) {
+            states.setCardState(CardState.PLAYINGCARDS);
         }
     }
 

@@ -6,6 +6,7 @@ import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.BlankCard;
 import inf112.skeleton.app.Card.CardGenerator;
 import inf112.skeleton.app.Enums.CardState;
+import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Helpers.StateHolder;
 
@@ -18,6 +19,7 @@ public class Controller implements IController {
     private Gamer gamer;
     private CardState cardState;
     private RoundState roundState;
+    private GameState gameState;
     private int[] keys = {8, 9, 10, 11, 12, 13, 14, 15, 16};
     private final int KEY_OFFSET = 8; //Gdx.input.key is offset by 8
     private ArrayList<Integer> selectedKeys = new ArrayList<>();
@@ -29,6 +31,7 @@ public class Controller implements IController {
         this.gamer = gamer;
         cardState = stateHolder.getCardState();
         roundState = stateHolder.getRoundState();
+        gameState = stateHolder.getGameState();
     }
 
     @Override
@@ -54,14 +57,18 @@ public class Controller implements IController {
                 resetRound();
             }
         }
-        return new StateHolder(cardState, roundState);
+        return new StateHolder(cardState, roundState, gameState);
     }
 
-    /*
-    public boolean endGame() {
 
+    public void isEndState() {
+        if (gamer.getSheet().getLives() == 0) {
+            System.out.println("GAME OVER");
+        } else if (gamer.getSheet().getLastVisitedFlag() == 3) {
+            System.out.println("YOU WIN!");
+        }
     }
-*/
+
     private void resetRound() {
         roundCounter = 0;
         roundState = RoundState.NONE;
