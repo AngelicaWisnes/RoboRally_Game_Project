@@ -99,6 +99,7 @@ public class GameScreen implements Screen {
         textureMap.put("Blank card", new Texture(Gdx.files.internal("assets/img/CardIcons/Blank.png")));
         textureMap.put("sheet", new Texture(Gdx.files.internal("assets/img/sheet.png")));
         textureMap.put("lifeon", new Texture(Gdx.files.internal("assets/img/lifeon.png")));
+        textureMap.put("lifeoff", new Texture(Gdx.files.internal("assets/img/lifeoff.png")));
         textureMap.put("damageoff", new Texture(Gdx.files.internal("assets/img/damageoff.png")));
         textureMap.put("damageon", new Texture(Gdx.files.internal("assets/img/damageon.png")));
         textureMap.put("damagered", new Texture(Gdx.files.internal("assets/img/damagered.png")));
@@ -112,13 +113,8 @@ public class GameScreen implements Screen {
         renderer.setView(camera);
         renderer.render();
 
-        if (states.getGameState().equals(GameState.GAME_OVER)) {
-            return;
-        }
-
 
         batch.setProjectionMatrix(camera.combined);
-        robot.keyboardMovesRobot();
         String robotString = "";
         switch (gamer.getSheet().getRobot().getDir()) {
             case UP:
@@ -138,12 +134,14 @@ public class GameScreen implements Screen {
         batch.begin();
         batch.draw(textureMap.get(robotString), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
+        if (!states.getGameState().equals(GameState.GAME_OVER)) {
 
-        ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
-        StateTextView.drawStates(HUDbatch, states);
-        states = controller.runGame(states);
-        stateBasedMovement();
-
+            ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
+            StateTextView.drawStates(HUDbatch, states);
+            robot.keyboardMovesRobot();
+            states = controller.runGame(states);
+            stateBasedMovement();
+        }
         sleep(100);
     }
 

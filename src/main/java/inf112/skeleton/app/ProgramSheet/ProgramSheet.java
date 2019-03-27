@@ -27,6 +27,7 @@ public class ProgramSheet {
 
     public void setLastVisitedFlag(int lastVisitedFlag) {
         this.lastVisitedFlag = lastVisitedFlag;
+        System.out.println(lastVisitedFlag);
     }
 
     public ProgramSheet(TiledMap map) {
@@ -79,6 +80,10 @@ public class ProgramSheet {
 
     public int getLives() {
         return lives;
+    }
+
+    public int removeLife() {
+        return --lives;
     }
 
     public void setLives(int lives) {

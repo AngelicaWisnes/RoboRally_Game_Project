@@ -62,10 +62,14 @@ public class Controller implements IController {
 
 
     public void isEndState() {
-        if (gamer.getSheet().getLives() == 0) {
+        System.out.println(gamer.getSheet().getLives());
+        if (gamer.getSheet().getLives() <= 0) {
             System.out.println("GAME OVER");
+            gameState = GameState.GAME_OVER;
         } else if (gamer.getSheet().getLastVisitedFlag() == 3) {
             System.out.println("YOU WIN!");
+            gameState = GameState.GAME_OVER;
+
         }
     }
 
@@ -96,16 +100,17 @@ public class Controller implements IController {
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART4;
         } else if (roundState.equals(RoundState.PART4)) {
-            //gears rotate
+            //pushers rotate
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART5;
-        }else if (roundState.equals(RoundState.PART5)) {
-            //gears rotate
+        } else if (roundState.equals(RoundState.PART5)) {
+            //lasers rotate
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
             roundState = RoundState.PART6;
-        }else if (roundState.equals(RoundState.PART6)) {
-            //gears rotate
+        } else if (roundState.equals(RoundState.PART6)) {
+            //checkpoints
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
+            isEndState();
             roundState = RoundState.NONE;
         }
 
@@ -149,7 +154,6 @@ public class Controller implements IController {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             gamer.getSheet().placeCard(new BlankCard(11));
-            System.out.println("pressed space");
         }
     }
 
