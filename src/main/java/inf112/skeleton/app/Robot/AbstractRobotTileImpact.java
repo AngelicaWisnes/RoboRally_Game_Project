@@ -39,7 +39,7 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
      */
     @Override
     public void tileRobotImpact(RoundState roundState) {
-        ITile curTile = getTileOnCurrentPos();
+        ITile curTile = getTileOnPos(pos);
         switch (roundState) {
             case PART1:
                 if (curTile instanceof DblConveyor) move(((DblConveyor) curTile).getDirection(), 1);
@@ -88,10 +88,10 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
     /**
      * @return the tile object at the position of the robot
      */
-    private ITile getTileOnCurrentPos() {
+    private ITile getTileOnPos(Position p) {
         //move the robot one tile in a direction
-        int x = pos.getX() / GameScreen.TILESIZE;
-        int y = pos.getY() / GameScreen.TILESIZE;
+        int x = p.getX() / GameScreen.TILESIZE;
+        int y = p.getY() / GameScreen.TILESIZE;
         int tileID;
         try {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
@@ -129,7 +129,7 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
         if (spaces < 1 || spaces > 3) throw new IllegalArgumentException("Invalid spaces-input to move");
 
         while (spaces-- > 0) {
-            //if (hasWall(direction)) continue;
+            if (hasWall(direction)) continue;
 
             pos = pos.getNeighbour(direction, TILESIZE);
 
@@ -140,8 +140,8 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
     }
 
     private boolean hasWall(Direction direction) {
-        ITile currentTile = getTileOnCurrentPos();
-
+        ITile cur = getTileOnPos(pos);
+        ITile nbr = getTileOnPos(pos.getNeighbour(direction, TILESIZE));
 
         return true;
     }
@@ -152,7 +152,7 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
      * @return true if dead, false otherwise
      */
     private boolean hasJustDied() {
-        ITile currentTile = getTileOnCurrentPos();
+        ITile currentTile = getTileOnPos(pos);
         return currentTile == null || currentTile instanceof Pit;
     }
 
