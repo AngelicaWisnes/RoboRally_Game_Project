@@ -21,11 +21,10 @@ import inf112.skeleton.app.TileTypes.*;
  */
 public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
     private TiledMap map;
-    private int width, height;
+    private final int TILESIZE = GameScreen.TILESIZE;
 
     AbstractRobotTileImpact(Position pos, Direction dir, TiledMap map) {
         this.map = map;
-        this.width = this.height = GameScreen.TILESIZE;
         this.dir = dir;
 
         this.lastVisitedFlag = damage = 0;
@@ -130,11 +129,13 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
         if (spaces < 1 || spaces > 3) throw new IllegalArgumentException("Invalid spaces-input to move");
 
         while (spaces-- > 0) {
+            if (hasWall(direction)) continue;
+
             switch (direction) {
-                case UP: pos.setY(pos.getY() + height); break;
-                case DOWN: pos.setY(pos.getY() - height); break;
-                case LEFT: pos.setX(pos.getX() - width); break;
-                case RIGHT: pos.setX(pos.getX() + width); break;
+                case UP: pos.setY(pos.getY() + TILESIZE); break;
+                case DOWN: pos.setY(pos.getY() - TILESIZE); break;
+                case LEFT: pos.setX(pos.getX() - TILESIZE); break;
+                case RIGHT: pos.setX(pos.getX() + TILESIZE); break;
                 default: throw new IllegalArgumentException("Must have valid direction-input to move robot");
             }
 
@@ -142,6 +143,13 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
         }
 
         return pos;
+    }
+
+    private boolean hasWall(Direction direction) {
+        ITile currentTile = getTileOnCurrentPos();
+
+
+        return true;
     }
 
     /**
