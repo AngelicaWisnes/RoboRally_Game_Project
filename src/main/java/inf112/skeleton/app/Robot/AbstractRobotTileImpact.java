@@ -142,8 +142,8 @@ public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
     private boolean hasWall(Direction direction) {
         ITile cur = getTileOnPos(pos);
         ITile nbr = getTileOnPos(pos.getNeighbour(direction, TILESIZE));
-
-        return true;
+        return (nbr instanceof AbstractWall && ((AbstractWall) nbr).getDirection() == direction.opposite())
+               || (cur instanceof AbstractWall && ((AbstractWall) cur).getDirection() == direction);
     }
 
     /**
