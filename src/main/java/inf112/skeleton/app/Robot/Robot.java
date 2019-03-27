@@ -8,6 +8,6 @@ import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 /**
  * @author Roger Wisnes
  */
-public class Robot extends AbstractRobotTileImpact {
+public class Robot extends AbstractRobot {
     public Robot(Position pos, Direction dir, TiledMap map, ProgramSheet ps) { super(pos, dir, map, ps); }
 }

@@ -20,17 +20,50 @@ import inf112.skeleton.app.TileTypes.*;
 /**
  * @author Roger Wisnes
  */
-public abstract class AbstractRobotTileImpact extends AbstractRobotGetSet {
+public abstract class AbstractRobot implements IRobot {
     private TiledMap map;
     private final int TILESIZE = GameScreen.TILESIZE;
+    private Position pos, checkpoint;
+    private Direction dir;
+    private int lastVisitedFlag;
+    private ProgramSheet programSheet;
 
-    AbstractRobotTileImpact(Position pos, Direction dir, TiledMap map, ProgramSheet programSheet) {
+    AbstractRobot(Position pos, Direction dir, TiledMap map, ProgramSheet programSheet) {
         this.map = map;
         this.dir = dir;
         this.programSheet = programSheet;
 
         this.pos = pos;
         this.checkpoint = pos.clone();
+    }
+
+    /**
+     * @return the current position
+     */
+    public Position getPos() { return pos; }
+
+    @Override
+    public Direction getDir() { return dir; }
+
+
+    protected void setFlagID(int flagID) {
+        if (flagID == lastVisitedFlag + 1) {
+            lastVisitedFlag = flagID;
+            setPositionCheckpointCorrespondance(checkpoint, pos);
+            System.out.println("Just updated flagID to " + lastVisitedFlag);
+        }
+    }
+
+    /**
+     * Update the correspondance between current position and checkpoint.
+     *
+     * @param p1 position to be updated
+     * @param p2 position to update from
+     * @return position of last checkpoint
+     */
+    protected Position setPositionCheckpointCorrespondance(Position p1, Position p2) {
+        p1.setXY(p2.getX(), p2.getY());
+        return pos;
     }
 
     /**
