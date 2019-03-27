@@ -24,10 +24,14 @@ public class Main {
             cfg.height = cfg.width / 20 * 12;
         }
 
+        cfg.width = 960;
+        cfg.height = 540;
+
         //cfg.fullscreen = true;
         //cfg.vSyncEnabled = true;
         cfg.addIcon("assets/img/icons/icon16.png", Files.FileType.Internal);
         cfg.addIcon("assets/img/icons/icon128.png", Files.FileType.Internal);
-        new LwjglApplication(new RoboRally(), cfg);
+        //new LwjglApplication(new RoboRally(), cfg);
+        new LwjglApplication(new Network(), cfg);
     }
 }
