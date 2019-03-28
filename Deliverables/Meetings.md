@@ -108,7 +108,7 @@ Roger:
 Stefan: 
 * har redesignet brettet
  * spillet er tilpasset nesten alle maskiner
-* jobber med nattverk
+* jobber med nettverk
 
 Hva skal vi gjøre:
 * levere oblig 4
