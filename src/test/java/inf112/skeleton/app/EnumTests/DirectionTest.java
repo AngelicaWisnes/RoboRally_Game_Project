@@ -1,4 +1,4 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.EnumTests;
 import inf112.skeleton.app.Enums.Direction;
 import org.junit.Test;
 
