@@ -32,6 +32,8 @@ Vi bruker fortsatt Slack, og er veldig fornøyd med hvordan det har fungert. Vi 
 **Kompetanseoverføring:**
 Vi parprogrammerer sammen, ofte med en som kan mer enn den andre slik at alle lærer noe. Når vi møtes går vi gjennom prosjektet slik at alle får oversikt og kan spørre hvis man lurer på noe. 
 
+**KLASSEDIAGRAM!!!!!!!**
+
 **DEL 2: KRAV**
 
 **KRAVLISTE FOR Å NÅ MVP:**
