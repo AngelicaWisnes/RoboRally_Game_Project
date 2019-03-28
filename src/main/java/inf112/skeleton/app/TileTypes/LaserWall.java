@@ -9,4 +9,8 @@ public class LaserWall extends AbstractWall {
         super(dir);
         this.image = "laserwall";
     }
+
+    public Direction getDir() {
+        return dir;
+    }
 }

@@ -9,20 +9,27 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
+import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Helpers.Position;
+import inf112.skeleton.app.Helpers.TileIDTranslator;
 import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Helpers.StateHolder;
+import inf112.skeleton.app.TileTypes.ITile;
+import inf112.skeleton.app.TileTypes.LaserWall;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Views.StateTextView;
@@ -50,9 +57,8 @@ public class GameScreen implements Screen {
     private ArrayList<Position> lasers;
 
     public static final int TILESIZE = 64;
-    private final int NTILES = 10;
-    private final int SCREENSIZE = TILESIZE * NTILES;
-    private final double STARTZOOM = 1.0;
+    private final int MAPWIDTH = 16;
+    private final int MAPHEIGHT= 12;
 
 
     public GameScreen(final RoboRally game) {
@@ -88,7 +94,15 @@ public class GameScreen implements Screen {
     }
 
     private void fillLasers() {
-
+        for (int i = 0; i < MAPWIDTH; i++){
+            for (int j = 0; j < MAPHEIGHT; j++){
+                TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(i, j);
+                int id = cell.getTile().getId();
+                if (id == 929){
+                    System.out.println(new Position(i * TILESIZE, j * TILESIZE));
+                }
+            }
+        }
     }
 
     private void fillTextureMap() {
