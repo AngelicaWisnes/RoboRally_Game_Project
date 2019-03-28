@@ -17,6 +17,8 @@ import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.*;
 
+import static inf112.skeleton.app.Helpers.Position.getTileOnPos;
+
 /**
  * @author Roger Wisnes
  */
@@ -77,7 +79,7 @@ public abstract class AbstractRobot implements IRobot {
      */
     @Override
     public void tileRobotImpact(RoundState roundState) {
-        ITile tile = getTileOnPos(pos);
+        ITile tile = getTileOnPos(pos, map);
         switch (roundState) {
             case PART1:
                 if (tile instanceof DblConveyor) {
@@ -152,21 +154,6 @@ public abstract class AbstractRobot implements IRobot {
     }
 
     /**
-     * @return the tile object at the position of the robot
-     */
-    private ITile getTileOnPos(Position p) {
-        int x = p.getX() / GameScreen.TILESIZE;
-        int y = p.getY() / GameScreen.TILESIZE;
-        try {
-            TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
-            int tileID = cell.getTile().getId();
-            return TileIDTranslator.translate_ID(tileID);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    /**
      * Rotate the robot
      *
      * @param rotation the rotation-Enum describing how turning-direction
@@ -222,8 +209,8 @@ public abstract class AbstractRobot implements IRobot {
      * @return
      */
     private boolean hasWall(Direction direction) {
-        ITile cur = getTileOnPos(pos);
-        ITile nbr = getTileOnPos(pos.getNeighbour(direction, TILESIZE));
+        ITile cur = getTileOnPos(pos, map);
+        ITile nbr = getTileOnPos(pos.getNeighbour(direction, TILESIZE), map);
         return (nbr instanceof AbstractWall && ((AbstractWall) nbr).hasWall(direction.opposite()))
                 || (cur instanceof AbstractWall && ((AbstractWall) cur).hasWall(direction));
     }
@@ -234,7 +221,7 @@ public abstract class AbstractRobot implements IRobot {
      * @return true if dead, false otherwise
      */
     private boolean hasJustDied() {
-        ITile currentTile = getTileOnPos(pos);
+        ITile currentTile = getTileOnPos(pos, map);
         return currentTile == null || currentTile instanceof Pit;
     }
 

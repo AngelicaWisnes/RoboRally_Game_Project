@@ -1,5 +1,6 @@
 package inf112.skeleton.app.Screens;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
@@ -19,6 +20,7 @@ import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
+import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Helpers.StateHolder;
 import inf112.skeleton.app.Views.DealtCardsView;
@@ -45,6 +47,8 @@ public class GameScreen implements Screen {
     private Gamer gamer;
     private Controller controller;
 
+    private ArrayList<Position> lasers;
+
     public static final int TILESIZE = 64;
     private final int NTILES = 10;
     private final int SCREENSIZE = TILESIZE * NTILES;
@@ -69,6 +73,7 @@ public class GameScreen implements Screen {
 
 
         fillTextureMap();
+        fillLasers();
 
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
 
@@ -79,6 +84,10 @@ public class GameScreen implements Screen {
         gamer = new Gamer(map, "Player1");
         robot = gamer.getSheet().getRobot();
         controller = new Controller(gamer, states);
+
+    }
+
+    private void fillLasers() {
 
     }
 
