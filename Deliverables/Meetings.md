@@ -61,12 +61,6 @@ Previous sprint completed tasks:
   * have to press enter to start round
   * robot point in different directions
   
-* Stefan:
-  * 
-  
-* Katarina:
-  * 
-  
 Next sprint:
 * finnish round logic
 * tiles move robot
@@ -74,6 +68,7 @@ Next sprint:
 next meeting 21.03.19
 
 **21.03.19**
+Attendance: Magne, Stefan, Roger, Katarina, Ingrid
 Previous sprint completed tasks:
 Stefan: 
 * dele ut kort
@@ -93,6 +88,36 @@ Roger:
 * flytt lives og damage fra ProgramSheet til Robot
 
 next meeting 28.03.19
+
+**28.0319**
+
+Oppmøte: Magne, Stefan, Roger, Katarina, Ingrid
+
+Hva har vi gjort:
+Ingrid/Katarina:
+* kan vinne og tape spillet 
+ 
+Magne:
+* jobber med spillbrettet
+* nummerert flagg så det blir lettere for spilleren
+ 
+Roger:
+* checkpoints
+* vegg
+* begynt på multiplayer
+
+Stefan: 
+* har redesignet brettet
+ * spillet er tilpasset nesten alle maskiner
+* jobber med nettverk
+
+Hva skal vi gjøre:
+* levere oblig 4
+* lasere
+* fortsette med nettverk
+* lage vinner og game over skjerm
+
+neste møte: 04.04.19
 
 
 
