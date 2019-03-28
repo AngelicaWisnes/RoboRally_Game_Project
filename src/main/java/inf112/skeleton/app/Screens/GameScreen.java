@@ -58,7 +58,7 @@ public class GameScreen implements Screen {
 
     public static final int TILESIZE = 64;
     private final int MAPWIDTH = 16;
-    private final int MAPHEIGHT= 12;
+    private final int MAPHEIGHT = 12;
 
 
     public GameScreen(final RoboRally game) {
@@ -94,12 +94,13 @@ public class GameScreen implements Screen {
     }
 
     private void findLasers() {
-        for (int i = 0; i < MAPWIDTH; i++){
-            for (int j = 0; j < MAPHEIGHT; j++){
+        lasers = new ArrayList<>();
+        for (int i = 0; i < MAPWIDTH; i++) {
+            for (int j = 0; j < MAPHEIGHT; j++) {
                 TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(i, j);
                 int id = cell.getTile().getId();
-                if (id == 929 || id == 646){ //
-                    lasers.add(new Position(i*TILESIZE, j*TILESIZE));
+                if (id == 929 || id == 646) { //
+                    lasers.add(new Position(i * TILESIZE, j * TILESIZE));
                 }
             }
         }
@@ -157,6 +158,8 @@ public class GameScreen implements Screen {
         batch.begin();
         batch.draw(textureMap.get(robotString), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
+        shape.setProjectionMatrix(camera.combined);
+
         if (!states.getGameState().equals(GameState.GAME_OVER)) {
 
             ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
@@ -164,8 +167,27 @@ public class GameScreen implements Screen {
             robot.keyboardMovesRobot();
             states = controller.runGame(states);
             stateBasedMovement();
+            fireLasers(shape);
         }
         sleep(100);
+    }
+
+    private void fireLasers(ShapeRenderer shape) {
+        shape.begin(ShapeRenderer.ShapeType.Filled);
+        shape.setColor(Color.RED);
+        for (Position laser : lasers) {
+            TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(laser.getX()/64, laser.getY()/64);
+            int id = cell.getTile().getId();
+            if (id == 929) { //
+                shape.rect(laser.getX() + TILESIZE / 4 - (64*3), laser.getY() + TILESIZE / 4, 64*3, 10);
+            }
+            if (id == 646) {
+                shape.rect(laser.getX() + TILESIZE / 2, laser.getY() + TILESIZE / 4 - (64*3), 10, 64*3);
+
+            }
+        }
+        shape.end();
+
     }
 
 
