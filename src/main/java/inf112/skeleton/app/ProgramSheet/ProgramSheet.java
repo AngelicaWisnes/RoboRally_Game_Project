@@ -95,8 +95,21 @@ public class ProgramSheet {
         return damage;
     }
 
+    public int resetDamage(){
+        return this.damage = 0;
+    }
+
+    public boolean fatallyInjured(){
+
+        return this.damage >= MAX_DAMAGE;
+    }
+
     public int damageRobot(){
-        return this.damage++;
+        this.damage++;
+        if (fatallyInjured()){
+            this.robot.killRobot();
+        }
+        return this.damage;
     }
 
 

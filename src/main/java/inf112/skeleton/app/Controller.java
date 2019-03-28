@@ -62,7 +62,6 @@ public class Controller implements IController {
 
 
     public void isEndState() {
-        System.out.println(gamer.getSheet().getLives());
         if (gamer.getSheet().getLives() <= 0) {
             System.out.println("GAME OVER");
             gameState = GameState.GAME_OVER;

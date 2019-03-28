@@ -48,6 +48,7 @@ public class ProgramSheetView {
             for (int i = 0; i < 10; i++){
                 batch.draw(textureMap.get("damagered"), 1155 + (i*40), 820, 36, 32);
             }
+            batch.end();
             return;
         }
         for (int i = 0; i < 9; i++) {

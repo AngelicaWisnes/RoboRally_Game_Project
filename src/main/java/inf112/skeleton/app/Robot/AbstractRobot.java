@@ -3,7 +3,6 @@ package inf112.skeleton.app.Robot;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.MoveBackwards;
 import inf112.skeleton.app.Card.MoveForward;
@@ -12,7 +11,6 @@ import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Helpers.Position;
-import inf112.skeleton.app.Helpers.TileIDTranslator;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.*;
@@ -192,14 +190,20 @@ public abstract class AbstractRobot implements IRobot {
 
             pos = pos.getNeighbour(direction, TILESIZE);
 
-            if (hasJustDied()) {
-                System.out.println("you have died");
-                programSheet.removeLife();
-                return setPositionCheckpointCorrespondance(pos, checkpoint);
+            if (hasJustFallen()) {
+                return killRobot();
             }
         }
 
         return pos;
+    }
+
+    public Position killRobot(){
+        System.out.println("you have died");
+        programSheet.removeLife();
+        programSheet.resetDamage();
+        return setPositionCheckpointCorrespondance(pos, checkpoint);
+
     }
 
     /**
@@ -216,14 +220,15 @@ public abstract class AbstractRobot implements IRobot {
     }
 
     /**
-     * Checks if robot has just died.
+     * Checks if robot has just fallen (pit or edge).
      *
      * @return true if dead, false otherwise
      */
-    private boolean hasJustDied() {
+    private boolean hasJustFallen() {
         ITile currentTile = getTileOnPos(pos, map);
         return currentTile == null || currentTile instanceof Pit;
     }
+
 
     /**
      * Helper-method for testing move-method

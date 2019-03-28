@@ -27,4 +27,6 @@ public interface IRobot {
     void cardMovesRobot(AbstractCard card);
 
     Direction testRotation(Rotation turnClockwise);
+
+    Position killRobot();
 }
