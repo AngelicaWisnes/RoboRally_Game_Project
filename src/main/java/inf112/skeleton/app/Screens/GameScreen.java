@@ -26,6 +26,7 @@ import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
+import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Helpers.TileIDTranslator;
 import inf112.skeleton.app.Robot.IRobot;
@@ -173,10 +174,11 @@ public class GameScreen implements Screen {
             states = controller.runGame(states);
             stateBasedMovement();
         }
+        System.out.println(gamer.getSheet().getLives());
         sleep(100);
     }
 
-    private void fireLasers() {
+/*    private void fireLasers() {
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.RED);
         Rectangle robotRectangle = new Rectangle(gamer.getSheet().getRobot().getPos().getX(), gamer.getSheet().getRobot().getPos().getY(), TILESIZE, TILESIZE);
@@ -204,7 +206,7 @@ public class GameScreen implements Screen {
             }
         }
         shape.end();
-    }
+    }*/
 
 
 
@@ -219,7 +221,7 @@ public class GameScreen implements Screen {
         }
 
         if (states.getRoundState().equals(RoundState.PART5)){
-            fireLasers();
+            LaserHandler.fireLasers(lasers, gamer, shape, pew, TILESIZE);
             states.setRoundState(RoundState.PART6);
         }
     }

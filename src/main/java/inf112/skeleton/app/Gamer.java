@@ -38,4 +38,7 @@ public class Gamer {
     public ProgramSheet getSheet() {
         return sheet;
     }
+    public TiledMap getMap(){
+        return map;
+    }
 }
