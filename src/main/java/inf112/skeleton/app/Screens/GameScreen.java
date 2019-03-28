@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -49,6 +50,7 @@ public class GameScreen implements Screen {
     private ShapeRenderer shape;
 
     private Music factoryMusic;
+    private Sound pew;
     private SpriteBatch batch;
     private SpriteBatch HUDbatch;
     private IRobot robot;
@@ -83,6 +85,8 @@ public class GameScreen implements Screen {
         findLasers();
 
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
+        pew = Gdx.audio.newSound(Gdx.files.internal("assets/laser.wav"));
+
 
         // create the camera and the SpriteBatch
         batch = new SpriteBatch();
@@ -168,12 +172,11 @@ public class GameScreen implements Screen {
             robot.keyboardMovesRobot();
             states = controller.runGame(states);
             stateBasedMovement();
-            fireLasers(shape);
         }
         sleep(100);
     }
 
-    private void fireLasers(ShapeRenderer shape) {
+    private void fireLasers() {
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.RED);
         Rectangle robotRectangle = new Rectangle(gamer.getSheet().getRobot().getPos().getX(), gamer.getSheet().getRobot().getPos().getY(), TILESIZE, TILESIZE);
@@ -185,17 +188,17 @@ public class GameScreen implements Screen {
                 Rectangle laserRect = new Rectangle(laser.getX() + TILESIZE / 4 - (64 * 3), laser.getY() + TILESIZE / 4, 64 * 3, 10);
                 shape.rect(laser.getX() + TILESIZE / 4 - (64 * 3), laser.getY() + TILESIZE / 4, 64 * 3, 10);
                 if (laserRect.overlaps(robotRectangle)) {
-                    System.out.println("LAZERED!");
+                    gamer.getSheet().damageRobot();
+                    pew.play();
                 }
-
-
             }
             if (id == 646) {
                 Rectangle laserRect = new Rectangle(laser.getX() + TILESIZE / 2, laser.getY() + TILESIZE / 4 - (64 * 3), 10, 64 * 3);
 
                 shape.rect(laser.getX() + TILESIZE / 2, laser.getY() + TILESIZE / 4 - (64 * 3), 10, 64 * 3);
                 if (laserRect.overlaps(robotRectangle)) {
-                    System.out.println("LAZERED!");
+                    gamer.getSheet().damageRobot();
+                    pew.play();
                 }
 
             }
@@ -213,6 +216,11 @@ public class GameScreen implements Screen {
             DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
         } else if (states.getCardState().equals(CardState.SELECTEDCARDS)) {
             states.setCardState(CardState.PLAYINGCARDS);
+        }
+
+        if (states.getRoundState().equals(RoundState.PART5)){
+            fireLasers();
+            states.setRoundState(RoundState.PART6);
         }
     }
 

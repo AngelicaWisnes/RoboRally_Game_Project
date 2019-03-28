@@ -106,7 +106,7 @@ public class Controller implements IController {
         } else if (roundState.equals(RoundState.PART5)) {
             //lasers shoot
 
-            roundState = RoundState.PART6;
+            //roundState = RoundState.PART6;
         } else if (roundState.equals(RoundState.PART6)) {
             //checkpoints
             gamer.getSheet().getRobot().tileRobotImpact(roundState);

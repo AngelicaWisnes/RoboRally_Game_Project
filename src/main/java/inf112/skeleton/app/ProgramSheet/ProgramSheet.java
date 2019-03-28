@@ -95,9 +95,15 @@ public class ProgramSheet {
         return damage;
     }
 
+    public int damageRobot(){
+        return this.damage++;
+    }
+
+
     public void setDamage(int damage) {
         this.damage = damage;
     }
+
 
     public void repair(int repairQty) {
         setDamage(damage - repairQty < 0 ? 0 : damage - repairQty);
