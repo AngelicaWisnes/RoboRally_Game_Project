@@ -2,6 +2,7 @@ package inf112.skeleton.app.Robot;
 
 import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Enums.Direction;
+import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Helpers.Position;
 
@@ -24,4 +25,6 @@ public interface IRobot {
     void keyboardMovesRobot();
 
     void cardMovesRobot(AbstractCard card);
+
+    Direction testRotation(Rotation turnClockwise);
 }
