@@ -112,12 +112,13 @@ public class Controller implements IController {
             gamer.getSheet().getRobot().tileRobotImpact(roundState);
             isEndState();
             roundState = RoundState.NONE;
+            roundCounter++;
         }
 
     }
 
     private void playCard() {
-        gamer.getSheet().getRobot().cardMovesRobot(gamer.getSheet().getSlot(roundCounter++).getCard());
+        gamer.getSheet().getRobot().cardMovesRobot(gamer.getSheet().getSlot(roundCounter).getCard());
     }
 
 
