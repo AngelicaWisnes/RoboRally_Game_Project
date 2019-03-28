@@ -7,19 +7,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class ProgramSheetTest {
-
+    private ProgramSheet sheet;
     private Slot slot;
 
     @Before
     public void initialize() {
+        sheet = new ProgramSheet(null);
         slot = new Slot();
-    }
-
-    @Test
-    public void receiveCards() {
-
     }
 
     @Test
@@ -33,5 +31,27 @@ public class ProgramSheetTest {
     public void clearUnlockedSlots() {
         slot.returnCard();
         
+    }
+
+    @Test
+    public void updateFlag(){
+        int currentFlag = sheet.getLastVisitedFlag();
+        sheet.setLastVisitedFlag(currentFlag+1);
+        int newFlag = sheet.getLastVisitedFlag();
+        assertEquals(currentFlag,newFlag-1);
+    }
+
+    @Test
+    public void damageTest(){
+        int damage = sheet.getDamage();
+        sheet.setDamage(damage-1);
+        assertEquals(damage - 1, sheet.getDamage());
+    }
+
+    @Test
+    public void lifeTest(){
+        int lives = sheet.getLives();
+        sheet.removeLife();
+        assertEquals(lives-1, sheet.getLives());
     }
 }
