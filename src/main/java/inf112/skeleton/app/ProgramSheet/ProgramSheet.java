@@ -78,6 +78,8 @@ public class ProgramSheet {
         return robot;
     }
 
+    public void setRobot(IRobot robot) { this.robot = robot; }
+
     public int getLives() {
         return lives;
     }
