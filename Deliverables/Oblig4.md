@@ -32,7 +32,7 @@ Vi bruker fortsatt Slack, og er veldig fornøyd med hvordan det har fungert. Vi 
 **Kompetanseoverføring:**
 Vi parprogrammerer sammen, ofte med en som kan mer enn den andre slik at alle lærer noe. Når vi møtes går vi gjennom prosjektet slik at alle får oversikt og kan spørre hvis man lurer på noe. 
 
-**KLASSEDIAGRAM!!!!!!!**
+[**Klassediagram**](https://github.com/inf112-v19/The_Terminators/blob/master/Deliverables/uml%203.png)
 
 **DEL 2: KRAV**
 
@@ -77,10 +77,10 @@ We have come a long way and are happy with our progress and codebase, and have h
 **DEL 3: KODE**
 
  * Produktet skal fungerer på Linux ( Ubuntu / Debian ), Windows og OSX. -
-   * I gruppen har vi bare OSX maskiner og Windows maskiner. I tillegg har samtlige ulike skjermer, noe som har gjort det til dels vanskelig å få programmet til å se bra ut hos alle. Dette tenker vi uansett at er greit for å få testet på flest mulig skjermer og få en best mulig løsning.
+   * I gruppen har vi bare OSX maskiner og Windows maskiner. I tillegg har samtlige ulike skjermer, noe som har gjort det til dels vanskelig å få programmet til å se bra ut hos alle. Dette tenker vi uansett at er greit for å få testet på flest mulig skjermer og få en best mulig løsning. Hvis man kjører programmet på en Retina-skjerm kan det hjelpe å sette "float multiplier" til 0 i Main.java.
 
 * dokumenter hvordan testene skal kjøres
-  * Vi benytter oss av JUnit tester, og har gjort det fra starten. I tillegg kjøres diverse funksjonelle tester under utvikling.
+  * Vi benytter oss av JUnit tester, og har gjort det fra starten. I tillegg kjøres diverse funksjonelle tester under utvikling. Testene kan enkelte kjøres ved å høyreklikke på inf112.skeleton.app og velge Run Tests. Per nå er det 76 tester som kjøres, og disse må kjøres før man pusher noe ny kode, for å forsikre at noe nytt man har skrevet ikke har skapt problemer for noe annet. 
   
  
 * Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet.
