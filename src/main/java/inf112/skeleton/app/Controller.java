@@ -52,7 +52,6 @@ public class Controller {
             if (roundCounter < 5) {
                 startRound();
             } else {
-                //RESET
                 resetRound();
             }
         }

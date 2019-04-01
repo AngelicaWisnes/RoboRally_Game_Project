@@ -17,22 +17,17 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
-import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.Position;
-import inf112.skeleton.app.Helpers.TileIDTranslator;
 import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Helpers.StateHolder;
-import inf112.skeleton.app.TileTypes.ITile;
-import inf112.skeleton.app.TileTypes.LaserWall;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Views.StateTextView;
@@ -80,7 +75,6 @@ public class GameScreen implements Screen {
         float newX = 64; //Gdx.graphics.getWidth() / 2 - (16*64) / 2;
         float newY = Gdx.graphics.getHeight() / 2 - (12 * 64) / 2;
         camera.translate(-newX, -newY);
-        //camera.zoom = 1.25f;
 
 
         fillTextureMap();
@@ -107,7 +101,7 @@ public class GameScreen implements Screen {
             for (int j = 0; j < MAPHEIGHT; j++) {
                 TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(i, j);
                 int id = cell.getTile().getId();
-                if (id == 929 || id == 646) { //
+                if (id == 929 || id == 646) {
                     lasers.add(new Position(i * TILESIZE, j * TILESIZE));
                 }
             }

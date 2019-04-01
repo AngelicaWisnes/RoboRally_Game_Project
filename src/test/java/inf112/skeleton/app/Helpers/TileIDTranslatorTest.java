@@ -18,11 +18,6 @@ import static org.junit.Assert.*;
 
 public class TileIDTranslatorTest {
 
-    /*@Test
-    public void translateIdToTileTestFloor() {
-        DblConveyor tile = (DblConveyor) TileIDTranslator.translate_ID(145);
-        assertEquals(tile.getDirection(), new DblConveyor(Direction.LEFT).getDirection());
-    }*/
 
     @Test
     public void translateIdToTileTestDocking1() {
@@ -54,11 +49,6 @@ public class TileIDTranslatorTest {
         assertEquals(tile.getId(), new Dock(5).getId());
     }
 
-    /*@Test
-    public void translateIdToTileTestDockingArea() {
-        DblConveyor tile = (DblConveyor) TileIDTranslator.translate_ID(277);
-        assertEquals(tile.getDirection(), new DblConveyor(Direction.LEFT).getDirection());
-    }*/
 
     @Test
     public void translateIdToTileTestFlag1() {
@@ -78,23 +68,6 @@ public class TileIDTranslatorTest {
         assertEquals(tile.getId(), new Flag(3).getId());
     }
 
-    /*@Test
-    public void translateIdToTileTestPit() {
-        Pit tile = (Pit) TileIDTranslator.translate_ID(315);
-        assertEquals(tile, new Pit(Direction.LEFT).getDirection());
-    }
-
-    @Test
-    public void translateIdToTileTestSingleRepair() {
-        SingleRepair tile = (SingleRepair) TileIDTranslator.translate_ID(158);
-        assertEquals(tile.getDirection(), new SingleRepair(Direction.LEFT).getDirection());
-    }
-
-    @Test
-    public void translateIdToTileTestDoubleRepair() {
-        DoubleRepair tile = (DoubleRepair) TileIDTranslator.translate_ID(173);
-        assertEquals(tile.getDirection(), new DoubleRepair(Direction.LEFT).getDirection());
-    }*/
 
     @Test
     public void translateIdToTileTestRotatorCW() {
@@ -193,12 +166,6 @@ public class TileIDTranslatorTest {
         assertEquals(tile.hasWall(Direction.RIGHT), new LaserWall(Direction.RIGHT).hasWall(Direction.RIGHT));
     }
 
-    /*@Test
-    public void translateIdToTileTestLaserHorisontal() {
-        Laser tile = (Laser) TileIDTranslator.translate_ID(910);
-        assertEquals(tile.getDirection(), new DblConveyor(Direction.LEFT).getDirection());
-    }*/
-
     @Test
     public void translateIdToTileTestLaserWallUp() {
         LaserWall tile = (LaserWall) TileIDTranslator.translate_ID(646);
@@ -211,9 +178,4 @@ public class TileIDTranslatorTest {
         assertEquals(tile.hasWall(Direction.DOWN), new LaserWall(Direction.DOWN).hasWall(Direction.DOWN));
     }
 
-    /*@Test
-    public void translateIdToTileTestLaserVertical() {
-        Laser tile = (Laser) TileIDTranslator.translate_ID(674);
-        assertEquals(tile.getDirection(), new Laser(Direction.LEFT).getDirection());
-    }*/
 }
