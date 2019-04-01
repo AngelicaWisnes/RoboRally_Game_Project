@@ -174,42 +174,8 @@ public class GameScreen implements Screen {
             states = controller.runGame(states);
             stateBasedMovement();
         }
-        System.out.println(gamer.getSheet().getLives());
-        sleep(100);
+        sleep(70);
     }
-
-/*    private void fireLasers() {
-        shape.begin(ShapeRenderer.ShapeType.Filled);
-        shape.setColor(Color.RED);
-        Rectangle robotRectangle = new Rectangle(gamer.getSheet().getRobot().getPos().getX(), gamer.getSheet().getRobot().getPos().getY(), TILESIZE, TILESIZE);
-
-        for (Position laser : lasers) {
-            TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(laser.getX() / 64, laser.getY() / 64);
-            int id = cell.getTile().getId();
-            if (id == 929) { //
-                Rectangle laserRect = new Rectangle(laser.getX() + TILESIZE / 4 - (64 * 3), laser.getY() + TILESIZE / 4, 64 * 3, 10);
-                shape.rect(laser.getX() + TILESIZE / 4 - (64 * 3), laser.getY() + TILESIZE / 4, 64 * 3, 10);
-                if (laserRect.overlaps(robotRectangle)) {
-                    gamer.getSheet().damageRobot();
-                    pew.play();
-                }
-            }
-            if (id == 646) {
-                Rectangle laserRect = new Rectangle(laser.getX() + TILESIZE / 2, laser.getY() + TILESIZE / 4 - (64 * 3), 10, 64 * 3);
-
-                shape.rect(laser.getX() + TILESIZE / 2, laser.getY() + TILESIZE / 4 - (64 * 3), 10, 64 * 3);
-                if (laserRect.overlaps(robotRectangle)) {
-                    gamer.getSheet().damageRobot();
-                    pew.play();
-                }
-
-            }
-        }
-        shape.end();
-    }*/
-
-
-
 
     private void stateBasedMovement() {
         if (states.getCardState().equals(CardState.DEALTCARDS) && controller.isGamerReady()) {

@@ -14,19 +14,13 @@ public class CardView {
 
     private static BitmapFont font = new BitmapFont();
 
-    private int cardWidth = 64;
-    private int cardHeight = 32;
 
-    public CardView (int cardWidth, int cardHeight) {
-        this.cardWidth = cardWidth;
-        this.cardHeight = cardHeight;
-    }
     public static void drawCardForSheet(SpriteBatch batch, AbstractCard card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos) {
         if (card == null)
             return;
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect(1165 + 80 * pos, 605, 130/2, 180/2);
+        shape.rect(1100 + 80 * pos, 505, 130/2, 180/2);
         shape.end();
 
         batch.begin();
@@ -56,7 +50,7 @@ public class CardView {
         }
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect((1170 + 75 * pos) + x, 250 + y, 65, 90);
+        shape.rect((1100 + 75 * pos) + x, 150 + y, 65, 90);
         shape.end();
 
         batch.begin();
