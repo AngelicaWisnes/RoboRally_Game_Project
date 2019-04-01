@@ -20,7 +20,9 @@ public class LaserHandler {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) gamer.getMap().getLayers().get(0)).getCell(laser.getX() / 64, laser.getY() / 64);
             int id = cell.getTile().getId();
             if (id == 929) { //
-                Rectangle laserRect = new Rectangle(laser.getX() + TILESIZE / 4 - (64 * 3), laser.getY() + TILESIZE / 4, 64 * 3, 10);
+                //Rectangle laserRect = new Rectangle(laser.getX() + TILESIZE / 4 - (64 * 3), laser.getY() + TILESIZE / 4, 64 * 3, 10);
+                Rectangle laserRect = new Rectangle(laser.getX(), laser.getY(), 64 * 3, 10);
+
                 shape.rect(laser.getX() + TILESIZE / 4 - (64 * 3), laser.getY() + TILESIZE / 3, 64 * 3, 7);
                 if (laserRect.overlaps(robotRectangle)) {
                     gamer.getSheet().damageRobot();

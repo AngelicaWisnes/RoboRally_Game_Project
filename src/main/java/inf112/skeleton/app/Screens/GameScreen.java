@@ -49,6 +49,7 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
 
     private ShapeRenderer shape;
+    private ShapeRenderer laserShape;
 
     private Music factoryMusic;
     private Sound pew;
@@ -93,6 +94,7 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         HUDbatch = new SpriteBatch();
         shape = new ShapeRenderer();
+        laserShape = new ShapeRenderer();
         gamer = new Gamer(map, "Player1");
         robot = gamer.getSheet().getRobot();
         controller = new Controller(gamer, states);
@@ -164,10 +166,9 @@ public class GameScreen implements Screen {
         batch.begin();
         batch.draw(textureMap.get(robotString), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
-        shape.setProjectionMatrix(camera.combined);
+        laserShape.setProjectionMatrix(camera.combined);
 
         if (!states.getGameState().equals(GameState.GAME_OVER)) {
-
             ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
             StateTextView.drawStates(HUDbatch, states);
             robot.keyboardMovesRobot();
@@ -187,7 +188,7 @@ public class GameScreen implements Screen {
         }
 
         if (states.getRoundState().equals(RoundState.PART5)){
-            LaserHandler.fireLasers(lasers, gamer, shape, pew, TILESIZE);
+            LaserHandler.fireLasers(lasers, gamer, laserShape, pew, TILESIZE);
             states.setRoundState(RoundState.PART6);
         }
     }

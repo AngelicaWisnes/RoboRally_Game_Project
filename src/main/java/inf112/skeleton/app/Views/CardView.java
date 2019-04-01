@@ -20,7 +20,7 @@ public class CardView {
             return;
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect(1100 + 80 * pos, 505, 130/2, 180/2);
+        shape.rect(1160 + 80 * pos, 605, 130/2, 180/2);
         shape.end();
 
         batch.begin();
@@ -50,7 +50,7 @@ public class CardView {
         }
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.WHITE);
-        shape.rect((1100 + 75 * pos) + x, 150 + y, 65, 90);
+        shape.rect((1170 + 75 * pos) + x, 250 + y, 65, 90);
         shape.end();
 
         batch.begin();
