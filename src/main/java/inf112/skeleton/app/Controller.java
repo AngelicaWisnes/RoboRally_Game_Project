@@ -13,7 +13,7 @@ import inf112.skeleton.app.Helpers.StateHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller implements IController {
+public class Controller {
 
 
     private Gamer gamer;
@@ -34,7 +34,6 @@ public class Controller implements IController {
         gameState = stateHolder.getGameState();
     }
 
-    @Override
     public StateHolder runGame(StateHolder states) {
         cardState = states.getCardState();
         roundState = states.getRoundState();
