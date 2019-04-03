@@ -169,7 +169,7 @@ public class GameScreen implements Screen {
             states = controller.runGame(states);
             stateBasedMovement();
         }
-        sleep(70);
+        sleep(300);
     }
 
     private void stateBasedMovement() {
@@ -181,7 +181,7 @@ public class GameScreen implements Screen {
             states.setCardState(CardState.PLAYINGCARDS);
         }
 
-        if (states.getRoundState().equals(RoundState.PART5)){
+        if (states.getRoundState().equals(RoundState.PART5)) {
             LaserHandler.fireLasers(lasers, gamer, laserShape, pew, TILESIZE);
             states.setRoundState(RoundState.PART6);
         }

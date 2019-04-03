@@ -39,9 +39,14 @@ public class Controller {
         roundState = states.getRoundState();
 
         if (cardState.equals(CardState.NOCARDS)) {
-            gamer.resetCards();
-            dealCards();
-            cardState = CardState.DEALTCARDS;
+            if (gamer.getSheet().isPowerDown()) {
+                gamer.getSheet().setPowerDown(false);
+                powerDownRound();
+                cardState.equals(CardState.PLAYINGCARDS);
+            } else {
+                dealCards();
+                cardState = CardState.DEALTCARDS;
+            }
         } else if (cardState.equals(CardState.DEALINGCARDS)) {
             //waiting for cards to be dealt
         } else if (cardState.equals(CardState.DEALTCARDS)) {
@@ -49,6 +54,7 @@ public class Controller {
         } else if (cardState.equals(CardState.SELECTEDCARDS)) {
             //waiting for screen to reset
         } else if (cardState.equals(CardState.PLAYINGCARDS)) {
+            listenForPowerDown();
             if (roundCounter < 5) {
                 startRound();
             } else {
@@ -56,6 +62,14 @@ public class Controller {
             }
         }
         return new StateHolder(cardState, roundState, gameState);
+    }
+
+    private void listenForPowerDown() {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+            gamer.getSheet().setPowerDown(!gamer.getSheet().isPowerDown());
+        }
+
+
     }
 
 
@@ -78,7 +92,6 @@ public class Controller {
         gamer.resetCards();
         selectedKeys = new ArrayList<>();
         gamerReady = false;
-
     }
 
     private void startRound() {
@@ -127,6 +140,14 @@ public class Controller {
 
     public boolean isGamerReady() {
         return gamerReady;
+    }
+
+    private void powerDownRound() {
+        gamer.getSheet().resetDamage();
+        for (int i = 0; i < 5; i++) {
+            gamer.getSheet().placeCard(new BlankCard(11));
+        }
+        gamerReady = true;
     }
 
     private void selectCard() {
