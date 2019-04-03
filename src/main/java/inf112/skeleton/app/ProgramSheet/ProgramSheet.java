@@ -3,6 +3,7 @@ package inf112.skeleton.app.ProgramSheet;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.Card.*;
 import inf112.skeleton.app.Enums.Direction;
+import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Robot.*;
 
@@ -77,7 +78,9 @@ public class ProgramSheet {
         return robot;
     }
 
-    public void setRobot(IRobot robot) { this.robot = robot; }
+    public void setRobot(IRobot robot) {
+        this.robot = robot;
+    }
 
     public int getLives() {
         return lives;
@@ -95,21 +98,21 @@ public class ProgramSheet {
         return damage;
     }
 
-    public int resetDamage(){
-        return this.damage = 0;
+    public int resetDamage() {
+        return damage = 0;
     }
 
-    public boolean fatallyInjured(){
+    public boolean fatallyInjured() {
 
-        return this.damage >= MAX_DAMAGE;
+        return damage >= MAX_DAMAGE;
     }
 
-    public int damageRobot(){
-        this.damage++;
-        if (fatallyInjured()){
-            this.robot.killRobot();
+    public int damageRobot() {
+        damage++;
+        if (fatallyInjured()) {
+            robot.killRobot();
         }
-        return this.damage;
+        return damage;
     }
 
 
@@ -125,6 +128,10 @@ public class ProgramSheet {
 
     public boolean isPowerDown() {
         return powerDown;
+    }
+
+    public boolean setPowerDown(boolean p) {
+        return powerDown = p;
     }
 
     public boolean allSlotsAreFilled() {
