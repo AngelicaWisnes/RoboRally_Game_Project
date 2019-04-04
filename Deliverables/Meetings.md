@@ -117,8 +117,22 @@ Hva skal vi gjøre:
 * fortsette med nettverk
 * lage vinner og game over skjerm
 
-neste møte: 04.04.19
+neste møte: 11.04.19
 
+
+**11.04.19**
+
+Oppmøte:  Magne, Stefan, Roger, Katarina, Ingrid
+
+Hva har vi gjort:
+Ingrid/Karina:
+* lagd power down funksjon
+
+Magne:
+
+Roger:
+
+Stefan: 
 
 
 
