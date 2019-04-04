@@ -17,9 +17,6 @@ import inf112.skeleton.app.TileTypes.*;
 
 import static inf112.skeleton.app.Helpers.Position.getTileOnPos;
 
-/**
- * @author Roger Wisnes
- */
 public abstract class AbstractRobot implements IRobot {
     private TiledMap map;
     private final int TILESIZE = GameScreen.TILESIZE;
@@ -50,23 +47,22 @@ public abstract class AbstractRobot implements IRobot {
     }
 
 
-    protected void setFlagID(int flagID) {
-        int lastVisitedFlag = programSheet.getLastVisitedFlag();
-        if (flagID == lastVisitedFlag + 1) {
+    private void setFlagID(int flagID) {
+        if (flagID == programSheet.getLastVisitedFlag() + 1) {
             programSheet.setLastVisitedFlag(flagID);
-            setPositionCheckpointCorrespondance(checkpoint, pos);
+            setPositionCheckpointCorrespondence(checkpoint, pos);
             System.out.println("Just updated flagID to " + flagID);
         }
     }
 
     /**
-     * Update the correspondance between current position and checkpoint.
+     * Update the correspondence between current position and checkpoint.
      *
      * @param p1 position to be updated
      * @param p2 position to update from
      * @return position of last checkpoint
      */
-    protected Position setPositionCheckpointCorrespondance(Position p1, Position p2) {
+    private Position setPositionCheckpointCorrespondence(Position p1, Position p2) {
         p1.setXY(p2.getX(), p2.getY());
         return pos;
     }
@@ -183,10 +179,7 @@ public abstract class AbstractRobot implements IRobot {
         }
 
         while (spaces-- > 0) {
-            if (hasWall(direction)) {
-                continue;
-            }
-
+            if (hasWall(direction)) continue;
 
             pos = pos.getNeighbour(direction, TILESIZE);
 
@@ -198,11 +191,11 @@ public abstract class AbstractRobot implements IRobot {
         return pos;
     }
 
-    public Position killRobot(){
+    public Position killRobot() {
         System.out.println("you have died");
         programSheet.removeLife();
         programSheet.resetDamage();
-        return setPositionCheckpointCorrespondance(pos, checkpoint);
+        return setPositionCheckpointCorrespondence(pos, checkpoint);
 
     }
 
@@ -210,13 +203,13 @@ public abstract class AbstractRobot implements IRobot {
      * Check if there is a wall in the given direction
      *
      * @param direction to check
-     * @return
+     * @return true if wall, false otherwise
      */
     private boolean hasWall(Direction direction) {
         ITile cur = getTileOnPos(pos, map);
         ITile nbr = getTileOnPos(pos.getNeighbour(direction, TILESIZE), map);
         return (nbr instanceof AbstractWall && ((AbstractWall) nbr).hasWall(direction.opposite()))
-                || (cur instanceof AbstractWall && ((AbstractWall) cur).hasWall(direction));
+               || (cur instanceof AbstractWall && ((AbstractWall) cur).hasWall(direction));
     }
 
     /**
@@ -233,9 +226,7 @@ public abstract class AbstractRobot implements IRobot {
     /**
      * Helper-method for testing move-method
      */
-    public Position testMove(Direction direction, int spaces) {
-        return move(direction, spaces);
-    }
+    public Position testMove(Direction direction, int spaces) { return move(direction, spaces); }
 
     /**
      * Helper-method for testing rotate-method
