@@ -78,7 +78,6 @@ public class Controller {
         gamer.resetCards();
         selectedKeys = new ArrayList<>();
         gamerReady = false;
-
     }
 
     private void startRound() {
