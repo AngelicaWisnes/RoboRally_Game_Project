@@ -4,21 +4,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
-import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
@@ -28,9 +32,8 @@ import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Helpers.StateHolder;
-import inf112.skeleton.app.Views.DealtCardsView;
-import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Views.StateTextView;
+import inf112.skeleton.app.Views.UIStage;
 
 
 public class GameScreen implements Screen {
@@ -42,6 +45,8 @@ public class GameScreen implements Screen {
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
+    private Viewport viewport;
+    private Stage stage;
 
     private ShapeRenderer shape;
     private ShapeRenderer laserShape;
@@ -64,17 +69,15 @@ public class GameScreen implements Screen {
     public GameScreen(final RoboRally game) {
         this.game = game;
         states = new StateHolder(CardState.NOCARDS, RoundState.NONE, GameState.GAMING);
-
-
         map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
-
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-        float newX = 64; //Gdx.graphics.getWidth() / 2 - (16*64) / 2;
-        float newY = Gdx.graphics.getHeight() / 2 - (12 * 64) / 2;
-        camera.translate(-newX, -newY);
+        //viewport test
+        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+        float translateX = TILESIZE;
+        float translateY = (Gdx.graphics.getHeight() / 2) - (MAPHEIGHT * TILESIZE/ 2);
+        camera.translate(-translateX, -translateY); //move one square right and center vertically
 
 
         fillTextureMap();
@@ -138,7 +141,9 @@ public class GameScreen implements Screen {
         camera.update();
         renderer.setView(camera);
         renderer.render();
-
+        game.batch.begin();
+        game.font.draw(game.batch, "" + Gdx.graphics.getWidth() + ", " + Gdx.graphics.getHeight(), 20, 20);
+        game.batch.end();
 
         batch.setProjectionMatrix(camera.combined);
         String robotString = "";
@@ -161,22 +166,39 @@ public class GameScreen implements Screen {
         batch.draw(textureMap.get(robotString), robot.getPos().getX(), robot.getPos().getY());
         batch.end();
         laserShape.setProjectionMatrix(camera.combined);
-
+        this.stage = UIStage.getStage();
+        this.stage.draw();
         if (!states.getGameState().equals(GameState.GAME_OVER)) {
-            ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
+            //ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
+
             StateTextView.drawStates(HUDbatch, states);
             robot.keyboardMovesRobot();
             states = controller.runGame(states);
             stateBasedMovement();
         }
+
+        moveCamera();
         sleep(70);
+    }
+
+    private void moveCamera() {
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+            camera.position.x -= 10; // if conditions are ok, move the camera back.
+        } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+            camera.position.x += 10; // if conditions are ok, move the camera to the front.
+        } else if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            camera.position.y -= 10; // if conditions are ok, move the camera to the front.
+        } else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            camera.position.y += 10; // if conditions are ok, move the camera to the front.
+        }
+
     }
 
     private void stateBasedMovement() {
         if (states.getCardState().equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
             states.setCardState(CardState.SELECTEDCARDS);
         } else if (states.getCardState().equals(CardState.DEALTCARDS)) {
-            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
+            //DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
         } else if (states.getCardState().equals(CardState.SELECTEDCARDS)) {
             states.setCardState(CardState.PLAYINGCARDS);
         }
