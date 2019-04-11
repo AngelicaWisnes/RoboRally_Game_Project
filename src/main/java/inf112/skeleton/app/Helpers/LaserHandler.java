@@ -3,15 +3,21 @@ package inf112.skeleton.app.Helpers;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
+import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Gamer;
+import inf112.skeleton.app.Robot.IRobot;
+import inf112.skeleton.app.Robot.Robot;
 
 import java.util.ArrayList;
 
 public class LaserHandler {
 
-    public static void fireLasers(ArrayList<Position> lasers, Gamer gamer, ShapeRenderer shape, Sound pew, int TILESIZE) {
+    private static Rectangle laserRect;
+
+    public static void fireBoardLaser(ArrayList<Position> lasers, Gamer gamer, ShapeRenderer shape, Sound pew, int TILESIZE) {
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.RED);
         Rectangle robotRectangle = new Rectangle(gamer.getSheet().getRobot().getPos().getX(), gamer.getSheet().getRobot().getPos().getY(), TILESIZE, TILESIZE);
@@ -29,7 +35,7 @@ public class LaserHandler {
             }
             if (id == 646) {
                 shape.rect(laser.getX() + TILESIZE / 2, laser.getY() + TILESIZE / 2, 10, -(TILESIZE * 3));
-                Rectangle laserRect = new Rectangle(laser.getX() + TILESIZE / 2, laser.getY() - TILESIZE * 3, 1, (TILESIZE * 4) - 1);
+                laserRect = new Rectangle(laser.getX() + TILESIZE / 2, laser.getY() - TILESIZE * 3, 1, (TILESIZE * 4) - 1);
 
                 if (laserRect.overlaps(robotRectangle)) {
                     gamer.getSheet().damageRobot();
@@ -39,6 +45,44 @@ public class LaserHandler {
         }
         shape.end();
 
+
+    }
+
+    public static void fireRobotLaser(Gamer shooter, Gamer opponent, ShapeRenderer shape, int TILESIZE) {
+        int x = shooter.getSheet().getRobot().getPos().getX();
+        int y = shooter.getSheet().getRobot().getPos().getY();
+        Direction dir = shooter.getSheet().getRobot().getDir();
+
+        IRobot opponentRobot = opponent.getSheet().getRobot();
+        Rectangle opponentRectangle = new Rectangle(opponentRobot.getPos().getX(), opponentRobot.getPos().getY(), TILESIZE, TILESIZE);
+
+        shape.begin(ShapeRenderer.ShapeType.Filled);
+        shape.setColor(Color.RED);
+
+        Rectangle laser;
+        for (int i = 0; i < 16; i++) {
+            if (dir.equals(Direction.UP)) {
+                laser = new Rectangle(x + TILESIZE / 2, (y + TILESIZE / 2) + (i * TILESIZE), 10, 64);
+                shape.rect(x + TILESIZE / 2, (y + TILESIZE / 2) + (i * TILESIZE), 10, 64);
+            } else if (dir.equals(Direction.DOWN)) {
+                laser = new Rectangle(x + TILESIZE / 2, (y + TILESIZE / 2) - (i * TILESIZE), 10, 64);
+                shape.rect(x + TILESIZE / 2, (y + TILESIZE / 2) - (i * TILESIZE), 10, 64);
+            } else if (dir.equals(Direction.LEFT)) {
+                laser = new Rectangle(x + TILESIZE / 2 - (i * TILESIZE), (y + TILESIZE / 2), 10, 64);
+                shape.rect(x + TILESIZE / 2 - (i * TILESIZE), (y + TILESIZE / 2), 10, 64);
+            } else {
+                laser = new Rectangle(x + (TILESIZE / 2) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
+                shape.rect(x + (TILESIZE / 2) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
+            }
+
+            if (laser.overlaps(opponentRectangle)) {
+                opponent.getSheet().damageRobot();
+                break;
+            }
+
+        }
+
+        shape.end();
 
     }
 }

@@ -10,8 +10,6 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -21,13 +19,16 @@ import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.CardState;
+import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.Position;
+import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Helpers.StateHolder;
+import inf112.skeleton.app.Robot.Robot;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Views.StateTextView;
@@ -182,8 +183,9 @@ public class GameScreen implements Screen {
         }
 
         if (states.getRoundState().equals(RoundState.PART5)) {
-            LaserHandler.fireLasers(lasers, gamer, laserShape, pew, TILESIZE);
+            LaserHandler.fireBoardLaser(lasers, gamer, laserShape, pew, TILESIZE);
             states.setRoundState(RoundState.PART6);
+
         }
     }
 
