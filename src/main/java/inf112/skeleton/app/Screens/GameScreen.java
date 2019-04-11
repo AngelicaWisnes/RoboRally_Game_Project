@@ -169,7 +169,7 @@ public class GameScreen implements Screen {
             states = controller.runGame(states);
             stateBasedMovement();
         }
-        sleep(300);
+        sleep(20);
     }
 
     private void stateBasedMovement() {

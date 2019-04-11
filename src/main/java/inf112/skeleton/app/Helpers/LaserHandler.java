@@ -15,18 +15,26 @@ public class LaserHandler {
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.RED);
         Rectangle robotRectangle = new Rectangle(gamer.getSheet().getRobot().getPos().getX(), gamer.getSheet().getRobot().getPos().getY(), TILESIZE, TILESIZE);
-        pew.play();
+        //pew.play();
         for (Position laser : lasers) {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) gamer.getMap().getLayers().get(0)).getCell(laser.getX() / 64, laser.getY() / 64);
             int id = cell.getTile().getId();
             if (id == 929) { //
-                Rectangle laserRect = new Rectangle(laser.getX(), laser.getY(), 64 * 3, 10);
+                shape.rect(laser.getX()+(TILESIZE/2), laser.getY()+(TILESIZE/2)-5, -(TILESIZE*3), 10);
+                Rectangle laserRect = new Rectangle(laser.getX()+TILESIZE-1, laser.getY(), -(TILESIZE*4), TILESIZE-1);
+                //laserRect.
 
-                shape.rect(laser.getX() + TILESIZE / 4 - (64 * 3), laser.getY() + TILESIZE / 3, 64 * 3, 7);
+
+
+                System.out.println("robot is: " + robotRectangle.x + ", " + robotRectangle.y);
+                System.out.println("laser is: " + laserRect.x + ", " + laserRect.y);
                 if (laserRect.overlaps(robotRectangle)) {
+                    System.out.println("true");
                     gamer.getSheet().damageRobot();
                 }
+
             }
+/*
             if (id == 646) {
                 Rectangle laserRect = new Rectangle(laser.getX() + TILESIZE / 2, laser.getY() + TILESIZE / 4 - (64 * 3), 10, 64 * 3);
 
@@ -36,6 +44,7 @@ public class LaserHandler {
                 }
 
             }
+*/
         }
         shape.end();
 
