@@ -14,21 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-
-
-    private Gamer gamer;
+    private IGamer gamer;
     private CardState cardState;
     private RoundState roundState;
     private GameState gameState;
     private int playerTurn;
     private int[] keys = {8, 9, 10, 11, 12, 13, 14, 15, 16};
     private final int KEY_OFFSET = 8; //Gdx.input.key is offset by 8
+    //TODO ok now, bad when multiple players?
     private ArrayList<Integer> selectedKeys = new ArrayList<>();
+
     private boolean gamerReady = false;
     private int roundCounter = 0;
 
-
-    public Controller(Gamer gamer, StateHolder stateHolder) {
+    //TODO rewrite? is this needed?
+    public Controller(IGamer gamer, StateHolder stateHolder) {
         this.gamer = gamer;
         cardState = stateHolder.getCardState();
         roundState = stateHolder.getRoundState();
@@ -36,23 +36,34 @@ public class Controller {
         playerTurn = stateHolder.getPlayerTurn();
     }
 
-    public StateHolder runGame(StateHolder states) {
+    public StateHolder runGame(StateHolder states, ArrayList<IGamer> gamers) {
         cardState = states.getCardState();
         roundState = states.getRoundState();
-
+        gameState = states.getGameState();
+        playerTurn = states.getPlayerTurn();
+        for (IGamer gamer : gamers){
+            runGamer(gamer);
+        }
+        return new StateHolder(cardState, roundState, gameState, playerTurn);
+    }
+    private void runGamer(IGamer gamer){
+        this.gamer = gamer;
         if (cardState.equals(CardState.NOCARDS)) {
             if (gamer.getSheet().isPowerDown()) {
                 gamer.getSheet().setPowerDown(false);
                 powerDownRound();
+                //??? should be cardstate = playing?
                 cardState.equals(CardState.PLAYINGCARDS);
             } else {
                 dealCards();
                 cardState = CardState.DEALTCARDS;
             }
-        } else if (cardState.equals(CardState.DEALINGCARDS)) {
-            //waiting for cards to be dealt
         } else if (cardState.equals(CardState.DEALTCARDS)) {
-            selectCard();
+            if (gamer instanceof AIGamer){
+                AICardSelect();
+            } else {
+                selectCard();
+            }
         } else if (cardState.equals(CardState.SELECTEDCARDS)) {
             //waiting for screen to reset
         } else if (cardState.equals(CardState.PLAYINGCARDS)) {
@@ -63,15 +74,13 @@ public class Controller {
                 resetRound();
             }
         }
-        return new StateHolder(cardState, roundState, gameState, playerTurn);
     }
+
 
     private void listenForPowerDown() {
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
             gamer.getSheet().setPowerDown(!gamer.getSheet().isPowerDown());
         }
-
-
     }
 
 
@@ -176,6 +185,14 @@ public class Controller {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             gamer.getSheet().placeCard(new BlankCard(11));
         }
+    }
+    //TODO selected keys are for all gamers?
+    private void AICardSelect() {
+        gamer.getSheet().placeCard(gamer.getCard(0));
+        gamer.getSheet().placeCard(gamer.getCard(1));
+        gamer.getSheet().placeCard(gamer.getCard(2));
+        gamer.getSheet().placeCard(gamer.getCard(3));
+        gamer.getSheet().placeCard(gamer.getCard(4));
     }
 
 

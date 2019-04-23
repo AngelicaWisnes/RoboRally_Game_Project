@@ -1,7 +1,13 @@
 package inf112.skeleton.app;
 
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
+
+import java.util.List;
 
 public interface IGamer {
     ProgramSheet getSheet();
+    void resetCards();
+    void setCards(List<AbstractCard> cardsOnHand);
+    AbstractCard getCard(int i);
 }

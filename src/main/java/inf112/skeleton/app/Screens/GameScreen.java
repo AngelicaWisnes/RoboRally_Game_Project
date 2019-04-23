@@ -173,7 +173,7 @@ public class GameScreen implements Screen {
             ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
             StateTextView.drawStates(HUDbatch, states);
             robot.keyboardMovesRobot();
-            states = controller.runGame(states);
+            states = controller.runGame(states,gamers);
             stateBasedBoardActions();
         }
         sleep(20);
