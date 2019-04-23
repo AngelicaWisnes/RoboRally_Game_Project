@@ -30,8 +30,12 @@ public class ProgramSheet {
         this.lastVisitedFlag = lastVisitedFlag;
     }
 
-    public ProgramSheet(TiledMap map) {
-        robot = new Robot(new Position(0, 0), Direction.UP, map, this);
+    public ProgramSheet(TiledMap map, int playerNumber) {
+        if (playerNumber == 1){
+            robot = new Robot(new Position(0, 0), Direction.RIGHT, map, this);
+        } else { //TODO fix starting positions
+            robot = new Robot(new Position(0, 64*5), Direction.UP, map, this);
+        }
         powerDown = false;
         lives = 3;
         damage = lastVisitedFlag = 0;

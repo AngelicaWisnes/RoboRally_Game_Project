@@ -8,19 +8,20 @@ import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gamer {
+public class Gamer implements IGamer{
 
     private TiledMap map;
     private ProgramSheet sheet;
     private String name;
-
+    private int playerNumber;
     private List<AbstractCard> cardsOnHand;
 
 
-    public Gamer(TiledMap map, String name) {
+    public Gamer(TiledMap map, String name, int playerNumber) {
         this.map = map;
         this.name = name;
-        sheet = new ProgramSheet(map);
+        this.playerNumber = playerNumber;
+        sheet = new ProgramSheet(map, playerNumber);
     }
 
     public void setCards(List<AbstractCard> cardsOnHand) {

@@ -9,11 +9,30 @@ public class StateHolder {
     private CardState cardState;
     private RoundState roundState;
     private GameState gameState;
+    private int numberOfPlayers;
+    private int playerTurn;
 
-    public StateHolder(CardState cardState, RoundState roundState, GameState gameState) {
+    public StateHolder(CardState cardState, RoundState roundState, GameState gameState, int players) {
         this.cardState = cardState;
         this.roundState = roundState;
         this.gameState = gameState;
+        this.numberOfPlayers = players;
+        this.playerTurn = 1;
+    }
+
+    public int getNumberOfPlayers() {
+        return numberOfPlayers;
+    }
+
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
+
+    public int incrementPlayerTurn(){
+        if (playerTurn == numberOfPlayers){
+            return playerTurn = 1;
+        }
+        return ++playerTurn;
     }
 
     public CardState getCardState() {

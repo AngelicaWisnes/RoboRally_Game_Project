@@ -20,6 +20,7 @@ public class Controller {
     private CardState cardState;
     private RoundState roundState;
     private GameState gameState;
+    private int playerTurn;
     private int[] keys = {8, 9, 10, 11, 12, 13, 14, 15, 16};
     private final int KEY_OFFSET = 8; //Gdx.input.key is offset by 8
     private ArrayList<Integer> selectedKeys = new ArrayList<>();
@@ -32,6 +33,7 @@ public class Controller {
         cardState = stateHolder.getCardState();
         roundState = stateHolder.getRoundState();
         gameState = stateHolder.getGameState();
+        playerTurn = stateHolder.getPlayerTurn();
     }
 
     public StateHolder runGame(StateHolder states) {
@@ -61,7 +63,7 @@ public class Controller {
                 resetRound();
             }
         }
-        return new StateHolder(cardState, roundState, gameState);
+        return new StateHolder(cardState, roundState, gameState, playerTurn);
     }
 
     private void listenForPowerDown() {

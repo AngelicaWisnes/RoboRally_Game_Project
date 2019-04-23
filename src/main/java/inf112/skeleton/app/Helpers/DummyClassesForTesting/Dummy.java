@@ -43,7 +43,7 @@ public class Dummy {
         //Now we load our map...
 
         map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
-        gamer = new Gamer(map, "Player1");
+        gamer = new Gamer(map, "Player1", 1);
         sheet = gamer.getSheet();
         robot = sheet.getRobot();
     }
