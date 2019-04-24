@@ -1,7 +1,7 @@
 package inf112.skeleton.app;
 
 import inf112.skeleton.app.Card.AbstractCard;
-import inf112.skeleton.app.Card.CardGenerator;
+import inf112.skeleton.app.Card.CardDealer;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -14,14 +14,14 @@ public class CardGeneratorTest {
 
     @Test
     public void generateCards() {
-        ArrayList<AbstractCard> newCardStack = CardGenerator.getNewCardStack();
+        ArrayList<AbstractCard> newCardStack = CardDealer.getNewCardStack();
         assertFalse(newCardStack.isEmpty());
     }
 
     @Test
     public void allCardsAreUnique() {
-        Set<Integer> ints = new HashSet<Integer>();
-        ArrayList<AbstractCard> newCardStack = CardGenerator.getNewCardStack();
+        Set<Integer> ints = new HashSet<>();
+        ArrayList<AbstractCard> newCardStack = CardDealer.getNewCardStack();
 
         for (AbstractCard c : newCardStack) {
             ints.add(c.getPriority());
