@@ -126,16 +126,28 @@ Oppmøte:  Magne, Stefan, Roger, Katarina, Ingrid
 
 Hva har vi gjort:
 Ingrid/Karina:
-* lagd power down funksjon
+* lagde power down funksjon
 
-Magne:
+Roger/Magne:
+* dependencies for mockito og headless
 
-Roger:
-
-Stefan: 
-
-
+Stefan/Ingrid:
+* fikset lasere fra brettet og startet å lage laser på roboter
 
 
+**24.04.19**
 
+Oppmøte: Katarina, Ingrid, Stefan, Roger
 
+Hva har vi gjort:
+* ferdig med multiplayer 
+* refaktorert
+* AI
+
+Hva skal vi gjøre (projectboard avklarer prioriteringen):
+* nettverk for mvp
+* bli ferdig med å skyte andre roboter med laser
+* dytte andre roboter
+* display av ProgramSheet skal oppgraders og vise andre spillere sine kort
+
+neste møte: 02.05.19
