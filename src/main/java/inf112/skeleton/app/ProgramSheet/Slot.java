@@ -1,50 +1,33 @@
 package inf112.skeleton.app.ProgramSheet;
 
 import inf112.skeleton.app.Card.AbstractCard;
+import inf112.skeleton.app.Card.BlankCard;
 
 public class Slot {
     private AbstractCard card;
     private boolean locked;
 
-    public Slot() {
-        this.locked = false;
-    }
+    Slot() { this.locked = false; }
 
-    public void lockSlot() {
-        this.locked = true;
-    }
+    void lockSlot() { this.locked = true; }
 
-    public void unlockSlot() {
-        this.locked = false;
-    }
+    void unlockSlot() { this.locked = false; }
 
-    public boolean isLocked() {
-        return this.locked;
-    }
+    boolean isLocked() { return this.locked; }
 
-    public boolean isAvailable() {
-        return this.card == null;
-    }
+    boolean isAvailable() { return this.card == null; }
 
-    public AbstractCard getCard() {
-        return card;
-    }
+    public AbstractCard getCard() { return card; }
 
-    public void removeCard(){
-        if (this.locked == false){
-            this.card = null;
-        }
-    }
+    void removeCard() { if (!this.locked) this.card = null; }
 
-    public void setCard(AbstractCard card) {
-        this.card = card;
-    }
+    public void setCard(AbstractCard card) { this.card = card; }
 
     /**
      * Removes card from slot, returns card to calling method.
      */
-    public AbstractCard returnCard() {
-        if (!this.locked) {
+    AbstractCard returnCard() {
+        if (!this.locked && !(this.card instanceof BlankCard)) {
             AbstractCard temp = this.card;
             this.card = null;
             return temp;
