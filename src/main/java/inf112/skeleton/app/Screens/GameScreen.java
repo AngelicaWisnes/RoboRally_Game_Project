@@ -60,6 +60,7 @@ public class GameScreen implements Screen {
     private Disposable[] disposables;
 
 
+
     public GameScreen(final RoboRally game, int numberOfPlayers) {
         this.game = game;
         states = new StateHolder(RoundState.NONE, GameState.GAMING, numberOfPlayers);
@@ -143,8 +144,7 @@ public class GameScreen implements Screen {
             states = controller.runGame(states, this);
             stateBasedBoardActions();
         }else{
-            //TODO create new GameOverScreen
-            game.setScreen(new MainMenuScreen(game));
+            game.setScreen(new EndGameScreen(game));
         }
 
         sleep(20);
