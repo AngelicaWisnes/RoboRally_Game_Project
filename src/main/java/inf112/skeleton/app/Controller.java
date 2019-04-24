@@ -199,7 +199,6 @@ public class Controller {
                     usedCards.add(gamer.getCard(i));
                 }
             }
-            gamer.getCards();
             gamer.setCardState(CardState.SELECTEDCARDS);
         }
 
@@ -213,6 +212,10 @@ public class Controller {
         gamer.getSheet().placeCard(gamer.getCard(2));
         gamer.getSheet().placeCard(gamer.getCard(3));
         gamer.getSheet().placeCard(gamer.getCard(4));
+        usedCards.add(gamer.getCard(5));
+        usedCards.add(gamer.getCard(6));
+        usedCards.add(gamer.getCard(7));
+        usedCards.add(gamer.getCard(8));
         gamer.setCardState(CardState.SELECTEDCARDS);
     }
 

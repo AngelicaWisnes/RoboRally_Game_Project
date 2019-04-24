@@ -52,12 +52,7 @@ public class AIGamer implements IGamer{
     public AbstractCard getCard(int i) {
         return this.cardsOnHand.get(i);
     }
-    //TODO should this exist in IGamer?
 
-    @Override
-    public List<AbstractCard> getCards() {
-        return null;
-    }
 
     @Override
     public void setCardState(CardState cardState) {
