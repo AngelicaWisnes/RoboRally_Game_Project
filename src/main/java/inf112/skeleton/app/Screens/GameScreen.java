@@ -53,7 +53,7 @@ public class GameScreen implements Screen {
 
     private Gamer hostGamer;
     private Controller controller;
-    private ArrayList<IGamer> gamers =  new ArrayList<>();
+    private ArrayList<IGamer> gamers = new ArrayList<>();
 
     private ArrayList<Position> lasers;
 
@@ -86,8 +86,8 @@ public class GameScreen implements Screen {
         controller = new Controller(states);
 
         gamers.add(hostGamer);
-        for (int i = 1; i < numberOfPlayers; i++){
-            gamers.add(new AIGamer(map, "AI-" + i, i+1));
+        for (int i = 1; i < numberOfPlayers; i++) {
+            gamers.add(new AIGamer(map, "AI-" + i, i + 1));
         }
         disposables = new Disposable[]{map, renderer, factoryMusic, pew, robotBatch, HUDBatch, shape, laserShape};
     }
@@ -104,6 +104,7 @@ public class GameScreen implements Screen {
             }
         }
     }
+
     private void fillTextureMap() {
         textureMap = new HashMap<>();
         textureMap.put("robot_north", new Texture(Gdx.files.internal("assets/img/robot_north.png")));
@@ -142,7 +143,7 @@ public class GameScreen implements Screen {
             hostGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
             states = controller.runGame(states, this);
             stateBasedBoardActions();
-        }else{
+        } else {
             //TODO create new GameOverScreen
             game.setScreen(new MainMenuScreen(game));
         }
@@ -153,7 +154,7 @@ public class GameScreen implements Screen {
     private void drawRobots() {
         robotBatch.setProjectionMatrix(camera.combined);
         robotBatch.begin();
-        for (IGamer g : gamers){
+        for (IGamer g : gamers) {
             String robotString = "";
             switch (g.getSheet().getRobot().getDir()) {
                 case UP:
@@ -169,7 +170,8 @@ public class GameScreen implements Screen {
                     robotString = "robot_west";
                     break;
             }
-            robotBatch.draw(textureMap.get(robotString), g.getSheet().getRobot().getPos().getX(), g.getSheet().getRobot().getPos().getY());
+            robotBatch.draw(textureMap.get(robotString), g.getSheet().getRobot().getPos().getX(),
+                            g.getSheet().getRobot().getPos().getY());
         }
         robotBatch.end();
     }
@@ -205,18 +207,20 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        for (Disposable d : disposables){
+        for (Disposable d : disposables) {
             d.dispose();
         }
     }
 
     private void screenshot() {
-        byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), true);
+        byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(),
+                                                         Gdx.graphics.getBackBufferHeight(), true);
         for (int i = 4; i < pixels.length; i += 4) {
             pixels[i - 1] = (byte) 255;
         }
 
-        Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(), Pixmap.Format.RGBA8888);
+        Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(),
+                                   Pixmap.Format.RGBA8888);
         BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
         PixmapIO.writePNG(Gdx.files.external("mypixmap.png"), pixmap);
         pixmap.dispose();
