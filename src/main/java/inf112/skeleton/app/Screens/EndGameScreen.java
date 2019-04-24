@@ -5,13 +5,14 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 
-public class MainMenuScreen implements Screen {
+public class EndGameScreen implements Screen {
 
     private final RoboRally game;
     private OrthographicCamera camera;
 
-    MainMenuScreen(final RoboRally game) {
+    EndGameScreen(final RoboRally game) {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -31,14 +32,14 @@ public class MainMenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Main Menu ",150, Gdx.graphics.getHeight()/2 + 150);
-        game.font.draw(game.batch, "Press any button to begin game...", 150, Gdx.graphics.getHeight()/2);
-        game.font.draw(game.batch, "Use numbers 1-9 to select cards", 150, Gdx.graphics.getHeight()/2 - 150);
-        game.font.draw(game.batch, "Press enter to play cards, press space to play a blank card", 150, Gdx.graphics.getHeight()/2 - 300);
+        Texture game_over_win = new Texture(Gdx.files.internal("assets/img/end_game/game_over_win.png"));
+        Texture game_over_lose = new Texture(Gdx.files.internal("assets/img/end_game/game_over_lose.png"));
+        //game.batch.draw(game_over_win, Gdx.graphics.getWidth() / 2 - game_over_win.getWidth() / 2, Gdx.graphics.getHeight() / 2 - game_over_win.getHeight()/2);
+        game.batch.draw(game_over_lose, Gdx.graphics.getWidth() / 2 - game_over_win.getWidth() / 2, Gdx.graphics.getHeight() / 2 - game_over_win.getHeight()/2);
         game.batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
-            game.setScreen(new GameScreen(game, 2)); // number of players
+            game.setScreen(new MainMenuScreen(game)); // number of players
             dispose();
         }
     }
