@@ -10,8 +10,7 @@ public class StateTextView {
 
     public static void drawStates(SpriteBatch batch, StateHolder states){
         StringBuilder sb = new StringBuilder();
-        sb.append(states.getCardState());
-        sb.append(",     player turn: " + states.getNumberOfPlayers());
+        sb.append("player turn: " + states.getNumberOfPlayers());
         sb.append("\n");
         sb.append(states.getRoundState());
         batch.begin();

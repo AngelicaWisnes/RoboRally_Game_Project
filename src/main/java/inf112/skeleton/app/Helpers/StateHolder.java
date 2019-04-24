@@ -6,14 +6,12 @@ import inf112.skeleton.app.Enums.RoundState;
 
 
 public class StateHolder {
-    private CardState cardState;
     private RoundState roundState;
     private GameState gameState;
     private int numberOfPlayers;
     private int playerTurn;
 
-    public StateHolder(CardState cardState, RoundState roundState, GameState gameState, int players) {
-        this.cardState = cardState;
+    public StateHolder(RoundState roundState, GameState gameState, int players) {
         this.roundState = roundState;
         this.gameState = gameState;
         this.numberOfPlayers = players;
@@ -33,14 +31,6 @@ public class StateHolder {
             return playerTurn = 1;
         }
         return ++playerTurn;
-    }
-
-    public CardState getCardState() {
-        return cardState;
-    }
-
-    public void setCardState(CardState cardState) {
-        this.cardState = cardState;
     }
 
     public RoundState getRoundState() {

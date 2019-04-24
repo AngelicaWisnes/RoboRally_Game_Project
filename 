@@ -1,0 +1,2240 @@
+[33mcommit ab24d4024816d23178327a822b3f250c508f345d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Apr 23 13:39:33 2019 +0200
+
+    state issues have cropped up, might need larger refactor
+
+[33mcommit 32e8a5db6294b514401093b59f3e931aafc5b749[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Apr 23 11:58:29 2019 +0200
+
+    started multiplayer refactor, pre-controller refactor
+
+[33mcommit 185fb5997d6b37d7722cb9e1dff6146e1fd56698[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: b7c8864 efd2a8c
+Author: ingridliabakk <ier008@uib.no>
+Date:   Thu Apr 11 13:06:17 2019 +0200
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit b7c8864cec673aa427fd1c74a84e768dee1de349[m
+Author: ingridliabakk <ier008@uib.no>
+Date:   Thu Apr 11 13:06:10 2019 +0200
+
+    method created for shooting other robots
+
+[33mcommit efd2a8cecfe4809481d915ebb93f32efad1e8e03[m
+Merge: edfeb74 a8aca10
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Apr 11 12:09:00 2019 +0200
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit edfeb7418609a35928c12a62956dafc67562c414[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Apr 11 12:08:44 2019 +0200
+
+    Added dependencies for mockito and headless
+
+[33mcommit a8aca10e4d0477a4b94c5a211a0c9ffce59d7905[m
+Author: ingridliabakk <ier008@uib.no>
+Date:   Thu Apr 11 11:29:30 2019 +0200
+
+    fixed lasers
+
+[33mcommit 262423799ea0ea0be73729555b50811b26901164[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Apr 11 11:02:48 2019 +0200
+
+    laser logic updated
+
+[33mcommit 7e562e752c0481435ae221417c269a0a72dd8f0f[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Apr 4 11:04:23 2019 +0200
+
+    Changed next meeting to 11.04
+
+[33mcommit 22ab330b9dedfce35347692d93955f78bd3f5562[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Apr 4 10:37:40 2019 +0200
+
+    Changed spelling-error, and added return-statement in documentation
+
+[33mcommit 9f5e2f805efe750fcc4802ef17a0045d1cb91f17[m[33m ([m[1;31morigin/timer[m[33m)[m
+Merge: bc2808e a5866be
+Author: ingridliabakk <ier008@uib.no>
+Date:   Wed Apr 3 16:29:27 2019 +0200
+
+    Merge branch 'powerDown'
+
+[33mcommit a5866bebc83f70d2862679ca9880894965dbd37d[m
+Author: ingridliabakk <ier008@uib.no>
+Date:   Wed Apr 3 16:28:36 2019 +0200
+
+    powerDown is  functional
+
+[33mcommit bc2808e21ba37f8612a8a9bc51cfcff4cd138f51[m[33m ([m[1;33mtag: V1.4[m[33m)[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Apr 1 13:18:53 2019 +0200
+
+    removed unnecessary comments and tests
+
+[33mcommit ba29a606908b8ea6cee1097b44439a18b08230df[m
+Merge: d2bb2d1 db12a05
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Apr 1 13:05:54 2019 +0200
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit d2bb2d1b05801d137bf8b1b59fd3e8f2e6a3490a[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Apr 1 13:05:51 2019 +0200
+
+    changed shaperenderer for laser, resolution fix for all screens
+
+[33mcommit db12a05c199c21f4af7ef531bcf752372ea96b06[m
+Author: StefanEllenberger <sel012@student.uib.no>
+Date:   Mon Apr 1 12:48:48 2019 +0200
+
+    Update Oblig4.md
+
+[33mcommit 04c10081977e795ecaadf6eba4695d963a68f562[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Apr 1 12:47:18 2019 +0200
+
+    added class diagram
+
+[33mcommit dbdb1d595a5db569d61fe22381043206d2cdfea6[m[33m ([m[1;32mlaser[m[33m)[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Apr 1 12:21:50 2019 +0200
+
+    fixed shapeDraw bug, sheet now displays correctly
+
+[33mcommit b0a2386eb49da17007d04728ecb0ca9986399a50[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Apr 1 12:14:43 2019 +0200
+
+    changed map to remove always on laser
+
+[33mcommit c78474e4b929b9afe9cd361d4420df33014b5a62[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 21:05:37 2019 +0100
+
+    moved laser to laserhandler
+
+[33mcommit 2223a0bc95d4cde6155abefbe226889b94b03de6[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 20:47:05 2019 +0100
+
+    lasers can kill you
+
+[33mcommit 568e85ae5b68e550b1798ad83361ad3a7d0948f9[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 20:21:13 2019 +0100
+
+    laser hurts robot and plays sound
+
+[33mcommit 1c1a1cbe486509381b2c1ce1bb412163d0dfc2ed[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 15:51:03 2019 +0100
+
+    laser is generated on map and collision works
+
+[33mcommit f4dfc896f93adef21587b46d7830c6117d0b29a4[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 15:45:13 2019 +0100
+
+    can draw lasers on map
+
+[33mcommit a6bed587368bda64c5d07231fe957d5e2c473025[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 15:21:32 2019 +0100
+
+    fillLasers finds down facing lasers and adds to list
+
+[33mcommit 5f42724305d49ce32d348a1b1d80328b0cf86a79[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 15:05:41 2019 +0100
+
+    fillLasers finds right facing lasers and adds to list
+
+[33mcommit 40ed993863b1c17b61156297cd3a53c529d9d493[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 14:46:57 2019 +0100
+
+    fixed roundcounter bug that skipped final round
+
+[33mcommit fbfb9875eb5d6fd2ebb77c3410167b7ea4caede0[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 14:39:37 2019 +0100
+
+    refactored getTileOnPos for use with other objects
+
+[33mcommit 2d1055b3176637fd1dedc550d6f77d96d2fa5637[m
+Author: = <=>
+Date:   Thu Mar 28 14:00:29 2019 +0100
+
+    Added a lot of tests to the ID-Translator Test-Class. Some of them are commented because of an error.
+
+[33mcommit 38efb9d06e4f59dc175fb071d0d67fbe36982078[m
+Merge: 5c89b84 2bcbe46
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 13:03:47 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 5c89b84cbb5e1bdd3aa6905e151324cde0347bb8[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 13:03:43 2019 +0100
+
+    added programsheet tests
+
+[33mcommit 24c95f05ae75858199c6d245a0fb56dbd8c69cc4[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 12:53:03 2019 +0100
+
+    added position tests
+
+[33mcommit 2bcbe46f94a3a724ec0d1f364ccff01f4d70a83f[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 28 12:35:47 2019 +0100
+
+    added a class diagram reminder!!!
+    
+    REMEMBER TO ADD CLASS DIAGRAM!!
+
+[33mcommit ba8cc7d54f0842ec06fbc5e92e17550c85066296[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 28 12:30:29 2019 +0100
+
+    Updated Oblig4
+
+[33mcommit 499be44443904cdfa71b838ee41010163d5f5eb2[m
+Merge: d1ad803 4bd0bae
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 12:25:31 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 4bd0bae0c134af656aa00ea385454318a4b87521[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 28 12:25:16 2019 +0100
+
+    Added jars for testing
+
+[33mcommit d1ad803e14dd0cc9b11bfa5fe89c23cb805cbf1e[m
+Merge: 76d75a8 21e33af
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 12:23:37 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 21e33afc88669cbc7bb06e2e8bfb18a849a88c31[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 28 12:23:14 2019 +0100
+
+    Added libraries for testing
+
+[33mcommit 76d75a85ccd58f11b90fb21e64ae62625711f382[m
+Merge: 9fda098 e59d57c
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 12:16:30 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 9fda098da6915a1420924dadb4975695215fd036[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 12:16:26 2019 +0100
+
+    added direction and position test
+
+[33mcommit e59d57c99be3c8cd74b242c981c069bab38e1032[m
+Merge: dae383d 1203546
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 28 12:15:53 2019 +0100
+
+    Merge branch 'robottest'
+
+[33mcommit 120354616d782510109533fe09f353df9af092fb[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 28 12:15:20 2019 +0100
+
+    Added a dummy class, with headless application, to be able to test robotmovements
+
+[33mcommit e855d0693a0c8caa690807c8ca9e22384dd190fe[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 28 12:02:00 2019 +0100
+
+    added direction tests
+
+[33mcommit dae383d163764a77b4a509299de46f57e45ef9e2[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 28 11:44:20 2019 +0100
+
+    added retrospective 28.03
+
+[33mcommit 61da64157fcaf5b383f2a12a4eb5ba3aa73969d3[m
+Merge: 3099a7a aaf65da
+Author: = <=>
+Date:   Thu Mar 28 11:41:02 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 3099a7ab646248d390e877d0d9b05fe33b4a4783[m
+Author: = <=>
+Date:   Thu Mar 28 11:40:50 2019 +0100
+
+    Added a testmap for testcases
+
+[33mcommit aaf65da04eb6b133a7424c50c99f9376f15f0b04[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 28 11:37:45 2019 +0100
+
+    fixed typo #2
+
+[33mcommit e0ee8bff1d496288fe7c65b84f3f6c46fb575f9e[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 28 11:37:06 2019 +0100
+
+    fixed typo
+
+[33mcommit 80c9fedf84faafd04fe93981c65b19825c59ca3e[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 28 11:36:08 2019 +0100
+
+    møte 28.03.19
+
+[33mcommit f75e2d49bd2def3eaf7d42a8038e81447677a28b[m
+Merge: 01f6d4f 42df65c
+Author: ingridliabakk <ier008@uib.no>
+Date:   Thu Mar 28 10:24:45 2019 +0100
+
+    erge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 42df65c66f41074832c21bf1a7b53517f241bbda[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Wed Mar 27 16:53:28 2019 +0100
+
+    Create Oblig4.md
+
+[33mcommit 9736d438f853e61305ee5e89b14fa9bc28fdb503[m
+Author: = <=>
+Date:   Wed Mar 27 15:59:25 2019 +0100
+
+    Added 5 different dockings with ID
+
+[33mcommit 01f6d4fa06176f87518e2f1d4371bbe69a23e8bc[m
+Author: ingridliabakk <ier008@uib.no>
+Date:   Wed Mar 27 15:57:49 2019 +0100
+
+    added winning and dying
+
+[33mcommit 1eaec673e7f07e8e0c730c0e033aff013d0f009b[m
+Author: ingridliabakk <ier008@uib.no>
+Date:   Wed Mar 27 15:08:00 2019 +0100
+
+    created end states for the game
+
+[33mcommit 3620406c30f88f1bbbc28f3aca2a4b9084eeee9f[m
+Author: = <=>
+Date:   Wed Mar 27 14:53:25 2019 +0100
+
+    Fixed error in TMX file
+
+[33mcommit d72ccf8afa657d7cfc7587dbf0b943633085d5c8[m
+Merge: acb61d1 23390fb
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 14:49:08 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit acb61d180149bd1ae5777020a1c41af763f1fa1c[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 14:49:01 2019 +0100
+
+    Changed sysout value (for debugging)
+
+[33mcommit 23390fb8626627c6edef8ad3ee8dbaa90ea5e92d[m
+Merge: 1d08914 468fa8c
+Author: = <=>
+Date:   Wed Mar 27 14:45:48 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+    
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+[33mcommit 1d089143631702c3963bd5815150a4a8e67ec5c0[m
+Author: = <=>
+Date:   Wed Mar 27 14:44:42 2019 +0100
+
+    Indexed the flags to make it a better user experience.
+
+[33mcommit 468fa8c709c72bf4f0c31fe0d784f73c08ca3d43[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 14:31:00 2019 +0100
+
+    This is a part-commit, part 2: Just got get and set method
+    - Removed lastVisitedFlag, to update programsheet.
+    - Need get and set from another branch.
+
+[33mcommit 24862edd25c9b4bac418e660ab947d59dd77d440[m
+Merge: 5df92b7 e414444
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 14:29:30 2019 +0100
+
+    Merge branch 'robotwall'
+
+[33mcommit e4144446230c3953383792dd1ab0ba223a7d9fa6[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 14:28:55 2019 +0100
+
+    This is a part-commit: Removed lastVisitedFlag, to update programsheet.
+    Need get and set from another branch.
+
+[33mcommit 5df92b7fcf9cf2db0b6be796801d40877a220712[m
+Merge: cca0aa7 49fc7d9
+Author: ingridliabakk <ier008@uib.no>
+Date:   Wed Mar 27 14:26:39 2019 +0100
+
+    Merge branch 'endState'
+    
+    g Please enter a commit message to explain why this merge is necessary,
+
+[33mcommit 49fc7d9cee31095b9b65c747f8a02e9048d7ea11[m
+Author: ingridliabakk <ier008@uib.no>
+Date:   Wed Mar 27 14:24:09 2019 +0100
+
+    created setLastVisitedFlag and getLastVisitedFlag
+
+[33mcommit cca0aa78c60789f3d7cd12b2772882404c88b850[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 14:06:08 2019 +0100
+
+    Fixed typo
+
+[33mcommit 3e77171fc219b36447b830a6fd02a6a80b0ebbad[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 14:03:32 2019 +0100
+
+    Added part5 and part 6 to controller
+
+[33mcommit 5a4c287fd8bffd70dd4e44a86b124e3a78f50ec3[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 14:01:09 2019 +0100
+
+    Updated flagIDs in translator
+
+[33mcommit 7bb5dbd90130af883c5d857e91fb2739b1f9ee69[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 13:39:29 2019 +0100
+
+    created another roundstate
+
+[33mcommit c073b44d0fe7f4fa6cae46e54e23e36867790ead[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 13:23:10 2019 +0100
+
+    Merged AbstractRobots together again
+
+[33mcommit b1dd26715674d97f236f56af4eddbf2fdc891fbd[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 13:17:25 2019 +0100
+
+    Moved damage and lives to programsheet
+
+[33mcommit 38e6d41e5ab683279216a4aa5a4058b05c3e1615[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 12:23:47 2019 +0100
+
+    Creater hasWall-method for robot
+
+[33mcommit 20d707361977e9e0642403de2d598b0c634a268e[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 12:18:09 2019 +0100
+
+    Updated inheritance for Wall and LaserWall
+
+[33mcommit ddde153ccc48c0572a09c6135647ae058c19b1de[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 12:08:40 2019 +0100
+
+    Refactored getTileOnCurrentPos to be named getTileOnPos, and take
+    position as argument
+
+[33mcommit 1b2964a2f85957722c7678bb72157c8ec4d5c28c[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 12:07:44 2019 +0100
+
+    Created AbstractWall
+
+[33mcommit 0f79d52de897198b398ebd2cab520e0654e58940[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 11:59:21 2019 +0100
+
+    Created getNeighbour, in Position-helper-class, and refactored
+    move-switch in robot to use this method
+
+[33mcommit 782a72a2713541b1edeb5b750e476addfc3e79a1[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 27 11:44:11 2019 +0100
+
+    Refactores height and width to be TILESIZE
+
+[33mcommit da073017ae0b5b0717ac509b313a66b39cb0cd7c[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Fri Mar 22 12:08:17 2019 +0100
+
+    møte 21.03.19
+
+[33mcommit 9188655837fad7e36cebef34edc2221c93a9e4b1[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 21 13:28:59 2019 +0100
+
+    Changed setDamage to actually set instead of update
+
+[33mcommit 4df921b489d519e4684d10216fe4ac4bc5b7d603[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 21 13:26:47 2019 +0100
+
+    Refactored name AbstractRobot to AbstractRobotGetSet
+
+[33mcommit e1aa3f2678e68501df87a097bf2a6e9584dedff5[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 21 13:22:24 2019 +0100
+
+    Moved damage and lives from ProgramSheet to Robot
+    Refactored name of method from tileMovesRobot to tileRobotImpact
+    Divided AbstractRobot in two: One for getters and setters,
+    and one for tile-impact
+
+[33mcommit 8b2babdb7f31790db520b70523f82b427056d657[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 21 13:18:59 2019 +0100
+
+    Added repair-quantity to repair-tiles
+
+[33mcommit 3a05af69c644ffb71acd392d235f566e08d1821b[m
+Author: = <=>
+Date:   Thu Mar 21 11:40:45 2019 +0100
+
+    Added Lasers and walls
+
+[33mcommit b6d033c3217d998890455dd929e8d36f9d88824d[m
+Merge: f984b7b 2433bf5
+Author: = <=>
+Date:   Thu Mar 21 11:17:13 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit f984b7bbf650fc41a7c1bcb82d7aa65b4bba5990[m
+Author: = <=>
+Date:   Thu Mar 21 11:17:03 2019 +0100
+
+    1 ID change to the lasers on the map
+
+[33mcommit a63549d5105d62f5fc61f0a5c7f52045fd8faa31[m
+Author: = <=>
+Date:   Thu Mar 21 11:14:25 2019 +0100
+
+    Made some changes in translator, as well as I made a fix in the Flag and Doc class. Map is also updated
+
+[33mcommit 2433bf5dcb7f60a66a016d8c30e6885f3010ea87[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 16:58:34 2019 +0100
+
+    Deleted duplicate code
+
+[33mcommit 062e539947221bc5ab609b9e8de3b95e6f56d775[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 16:05:44 2019 +0100
+
+    Edited from private to public, on test-method
+
+[33mcommit 5afb4b626a422592415fc9092b80845ada8b61ff[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 20 15:51:06 2019 +0100
+
+    new layout
+
+[33mcommit 41ac076942d479c5f3fdff7385820ef693b2d096[m
+Merge: 6932f17 f523e6a
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 20 15:43:32 2019 +0100
+
+    merge conflict fix
+
+[33mcommit f523e6aef84968ff54c1fd4c6783f2d2db5b6e40[m
+Author: = <=>
+Date:   Wed Mar 20 15:35:41 2019 +0100
+
+    Fixed bug that caused you to die, when starting the game.
+    Error = tileIDs without function.
+
+[33mcommit 6932f17bec5a9c41f7c91863eff6518682a62808[m
+Merge: 44d1e6c 221be72
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 20 14:56:47 2019 +0100
+
+    Merge branch 'resize'
+
+[33mcommit f98f42bf478c053ba66d73aa25fe6fa246d8c3be[m
+Merge: df2d3b5 44d1e6c
+Author: = <=>
+Date:   Wed Mar 20 14:55:44 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit df2d3b544159e91cfe6b87a70e14c029065e034b[m
+Author: = <=>
+Date:   Wed Mar 20 14:55:28 2019 +0100
+
+    Made new and "hopefully" final map. Changed all the ID's in ID-translator. (Have some errors in the .tsx files
+
+[33mcommit 44d1e6c26aa596f646ba792af723b4a1c56077df[m
+Merge: 086e786 6573309
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 20 14:54:47 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 086e7863831ebd29ee4e4f1b3f082197e8329c26[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 20 14:54:34 2019 +0100
+
+    Return tokens repaired by single and- double repair
+
+[33mcommit a44b46c556c41fbda35aecb5803e9b91375fa0d4[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 20 14:51:57 2019 +0100
+
+    Created method robotRepair
+
+[33mcommit 221be72a5d2959cf8d9beb8929eeb85fb6ca435f[m[33m ([m[1;32mresize[m[33m)[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 20 14:47:04 2019 +0100
+
+    movement works based on states
+
+[33mcommit 6573309c9201cef972233802a817bc2d99650604[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 14:38:03 2019 +0100
+
+    Updated use of setXY
+
+[33mcommit 429678ceb32df5800a14a5c69bbcc7fff8e6e0bf[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 14:36:32 2019 +0100
+
+    Added set(both)-method
+
+[33mcommit da89c8a79ad400a0489d651a92ce76f09ec6e5ad[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 14:33:46 2019 +0100
+
+    Removed printlines
+
+[33mcommit d347a60df341c9b776b9dd6556c3b4ad7e7e60bb[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 20 14:31:33 2019 +0100
+
+    Created single -and double repair classes
+
+[33mcommit 4ba8c0417eae14182db5e0fd53baba3b300522db[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 14:31:28 2019 +0100
+
+    Fixed setters from += to =
+
+[33mcommit 68a3e5dbe84e9675a80f99356393f2ee1702ff13[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 20 14:27:19 2019 +0100
+
+    sheet usable for testing
+
+[33mcommit 2290eae6d99fcfaf996ef7e0c4ea86dac3aca98d[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 14:21:58 2019 +0100
+
+    Edit clone to use this values instead of parameter-values
+
+[33mcommit bded1f4779455e42034a4fd9fc4edf66018f1b97[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 14:19:55 2019 +0100
+
+    Added cloning method to Position
+
+[33mcommit 9bd9406ca773302e1697784b9c2142cabff68fe1[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 20 13:58:20 2019 +0100
+
+    reformated code
+
+[33mcommit e08a18b0a906ac8dbd4a17ee8cbc7c5e71563d2c[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 20 13:09:32 2019 +0100
+
+    most card elements on sheet ok
+
+[33mcommit 06ed92ab9390c1a37b3811d96f80e2be598bc89b[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 14 12:20:04 2019 +0100
+
+    reformated code
+
+[33mcommit 997a387f0d29612e2b824f9cb86852bad53ed263[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 14 11:56:34 2019 +0100
+
+    Created checkpoint positions and added method for dying
+
+[33mcommit 634ef71e6311ad08e50893e78bc47b144601161a[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Mar 19 20:02:35 2019 +0100
+
+    sheet view uses new layout, all initial layouts created relatively
+
+[33mcommit 2e1002b40fae075ba26143df5abcbe6f7eb334a2[m[33m ([m[1;31morigin/resize[m[33m)[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Mar 19 19:08:09 2019 +0100
+
+    initial screen size should be ok for all screens
+
+[33mcommit 30c03028fc6ad7d940880b4f126ec8f9491b53df[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Mar 19 12:45:40 2019 +0100
+
+    slowed down game, showing game states in HUD for testing
+
+[33mcommit dfd59a68fd22272456897f018e30d8e4363f198a[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Mar 18 11:59:53 2019 +0100
+
+    removed prints used for testing
+
+[33mcommit cf51ef87612c49a82a14856123320854996fb18c[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Mar 18 11:58:52 2019 +0100
+
+    added blank tile for manual testing of movement
+
+[33mcommit aefee032a4bc0af36227acbf6cd73c823afa2b46[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Mon Mar 18 11:17:43 2019 +0100
+
+    added rounds to game, can be played infinitely
+
+[33mcommit 00f7e9765ce8e3caf1fcd12c7fe3377cdeacfccb[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Thu Mar 14 13:56:07 2019 +0100
+
+    fixed merge conflict
+
+[33mcommit 12265c0aae9745e805c67fdf688cff9a0edfbf5b[m
+Merge: 4308ea8 984f3b5
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Thu Mar 14 13:45:30 2019 +0100
+
+    fixing merge
+
+[33mcommit 984f3b506c7dd8df3f9ce4052558f45812937098[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Thu Mar 14 13:41:11 2019 +0100
+
+    board zommes in and out when round starts
+
+[33mcommit 4308ea851b8dcd74ab7cbc2d9bfb4d6ee358240e[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Mar 14 13:18:16 2019 +0100
+
+    merge round logic branch
+
+[33mcommit 542c48070fff27aeb36bbfe736562bc0121f5bec[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 14 12:17:00 2019 +0100
+
+    meeting 21.03.19
+
+[33mcommit a8262ead6faa00afdc6976fac430222f52cc5e84[m
+Merge: f27bb3e 0139d54
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Thu Mar 14 11:56:39 2019 +0100
+
+    Merge branch 'robot'
+
+[33mcommit 0139d540587127719166c34624abe8bbc0ecbb1d[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Thu Mar 14 11:55:55 2019 +0100
+
+    robot has directions
+
+[33mcommit f27bb3e8acc650cfe9dbd460f02eb24fdc9a1765[m
+Author: = <=>
+Date:   Thu Mar 14 11:51:05 2019 +0100
+
+    Added getID method to flag Class
+
+[33mcommit 2afc432d86f70a661f309fe00d4fc00624a8667b[m
+Author: = <=>
+Date:   Thu Mar 14 11:48:06 2019 +0100
+
+    Added the flags and the doc in the Translator class
+
+[33mcommit 3f1d409e3015d1c6c66f4650b1fa12e92d28550f[m
+Merge: 2cc38fd 548bbb9
+Author: = <=>
+Date:   Thu Mar 14 11:18:39 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 2cc38fd711dc5744f917acb84fbef14a17bb0051[m
+Author: = <=>
+Date:   Thu Mar 14 11:18:31 2019 +0100
+
+    Har lagt til et nytt map, i tillegg til å oppdatere tiledmap_ID filen
+
+[33mcommit 548bbb911e7ce8156dadd49884d59c3bf67e51bb[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 14 11:03:45 2019 +0100
+
+    Fixed errors that came from name-change from Cards to AbstractCard
+
+[33mcommit 6ce44e7e019132d39c516e5474d047ed8a2e6d15[m
+Merge: c8cef3c 61d3a6b
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Mar 14 10:53:33 2019 +0100
+
+    Merge branch 'startround'
+    
+    # Conflicts:
+    #       src/main/java/inf112/skeleton/app/Gamer.java
+
+[33mcommit c8cef3c9ab9768595512de0fe38cbe2ff03a6510[m[33m ([m[1;31morigin/Round[m[33m)[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Mar 14 10:35:51 2019 +0100
+
+    Made clearUnlockedSlots test
+
+[33mcommit fc4e6217a7367bc67efea00341651c90aa22fab7[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Mar 13 14:09:00 2019 +0100
+
+    have to press enter to start round
+
+[33mcommit 1c4c6fcb18e70f23c40e8e15908d6dcfce741096[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Fri Mar 8 14:52:08 2019 +0100
+
+    new class diagram
+
+[33mcommit 6159f966c1b612332c76f421c3d7dd7576130cdd[m[33m ([m[1;33mtag: LastcommitforOblig2[m[33m)[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Fri Mar 8 14:28:57 2019 +0100
+
+    added instructions on on how to use program
+
+[33mcommit 03d9627214479eceab2c40c302966a6cafa2586a[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Fri Mar 8 14:16:16 2019 +0100
+
+    cards move robot correct direction, code clean-up
+
+[33mcommit 75c021da0f4053b776fa82372628824c59df071c[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Fri Mar 8 12:44:12 2019 +0100
+
+    code clean-up, removing unused code
+
+[33mcommit 12654f3be4ad202e802fbc231e8c8b02d3651f5f[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Fri Mar 8 12:25:58 2019 +0100
+
+    one round of being dealt cards and having robot move works
+
+[33mcommit f7a0cb32b982b26aead9147a59f2158c4d5a15a9[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Fri Mar 8 11:34:39 2019 +0100
+
+    display cards on hand
+
+[33mcommit 0b149b2d5d7e839ddf5cefe7de09ce3db757d18f[m
+Merge: b82d4b6 ebe1a66
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Mar 7 22:36:56 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit ebe1a66d2a4be3a3fc430673dd39b60b8d657832[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 7 13:09:57 2019 +0100
+
+    all tests run green
+
+[33mcommit 429a6752e2ee8e60bea3b2a90e62efc484994198[m
+Merge: 2c3db47 c1a422f
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 7 12:52:46 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 2c3db47a1f54e1a86a595301f525d1341ad94d12[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 7 12:52:43 2019 +0100
+
+    added abstract tile tests
+
+[33mcommit b82d4b688e680115d214a677fee8b1f8a92412fb[m
+Merge: 8637a6f c1a422f
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Mar 7 12:51:07 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 8637a6f06ea35de99e2fd200ec9174c27495ce3f[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Mar 7 12:50:59 2019 +0100
+
+    Made test "placecard" for method in program sheet
+
+[33mcommit c1a422f37c8e2a721f0a1117a83b96b85cef1014[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 7 12:45:09 2019 +0100
+
+    Update Mandatory3.md
+
+[33mcommit 1b0cd6c08b31b2eada7e93f37b24a76d7c67cef4[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 7 12:43:24 2019 +0100
+
+    Update Mandatory3.md
+
+[33mcommit 4d144fb16f24f85593379f9d77658239802c54ae[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 7 12:41:46 2019 +0100
+
+    transfered the meeting reports to github
+
+[33mcommit cb5c3c348f9311f77d610dc6daf6b547cb783f99[m
+Merge: 1e5e453 47ef58e
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 7 12:39:01 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 1e5e4537fd205ad1b8f80d315be14168174519f9[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Mar 7 12:38:57 2019 +0100
+
+    added test to TileIDTranslator
+
+[33mcommit 47ef58ec669ac030fa39350b1ab0d42bf6406f62[m
+Merge: 35a80e4 585f333
+Author: = <=>
+Date:   Thu Mar 7 12:29:05 2019 +0100
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/test/java/inf112/skeleton/app/CardTest.java
+
+[33mcommit 35a80e4685a483ee075b927474ae070026f63878[m
+Author: = <=>
+Date:   Thu Mar 7 12:24:04 2019 +0100
+
+    Added some more test to CardTest
+
+[33mcommit 585f333c6c0d7af0778f5424e3350800a499ed82[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Mar 7 12:15:36 2019 +0100
+
+    Retrospective 13.02.19
+
+[33mcommit abc0e73937990134747da96d045d00e59d986df4[m
+Merge: a71b7d2 094b897
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 6 16:33:35 2019 +0100
+
+    merge conflict resolved
+
+[33mcommit a71b7d2dcadc7ecd776935b5718abcfba23d797e[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 6 16:20:01 2019 +0100
+
+    refactored Card to reflect that it is abstract
+
+[33mcommit 48edb1d7f426bfc78e63951de6125049a03921ae[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 6 16:18:21 2019 +0100
+
+    added javadoc to interfaces and abstract classes
+
+[33mcommit 094b89763efd76a710e7182d8ef5b1b3844b0438[m
+Merge: b851e7c 8b78740
+Author: = <=>
+Date:   Wed Mar 6 16:12:36 2019 +0100
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/main/java/inf112/skeleton/app/Screens/GameScreen.java
+
+[33mcommit b851e7c9229207fd81ec0725db7788413662ca67[m
+Author: = <=>
+Date:   Wed Mar 6 16:11:15 2019 +0100
+
+    Added 8 tests in CardTest
+
+[33mcommit 8b78740dd61066ba6221578b71b39c0296281b43[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 6 15:56:34 2019 +0100
+
+    Deleted unused file Display
+
+[33mcommit c6523369bef07eff860f55d0e666ed6a2d1c5e05[m
+Merge: 81f15e4 10e4d37
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 6 15:48:29 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 81f15e4b253cbbc1b06392b92519d40756f30016[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 6 15:48:13 2019 +0100
+
+    Trying to create a map from jUnit-test. Not working at the moment.
+    Everything is in block-comment, to stop it from crashing
+
+[33mcommit 0993e38be4d2be2a2ebd6ef268751aa4e2051877[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 6 15:46:04 2019 +0100
+
+    Created test-reachable methods for force-testing move ant rotate
+    and renamed keyboard-move-method
+
+[33mcommit d82848e17b90d4aced8e76391e904394afa75a39[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Mar 6 15:42:34 2019 +0100
+
+    Added Class_Diagram
+
+[33mcommit 10e4d37236d6f1ea3a834d3794cfe7238b14156d[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 6 15:38:49 2019 +0100
+
+    Refactored SlotTest
+
+[33mcommit 5c90a43ac9ba70332d68a2fe129aef906f205de9[m
+Author: = <=>
+Date:   Wed Mar 6 14:43:03 2019 +0100
+
+    Just a check
+
+[33mcommit d2dc8814f7201dad81c61a5b01731db171f5cda6[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Mar 6 14:39:23 2019 +0100
+
+    fixed iTile and removed runGame() for now
+
+[33mcommit 8249fcc96120660e6c22a172868893ce0b65fae1[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 6 13:55:28 2019 +0100
+
+    User selects cards, which are placed into slots on the board, and controller moves robots based on input.
+
+[33mcommit fb3d9eda976e604103045048984260c0822e30b2[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 6 13:23:39 2019 +0100
+
+    User can select 5 cards and place them on sheet
+
+[33mcommit b24692afd78c5ba2494be2603fe8db6d20c456f2[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 6 13:11:53 2019 +0100
+
+    User can see cards in console
+
+[33mcommit dfab35b881ad321e1fcc14c72f62eea5356b9a2b[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 6 12:59:56 2019 +0100
+
+    Created method to deal cards
+
+[33mcommit c2999779677c3db013bfbc585f24a74a1959de7f[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Mar 6 12:49:37 2019 +0100
+
+    Created interface IController
+
+[33mcommit 34275fdff3f11f05b47870cdfb4c1bb839cee9d1[m
+Merge: f559a33 e3e9207
+Author: = <=>
+Date:   Wed Mar 6 12:25:05 2019 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit f559a33571ce98712399ca36799e7888ed34fc1f[m
+Author: = <=>
+Date:   Wed Mar 6 12:24:46 2019 +0100
+
+    Fixed some misspelling in the Class-names
+
+[33mcommit 61d3a6b2e04a849c7c9a358f4ea4c050c09829b1[m[33m ([m[1;31morigin/startround[m[33m)[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 28 13:39:13 2019 +0100
+
+    Added method dealCards
+
+[33mcommit 5e8cec4b44d207b714b906569df73ce41739f83d[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 28 13:19:44 2019 +0100
+
+    Added methods returnCardsToDealer and reuseTrashedCards
+
+[33mcommit e5ed005d70331ad6825c8bb004ea1d50a083314b[m
+Merge: a66bb23 ba2371e
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 28 12:23:38 2019 +0100
+
+    Conclude merge
+
+[33mcommit e3e92072c331ea690018b1a1c9daf9034e46a503[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 28 12:18:57 2019 +0100
+
+    added extra uml file for tiles
+
+[33mcommit a66bb23cd980bfc7aa5090ed45bf60562ba551a5[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 28 12:06:23 2019 +0100
+
+    Added comments
+
+[33mcommit 086f762fd8d8c6ddcc5bd78512cd1d0b74ab26c0[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 28 10:47:40 2019 +0100
+
+    Started creation of GameAdministrator. Does nothing at this point
+
+[33mcommit f5838bc326cdad4648dd4c2de997958c3d81d10f[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 28 10:45:29 2019 +0100
+
+    Started creation of GameAdministrator. Does nothing at this point
+
+[33mcommit 8b7b4a2110c1dc2a018ab76ff6bd359b8284888a[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 28 12:04:50 2019 +0100
+
+    moved uml file
+
+[33mcommit 5b13f96b095dd5873a81f532435eaa324de199e6[m
+Author: StefanEllenberger <sel012@student.uib.no>
+Date:   Thu Feb 28 12:03:35 2019 +0100
+
+    added UML
+
+[33mcommit ba2371eae372d394369527efbb459b689d5ff349[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 28 10:47:40 2019 +0100
+
+    Started creation of GameAdministrator. Does nothing at this point
+
+[33mcommit 66c196f274d7f023a0ecfba1b90a81101ac05bf2[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 28 10:45:29 2019 +0100
+
+    Started creation of GameAdministrator. Does nothing at this point
+
+[33mcommit 8d1c1b76d842e88b57ede8be1812b09ddb885c43[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 28 10:43:47 2019 +0100
+
+    refactor - new package Helpers
+
+[33mcommit f5e5cc205cc9b4ad05104c24505e2f61fa257955[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 28 10:40:48 2019 +0100
+
+    refactor - packages, deleted board
+
+[33mcommit bf49e78c2b14ee37de356ed1571a26cb25b2c876[m
+Merge: ab4f0dc 92fdbe0
+Author: = <=>
+Date:   Wed Feb 27 18:53:46 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit ab4f0dcbc3462e4f8a4c53febe6fd26a31840b84[m
+Author: = <=>
+Date:   Wed Feb 27 18:53:37 2019 +0100
+
+    Centered text on cards
+
+[33mcommit 92fdbe03424a919b2fa651182291d511a3797f0e[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 27 18:24:57 2019 +0100
+
+    all programsheet visuals come from sheet, not hardcoded
+
+[33mcommit 9f30f54b01944416139d5495389aeecdb9ba29d8[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 27 17:46:47 2019 +0100
+
+    removed unnecessary imports
+
+[33mcommit ed973cd0a0b0dbbf29fba0e73154f11f9bcb950a[m
+Merge: a3d42d8 1659eb3
+Author: = <=>
+Date:   Wed Feb 27 17:41:30 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+    
+    # Conflicts:
+    #       src/main/java/inf112/skeleton/app/ProgramSheet.java
+    #       src/main/java/inf112/skeleton/app/Screens/GameScreen.java
+
+[33mcommit a3d42d8a6f06467fb40ba6d47cd71c24c4ed05d5[m
+Author: = <=>
+Date:   Wed Feb 27 17:29:21 2019 +0100
+
+    Card display gets data from cardObjects.
+
+[33mcommit 1659eb33cf4d047e59517c8b21e7d65fc82437b9[m
+Merge: c82eb4a 0acff4e
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 17:08:40 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit c82eb4a3c5dd8ee61d31397540975972b96731a0[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 17:08:31 2019 +0100
+
+    Added use of new noving-method from Robot
+
+[33mcommit 07fb843678dddc361b653ca36dda6056bee72aaf[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 17:08:02 2019 +0100
+
+    Created another method for moving robot with help of tiles
+
+[33mcommit 7c174c5963a64cd4e1fa652fca662235b3c795e0[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 17:07:23 2019 +0100
+
+    Initializes hashmap
+
+[33mcommit 2a3e865c092f0a920c358f42b9c3d32d2c000a50[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 16:49:21 2019 +0100
+
+    Created a class to translate from tile-id to tile-class
+
+[33mcommit 0198b5cf93b7cdfaf93830823d47c24970928e6b[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 16:48:46 2019 +0100
+
+    Added getRotation / getDirection
+
+[33mcommit 0acff4e799167a9263317a938a42379bc8aaf9d8[m
+Merge: 2a0cc81 8e3525f
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 27 15:46:13 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 2a0cc8163febcefb69b46c4d6340a98706513a2e[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 27 15:46:02 2019 +0100
+
+    Gamer class done
+
+[33mcommit 8e3525f92b3e787be3ee20aa1a5bed97fccce964[m
+Merge: 822a9d3 09f746f
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:40:13 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/The_Terminators
+
+[33mcommit 822a9d3ac0803be51d654f892f4d137c1c15cff6[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:39:42 2019 +0100
+
+    Moved doc-string to interface
+
+[33mcommit 09f746f504738ca9a10112fca86885a5b6902c2a[m
+Merge: aaaebf6 81cfc0a
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 27 15:38:22 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit aaaebf6b172ba026ee76eda4388e62fc3966fa08[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 27 15:38:09 2019 +0100
+
+    created setCards in gamer
+
+[33mcommit 81cfc0a64c0149222228824d5935e7ca4fe1780c[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:36:51 2019 +0100
+
+    Changed Robot-constructor to take in map.
+    Had to comment out robot-constructing, to make tests work
+
+[33mcommit 37a8fca88cef6e6398414538c050c0dceb4e7c2c[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:17:11 2019 +0100
+
+    Fixed wrong import. Changed to our Card-class, instead of javax
+
+[33mcommit 1412371ad698c2cf04001f02b8de5985b71bea11[m
+Merge: f5d1405 2201c6a
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:14:56 2019 +0100
+
+    Merge branch 'Robot'
+
+[33mcommit 2201c6ae0f909f51a7f3b0d1c250bbb3dc23b7db[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:14:10 2019 +0100
+
+    Missing files from last commit
+
+[33mcommit 65ac3e384a27e20765d0a7422989729ddc6ee0a3[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:12:40 2019 +0100
+
+    Moved creation and moving of robots into the AbstractRobot-class,
+    instead of the GameScreen
+
+[33mcommit f4d37701dbccec85fd72a6649db8fc024f79d436[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:10:49 2019 +0100
+
+    Created getters and setters, and made variables private
+
+[33mcommit 9f2b6d150fb0dda3a8cb35d59fcfc3415fc614e3[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 27 15:10:13 2019 +0100
+
+    Changed method to private. Tests cant access, so they are commented away
+
+[33mcommit f5d1405d12e532b4f1a4d5d0dd39bd1460d47389[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 27 15:06:41 2019 +0100
+
+    gamer constructor
+
+[33mcommit 0e5a38fdbdb7a9e8bbb1b499975e475632718275[m
+Merge: 8828128 10dbd55
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 27 14:52:09 2019 +0100
+
+    Merge branch 'gamer'
+
+[33mcommit 10dbd55d9f52f0979a2a53b932388fb84da9c04c[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 27 14:51:09 2019 +0100
+
+    removed Board from gamer
+
+[33mcommit 8828128ce66a8945c79caccf8cda0ef532ebebe4[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 27 12:33:08 2019 +0100
+
+    rebase
+
+[33mcommit 398074c75889a5af5b651f93019f7494fe2fa49d[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 27 12:20:54 2019 +0100
+
+    translate screen to center
+
+[33mcommit 419c7540ed116cd315c4dc1fe278475f4cf7a669[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 27 11:39:50 2019 +0100
+
+    added three lives, all visual elements on sheet
+
+[33mcommit 4d98beafe3595c498b7b21ac7fb530cb9ca622fb[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 27 11:32:05 2019 +0100
+
+    added powerdown symbol to board
+
+[33mcommit f11c21c99a3bcf4bf90e91c4e1f2667b25b11f12[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Feb 26 14:48:22 2019 +0100
+
+    added octagon
+
+[33mcommit ade861758eedad791c7dc0378cc5515678f4f696[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Feb 26 13:52:39 2019 +0100
+
+    program sheet has damage indicators
+
+[33mcommit 61c059f60c819c565e891c1263f3e6c39910780f[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Feb 26 12:48:36 2019 +0100
+
+    programsheet 5 cards, fixed size
+
+[33mcommit b27156f115850a918ea8a0a8cc41ca1a24a98495[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Feb 26 12:16:30 2019 +0100
+
+    programsheet view started, robot changed to reflect map
+
+[33mcommit bac5f1fe4ec5f9868bc7827d831131912bc84ea2[m
+Merge: 9d74146 ab17882
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Tue Feb 26 10:22:53 2019 +0100
+
+    Merge branch 'restructuring'
+
+[33mcommit 9d741469af22e39c703a5b975c75beb60540d0c7[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Mon Feb 25 14:27:32 2019 +0100
+
+    Rename Mandatory3 to Mandatory3.md
+
+[33mcommit 744707f15afe399dcaee0331a3d13b3edae9dc61[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Mon Feb 25 14:27:11 2019 +0100
+
+    Create Mandatory3
+
+[33mcommit 4378ea2f5b094d8f80e98e9951cddecedc687a8d[m
+Merge: 61843af e1aa20e
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Mon Feb 25 12:50:46 2019 +0100
+
+    merge gamer and master
+
+[33mcommit e1aa20eb369958f53c4cc8014a2c0fe0861d44db[m[33m ([m[1;31morigin/gamer[m[33m)[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Mon Feb 25 12:14:27 2019 +0100
+
+    added tiledmap to the gamer
+
+[33mcommit ab178823f951647240f07cccbfecf2bae6b056e5[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Sun Feb 24 18:22:15 2019 +0100
+
+    restructure allows for screen to screen movement. also started work on card display and other HUD elements
+
+[33mcommit 71fa9f027868210463a34caf74332594a246cbc3[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Sun Feb 24 16:02:25 2019 +0100
+
+    created gamer class
+
+[33mcommit 61843af19a57d652cf4d4c9b98a9da8b188bc524[m
+Merge: 2b132b5 39691bb
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Fri Feb 22 12:32:29 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 39691bbe37a2b2e7b17ebe339c1b1b483b739084[m
+Author: = <=>
+Date:   Thu Feb 21 14:11:21 2019 +0100
+
+    Changed the map.tmx to know difference between arrow down/arrow right etc
+
+[33mcommit 2b132b53132b59a5d42e658dca28422c8decf166[m
+Merge: ab578d3 d1a137a
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 21 12:08:11 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit d1a137a3419277b68c7ad2d6c2ce9a81e0518617[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Feb 21 12:02:58 2019 +0100
+
+    Made a package for Cards and added the card classes.
+    Also deleted "Hello World"
+
+[33mcommit 4c18fa7c3b5c2b56349a01f67732453717dbfd24[m
+Merge: 7abb2cc 540eab5
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Feb 21 12:01:57 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 7abb2cc0d6f9830a39d518a12435ab4eb53e8069[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Feb 21 12:01:34 2019 +0100
+
+    Made a package for Cards and added the card classes.
+    Also deleted "Hello World"
+
+[33mcommit ab578d37173789daca4b1b1c80874281b85edccd[m
+Merge: eaf66a4 540eab5
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 21 11:59:24 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 540eab57d668d519d2ba46dabcf91c605b24cedf[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 21 11:19:38 2019 +0100
+
+    Update README.md
+
+[33mcommit eaf66a4a225e4f03e174512f1133d1df7d215fc0[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 21 11:14:07 2019 +0100
+
+    you are told that you died if you step outside
+
+[33mcommit 7d28b7de2e845cde22ab38f7baf2211a3793a51b[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 21 11:01:12 2019 +0100
+
+    can find tile under robot
+
+[33mcommit 454dfca84af8a676d3affcab7b6c20065a22a4b9[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 20 16:33:03 2019 +0100
+
+    camera is zoomed out, can start placing HUD elements
+
+[33mcommit f6a9bac4cab40e9b6e7e9f7879e1379de13bdb74[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 20 15:42:33 2019 +0100
+
+    added map for future tiledmap
+
+[33mcommit d31094c26cf1e6560e5679ef9e3ba195034a7314[m[33m ([m[1;31morigin/tiledmap[m[33m)[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 14 12:21:30 2019 +0100
+
+    added slot tests, started work on programsheet tests
+
+[33mcommit f2dbaae755dd66405e86a00680f8476470d96662[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 14 12:00:55 2019 +0100
+
+    added methods for ProgramSheet to interact with Slots
+
+[33mcommit e3171a966f3ac3b7fc92a796da1b91eaf87fb6d1[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 14 11:37:35 2019 +0100
+
+    added Slot object to ProgramSheet
+
+[33mcommit f4b664efef6785116ef8a440df45d1cfaef49b6e[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 14 11:22:49 2019 +0100
+
+    added constructor to robot, started work on programsheet
+
+[33mcommit a0c6b9678f88c861ea7c0367bd66681145291a8e[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 14 10:55:31 2019 +0100
+
+    fix card generator bug found by tests/invariant
+
+[33mcommit 8a8c041a1c3ffa6e8fe3e4ee30bb10036d8db10b[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 13 17:18:49 2019 +0100
+
+    created test in CardGeneratorTest
+
+[33mcommit 216d33bad70bdd3464ec03527be4c531a170d3c0[m
+Merge: 2b4e141 e3b5bf1
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 13 17:04:19 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 2b4e1416545b2440e87cb0913c4f70ea3c74b17e[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 13 17:04:13 2019 +0100
+
+    created tests for cards
+
+[33mcommit e3b5bf1658935e152e65933ec02801a426c58e79[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 16:58:41 2019 +0100
+
+    Deleted health from AbstractRobot, since it is not yet relevant
+
+[33mcommit cdcdc11a0a0a6988097130ebfb0800995c24403e[m
+Merge: 5022ec1 ac79e19
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 16:56:08 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 5022ec1e32da11cd4c61d99d2996c473fd3b35e5[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 16:56:01 2019 +0100
+
+    Put robots into new Robot-package.
+    Had to make x and y public in Position to be able to get to
+    them from Robot.
+    Finally, added tests for Robot-rotation
+
+[33mcommit ac79e1995cdc409115ee300329f3b658cc5805b7[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 13 16:28:49 2019 +0100
+
+    created CardGenerator and CardGeneratorTest
+
+[33mcommit 6f782b3b93aa7edc7190677a18678fdc6ae21ac8[m
+Merge: ad2572f fa1778d
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 15:47:42 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit fa1778d63b3ef1bbfe80fb5d2f9b74f6168807a8[m
+Merge: 3355901 95c97e8
+Author: = <=>
+Date:   Wed Feb 13 15:47:34 2019 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit ad2572f94da2ae0b7a0b586609db8e218538c6fb[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 15:47:33 2019 +0100
+
+    Changed from several if-sentences to a switch in method rotate(...)
+
+[33mcommit 3355901029e75e098248f707b856fb234583d631[m
+Author: = <=>
+Date:   Wed Feb 13 15:47:00 2019 +0100
+
+    Positioned the roborally.tmx file to "assets" and deleted the "map" package. Also updated the text file with tileID
+
+[33mcommit 95c97e8e2dd14442fda3d4164078c239b3c77da1[m
+Merge: 1ec4400 9ab36bd
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 15:43:13 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 1ec440025d53f03ec3a5dd2970e94d4edfd9dc79[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 15:43:00 2019 +0100
+
+    Filled in method move(...) in AbstractRobot
+
+[33mcommit 9ab36bd1f22cb6ae863cb452a9cc7fac35865442[m
+Merge: 1f9c05b 437a608
+Author: = <=>
+Date:   Wed Feb 13 15:41:33 2019 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 1f9c05b695ee417a97a496d57665d99777b121d7[m
+Author: = <=>
+Date:   Wed Feb 13 15:41:21 2019 +0100
+
+    Made some changes to the xml file. this might make the board different than expected, but lets try.
+    
+    (Rotated tiles gives another ID than it should)
+
+[33mcommit 437a6087b8d8b2220698c5312bced6a47bd1c047[m
+Merge: 17c3c6d 93cd534
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 13 15:34:14 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 17c3c6d2ff1277691289d1565fe66f3d0d557377[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 13 15:34:11 2019 +0100
+
+    can generate clockwise cards
+
+[33mcommit 93cd534a3d882047a3bea6f36079f428858a7d3c[m
+Author: = <=>
+Date:   Wed Feb 13 15:29:56 2019 +0100
+
+    Created a package called "maps" and oved the roborally_1.tmx file from the filemap to the maps package
+
+[33mcommit d44b763fd2f46d1146a04e5bc76e4e5094b75f06[m
+Merge: d486596 531dd57
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 13 15:25:20 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit d48659692d1db25661899184c619dd36b56c30d7[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 13 15:25:17 2019 +0100
+
+    updated references to rotation
+
+[33mcommit 531dd57392d5848a8b47d096207e08e64f5d39c5[m
+Merge: bb0efae 741e1fc
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 15:23:22 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit bb0efae5c5fc168f5aaf69f68be4e7c02dea438c[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 15:23:10 2019 +0100
+
+    Created AbstractRobot, and filled in method rotate(...)
+
+[33mcommit 741e1fce120740b43201c541a0844a3917b30788[m
+Author: mkj028 <42999648+mkj028@users.noreply.github.com>
+Date:   Wed Feb 13 15:19:47 2019 +0100
+
+    Added a tiledMap and a document with ID´s
+    
+    Added a simple version of a tilemap with the tiles we have implemented this far.
+    As well there is a document with the ID´s of the tiles
+
+[33mcommit fc7f1f21381a346cd5956ac30fdae765d4259584[m
+Merge: 58df34e f0d778b
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 13 15:06:04 2019 +0100
+
+    Merge branch 'card'
+
+[33mcommit 58df34eb0141f50f3bc32a3e99eee795381219ec[m
+Merge: 39e2df5 2d94bdb
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 13 15:05:12 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 2d94bdb2ce86a8ea463bb3728da3971994b7f560[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 15:04:20 2019 +0100
+
+    Added rotational methods in Enum Direction
+
+[33mcommit f0d778b0001c4398d466e1ff6909e12ca0165481[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 13 15:03:25 2019 +0100
+
+    created Card and implementations
+
+[33mcommit 717330773b3fc46732e66cbe57b6467db6e4ce34[m
+Merge: 92dd516 fcb2de2
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 14:38:43 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 92dd516bc230624e229865189777feeabe142b73[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 14:38:04 2019 +0100
+
+    Created a package "Enums" to hold all Enums, moved these and updated references
+
+[33mcommit 39e2df52e748934400ce73fc54909c37edc80857[m
+Merge: d7a4215 fcb2de2
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 13 14:29:43 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit d7a421503c4a60cf7a176fa1366ceb5381c978da[m
+Merge: bc63ef4 e7969db
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Wed Feb 13 14:29:37 2019 +0100
+
+    fixed  merge conflict
+
+[33mcommit fcb2de25fbb81878720508a0525865d9dc9a566c[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Feb 13 14:26:53 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+    
+    # Conflicts:
+    #       src/main/java/inf112/skeleton/app/TileTypes/Conveyor.java
+    
+    Renamed constructor to match class name
+
+[33mcommit d062866ef7a3b36883795e138310c32847f224d9[m
+Merge: 7b67b6c e7969db
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Feb 13 14:25:05 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit e7969db9343e0c11aaf43f7faa07b6025fcb541a[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 13 14:23:44 2019 +0100
+
+    Renamed abstract class Tile to AbstractTile, and updated all references
+
+[33mcommit 7b67b6cef7eb640dc6958446581a7d36e3269cdc[m
+Merge: a951441 a3873ea
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Feb 13 14:13:54 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit a3873eabf0b93bb7b263389d139093f2ba5ed8de[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 13 12:06:57 2019 +0100
+
+    added Position and Robot interface
+
+[33mcommit 766bcccfd2a5c18c471f8e00eeb945c1093eeff0[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Sun Feb 10 21:17:34 2019 +0100
+
+    refactored conveyor -> abstractconveyor
+
+[33mcommit be953d18cd37313390c5cfa424f5c717bb9a25dc[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Fri Feb 8 14:15:57 2019 +0100
+
+    Last commit for Oblig2
+
+[33mcommit 8f076facfa3aae7d27807cd103a6a251c59579b1[m
+Author: StefanEllenberger <sel012@student.uib.no>
+Date:   Fri Feb 8 13:57:17 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 1c7c5c5f02b63f0f91c35b047c8c28c6b08af606[m
+Author: StefanEllenberger <sel012@student.uib.no>
+Date:   Fri Feb 8 13:55:19 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit a8fd4178e1253c914d5d7d4c16b1e5604271739e[m
+Author: StefanEllenberger <sel012@student.uib.no>
+Date:   Fri Feb 8 13:52:11 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit be5a7bb7fba06811efeeddd5cbd0695c338ea63d[m
+Author: StefanEllenberger <sel012@student.uib.no>
+Date:   Fri Feb 8 13:48:00 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 840651ca930895812eb7512f9d2954d3939d4e7a[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Fri Feb 8 13:18:51 2019 +0100
+
+    Delete Test.css
+
+[33mcommit da3f6da87cdbc2b0a14406f81107914ce2b75adf[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Fri Feb 8 13:18:42 2019 +0100
+
+    Delete markdownTest.md
+
+[33mcommit da196cbc2a40f80cbef81dbbba8d0323df30fc63[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Fri Feb 8 13:16:13 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 840454169741dc5172da9d1f04362722655d938b[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Fri Feb 8 13:15:58 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 3776e4fa6a284f7314f043971631f327591b5334[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Fri Feb 8 12:56:16 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 62f4527d49bf6cbcf8b16789d662d90509b489bb[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 16:02:07 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 7466d22fc80c186c91027fed2127aa66a9a5d55c[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 15:01:07 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 040f588ef009940ff8b135320ec6a6c3fd48fc2b[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:59:06 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 9903d20aec9464a25030b54f737d632babab3045[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:57:55 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit dfe9d684a4ddcd1c4cedfec6371e2c4dc9861166[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:56:27 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 8008cdbe04e8712d3f83aa116d7b807181ace3a5[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:55:23 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 494a04525c1710987fec6edaedb2e410673a8ffa[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:54:09 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 2f60b021ebca2afd5ce4560c198759fe90a4d94d[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:48:45 2019 +0100
+
+    Update Mandatory2.md
+
+[33mcommit 47f5aa78e192af79a51a96d37cb8f74197fbfbf0[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:44:32 2019 +0100
+
+    Create Mandatory2.md
+
+[33mcommit 11e9c83dccbf325062b7b5d8b00812a112181c78[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:40:46 2019 +0100
+
+    Update markdownTest.md
+
+[33mcommit 951b1a35cddd154c3b39b67d8d54e88f20f278ed[m
+Author: Ingrid Liabakk <43003490+ingridliabakk@users.noreply.github.com>
+Date:   Thu Feb 7 14:39:29 2019 +0100
+
+    Create markdownTest.md
+
+[33mcommit 865096342cc1b810d0e4ea2889f8f88d73da0e4d[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 7 13:53:21 2019 +0100
+
+    finished flag tile
+
+[33mcommit 8b4fafbf0b1d2c57602690d3bd240ab4253072b0[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 7 13:48:10 2019 +0100
+
+    code review tiles, exceptions thrown for illegal arguments
+
+[33mcommit d72f25ef4bbc8704d1b2f96e8b3aeb83f6782480[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 7 13:42:04 2019 +0100
+
+    code review board
+
+[33mcommit 290f47357e82368b2e52a3d70b2c9679f8aa01ae[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 7 13:40:50 2019 +0100
+
+    code review boardgui
+
+[33mcommit bc63ef4483bdb6384763e5975f35a247e3694da4[m
+Merge: 4a083ce 2f55081
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Thu Feb 7 11:48:07 2019 +0100
+
+    include merge
+
+[33mcommit 4a083ce6f8a9aa753b8c39cc36e9ef17f80e49a1[m
+Author: Ingrid Eriksen <ingrid.regine.eriksen@student.uib.no>
+Date:   Thu Feb 7 11:45:55 2019 +0100
+
+    looked in conveyer
+
+[33mcommit a9514411d6add73542e083c3f04e3b2b4178e5b2[m
+Merge: f77f79a 2f55081
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Feb 7 11:43:39 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 2f55081a586cbcf898190bff20a0e09ea9339afe[m
+Merge: a616d8e 0deb8f7
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 7 11:03:38 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit a616d8ec70270bcb0f00fb72a16d2182b01452fc[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Thu Feb 7 11:03:33 2019 +0100
+
+    removed docks, moved conveyor up a level, added tests for conveyor
+
+[33mcommit 0deb8f77d3fc42de21ce18aa63be6c5e07ac1b57[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Thu Feb 7 10:36:20 2019 +0100
+
+    Created an empty test-file, to add Deliverables-folder
+
+[33mcommit f77f79a4ebd091cfb88d4cea53a0f030a212af58[m
+Merge: ecbc522 fb479fe
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Thu Feb 7 10:30:32 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+    
+    # Conflicts:
+    #       src/main/java/inf112/skeleton/app/TileTypes/Conveyor.java
+
+[33mcommit fb479fe3adb75a827380286ed426bfb7d4811dfd[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 18:34:29 2019 +0100
+
+    added title and icon, tweaked random generator, changed robot
+
+[33mcommit 52c88e183c6ba1df77cf8e0a93be439229057c7e[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 18:21:04 2019 +0100
+
+    generating random board is faster, with more empty spaces. bg black
+
+[33mcommit 16b8531cedbe53dc2f26ad9783e288acb755ac01[m
+Author: = <=>
+Date:   Wed Feb 6 18:03:12 2019 +0100
+
+    Added pit and rotator to the board. Did a fix by splitting the rotator/rotation(enum) class. Not completely sure this is the best way, but it runs without errors.
+
+[33mcommit 9c3733b773f68b5640145d8bbabedbea288ef445[m
+Author: = <=>
+Date:   Wed Feb 6 17:31:09 2019 +0100
+
+    Created Class DblConveyor and added it to the GUI and the Board
+
+[33mcommit f8058bf6213c08d6094db267b06f0f69cc1a0e12[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 17:05:47 2019 +0100
+
+    generates random board - functioning
+
+[33mcommit 7a29d0164e53e62cee1edf85f5f4bd9bd2ea0e69[m
+Merge: c468681 7076d82
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 6 16:52:24 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit c4686814d9372abffa87bca96816c7a2223c7a72[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 6 16:52:11 2019 +0100
+
+    Created 8 dock-tiles
+
+[33mcommit 7076d820c88c4cd77b316ed88f17ed080483d891[m
+Author: = <=>
+Date:   Wed Feb 6 16:51:33 2019 +0100
+
+    Created enum Direction, still working on some errors to get the program running
+
+[33mcommit 93e00270eb3d01d8249631703dd4a89fd6feb031[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 16:43:47 2019 +0100
+
+    Fixed errors, this commit does not compile, Magne will fix
+
+[33mcommit 780ffd6d4035acf3eb775ae5d66658b4ec0c87cc[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 16:21:45 2019 +0100
+
+    moved image-initialization to constructor
+
+[33mcommit 19b9dd1e536f5df3504a1a8e5a758ce3ba341705[m
+Merge: 4fe6a09 2edb20b
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 16:19:46 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 4fe6a09b736422643b03a58019f6bcd9885d9e7c[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 16:19:43 2019 +0100
+
+    added rotater, added direction to conveyor
+
+[33mcommit 2edb20b765197001f59148fb205f548536f3395b[m
+Merge: 778eb8c a1e89a3
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 6 16:16:50 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 778eb8c7bcd367d124d365471e721c1b0ac6df45[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 6 16:16:11 2019 +0100
+
+    Created Edge-tile
+
+[33mcommit a1e89a376e1f372722f8e72f63546439aa7e665f[m
+Author: = <=>
+Date:   Wed Feb 6 16:14:17 2019 +0100
+
+    Made some changes in the Repair Class
+
+[33mcommit ab63a9155d195ecbaf97941b6ca1d0a9e06d6f1c[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 6 16:08:34 2019 +0100
+
+    Addet settings (*.prefs), .classpath, and .project to gitignore
+
+[33mcommit c28829c621a10bb0aac28b8834db7203ab40d734[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 16:04:03 2019 +0100
+
+    changed factory to floor
+
+[33mcommit d53e44f04b0b4743292bb26eba69f781870e75a0[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 16:03:42 2019 +0100
+
+    created factory for blank spaces
+
+[33mcommit 99696d432cf392b27dcd7302dabfb249bad3567a[m
+Merge: 5c4b0f4 64383aa
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 6 15:58:28 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 5c4b0f4485ffb3cb440adf4ab1f350867c8d13cc[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 6 15:58:19 2019 +0100
+
+    Created pit-tile
+
+[33mcommit 64383aa87055ff6859f908aaf03a7a0de9194515[m
+Author: = <=>
+Date:   Wed Feb 6 15:56:10 2019 +0100
+
+    Created Conveyor class
+
+[33mcommit 5ad5056299224e829eb18905595a829d73707b45[m
+Author: RogerWisnes <rogerwisnes@gmail.com>
+Date:   Wed Feb 6 15:55:26 2019 +0100
+
+    Fixed errors in non-generic Tile.java
+
+[33mcommit 6cf0bd1e66c2e39ac9d9a1287c4bd54ef332e3b6[m
+Merge: 3323e67 8f4c0e2
+Author: = <=>
+Date:   Wed Feb 6 15:51:55 2019 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 3323e67a986776921bbbbf9f76c24fc4c13abc63[m
+Author: = <=>
+Date:   Wed Feb 6 15:51:37 2019 +0100
+
+    Created Repair class
+
+[33mcommit 8f4c0e2c4ac46c0025f157d052d412fb55a6b6c4[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 15:51:18 2019 +0100
+
+    Board has logic for populating
+
+[33mcommit ecbc52247eb4d20d139c58d9402c34fec71c84fb[m
+Author: katarinaekren <katarina.ekren@student.uib.no>
+Date:   Wed Feb 6 15:50:50 2019 +0100
+
+    Created a conveyor class
+
+[33mcommit eadca63020ee10858515743d49622823bb5a3b8a[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 15:40:28 2019 +0100
+
+    added textureMap to BoardGUI for texture lookups
+
+[33mcommit 53b2e98d50f99e65c56031c9cf85813fae9bd6f3[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 15:09:04 2019 +0100
+
+    Tile is now abstract
+
+[33mcommit 1af1feea3aad4489da23e79da42a2ea1066c2df9[m
+Merge: 6e91c79 4f5d4dc
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 14:58:51 2019 +0100
+
+    Merge branch 'master' of https://github.com/inf112-v19/g4_team2
+
+[33mcommit 6e91c79c3cb9a694300b219e9cf0666601d4d801[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 14:58:45 2019 +0100
+
+    added mvn-app.iml to gitignore
+
+[33mcommit 4f5d4dc41cdf743ec34fb4ccfccef6eaa26f664f[m
+Author: = <=>
+Date:   Wed Feb 6 14:57:40 2019 +0100
+
+    Created iTile, and abstract Tile
+
+[33mcommit dcd4a2d86d73e19bf02ebab6606b9b5ade8ab80a[m
+Merge: 1296cdd 6e232b5
+Author: = <=>
+Date:   Wed Feb 6 14:15:38 2019 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 1296cddd39e4e45c03bc057123ed9ca560648e2d[m
+Author: = <=>
+Date:   Wed Feb 6 14:15:19 2019 +0100
+
+    Added GearTypes and TileTypes
+
+[33mcommit 6e232b55a9fe2740c00d456c7788a2dee869a719[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 14:14:00 2019 +0100
+
+    updated boardtests
+
+[33mcommit 5ddfeb483683f75e33a801d149fafc984cc702a6[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 13:50:07 2019 +0100
+
+    BoardGUI creates a Board object (filled with ints for now, soon Tiles)
+
+[33mcommit a081e522fee05836a32ac7c4f67e0102f5a1a2e3[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 12:53:40 2019 +0100
+
+    changed src to reflect refactor
+
+[33mcommit 8751da614aca624c7e0b6c5097d45e90d67a2347[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 12:12:39 2019 +0100
+
+    added images and img folder
+
+[33mcommit 90a6efb3fb1604d81d710781b8255132e1328e90[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 11:20:55 2019 +0100
+
+    added previous files
+
+[33mcommit d820cbbeb1d8793fa29a7c9e35af57bde8a1f942[m
+Author: Stefan Ellenberger <Stefan.Ellenberger@uib.no>
+Date:   Wed Feb 6 11:18:15 2019 +0100
+
+    deleted readme
+
+[33mcommit 37b172242b5f0bde1c45d8ca27eb286e53a87e26[m
+Author: Kenneth Apeland <31621649+kennidenni@users.noreply.github.com>
+Date:   Thu Jan 31 14:15:51 2019 +0100
+
+    Initial commit

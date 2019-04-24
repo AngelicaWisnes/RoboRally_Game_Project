@@ -63,7 +63,7 @@ public class GameScreen implements Screen {
 
     public GameScreen(final RoboRally game, int numberOfPlayers) {
         this.game = game;
-        states = new StateHolder(CardState.NOCARDS, RoundState.NONE, GameState.GAMING, numberOfPlayers);
+        states = new StateHolder(RoundState.NONE, GameState.GAMING, numberOfPlayers);
 
         map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
 
@@ -91,7 +91,7 @@ public class GameScreen implements Screen {
         laserShape = new ShapeRenderer();
         gamer = new Gamer(map, "Player1", 1);
         robot = gamer.getSheet().getRobot();
-        controller = new Controller(gamer, states);
+        controller = new Controller(states);
 
         //TODO for multiple players, also get playerNumber in order
         gamers.add(gamer);
@@ -169,29 +169,21 @@ public class GameScreen implements Screen {
 
         laserShape.setProjectionMatrix(camera.combined);
         //TODO if gameover, run game over screen, else run the following block
+
         if (!states.getGameState().equals(GameState.GAME_OVER)) {
+            //vis player1 først, deretter alle andre i små rubrikker
             ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
             StateTextView.drawStates(HUDbatch, states);
             robot.keyboardMovesRobot();
-            states = controller.runGame(states,gamers);
+            states = controller.runGame(states, this);
             stateBasedBoardActions();
         }
-        sleep(20);
+        sleep(100);
     }
 
     private void stateBasedBoardActions() {
-        if (states.getCardState().equals(CardState.DEALTCARDS) && controller.isGamerReady()) {
-            states.setCardState(CardState.SELECTEDCARDS);
-        } else if (states.getCardState().equals(CardState.DEALTCARDS)) {
+        if (gamers.get(0).getCardState().equals(CardState.DEALTCARDS)) {
             DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
-        } else if (states.getCardState().equals(CardState.SELECTEDCARDS)) {
-            states.setCardState(CardState.PLAYINGCARDS);
-        }
-
-        if (states.getRoundState().equals(RoundState.PART5)) {
-            LaserHandler.fireBoardLaser(lasers, gamer, laserShape, pew, TILESIZE);
-            states.setRoundState(RoundState.PART6);
-
         }
     }
 
@@ -245,4 +237,19 @@ public class GameScreen implements Screen {
         }
     }
 
+    public ShapeRenderer getLaserShape() {
+        return laserShape;
+    }
+
+    public Sound getPew() {
+        return pew;
+    }
+
+    public ArrayList<Position> getLasers() {
+        return lasers;
+    }
+
+    public ArrayList<IGamer> getGamers() {
+        return gamers;
+    }
 }

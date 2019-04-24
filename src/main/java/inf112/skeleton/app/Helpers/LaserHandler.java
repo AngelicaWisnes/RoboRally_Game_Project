@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Gamer;
+import inf112.skeleton.app.IGamer;
 import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Robot.Robot;
 
@@ -17,7 +18,7 @@ public class LaserHandler {
 
     private static Rectangle laserRect;
 
-    public static void fireBoardLaser(ArrayList<Position> lasers, Gamer gamer, ShapeRenderer shape, Sound pew, int TILESIZE) {
+    public static void fireBoardLaser(ArrayList<Position> lasers, IGamer gamer, ShapeRenderer shape, Sound pew, int TILESIZE) {
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.RED);
         Rectangle robotRectangle = new Rectangle(gamer.getSheet().getRobot().getPos().getX(), gamer.getSheet().getRobot().getPos().getY(), TILESIZE, TILESIZE);
