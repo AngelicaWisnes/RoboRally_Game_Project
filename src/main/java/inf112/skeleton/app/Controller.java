@@ -155,8 +155,9 @@ public class Controller {
 
 
     private void dealCards() {
+        int cardQuantity = 9 - gamer.getSheet().getDamage();
         List<AbstractCard> nineCards = new ArrayList<>();
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < cardQuantity; i++){
             if (!cardStack.isEmpty()){
                 nineCards.add(cardStack.remove(0));
             } else {
