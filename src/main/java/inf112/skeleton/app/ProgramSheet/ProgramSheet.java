@@ -42,7 +42,7 @@ public class ProgramSheet {
         }
     }
 
-    public void returnCardToHandFromSlot() {
+    public void returnLastCardToHandFromSlot() {
         for (int i = 4; i >= 0; i--) {
             if (!slots[i].isAvailable()) {
                 slots[i].removeCard();

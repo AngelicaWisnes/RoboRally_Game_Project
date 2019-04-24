@@ -189,7 +189,7 @@ public class Controller {
             }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.FORWARD_DEL)) {
-            gamer.getSheet().returnCardToHandFromSlot();
+            gamer.getSheet().returnLastCardToHandFromSlot();
             if (!selectedKeys.isEmpty()) {
                 selectedKeys.remove(selectedKeys.size() - 1);
             }
