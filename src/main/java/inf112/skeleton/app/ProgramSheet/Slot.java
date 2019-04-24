@@ -1,7 +1,6 @@
 package inf112.skeleton.app.ProgramSheet;
 
 import inf112.skeleton.app.Card.AbstractCard;
-import inf112.skeleton.app.Card.BlankCard;
 
 public class Slot {
     private AbstractCard card;
@@ -27,7 +26,7 @@ public class Slot {
      * Removes card from slot, returns card to calling method.
      */
     AbstractCard returnCard() {
-        if (!this.locked && !(this.card instanceof BlankCard)) {
+        if (!this.locked) {
             AbstractCard temp = this.card;
             this.card = null;
             return temp;
