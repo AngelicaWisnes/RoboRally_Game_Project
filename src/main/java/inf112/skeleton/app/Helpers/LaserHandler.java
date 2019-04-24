@@ -14,6 +14,8 @@ import inf112.skeleton.app.Robot.Robot;
 
 import java.util.ArrayList;
 
+import static inf112.skeleton.app.Helpers.Constants.TILESIZE;
+
 public class LaserHandler {
 
     private static Rectangle laserRect;
@@ -49,13 +51,12 @@ public class LaserHandler {
 
     }
 
-    public static void fireRobotLaser(Gamer shooter, Gamer opponent, ShapeRenderer shape, int TILESIZE) {
+    public static void fireRobotLaser(Gamer shooter, ArrayList<IGamer> gamers, ShapeRenderer shape) {
+        ArrayList<IGamer> opponents = new ArrayList<>(gamers);
+        //opponents.remove(shooter);
         int x = shooter.getSheet().getRobot().getPos().getX();
         int y = shooter.getSheet().getRobot().getPos().getY();
         Direction dir = shooter.getSheet().getRobot().getDir();
-
-        IRobot opponentRobot = opponent.getSheet().getRobot();
-        Rectangle opponentRectangle = new Rectangle(opponentRobot.getPos().getX(), opponentRobot.getPos().getY(), TILESIZE, TILESIZE);
 
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(Color.RED);
@@ -63,22 +64,26 @@ public class LaserHandler {
         Rectangle laser;
         for (int i = 0; i < 16; i++) {
             if (dir.equals(Direction.UP)) {
-                laser = new Rectangle(x + TILESIZE / 2, (y + TILESIZE / 2) + (i * TILESIZE), 10, 64);
-                shape.rect(x + TILESIZE / 2, (y + TILESIZE / 2) + (i * TILESIZE), 10, 64);
+                laser = new Rectangle(x + TILESIZE / 2, (y + TILESIZE) + (i * TILESIZE), 10, 64);
+                shape.rect(x + TILESIZE / 2, (y + TILESIZE) + (i * TILESIZE), 10, 64);
             } else if (dir.equals(Direction.DOWN)) {
-                laser = new Rectangle(x + TILESIZE / 2, (y + TILESIZE / 2) - (i * TILESIZE), 10, 64);
-                shape.rect(x + TILESIZE / 2, (y + TILESIZE / 2) - (i * TILESIZE), 10, 64);
+                laser = new Rectangle(x + TILESIZE / 2, (y - TILESIZE) - (i * TILESIZE), 10, 64);
+                shape.rect(x + TILESIZE / 2, (y - TILESIZE) - (i * TILESIZE), 10, 64);
             } else if (dir.equals(Direction.LEFT)) {
-                laser = new Rectangle(x + TILESIZE / 2 - (i * TILESIZE), (y + TILESIZE / 2), 10, 64);
-                shape.rect(x + TILESIZE / 2 - (i * TILESIZE), (y + TILESIZE / 2), 10, 64);
+                laser = new Rectangle(x - TILESIZE - (i * TILESIZE), y + TILESIZE / 2, 64, 10);
+                shape.rect(x - TILESIZE - (i * TILESIZE), y + TILESIZE / 2, 64, 10);
             } else {
-                laser = new Rectangle(x + (TILESIZE / 2) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
-                shape.rect(x + (TILESIZE / 2) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
+                laser = new Rectangle(x + (TILESIZE) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
+                shape.rect(x + (TILESIZE) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
             }
 
-            if (laser.overlaps(opponentRectangle)) {
-                opponent.getSheet().damageRobot();
-                break;
+            for (IGamer gamer : opponents) {
+                IRobot opponentRobot = gamer.getSheet().getRobot();
+                Rectangle rectangle = (new Rectangle(opponentRobot.getPos().getX(), opponentRobot.getPos().getY(), TILESIZE, TILESIZE));
+                if (laser.overlaps(rectangle)) {
+                    gamer.getSheet().damageRobot();
+                    break;
+                }
             }
 
         }

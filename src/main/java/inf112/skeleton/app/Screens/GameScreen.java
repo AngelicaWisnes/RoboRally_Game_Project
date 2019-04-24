@@ -1,6 +1,7 @@
 package inf112.skeleton.app.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -20,6 +21,7 @@ import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
+import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Helpers.StateHolder;
 import inf112.skeleton.app.IGamer;
@@ -58,6 +60,7 @@ public class GameScreen implements Screen {
     private ArrayList<Position> lasers;
 
     private Disposable[] disposables;
+
 
 
     public GameScreen(final RoboRally game, int numberOfPlayers) {
@@ -143,10 +146,14 @@ public class GameScreen implements Screen {
             hostGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
             states = controller.runGame(states, this);
             stateBasedBoardActions();
-        } else {
-            //TODO create new GameOverScreen
-            game.setScreen(new MainMenuScreen(game));
+        }else{
+            game.setScreen(new EndGameScreen(game));
         }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+            LaserHandler.fireRobotLaser(hostGamer, gamers, laserShape);
+        }
+        //System.out.println(gamers.get(1).getSheet().getDamage());
 
         sleep(20);
     }
