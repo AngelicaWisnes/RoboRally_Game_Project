@@ -2,9 +2,7 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import inf112.skeleton.app.Card.AbstractCard;
-import inf112.skeleton.app.Card.BlankCard;
-import inf112.skeleton.app.Card.CardGenerator;
+import inf112.skeleton.app.Card.CardDealer;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
@@ -26,15 +24,14 @@ public class Controller {
     private ArrayList<IGamer> gamers;
     private int roundCounter = 0;
     private GameScreen gameScreen;
-    private ArrayList<AbstractCard> cardStack;
-    private ArrayList<AbstractCard> usedCards = new ArrayList<>();
+    private CardDealer cardDealer;
 
     //TODO rewrite to singleton
     public Controller(StateHolder stateHolder) {
         roundState = stateHolder.getRoundState();
         gameState = stateHolder.getGameState();
         playerTurn = stateHolder.getPlayerTurn();
-        cardStack = CardGenerator.getNewCardStack();
+        cardDealer = CardDealer.getInstance();
     }
 
     public StateHolder runGame(StateHolder states, GameScreen gameScreen) {
@@ -45,25 +42,22 @@ public class Controller {
         playerTurn = states.getPlayerTurn();
 
         boolean allGamersReady = true;
-        for (IGamer gamer : gamers){
-            if (!gamer.getCardState().equals(CardState.SELECTEDCARDS)){
+        for (IGamer gamer : gamers) {
+            if (!gamer.getCardState().equals(CardState.SELECTEDCARDS)) {
                 setupCards(gamer);
                 allGamersReady = false;
             }
         }
-        if (allGamersReady){
-            if (roundCounter < 5) {
-                startRound();
-            } else {
-                resetRound();
-            }
+        if (allGamersReady) {
+            if (roundCounter < 5) startRound();
+            else resetRound();
         }
 
         return new StateHolder(roundState, gameState, playerTurn);
     }
 
 
-    private void setupCards(IGamer gamer){
+    private void setupCards(IGamer gamer) {
         this.gamer = gamer;
         if (this.gamer.getCardState().equals(CardState.NOCARDS)) {
             if (gamer.getSheet().isPowerDown()) {
@@ -75,11 +69,8 @@ public class Controller {
                 this.gamer.setCardState(CardState.DEALTCARDS);
             }
         } else if (this.gamer.getCardState().equals(CardState.DEALTCARDS)) {
-            if (gamer instanceof AIGamer){
-                AICardSelect();
-            } else {
-                selectCard();
-            }
+            if (gamer instanceof AIGamer) AICardSelect();
+            else selectCard();
         }
     }
 
@@ -91,7 +82,7 @@ public class Controller {
     }
 
 
-    public void isEndState() {
+    private void isEndState() {
         if (gamer.getSheet().getLives() <= 0) {
             System.out.println("GAME OVER");
             gameState = GameState.GAME_OVER;
@@ -106,10 +97,10 @@ public class Controller {
         roundCounter = 0;
         roundState = RoundState.NONE;
         selectedKeys = new ArrayList<>();
-        for (IGamer g : gamers){
+        for (IGamer g : gamers) {
             g.setCardState(CardState.NOCARDS);
             g.resetCards();
-            usedCards.addAll(g.getSheet().clearUnlockedSlots());
+            cardDealer.returnCardList(g.getSheet().clearUnlockedSlots());
         }
     }
 
@@ -129,7 +120,8 @@ public class Controller {
         } else if (roundState.equals(RoundState.PART4)) {
             roundState = RoundState.PART5;
         } else if (roundState.equals(RoundState.PART5)) {
-            LaserHandler.fireBoardLaser(gameScreen.getLasers(), gamer, gameScreen.getLaserShape(), gameScreen.getPew(), Constants.TILESIZE);
+            LaserHandler.fireBoardLaser(gameScreen.getLasers(), gamer, gameScreen.getLaserShape(),
+                                        gameScreen.getPew(), Constants.TILESIZE);
             roundState = RoundState.PART6;
         } else if (roundState.equals(RoundState.PART6)) {
             robotTileImpacts();
@@ -139,8 +131,9 @@ public class Controller {
         }
 
     }
-    private void robotTileImpacts(){
-        for (IGamer g : gamers){
+
+    private void robotTileImpacts() {
+        for (IGamer g : gamers) {
             g.getSheet().getRobot().tileRobotImpact(roundState);
         }
     }
@@ -148,7 +141,7 @@ public class Controller {
     private void playCards() {
         //TODO choose lowest card from each gamer and play them in order
         //the cards can be sorted by priority
-        for (IGamer g : gamers){
+        for (IGamer g : gamers) {
             g.getSheet().getRobot().cardMovesRobot(g.getSheet().getSlot(roundCounter).getCard());
         }
     }
@@ -156,25 +149,12 @@ public class Controller {
 
     private void dealCards() {
         int cardQuantity = 9 - gamer.getSheet().getDamage();
-        List<AbstractCard> nineCards = new ArrayList<>();
-        for (int i = 0; i < cardQuantity; i++){
-            if (!cardStack.isEmpty()){
-                nineCards.add(cardStack.remove(0));
-            } else {
-                cardStack = new ArrayList<>(usedCards);
-                usedCards = new ArrayList<>();
-                Collections.shuffle(cardStack);
-                nineCards.add(cardStack.remove(0));
-            }
-        }
-        gamer.setCards(nineCards);
+        gamer.setCards(cardDealer.dealCards(cardQuantity));
     }
 
     private void powerDownRound() {
         gamer.getSheet().resetDamage();
-        for (int i = 0; i < 5; i++) {
-            gamer.getSheet().placeCardInSlot(new BlankCard(11));
-        }
+        for (int i = 0; i < 5; i++) gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
     }
 
     private void selectCard() {
@@ -190,33 +170,26 @@ public class Controller {
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.FORWARD_DEL)) {
             gamer.getSheet().returnLastCardToHandFromSlot();
-            if (!selectedKeys.isEmpty()) {
-                selectedKeys.remove(selectedKeys.size() - 1);
-            }
+            if (!selectedKeys.isEmpty()) selectedKeys.remove(selectedKeys.size() - 1);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && gamer.getSheet().allSlotsAreFilled()) {
-            for (int i = 0; i < 9; i++){
-                if (!selectedKeys.contains(i)){
-                    usedCards.add(gamer.getCard(i));
-                }
-            }
+            for (int i = 0; i < 9; i++) if (!selectedKeys.contains(i)) cardDealer.returnCard(gamer.getCard(i));
             gamer.setCardState(CardState.SELECTEDCARDS);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            gamer.getSheet().placeCardInSlot(new BlankCard(11));
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
     }
+
     private void AICardSelect() {
         gamer.getSheet().placeCardInSlot(gamer.getCard(0));
         gamer.getSheet().placeCardInSlot(gamer.getCard(1));
         gamer.getSheet().placeCardInSlot(gamer.getCard(2));
         gamer.getSheet().placeCardInSlot(gamer.getCard(3));
         gamer.getSheet().placeCardInSlot(gamer.getCard(4));
-        usedCards.add(gamer.getCard(5));
-        usedCards.add(gamer.getCard(6));
-        usedCards.add(gamer.getCard(7));
-        usedCards.add(gamer.getCard(8));
+        cardDealer.returnCard(gamer.getCard(5));
+        cardDealer.returnCard(gamer.getCard(6));
+        cardDealer.returnCard(gamer.getCard(7));
+        cardDealer.returnCard(gamer.getCard(8));
         gamer.setCardState(CardState.SELECTEDCARDS);
     }
 
