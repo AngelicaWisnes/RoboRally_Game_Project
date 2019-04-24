@@ -173,7 +173,7 @@ public class Controller {
     private void powerDownRound() {
         gamer.getSheet().resetDamage();
         for (int i = 0; i < 5; i++) {
-            gamer.getSheet().placeCard(new BlankCard(11));
+            gamer.getSheet().placeCardInSlot(new BlankCard(11));
         }
     }
 
@@ -183,13 +183,13 @@ public class Controller {
 
             if (Gdx.input.isKeyJustPressed(key)) {
                 if (!selectedKeys.contains(selectedKey) && selectedKeys.size() < 5) {
-                    gamer.getSheet().placeCard(gamer.getCard(selectedKey));
+                    gamer.getSheet().placeCardInSlot(gamer.getCard(selectedKey));
                     selectedKeys.add(selectedKey);
                 }
             }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.FORWARD_DEL)) {
-            gamer.getSheet().removeLastCard();
+            gamer.getSheet().returnCardToHandFromSlot();
             if (!selectedKeys.isEmpty()) {
                 selectedKeys.remove(selectedKeys.size() - 1);
             }
@@ -204,15 +204,15 @@ public class Controller {
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            gamer.getSheet().placeCard(new BlankCard(11));
+            gamer.getSheet().placeCardInSlot(new BlankCard(11));
         }
     }
     private void AICardSelect() {
-        gamer.getSheet().placeCard(gamer.getCard(0));
-        gamer.getSheet().placeCard(gamer.getCard(1));
-        gamer.getSheet().placeCard(gamer.getCard(2));
-        gamer.getSheet().placeCard(gamer.getCard(3));
-        gamer.getSheet().placeCard(gamer.getCard(4));
+        gamer.getSheet().placeCardInSlot(gamer.getCard(0));
+        gamer.getSheet().placeCardInSlot(gamer.getCard(1));
+        gamer.getSheet().placeCardInSlot(gamer.getCard(2));
+        gamer.getSheet().placeCardInSlot(gamer.getCard(3));
+        gamer.getSheet().placeCardInSlot(gamer.getCard(4));
         usedCards.add(gamer.getCard(5));
         usedCards.add(gamer.getCard(6));
         usedCards.add(gamer.getCard(7));
