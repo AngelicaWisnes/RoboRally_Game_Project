@@ -1,6 +1,7 @@
 package inf112.skeleton.app.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -20,6 +21,7 @@ import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
+import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Helpers.StateHolder;
 import inf112.skeleton.app.IGamer;
@@ -53,7 +55,7 @@ public class GameScreen implements Screen {
 
     private Gamer hostGamer;
     private Controller controller;
-    private ArrayList<IGamer> gamers =  new ArrayList<>();
+    private ArrayList<IGamer> gamers = new ArrayList<>();
 
     private ArrayList<Position> lasers;
 
@@ -86,8 +88,8 @@ public class GameScreen implements Screen {
         controller = new Controller(states);
 
         gamers.add(hostGamer);
-        for (int i = 1; i < numberOfPlayers; i++){
-            gamers.add(new AIGamer(map, "AI-" + i, i+1));
+        for (int i = 1; i < numberOfPlayers; i++) {
+            gamers.add(new AIGamer(map, "AI-" + i, i + 1));
         }
         disposables = new Disposable[]{map, renderer, factoryMusic, pew, robotBatch, HUDBatch, shape, laserShape};
     }
@@ -104,6 +106,7 @@ public class GameScreen implements Screen {
             }
         }
     }
+
     private void fillTextureMap() {
         textureMap = new HashMap<>();
         textureMap.put("robot_north", new Texture(Gdx.files.internal("assets/img/robot_north.png")));
@@ -142,10 +145,17 @@ public class GameScreen implements Screen {
             hostGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
             states = controller.runGame(states, this);
             stateBasedBoardActions();
-        }else{
+
+        } else {
             //TODO create new GameOverScreen
             game.setScreen(new MainMenuScreen(game));
         }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+            LaserHandler.fireRobotLaser(hostGamer, gamers, laserShape);
+
+        }
+        System.out.println(gamers.get(1).getSheet().getDamage());
 
         sleep(20);
     }
@@ -153,7 +163,7 @@ public class GameScreen implements Screen {
     private void drawRobots() {
         robotBatch.setProjectionMatrix(camera.combined);
         robotBatch.begin();
-        for (IGamer g : gamers){
+        for (IGamer g : gamers) {
             String robotString = "";
             switch (g.getSheet().getRobot().getDir()) {
                 case UP:
@@ -205,7 +215,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        for (Disposable d : disposables){
+        for (Disposable d : disposables) {
             d.dispose();
         }
     }

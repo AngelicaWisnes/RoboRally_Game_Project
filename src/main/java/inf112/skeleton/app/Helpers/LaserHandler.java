@@ -51,7 +51,9 @@ public class LaserHandler {
 
     }
 
-    public static void fireRobotLaser(Gamer shooter, ArrayList<IGamer> opponents, ShapeRenderer shape) {
+    public static void fireRobotLaser(Gamer shooter, ArrayList<IGamer> gamers, ShapeRenderer shape) {
+        ArrayList<IGamer> opponents = new ArrayList<>(gamers);
+        //opponents.remove(shooter);
         int x = shooter.getSheet().getRobot().getPos().getX();
         int y = shooter.getSheet().getRobot().getPos().getY();
         Direction dir = shooter.getSheet().getRobot().getDir();
@@ -62,17 +64,17 @@ public class LaserHandler {
         Rectangle laser;
         for (int i = 0; i < 16; i++) {
             if (dir.equals(Direction.UP)) {
-                laser = new Rectangle(x + TILESIZE / 2, (y + TILESIZE / 2) + (i * TILESIZE), 10, 64);
-                shape.rect(x + TILESIZE / 2, (y + TILESIZE / 2) + (i * TILESIZE), 10, 64);
+                laser = new Rectangle(x + TILESIZE / 2, (y + TILESIZE) + (i * TILESIZE), 10, 64);
+                shape.rect(x + TILESIZE / 2, (y + TILESIZE) + (i * TILESIZE), 10, 64);
             } else if (dir.equals(Direction.DOWN)) {
-                laser = new Rectangle(x + TILESIZE / 2, (y + TILESIZE / 2) - (i * TILESIZE), 10, 64);
-                shape.rect(x + TILESIZE / 2, (y + TILESIZE / 2) - (i * TILESIZE), 10, 64);
+                laser = new Rectangle(x + TILESIZE / 2, (y - TILESIZE) - (i * TILESIZE), 10, 64);
+                shape.rect(x + TILESIZE / 2, (y - TILESIZE) - (i * TILESIZE), 10, 64);
             } else if (dir.equals(Direction.LEFT)) {
-                laser = new Rectangle(x + TILESIZE / 2 - (i * TILESIZE), (y + TILESIZE / 2), 10, 64);
-                shape.rect(x + TILESIZE / 2 - (i * TILESIZE), (y + TILESIZE / 2), 10, 64);
+                laser = new Rectangle(x - TILESIZE - (i * TILESIZE), y + TILESIZE / 2, 64, 10);
+                shape.rect(x - TILESIZE - (i * TILESIZE), y + TILESIZE / 2, 64, 10);
             } else {
-                laser = new Rectangle(x + (TILESIZE / 2) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
-                shape.rect(x + (TILESIZE / 2) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
+                laser = new Rectangle(x + (TILESIZE) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
+                shape.rect(x + (TILESIZE) + (i * TILESIZE), (y + TILESIZE / 2), 64, 10);
             }
 
             for (IGamer gamer : opponents) {
