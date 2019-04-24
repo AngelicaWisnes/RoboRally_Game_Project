@@ -6,6 +6,8 @@ import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.ITile;
 
+import static inf112.skeleton.app.Helpers.Constants.TILESIZE;
+
 public class Position {
     private int x, y;
 
@@ -49,8 +51,8 @@ public class Position {
     }
 
     public static ITile getTileOnPos(Position p, TiledMap map) {
-        int x = p.getX() / GameScreen.TILESIZE;
-        int y = p.getY() / GameScreen.TILESIZE;
+        int x = p.getX() / TILESIZE;
+        int y = p.getY() / TILESIZE;
         try {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(x, y);
             int tileID = cell.getTile().getId();

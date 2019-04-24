@@ -44,10 +44,11 @@ public class Slot {
      * Removes card from slot, returns card to calling method.
      */
     public AbstractCard returnCard() {
-        AbstractCard temp = this.card;
         if (!this.locked) {
+            AbstractCard temp = this.card;
             this.card = null;
+            return temp;
         }
-        return temp;
+        return null;
     }
 }

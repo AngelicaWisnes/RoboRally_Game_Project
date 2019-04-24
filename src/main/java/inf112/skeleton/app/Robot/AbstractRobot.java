@@ -10,6 +10,7 @@ import inf112.skeleton.app.Card.RotationCard;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Enums.RoundState;
+import inf112.skeleton.app.Helpers.Constants;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Screens.GameScreen;
@@ -19,7 +20,7 @@ import static inf112.skeleton.app.Helpers.Position.getTileOnPos;
 
 public abstract class AbstractRobot implements IRobot {
     private TiledMap map;
-    private final int TILESIZE = GameScreen.TILESIZE;
+    private final int TILESIZE = Constants.TILESIZE;
     private Position pos, checkpoint;
     private Direction dir;
     private ProgramSheet programSheet;

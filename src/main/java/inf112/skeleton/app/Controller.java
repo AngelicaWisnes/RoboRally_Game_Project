@@ -13,9 +13,7 @@ import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.StateHolder;
 import inf112.skeleton.app.Screens.GameScreen;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Controller {
     private IGamer gamer;
@@ -24,7 +22,6 @@ public class Controller {
     private int playerTurn;
     private int[] keys = {8, 9, 10, 11, 12, 13, 14, 15, 16};
     private final int KEY_OFFSET = 8; //Gdx.input.key is offset by 8
-    //TODO ok now, bad when multiple players?
     private ArrayList<Integer> selectedKeys = new ArrayList<>();
     private ArrayList<IGamer> gamers;
     private int roundCounter = 0;
@@ -32,13 +29,12 @@ public class Controller {
     private ArrayList<AbstractCard> cardStack;
     private ArrayList<AbstractCard> usedCards = new ArrayList<>();
 
-    //TODO rewrite? is this needed?
+    //TODO rewrite to singleton
     public Controller(StateHolder stateHolder) {
         roundState = stateHolder.getRoundState();
         gameState = stateHolder.getGameState();
         playerTurn = stateHolder.getPlayerTurn();
         cardStack = CardGenerator.getNewCardStack();
-
     }
 
     public StateHolder runGame(StateHolder states, GameScreen gameScreen) {
@@ -113,7 +109,7 @@ public class Controller {
         for (IGamer g : gamers){
             g.setCardState(CardState.NOCARDS);
             g.resetCards();
-            g.getSheet().clearUnlockedSlots();
+            usedCards.addAll(g.getSheet().clearUnlockedSlots());
         }
     }
 
@@ -198,6 +194,12 @@ public class Controller {
             }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && gamer.getSheet().allSlotsAreFilled()) {
+            for (int i = 0; i < 9; i++){
+                if (!selectedKeys.contains(i)){
+                    usedCards.add(gamer.getCard(i));
+                }
+            }
+            gamer.getCards();
             gamer.setCardState(CardState.SELECTEDCARDS);
         }
 
@@ -205,7 +207,6 @@ public class Controller {
             gamer.getSheet().placeCard(new BlankCard(11));
         }
     }
-    //TODO selected keys are for all gamers?
     private void AICardSelect() {
         gamer.getSheet().placeCard(gamer.getCard(0));
         gamer.getSheet().placeCard(gamer.getCard(1));

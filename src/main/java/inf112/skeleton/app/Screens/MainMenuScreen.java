@@ -8,16 +8,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class MainMenuScreen implements Screen {
 
-    final RoboRally game;
+    private final RoboRally game;
+    private OrthographicCamera camera;
 
-    OrthographicCamera camera;
-
-    public MainMenuScreen(final RoboRally game) {
+    MainMenuScreen(final RoboRally game) {
         this.game = game;
-
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
     }
 
     @Override
@@ -44,9 +41,6 @@ public class MainMenuScreen implements Screen {
             game.setScreen(new GameScreen(game, 2)); // number of players
             dispose();
         }
-
-
-
     }
 
     @Override

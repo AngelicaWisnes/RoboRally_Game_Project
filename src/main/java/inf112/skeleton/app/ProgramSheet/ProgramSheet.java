@@ -7,6 +7,9 @@ import inf112.skeleton.app.Gamer;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Robot.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class ProgramSheet {
     private IRobot robot;
     private boolean powerDown;
@@ -70,12 +73,15 @@ public class ProgramSheet {
         }
     }
 
-    public void clearUnlockedSlots() {
-        slot1.returnCard();
-        slot2.returnCard();
-        slot3.returnCard();
-        slot4.returnCard();
-        slot5.returnCard();
+    public ArrayList<AbstractCard> clearUnlockedSlots() {
+        ArrayList<AbstractCard> usedCards = new ArrayList<>();
+        usedCards.add(slot1.returnCard());
+        usedCards.add(slot2.returnCard());
+        usedCards.add(slot3.returnCard());
+        usedCards.add(slot4.returnCard());
+        usedCards.add(slot5.returnCard());
+        usedCards.removeAll(Collections.singletonList(null));
+        return usedCards;
     }
 
     public IRobot getRobot() {

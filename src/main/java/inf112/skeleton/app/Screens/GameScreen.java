@@ -1,8 +1,5 @@
 package inf112.skeleton.app.Screens;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -10,12 +7,12 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.BufferUtils;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.ScreenUtils;
 import inf112.skeleton.app.AIGamer;
 import inf112.skeleton.app.Controller;
@@ -23,20 +20,23 @@ import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer;
-import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.Position;
-import inf112.skeleton.app.IGamer;
-import inf112.skeleton.app.Robot.IRobot;
 import inf112.skeleton.app.Helpers.StateHolder;
+import inf112.skeleton.app.IGamer;
 import inf112.skeleton.app.Views.DealtCardsView;
 import inf112.skeleton.app.Views.ProgramSheetView;
 import inf112.skeleton.app.Views.StateTextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import static inf112.skeleton.app.Helpers.Constants.*;
+
 
 public class GameScreen implements Screen {
-    final RoboRally game;
-    private StateHolder states;
+    private RoboRally game;
 
+    private StateHolder states;
 
     private HashMap<String, Texture> textureMap;
     private TiledMap map;
@@ -49,17 +49,16 @@ public class GameScreen implements Screen {
     private Music factoryMusic;
     private Sound pew;
     private SpriteBatch robotBatch;
-    private SpriteBatch HUDbatch;
-    private IRobot robot;
-    private Gamer gamer;
-    private Controller controller;
+    private SpriteBatch HUDBatch;
 
-    private ArrayList<Position> lasers;
+    private Gamer hostGamer;
+    private Controller controller;
     private ArrayList<IGamer> gamers =  new ArrayList<>();
 
-    public static final int TILESIZE = 64;
-    private final int MAPWIDTH = 16;
-    private final int MAPHEIGHT = 12;
+    private ArrayList<Position> lasers;
+
+    private Disposable[] disposables;
+
 
     public GameScreen(final RoboRally game, int numberOfPlayers) {
         this.game = game;
@@ -67,15 +66,10 @@ public class GameScreen implements Screen {
 
         map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
 
-        MapProperties prop = map.getProperties();
         renderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-        float newX = 64; //Gdx.graphics.getWidth() / 2 - (16*64) / 2;
-        float newY = Gdx.graphics.getHeight() / 2 - (12 * 64) / 2;
-        camera.translate(-newX, -newY);
-
+        camera.translate(-TILESIZE, -(Gdx.graphics.getHeight() / 2f - (MAPHEIGHT * TILESIZE) / 2f));
 
         fillTextureMap();
         findLasers();
@@ -83,21 +77,19 @@ public class GameScreen implements Screen {
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
         pew = Gdx.audio.newSound(Gdx.files.internal("assets/laser.wav"));
 
-
         // create the camera and the SpriteBatch
         robotBatch = new SpriteBatch();
-        HUDbatch = new SpriteBatch();
+        HUDBatch = new SpriteBatch();
         shape = new ShapeRenderer();
         laserShape = new ShapeRenderer();
-        gamer = new Gamer(map, "Player1", 1);
-        robot = gamer.getSheet().getRobot();
+        hostGamer = new Gamer(map, "Player1", 1);
         controller = new Controller(states);
 
-        //TODO for multiple players, also get playerNumber in order
-        gamers.add(gamer);
-        gamers.add(new AIGamer(map, "AI-1", 2));
-
-
+        gamers.add(hostGamer);
+        for (int i = 1; i < numberOfPlayers; i++){
+            gamers.add(new AIGamer(map, "AI-" + i, i+1));
+        }
+        disposables = new Disposable[]{map, renderer, factoryMusic, pew, robotBatch, HUDBatch, shape, laserShape};
     }
 
     private void findLasers() {
@@ -112,7 +104,6 @@ public class GameScreen implements Screen {
             }
         }
     }
-
     private void fillTextureMap() {
         textureMap = new HashMap<>();
         textureMap.put("robot_north", new Texture(Gdx.files.internal("assets/img/robot_north.png")));
@@ -143,9 +134,24 @@ public class GameScreen implements Screen {
         camera.update();
         renderer.setView(camera);
         renderer.render();
+        drawRobots();
+        laserShape.setProjectionMatrix(camera.combined);
+        if (!states.getGameState().equals(GameState.GAME_OVER)) {
+            ProgramSheetView.drawSheet(HUDBatch, shape, textureMap, hostGamer.getSheet());
+            StateTextView.drawStates(HUDBatch, states); //testing purposes only
+            hostGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
+            states = controller.runGame(states, this);
+            stateBasedBoardActions();
+        }else{
+            //TODO create new GameOverScreen
+            game.setScreen(new MainMenuScreen(game));
+        }
 
+        sleep(20);
+    }
+
+    private void drawRobots() {
         robotBatch.setProjectionMatrix(camera.combined);
-        //for each robot, get the string, draw the robot
         robotBatch.begin();
         for (IGamer g : gamers){
             String robotString = "";
@@ -166,24 +172,11 @@ public class GameScreen implements Screen {
             robotBatch.draw(textureMap.get(robotString), g.getSheet().getRobot().getPos().getX(), g.getSheet().getRobot().getPos().getY());
         }
         robotBatch.end();
-
-        laserShape.setProjectionMatrix(camera.combined);
-        //TODO if gameover, run game over screen, else run the following block
-
-        if (!states.getGameState().equals(GameState.GAME_OVER)) {
-            //vis player1 først, deretter alle andre i små rubrikker
-            ProgramSheetView.drawSheet(HUDbatch, shape, textureMap, gamer.getSheet());
-            StateTextView.drawStates(HUDbatch, states);
-            robot.keyboardMovesRobot();
-            states = controller.runGame(states, this);
-            stateBasedBoardActions();
-        }
-        sleep(100);
     }
 
     private void stateBasedBoardActions() {
         if (gamers.get(0).getCardState().equals(CardState.DEALTCARDS)) {
-            DealtCardsView.drawCards(HUDbatch, shape, textureMap, gamer);
+            DealtCardsView.drawCards(HUDBatch, shape, textureMap, hostGamer);
         }
     }
 
@@ -194,8 +187,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        /*factoryMusic.setLooping(true);
-        factoryMusic.play();*/
+        factoryMusic.setLooping(true);
+        /*factoryMusic.play();*/
     }
 
     @Override
@@ -212,9 +205,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        factoryMusic.dispose();
-        robotBatch.dispose();
-        shape.dispose();
+        for (Disposable d : disposables){
+            d.dispose();
+        }
     }
 
     private void screenshot() {
