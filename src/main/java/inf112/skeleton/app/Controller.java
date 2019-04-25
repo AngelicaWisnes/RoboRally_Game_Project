@@ -189,7 +189,7 @@ public class Controller {
             }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && gamer.getSheet().allSlotsAreFilled()) {
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < gamer.getCards().size(); i++) {
                 if (!selectedKeys.contains(i)) {
                     cardDealer.returnCard(gamer.getCard(i));
                 }

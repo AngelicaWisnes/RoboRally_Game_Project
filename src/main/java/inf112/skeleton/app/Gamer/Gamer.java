@@ -16,8 +16,4 @@ public class Gamer extends AbstractGamer {
         super(map, name, playerNumber);
 
     }
-
-    public List<AbstractCard> getCards() {
-        return cardsOnHand;
-    }
 }

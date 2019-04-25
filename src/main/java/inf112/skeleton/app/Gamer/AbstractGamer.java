@@ -43,7 +43,13 @@ public class AbstractGamer implements IGamer {
 
     @Override
     public AbstractCard getCard(int i) {
+        System.out.println(cardsOnHand);
         return cardsOnHand.get(i);
+    }
+
+    @Override
+    public List<AbstractCard> getCards() {
+        return this.cardsOnHand;
     }
 
     @Override
