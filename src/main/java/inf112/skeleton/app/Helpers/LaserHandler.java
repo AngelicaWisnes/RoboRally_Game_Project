@@ -49,7 +49,7 @@ public class LaserHandler {
 
     }
 
-    public static void fireRobotLaser(Gamer shooter, ArrayList<IGamer> gamers, ShapeRenderer shape) {
+    public static void fireRobotLaser(IGamer shooter, ArrayList<IGamer> gamers, ShapeRenderer shape) {
         ArrayList<IGamer> opponents = new ArrayList<>(gamers);
         //opponents.remove(shooter);
         int x = shooter.getSheet().getRobot().getPos().getX();
