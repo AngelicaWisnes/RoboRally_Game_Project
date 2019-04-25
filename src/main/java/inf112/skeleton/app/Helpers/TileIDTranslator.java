@@ -40,18 +40,18 @@ public class TileIDTranslator {
         translator.put(205, new DblConveyor(Direction.LEFT));
         translator.put(228, new DblConveyor(Direction.RIGHT));
 
-        translator.put(929, new LaserWall(Direction.RIGHT));        //LaserWall m/vegg høyre
-        translator.put(909, new LaserWall(Direction.LEFT));         //LaserWall m/vegg venstre
-        translator.put(910, new Laser());                           //Laser u/vegg horisontal
+        translator.put(929, new LaserWall(Direction.RIGHT));        //LaserWall m/wall right
+        translator.put(909, new LaserWall(Direction.LEFT));         //LaserWall m/wall left
+        translator.put(910, new Laser());                           //Laser u/wall horizontal
 
-        translator.put(646, new LaserWall(Direction.UP));           //LaserWall m/vegg oppe
-        translator.put(1206, new LaserWall(Direction.DOWN));        //LaserWall m/vegg nede
-        translator.put(674, new Laser());                           //Laser u/vegg vertikal
+        translator.put(646, new LaserWall(Direction.UP));           //LaserWall m/wall up
+        translator.put(1206, new LaserWall(Direction.DOWN));        //LaserWall m/wall down
+        translator.put(674, new Laser());                           //Laser u/wall vertical
 
-        translator.put(166, new Wall(Direction.UP));                //vegg oppe
-        translator.put(261, new Wall(Direction.DOWN));              //vegg nede
-        translator.put(230, new Wall(Direction.LEFT));              //vegg venstre
-        translator.put(284, new Wall(Direction.RIGHT));             //vegg høyre
+        translator.put(166, new Wall(Direction.UP));                //wall up
+        translator.put(261, new Wall(Direction.DOWN));              //wall down
+        translator.put(230, new Wall(Direction.LEFT));              //wall left
+        translator.put(284, new Wall(Direction.RIGHT));             //wall right
     }
 
     public static ITile translate_ID(int id) {
