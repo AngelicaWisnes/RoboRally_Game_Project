@@ -6,6 +6,8 @@ import inf112.skeleton.app.Card.CardDealer;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
+import inf112.skeleton.app.Gamer.AIGamer;
+import inf112.skeleton.app.Gamer.IGamer;
 import inf112.skeleton.app.Helpers.Constants;
 import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.StateHolder;
