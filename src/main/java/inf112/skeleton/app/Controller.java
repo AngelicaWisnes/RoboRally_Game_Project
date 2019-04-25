@@ -2,6 +2,7 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.CardDealer;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
@@ -177,8 +178,11 @@ public class Controller {
 
             if (Gdx.input.isKeyJustPressed(key)) {
                 if (!selectedKeys.contains(selectedKey) && selectedKeys.size() < 5) {
-                    gamer.getSheet().placeCardInSlot(gamer.getCard(selectedKey));
-                    selectedKeys.add(selectedKey);
+                    if (selectedKey < gamer.getCards().size()){
+                        gamer.getSheet().placeCardInSlot(gamer.getCard(selectedKey));
+                        selectedKeys.add(selectedKey);
+                    }
+
                 }
             }
         }
@@ -203,15 +207,17 @@ public class Controller {
     }
 
     private void AICardSelect() {
-        gamer.getSheet().placeCardInSlot(gamer.getCard(0));
-        gamer.getSheet().placeCardInSlot(gamer.getCard(1));
-        gamer.getSheet().placeCardInSlot(gamer.getCard(2));
-        gamer.getSheet().placeCardInSlot(gamer.getCard(3));
-        gamer.getSheet().placeCardInSlot(gamer.getCard(4));
-        cardDealer.returnCard(gamer.getCard(5));
-        cardDealer.returnCard(gamer.getCard(6));
-        cardDealer.returnCard(gamer.getCard(7));
-        cardDealer.returnCard(gamer.getCard(8));
+        int counter = gamer.getCards().size()-1; //9 kort
+        System.out.println(counter);
+        while (counter > 0){
+            if (gamer.getSheet().placeCardInSlot(gamer.getCard(counter))){
+                gamer.getCards().remove(counter);
+            }
+            counter--;
+        }
+        for (int i = 0; i < gamer.getCards().size(); i++){
+            cardDealer.returnCard(gamer.getCard(i));
+        }
         gamer.setCardState(CardState.SELECTEDCARDS);
     }
 

@@ -33,13 +33,14 @@ public class ProgramSheet {
         damage = lastVisitedFlag = 0;
     }
 
-    public void placeCardInSlot(AbstractCard card) {
+    public boolean placeCardInSlot(AbstractCard card) {
         for (Slot s : slots) {
             if (s.isAvailable()) {
                 s.setCard(card);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     public void returnLastCardToHandFromSlot() {
@@ -58,44 +59,95 @@ public class ProgramSheet {
         return usedCards;
     }
 
-    public IRobot getRobot() { return robot; }
+    public IRobot getRobot() {
+        return robot;
+    }
 
-    public void setRobot(IRobot robot) { this.robot = robot; }
+    public void setRobot(IRobot robot) {
+        this.robot = robot;
+    }
 
-    public int getLives() { return lives; }
+    public int getLives() {
+        return lives;
+    }
 
-    public void removeLife() { --lives; }
+    public void removeLife() {
+        --lives;
+    }
 
-    public void setLives(int lives) { this.lives = lives; }
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
 
-    public int getDamage() { return damage; }
+    public int getDamage() {
+        return damage;
+    }
 
-    public void resetDamage() { damage = 0; }
+    public void resetDamage() {
+        damage = 0;
+        updateSlots();
+    }
 
-    public boolean fatallyInjured() { return damage >= MAX_DAMAGE; }
+    public boolean fatallyInjured() {
+        return damage >= MAX_DAMAGE;
+    }
 
     public void damageRobot() {
         damage++;
+        updateSlots();
         if (fatallyInjured()) robot.killRobot();
     }
 
-    public void setDamage(int damage) { this.damage = damage; }
 
-    public void repair(int repairQty) { setDamage(damage - repairQty < 0 ? 0 : damage - repairQty); }
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
-    public boolean isPowerDown() { return powerDown; }
+    public void repair(int repairQty) {
+        setDamage(damage - repairQty < 0 ? 0 : damage - repairQty);
+        updateSlots();
+    }
 
-    public void setPowerDown(boolean p) { powerDown = p; }
+    public boolean isPowerDown() {
+        return powerDown;
+    }
+
+    public void setPowerDown(boolean p) {
+        powerDown = p;
+    }
 
     public boolean allSlotsAreFilled() {
         for (Slot s : slots) if (s.isAvailable()) return false;
         return true;
     }
 
-    public Slot getSlot(int n) { return slots[n]; }
+    public Slot getSlot(int n) {
+        return slots[n];
+    }
 
-    public int getLastVisitedFlag() { return lastVisitedFlag; }
+    public int getLastVisitedFlag() {
+        return lastVisitedFlag;
+    }
 
-    public void setLastVisitedFlag(int lastVisitedFlag) { this.lastVisitedFlag = lastVisitedFlag; }
+    public void setLastVisitedFlag(int lastVisitedFlag) {
+        this.lastVisitedFlag = lastVisitedFlag;
+    }
+    private void updateSlots(){
+        if (damage > 4 && damage < 10){
+            setLocks(damage - 4);
+        } else {
+            setLocks(0);
+        }
+
+    }
+    private void setLocks(int n){
+        for (int i = 4; i > (4-n); i--){
+            getSlot(i).lockSlot();
+        }
+        for (int j = (4-n); j >= 0; j--){
+            getSlot(j).unlockSlot();
+        }
+
+    }
 
 }
