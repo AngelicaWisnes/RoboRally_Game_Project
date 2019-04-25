@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 
 public class MainMenuScreen implements Screen {
 
@@ -31,10 +32,8 @@ public class MainMenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Main Menu ",150, Gdx.graphics.getHeight()/2 + 150);
-        game.font.draw(game.batch, "Press any button to begin game...", 150, Gdx.graphics.getHeight()/2);
-        game.font.draw(game.batch, "Use numbers 1-9 to select cards", 150, Gdx.graphics.getHeight()/2 - 150);
-        game.font.draw(game.batch, "Press enter to play cards, press space to play a blank card", 150, Gdx.graphics.getHeight()/2 - 300);
+        Texture main_screen = new Texture(Gdx.files.internal("assets/img/end_game/main_screen.png"));
+        game.batch.draw(main_screen, Gdx.graphics.getWidth() / 2 - main_screen.getWidth() / 2, Gdx.graphics.getHeight() / 2 - main_screen.getHeight()/2);
         game.batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
