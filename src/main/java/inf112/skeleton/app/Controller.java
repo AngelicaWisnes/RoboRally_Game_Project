@@ -35,7 +35,7 @@ public class Controller {
     }
 
     public StateHolder runGame(StateHolder states, GameScreen gameScreen) {
-        this.gamers = gameScreen.getGamers();
+        gamers = gameScreen.getGamers();
         this.gameScreen = gameScreen;
         roundState = states.getRoundState();
         gameState = states.getGameState();
@@ -49,8 +49,11 @@ public class Controller {
             }
         }
         if (allGamersReady) {
-            if (roundCounter < 5) startRound();
-            else resetRound();
+            if (roundCounter < 5) {
+                startRound();
+            } else {
+                resetRound();
+            }
         }
 
         return new StateHolder(roundState, gameState, playerTurn);
@@ -69,8 +72,11 @@ public class Controller {
                 this.gamer.setCardState(CardState.DEALTCARDS);
             }
         } else if (this.gamer.getCardState().equals(CardState.DEALTCARDS)) {
-            if (gamer instanceof AIGamer) AICardSelect();
-            else selectCard();
+            if (gamer instanceof AIGamer) {
+                AICardSelect();
+            } else {
+                selectCard();
+            }
         }
     }
 
@@ -121,8 +127,12 @@ public class Controller {
             roundState = RoundState.PART5;
         } else if (roundState.equals(RoundState.PART5)) {
             LaserHandler.fireBoardLaser(gameScreen.getLasers(), gamer, gameScreen.getLaserShape(),
-                                        gameScreen.getPew(), Constants.TILESIZE);
+                    gameScreen.getPew(), Constants.TILESIZE);
+            for (IGamer gamer : gamers) {
+                LaserHandler.fireRobotLaser(gamer, gamers, gameScreen.getLaserShape());
+            }
             roundState = RoundState.PART6;
+
         } else if (roundState.equals(RoundState.PART6)) {
             robotTileImpacts();
             isEndState();
@@ -154,7 +164,9 @@ public class Controller {
 
     private void powerDownRound() {
         gamer.getSheet().resetDamage();
-        for (int i = 0; i < 5; i++) gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
+        for (int i = 0; i < 5; i++) {
+            gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
+        }
     }
 
     private void selectCard() {
@@ -170,14 +182,22 @@ public class Controller {
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.FORWARD_DEL)) {
             gamer.getSheet().returnLastCardToHandFromSlot();
-            if (!selectedKeys.isEmpty()) selectedKeys.remove(selectedKeys.size() - 1);
+            if (!selectedKeys.isEmpty()) {
+                selectedKeys.remove(selectedKeys.size() - 1);
+            }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && gamer.getSheet().allSlotsAreFilled()) {
-            for (int i = 0; i < 9; i++) if (!selectedKeys.contains(i)) cardDealer.returnCard(gamer.getCard(i));
+            for (int i = 0; i < 9; i++) {
+                if (!selectedKeys.contains(i)) {
+                    cardDealer.returnCard(gamer.getCard(i));
+                }
+            }
             gamer.setCardState(CardState.SELECTEDCARDS);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
+        }
     }
 
     private void AICardSelect() {
