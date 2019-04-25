@@ -3,14 +3,12 @@ package inf112.skeleton.app.Helpers;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import inf112.skeleton.app.Enums.Direction;
-import inf112.skeleton.app.Gamer;
-import inf112.skeleton.app.IGamer;
+import inf112.skeleton.app.Gamer.Gamer;
+import inf112.skeleton.app.Gamer.IGamer;
 import inf112.skeleton.app.Robot.IRobot;
-import inf112.skeleton.app.Robot.Robot;
 
 import java.util.ArrayList;
 
@@ -51,7 +49,7 @@ public class LaserHandler {
 
     }
 
-    public static void fireRobotLaser(Gamer shooter, ArrayList<IGamer> gamers, ShapeRenderer shape) {
+    public static void fireRobotLaser(IGamer shooter, ArrayList<IGamer> gamers, ShapeRenderer shape) {
         ArrayList<IGamer> opponents = new ArrayList<>(gamers);
         //opponents.remove(shooter);
         int x = shooter.getSheet().getRobot().getPos().getX();

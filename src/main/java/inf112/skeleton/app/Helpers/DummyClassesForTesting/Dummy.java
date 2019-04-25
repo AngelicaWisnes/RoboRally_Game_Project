@@ -8,7 +8,7 @@ import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import inf112.skeleton.app.Gamer;
+import inf112.skeleton.app.Gamer.Gamer;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Robot.IRobot;
 
