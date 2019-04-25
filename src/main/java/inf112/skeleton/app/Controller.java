@@ -58,7 +58,6 @@ public class Controller {
         return new StateHolder(roundState, gameState, playerTurn);
     }
 
-
     private void setupCards(IGamer gamer) {
         this.gamer = gamer;
         if (this.gamer.getCardState().equals(CardState.NOCARDS)) {
@@ -76,13 +75,11 @@ public class Controller {
         }
     }
 
-
     private void listenForPowerDown() {
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
             gamer.getSheet().setPowerDown(!gamer.getSheet().isPowerDown());
         }
     }
-
 
     private void isEndState() {
         if (gamer.getSheet().getLives() <= 0) {
@@ -91,7 +88,6 @@ public class Controller {
         } else if (gamer.getSheet().getLastVisitedFlag() == 3) {
             System.out.println("YOU WIN!");
             gameState = GameState.GAME_OVER;
-
         }
     }
 
@@ -131,7 +127,6 @@ public class Controller {
             roundState = RoundState.NONE;
             roundCounter++;
         }
-
     }
 
     private void robotTileImpacts() {
@@ -147,7 +142,6 @@ public class Controller {
             g.getSheet().getRobot().cardMovesRobot(g.getSheet().getSlot(roundCounter).getCard());
         }
     }
-
 
     private void dealCards() {
         int cardQuantity = 9 - gamer.getSheet().getDamage();
