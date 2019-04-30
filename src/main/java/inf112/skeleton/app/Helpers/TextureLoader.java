@@ -80,12 +80,12 @@ public class TextureLoader{
     }
 
     static {
-        robotColor.put(1, "");
+        robotColor.put(1, "_purple");
         robotColor.put(2, "_blue");
         robotColor.put(3, "_green");
         robotColor.put(4, "_yellow");
         robotColor.put(5, "_pink");
-        robotColor.put(6, "_purple");
+        robotColor.put(6, "");
         robotColor.put(7, "_red");
         robotColor.put(8, "_mint");
     }
