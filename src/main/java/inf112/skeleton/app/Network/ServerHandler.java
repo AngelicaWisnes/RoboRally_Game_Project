@@ -1,4 +1,4 @@
-/*package inf112.skeleton.app.Server;
+/*package inf112.skeleton.app.Network;
 
 public class ServerHandler extends API {
 
