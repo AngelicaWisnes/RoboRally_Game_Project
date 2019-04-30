@@ -31,4 +31,4 @@ target
 hs_err_pid*
 
 mvn-app.iml
-.DS_Store
+*.DS_Store

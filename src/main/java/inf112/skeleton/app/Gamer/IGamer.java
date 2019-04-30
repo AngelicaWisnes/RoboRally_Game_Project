@@ -26,4 +26,6 @@ public interface IGamer {
     TiledMap getMap();
 
     String getName();
+
+    String getImage();
 }

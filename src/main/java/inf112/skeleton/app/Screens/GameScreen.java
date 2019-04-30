@@ -115,23 +115,9 @@ public class GameScreen implements Screen {
         robotBatch.setProjectionMatrix(camera.combined);
         robotBatch.begin();
         for (IGamer g : gamers) {
-            String robotString = "";
-            switch (g.getSheet().getRobot().getDir()) {
-                case UP:
-                    robotString = "robot_north";
-                    break;
-                case RIGHT:
-                    robotString = "robot_east";
-                    break;
-                case DOWN:
-                    robotString = "robot_south";
-                    break;
-                case LEFT:
-                    robotString = "robot_west";
-                    break;
-            }
-            robotBatch.draw(textureMap.get(robotString), g.getSheet().getRobot().getPos().getX(),
-                    g.getSheet().getRobot().getPos().getY());
+            String robotString = g.getImage();
+            Position pos = g.getSheet().getRobot().getPos();
+            robotBatch.draw(textureMap.get(robotString), pos.getX(), pos.getY());
         }
         robotBatch.end();
     }
