@@ -10,11 +10,20 @@ import java.util.List;
 
 public interface IGamer {
     ProgramSheet getSheet();
+
     void resetCards();
+
     void setCards(List<AbstractCard> cardsOnHand);
+
     AbstractCard getCard(int i);
+
     List<AbstractCard> getCards();
+
     void setCardState(CardState cardState);
+
     CardState getCardState();
+
     TiledMap getMap();
+
+    String getName();
 }

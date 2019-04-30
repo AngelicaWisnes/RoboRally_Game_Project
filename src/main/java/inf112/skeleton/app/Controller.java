@@ -28,6 +28,7 @@ public class Controller {
     private int roundCounter = 0;
     private GameScreen gameScreen;
     private CardDealer cardDealer;
+    private IGamer winner;
 
     //TODO rewrite to singleton
     public Controller(StateHolder stateHolder) {
@@ -43,6 +44,7 @@ public class Controller {
         roundState = states.getRoundState();
         gameState = states.getGameState();
         playerTurn = states.getPlayerTurn();
+        isEndState();
 
         boolean allGamersReady = true;
         for (IGamer gamer : gamers) {
@@ -90,14 +92,27 @@ public class Controller {
         }
     }
 
+    public IGamer getWinner() {
+        return winner;
+    }
+
     private void isEndState() {
-        if (gamer.getSheet().getLives() <= 0) {
-            System.out.println("GAME OVER");
+        if (gamers == null) {
             gameState = GameState.GAME_OVER;
-        } else if (gamer.getSheet().getLastVisitedFlag() == 3) {
-            System.out.println("YOU WIN!");
-            gameState = GameState.GAME_OVER;
+            return;
         }
+        for (IGamer g : gamers) {
+            if (gamers.size() == 1) {
+                winner = g;
+                gameState = GameState.GAME_OVER;
+            } else if (g.getSheet().getLives() <= 0) {
+                gamers.set(gamers.indexOf(g), null);
+            } else if (g.getSheet().getLastVisitedFlag() == 3) {
+                gameState = GameState.GAME_OVER;
+                winner = g;
+            }
+        }
+        gamers.removeAll(Collections.singletonList(null));
     }
 
     private void resetRound() {
@@ -136,7 +151,7 @@ public class Controller {
 
         } else if (roundState.equals(RoundState.PART6)) {
             robotTileImpacts();
-            isEndState();
+            //isEndState();
             roundState = RoundState.NONE;
             roundCounter++;
         }

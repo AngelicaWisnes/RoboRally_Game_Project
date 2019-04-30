@@ -48,7 +48,7 @@ public class AbstractGamer implements IGamer {
 
     @Override
     public List<AbstractCard> getCards() {
-        return this.cardsOnHand;
+        return cardsOnHand;
     }
 
     @Override
@@ -64,5 +64,10 @@ public class AbstractGamer implements IGamer {
     @Override
     public TiledMap getMap() {
         return map;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -49,7 +49,6 @@ public class GameScreen implements Screen {
     private Disposable[] disposables;
 
 
-
     public GameScreen(final RoboRally game, int numberOfPlayers) {
         this.game = game;
         textureMap = TextureLoader.getTextures();
@@ -93,20 +92,22 @@ public class GameScreen implements Screen {
         drawRobots();
         laserShape.setProjectionMatrix(camera.combined);
         if (!states.getGameState().equals(GameState.GAME_OVER)) {
+            System.out.println(gamers.size());
+
             ProgramSheetView.drawSheet(HUDBatch, shape, textureMap, hostGamer.getSheet());
             StateTextView.drawStates(HUDBatch, states); //testing purposes only
             hostGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
             states = controller.runGame(states, this);
             stateBasedBoardActions();
-        }else{
-            game.setScreen(new EndGameScreen(game));
+
+        } else {
+            game.setScreen(new EndGameScreen(game, controller.getWinner()));
+
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
             LaserHandler.fireRobotLaser(hostGamer, gamers, laserShape);
         }
-        //System.out.println(gamers.get(1).getSheet().getDamage());
-
         sleep(20);
     }
 
@@ -130,7 +131,7 @@ public class GameScreen implements Screen {
                     break;
             }
             robotBatch.draw(textureMap.get(robotString), g.getSheet().getRobot().getPos().getX(),
-                            g.getSheet().getRobot().getPos().getY());
+                    g.getSheet().getRobot().getPos().getY());
         }
         robotBatch.end();
     }

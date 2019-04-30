@@ -54,7 +54,9 @@ public class ProgramSheet {
 
     public ArrayList<AbstractCard> clearUnlockedSlots() {
         ArrayList<AbstractCard> usedCards = new ArrayList<>();
-        for (Slot s : slots) usedCards.add(s.returnCard());
+        for (Slot s : slots) {
+            usedCards.add(s.returnCard());
+        }
         usedCards.removeAll(Collections.singletonList(null));
         return usedCards;
     }
@@ -95,7 +97,9 @@ public class ProgramSheet {
     public void damageRobot() {
         damage++;
         updateSlots();
-        if (fatallyInjured()) robot.killRobot();
+        if (fatallyInjured()) {
+            robot.killRobot();
+        }
     }
 
 
@@ -117,7 +121,11 @@ public class ProgramSheet {
     }
 
     public boolean allSlotsAreFilled() {
-        for (Slot s : slots) if (s.isAvailable()) return false;
+        for (Slot s : slots) {
+            if (s.isAvailable()) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -132,19 +140,21 @@ public class ProgramSheet {
     public void setLastVisitedFlag(int lastVisitedFlag) {
         this.lastVisitedFlag = lastVisitedFlag;
     }
-    private void updateSlots(){
-        if (damage > 4 && damage < 10){
+
+    private void updateSlots() {
+        if (damage > 4 && damage < 10) {
             setLocks(damage - 4);
         } else {
             setLocks(0);
         }
 
     }
-    private void setLocks(int n){
-        for (int i = 4; i > (4-n); i--){
+
+    private void setLocks(int n) {
+        for (int i = 4; i > (4 - n); i--) {
             getSlot(i).lockSlot();
         }
-        for (int j = (4-n); j >= 0; j--){
+        for (int j = (4 - n); j >= 0; j--) {
             getSlot(j).unlockSlot();
         }
 

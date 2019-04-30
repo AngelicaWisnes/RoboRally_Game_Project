@@ -180,7 +180,9 @@ public abstract class AbstractRobot implements IRobot {
         }
 
         while (spaces-- > 0) {
-            if (hasWall(direction)) continue;
+            if (hasWall(direction)) {
+                continue;
+            }
 
             pos = pos.getNeighbour(direction, TILESIZE);
 
@@ -192,8 +194,8 @@ public abstract class AbstractRobot implements IRobot {
         return pos;
     }
 
+    @Override
     public Position killRobot() {
-        System.out.println("you have died");
         programSheet.removeLife();
         programSheet.resetDamage();
         return setPositionCheckpointCorrespondence(pos, checkpoint);
@@ -210,7 +212,7 @@ public abstract class AbstractRobot implements IRobot {
         ITile cur = getTileOnPos(pos, map);
         ITile nbr = getTileOnPos(pos.getNeighbour(direction, TILESIZE), map);
         return (nbr instanceof AbstractWall && ((AbstractWall) nbr).hasWall(direction.opposite()))
-               || (cur instanceof AbstractWall && ((AbstractWall) cur).hasWall(direction));
+                || (cur instanceof AbstractWall && ((AbstractWall) cur).hasWall(direction));
     }
 
     /**
@@ -227,11 +229,14 @@ public abstract class AbstractRobot implements IRobot {
     /**
      * Helper-method for testing move-method
      */
-    public Position testMove(Direction direction, int spaces) { return move(direction, spaces); }
+    public Position testMove(Direction direction, int spaces) {
+        return move(direction, spaces);
+    }
 
     /**
      * Helper-method for testing rotate-method
      */
+    @Override
     public Direction testRotation(Rotation rotation) {
         return rotate(rotation);
     }
