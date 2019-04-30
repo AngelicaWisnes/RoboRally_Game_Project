@@ -17,4 +17,5 @@ public interface IGamer {
     void setCardState(CardState cardState);
     CardState getCardState();
     TiledMap getMap();
+    String getImage();
 }
