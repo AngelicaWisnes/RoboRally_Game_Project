@@ -16,7 +16,7 @@ public class ProgramSheetTest {
 
     @Before
     public void initialize() {
-        sheet = new ProgramSheet(null, 1);
+        sheet = new ProgramSheet(null, 1, null);
         slot = new Slot();
     }
 

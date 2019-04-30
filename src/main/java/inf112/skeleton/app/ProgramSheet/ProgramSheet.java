@@ -3,6 +3,7 @@ package inf112.skeleton.app.ProgramSheet;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.Card.*;
 import inf112.skeleton.app.Enums.Direction;
+import inf112.skeleton.app.Gamer.IGamer;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Robot.*;
 
@@ -22,10 +23,10 @@ public class ProgramSheet {
     private final int MAX_DAMAGE = 10;
 
 
-    public ProgramSheet(TiledMap map, int playerNumber) {
+    public ProgramSheet(TiledMap map, int playerNumber, ArrayList<IGamer> gamers) {
         slots = new Slot[]{new Slot(), new Slot(), new Slot(), new Slot(), new Slot()};
 
-        robot = new Robot(START_POSITION.get(playerNumber), Direction.RIGHT, map, this);
+        robot = new Robot(START_POSITION.get(playerNumber), Direction.RIGHT, map, this, gamers);
 
         powerDown = false;
         lives = 3;

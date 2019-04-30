@@ -35,73 +35,73 @@ public class AbstractRobotTest {
 
     @Test
     public void rotatingClockwiseFromRightShouldReturnDown() {
-        dummy.setRobot(new Robot(pos, Direction.RIGHT, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.RIGHT, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_CLOCKWISE), Direction.DOWN);
     }
 
     @Test
     public void rotatingClockwiseFromDownShouldReturnLeft() {
-        dummy.setRobot(new Robot(pos, Direction.DOWN, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.DOWN, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_CLOCKWISE), Direction.LEFT);
     }
 
     @Test
     public void rotatingClockwiseFromLeftShouldReturnUp() {
-        dummy.setRobot(new Robot(pos, Direction.LEFT, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.LEFT, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_CLOCKWISE), Direction.UP);
     }
 
     @Test
     public void rotatingClockwiseFromUpShouldReturnRight() {
-        dummy.setRobot(new Robot(pos, Direction.UP, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.UP, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_CLOCKWISE), Direction.RIGHT);
     }
 
     @Test
     public void rotatingCounterclockwiseFromRightShouldReturnUp() {
-        dummy.setRobot(new Robot(pos, Direction.RIGHT, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.RIGHT, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_COUNTER_CLOCKWISE), Direction.UP);
     }
 
     @Test
     public void rotatingCounterclockwiseFromDownShouldReturnRight() {
-        dummy.setRobot(new Robot(pos, Direction.DOWN, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.DOWN, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_COUNTER_CLOCKWISE), Direction.RIGHT);
     }
 
     @Test
     public void rotatingCounterclockwiseFromLeftShouldReturnDown() {
-        dummy.setRobot(new Robot(pos, Direction.LEFT, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.LEFT, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_COUNTER_CLOCKWISE), Direction.DOWN);
     }
 
     @Test
     public void rotatingCounterclockwiseFromUpShouldReturnLeft() {
-        dummy.setRobot(new Robot(pos, Direction.UP, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.UP, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_COUNTER_CLOCKWISE), Direction.LEFT);
     }
 
     @Test
     public void rotatingAroundFromUpShouldReturnDown() {
-        dummy.setRobot(new Robot(pos, Direction.UP, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.UP, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_AROUND), Direction.DOWN);
     }
 
     @Test
     public void rotatingAroundFromRightShouldReturnLeft() {
-        dummy.setRobot(new Robot(pos, Direction.RIGHT, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.RIGHT, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_AROUND), Direction.LEFT);
     }
 
     @Test
     public void rotatingAroundFromDownShouldReturnUp() {
-        dummy.setRobot(new Robot(pos, Direction.DOWN, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.DOWN, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_AROUND), Direction.UP);
     }
 
     @Test
     public void rotatingAroundFromLeftShouldReturnRight() {
-        dummy.setRobot(new Robot(pos, Direction.LEFT, dummy.getMap(), dummy.getSheet()));
+        dummy.setRobot(new Robot(pos, Direction.LEFT, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_AROUND), Direction.RIGHT);
     }
 
