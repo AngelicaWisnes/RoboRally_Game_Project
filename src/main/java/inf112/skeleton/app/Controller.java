@@ -106,6 +106,9 @@ public class Controller {
                 winner = g;
                 gameState = GameState.GAME_OVER;
             } else if (g.getSheet().getLives() <= 0) {
+                for (int i = 0; i < g.getCards().size(); i++){
+                    cardDealer.returnCard(g.getCard(i));
+                }
                 gamers.set(gamers.indexOf(g), null);
             } else if (g.getSheet().getLastVisitedFlag() == 3) {
                 gameState = GameState.GAME_OVER;
