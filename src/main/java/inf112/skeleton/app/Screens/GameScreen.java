@@ -71,14 +71,19 @@ public class GameScreen implements Screen {
         HUDBatch = new SpriteBatch();
         shape = new ShapeRenderer();
         laserShape = new ShapeRenderer();
-        hostGamer = new Gamer(map, "Player1", 1);
         controller = new Controller(states);
+        addGamers(numberOfPlayers);
+
+        disposables = new Disposable[]{map, renderer, factoryMusic, pew, robotBatch, HUDBatch, shape, laserShape};
+    }
+
+    private void addGamers(int numberOfPlayers) {
+        hostGamer = new Gamer(map, "Player1", 1);
 
         gamers.add(hostGamer);
         for (int i = 1; i < numberOfPlayers; i++) {
             gamers.add(new AIGamer(map, "AI-" + i, i + 1));
         }
-        disposables = new Disposable[]{map, renderer, factoryMusic, pew, robotBatch, HUDBatch, shape, laserShape};
     }
 
 
