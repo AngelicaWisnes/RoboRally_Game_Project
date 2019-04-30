@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class TextureLoader{
     private static HashMap<String, Texture> textureMap = new HashMap<>();
+    private static HashMap<Integer, String> robotColor = new HashMap<>();
 
     static {
         //Grey robots
@@ -77,5 +78,19 @@ public class TextureLoader{
         textureMap.put("powerdownon", new Texture(Gdx.files.internal("assets/img/powerdownon.png")));
         textureMap.put("powerdownoff", new Texture(Gdx.files.internal("assets/img/powerdownoff.png")));
     }
-    public static HashMap<String,Texture> getTextures(){return textureMap;}
+
+    static {
+        robotColor.put(1, "");
+        robotColor.put(2, "_blue");
+        robotColor.put(3, "_green");
+        robotColor.put(4, "_yellow");
+        robotColor.put(5, "_pink");
+        robotColor.put(6, "_purple");
+        robotColor.put(7, "_red");
+        robotColor.put(8, "_mint");
+    }
+
+    public static HashMap<String,Texture> getTextures(){ return textureMap; }
+    public static String getRobotColor(int playerNumber){ return robotColor.get(playerNumber); }
 }
+
