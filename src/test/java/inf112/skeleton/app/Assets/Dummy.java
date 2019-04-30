@@ -1,4 +1,4 @@
-package inf112.skeleton.app.Helpers.DummyClassesForTesting;
+package inf112.skeleton.app.Assets;
 
 import static org.mockito.Mockito.mock;
 
