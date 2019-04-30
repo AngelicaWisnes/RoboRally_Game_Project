@@ -26,7 +26,7 @@ public class ProgramSheet {
         slots = new Slot[]{new Slot(), new Slot(), new Slot(), new Slot(), new Slot()};
 
         robot = new Robot(START_POSITION.get(playerNumber), Direction.RIGHT, map, this);
-        
+
         powerDown = false;
         lives = 3;
         damage = lastVisitedFlag = 0;
