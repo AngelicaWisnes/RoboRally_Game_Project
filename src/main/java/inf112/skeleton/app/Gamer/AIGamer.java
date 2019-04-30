@@ -10,8 +10,8 @@ import java.util.List;
 
 public class AIGamer extends AbstractGamer {
 
-    public AIGamer(TiledMap map, String name, int playerNumber) {
-        super(map, name, playerNumber);
+    public AIGamer(TiledMap map, String name, int playerNumber, ArrayList<IGamer> gamers) {
+        super(map, name, playerNumber, gamers);
 
     }
 }

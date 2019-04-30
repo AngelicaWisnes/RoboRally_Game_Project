@@ -78,11 +78,11 @@ public class GameScreen implements Screen {
     }
 
     private void addGamers(int numberOfPlayers) {
-        hostGamer = new Gamer(map, "Player1", 1);
+        hostGamer = new Gamer(map, "Player1", 1, gamers);
 
         gamers.add(hostGamer);
         for (int i = 1; i < numberOfPlayers; i++) {
-            gamers.add(new AIGamer(map, "AI-" + i, i + 1));
+            gamers.add(new AIGamer(map, "AI-" + i, i + 1, gamers));
         }
     }
 

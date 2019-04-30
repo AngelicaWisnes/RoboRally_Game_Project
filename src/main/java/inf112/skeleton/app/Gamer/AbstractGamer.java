@@ -21,7 +21,7 @@ public class AbstractGamer implements IGamer {
 
     protected List<AbstractCard> cardsOnHand;
 
-    public AbstractGamer(TiledMap map, String name, int playerNumber) {
+    public AbstractGamer(TiledMap map, String name, int playerNumber, ArrayList<IGamer> gamers) {
         this.map = map;
         this.name = name;
         this.playerNumber = playerNumber;
