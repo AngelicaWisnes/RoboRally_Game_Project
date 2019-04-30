@@ -184,18 +184,32 @@ public abstract class AbstractRobot implements IRobot {
         }
 
         while (spaces-- > 0) {
-            if (hasWall(direction)) {
-                continue;
-            }
+            if (hasWall(direction, pos)) continue;
+            IRobot nbr = getNbrRobot(direction);
+            if (nbr != null && !isPushable(nbr, direction)) continue;
 
             pos = pos.getNeighbour(direction, TILESIZE);
 
-            if (hasJustFallen()) {
-                return killRobot();
-            }
+            if (hasJustFallen()) return killRobot();
         }
 
         return pos;
+    }
+
+    private boolean isPushable(IRobot nbr, Direction direction) {
+        if (hasWall(direction, nbr.getPos())) return false;
+        nbr.push(direction, 1);
+        return true;
+    }
+
+    public Position push(Direction direction, int spaces) {
+        return move(direction, spaces);
+    }
+
+    private IRobot getNbrRobot(Direction direction){
+        Position nbr = pos.getNeighbour(direction, TILESIZE);
+        for (IGamer g : gamers) if (g.getSheet().getRobot().getPos().equal(nbr)) return g.getSheet().getRobot();
+        return null;
     }
 
     @Override
@@ -212,9 +226,9 @@ public abstract class AbstractRobot implements IRobot {
      * @param direction to check
      * @return true if wall, false otherwise
      */
-    private boolean hasWall(Direction direction) {
-        ITile cur = getTileOnPos(pos, map);
-        ITile nbr = getTileOnPos(pos.getNeighbour(direction, TILESIZE), map);
+    private boolean hasWall(Direction direction, Position position) {
+        ITile cur = getTileOnPos(position, map);
+        ITile nbr = getTileOnPos(position.getNeighbour(direction, TILESIZE), map);
         return (nbr instanceof AbstractWall && ((AbstractWall) nbr).hasWall(direction.opposite()))
                 || (cur instanceof AbstractWall && ((AbstractWall) cur).hasWall(direction));
     }
@@ -227,14 +241,6 @@ public abstract class AbstractRobot implements IRobot {
     private boolean hasJustFallen() {
         ITile currentTile = getTileOnPos(pos, map);
         return currentTile == null || currentTile instanceof Pit;
-    }
-
-
-    /**
-     * Helper-method for testing move-method
-     */
-    public Position testMove(Direction direction, int spaces) {
-        return move(direction, spaces);
     }
 
     /**
