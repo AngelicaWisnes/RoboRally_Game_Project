@@ -42,13 +42,11 @@ public class CardDealer {
         return cardsToDeal;
     }
 
-
     private void reshuffleCards() {
         cardStack.addAll(usedCards);
         Collections.shuffle(cardStack);
         usedCards.clear();
     }
-
 
     private static class CardGenerator {
         private static ArrayList<AbstractCard> cards;
@@ -69,7 +67,6 @@ public class CardDealer {
             movement(3, 790, 6, false);
             movement(1, 430, 6, true);
         }
-
 
         private static void movement(int steps, int startingValue, int n, boolean backwards) {
             for (int i = 0; i < n; i++) {

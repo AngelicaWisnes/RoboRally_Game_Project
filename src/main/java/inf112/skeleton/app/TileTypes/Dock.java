@@ -1,9 +1,5 @@
 package inf112.skeleton.app.TileTypes;
 
-/**
- * @author Roger Wisnes
- */
-
 public class Dock extends AbstractTile {
 
     int id;
@@ -12,7 +8,6 @@ public class Dock extends AbstractTile {
         this.image = "dock" + n;
         this.id = n;
     }
-
 
     @Override
     public String getImage() {

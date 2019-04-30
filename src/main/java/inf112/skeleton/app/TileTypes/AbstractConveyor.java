@@ -10,7 +10,6 @@ public abstract class AbstractConveyor extends AbstractTile {
     public AbstractConveyor(Direction direction, String type) {
         this.direction = direction;
         setImage(type);
-
     }
 
     /**
@@ -38,7 +37,6 @@ public abstract class AbstractConveyor extends AbstractTile {
             throw new IllegalArgumentException("Illegal direction argument!");
         }
     }
-
 
     /**
      * @return the image string of the conveyor

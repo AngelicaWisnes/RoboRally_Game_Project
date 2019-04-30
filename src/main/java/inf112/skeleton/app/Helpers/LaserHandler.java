@@ -47,7 +47,6 @@ public class LaserHandler {
         }
         shape.end();
 
-
     }
 
     public static void fireRobotLaser(IGamer shooter, ArrayList<IGamer> gamers, ShapeRenderer shape) {
@@ -88,7 +87,6 @@ public class LaserHandler {
         }
 
         shape.end();
-
     }
 
     public static void findLasers(ArrayList<Position> lasers, TiledMap map){
@@ -101,7 +99,5 @@ public class LaserHandler {
                 }
             }
         }
-
-
     }
 }

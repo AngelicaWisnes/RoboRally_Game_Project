@@ -1,7 +1,5 @@
 package inf112.skeleton.app.Views;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -48,12 +46,10 @@ public class ProgramSheetView {
                 batch.draw(textureMap.get("damageoff"), 1195 + (i * 40), 820, 36, 32);
             } else {
                 batch.draw(textureMap.get("damageon"), 1195 + (i * 40), 820, 36, 32);
-
             }
         }
         batch.draw(textureMap.get("damagered"), 1155, 820, 36, 32);
         batch.end();
-
     }
 
     private static void drawCards(SpriteBatch batch, ProgramSheet sheet, HashMap<String, Texture> textureMap, ShapeRenderer shape) {

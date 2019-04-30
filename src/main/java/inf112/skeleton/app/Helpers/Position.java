@@ -67,5 +67,4 @@ public class Position {
 
     public boolean equal(Position that) {return this.x == that.x && this.y == that.y; }
 
-
 }

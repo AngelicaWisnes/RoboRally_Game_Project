@@ -1,13 +1,5 @@
 package inf112.skeleton.app.TileTypes;
 
-/**
- *
- * @Author Magne
- *
- * There are two types of AbstractRepair fields. Single and Double.
- *
- */
-
 public abstract class AbstractRepair extends AbstractTile {
 
     int repairQty;

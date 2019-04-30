@@ -51,7 +51,6 @@ public abstract class AbstractRobot implements IRobot {
         return dir;
     }
 
-
     private void setFlagID(int flagID) {
         if (flagID == programSheet.getLastVisitedFlag() + 1) {
             programSheet.setLastVisitedFlag(flagID);
@@ -111,7 +110,6 @@ public abstract class AbstractRobot implements IRobot {
             case NONE:
                 break;
         }
-
     }
 
     /**

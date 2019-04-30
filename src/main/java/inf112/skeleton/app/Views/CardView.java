@@ -14,7 +14,6 @@ public class CardView {
 
     private static BitmapFont font = new BitmapFont();
 
-
     public static void drawCardForSheet(SpriteBatch batch, AbstractCard card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos) {
         if (card == null)
             return;
@@ -38,6 +37,7 @@ public class CardView {
         batch.end();
 
     }
+
     public static void drawCardForHand(SpriteBatch batch, AbstractCard card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos){
         if (card == null){
             return;
@@ -56,7 +56,6 @@ public class CardView {
         batch.begin();
         //arrows
         batch.draw(textureMap.get(card.getKey()), (1175 + 75 * pos) + x, 285 + y, 45, 45);
-
 
         font.setColor(Color.BLACK);
         GlyphLayout glyphLayout = new GlyphLayout();

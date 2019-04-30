@@ -2,7 +2,6 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.CardDealer;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
@@ -233,6 +232,4 @@ public class Controller {
         }
         gamer.setCardState(CardState.SELECTEDCARDS);
     }
-
-
 }

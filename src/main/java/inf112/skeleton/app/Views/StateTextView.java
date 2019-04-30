@@ -18,6 +18,5 @@ public class StateTextView {
         font.setColor(Color.WHITE);
         font.draw(batch, sb.toString(), 100, 100);
         batch.end();
-
     }
 }

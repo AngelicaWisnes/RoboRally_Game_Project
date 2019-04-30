@@ -8,7 +8,6 @@ public class Rotator extends AbstractTile {
     public Rotator(Rotation rotation) {
         this.image = "rotate";
         this.rotation = rotation;
-
     }
 
     public Rotation getRotation() {
