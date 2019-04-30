@@ -3,32 +3,18 @@ package inf112.skeleton.app.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.audio.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.Disposable;
-import com.badlogic.gdx.utils.ScreenUtils;
-import inf112.skeleton.app.Gamer.AIGamer;
+import inf112.skeleton.app.Gamer.*;
 import inf112.skeleton.app.Controller;
-import inf112.skeleton.app.Enums.CardState;
-import inf112.skeleton.app.Enums.GameState;
-import inf112.skeleton.app.Enums.RoundState;
-import inf112.skeleton.app.Gamer.Gamer;
-import inf112.skeleton.app.Helpers.LaserHandler;
-import inf112.skeleton.app.Helpers.Position;
-import inf112.skeleton.app.Helpers.StateHolder;
-import inf112.skeleton.app.Gamer.IGamer;
-import inf112.skeleton.app.Helpers.TextureLoader;
-import inf112.skeleton.app.Views.DealtCardsView;
-import inf112.skeleton.app.Views.ProgramSheetView;
-import inf112.skeleton.app.Views.StateTextView;
+import inf112.skeleton.app.Enums.*;
+import inf112.skeleton.app.Helpers.*;
+import inf112.skeleton.app.Views.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,7 +44,7 @@ public class GameScreen implements Screen {
     private Controller controller;
     private ArrayList<IGamer> gamers = new ArrayList<>();
 
-    private ArrayList<Position> lasers;
+    private ArrayList<Position> lasers = new ArrayList<>();
 
     private Disposable[] disposables;
 
@@ -76,8 +62,7 @@ public class GameScreen implements Screen {
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.translate(-TILESIZE, -(Gdx.graphics.getHeight() / 2f - (MAPHEIGHT * TILESIZE) / 2f));
 
-
-        findLasers();
+        LaserHandler.findLasers(lasers, map);
 
         factoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/factory.mp3"));
         pew = Gdx.audio.newSound(Gdx.files.internal("assets/laser.wav"));
@@ -95,19 +80,6 @@ public class GameScreen implements Screen {
             gamers.add(new AIGamer(map, "AI-" + i, i + 1));
         }
         disposables = new Disposable[]{map, renderer, factoryMusic, pew, robotBatch, HUDBatch, shape, laserShape};
-    }
-
-    private void findLasers() {
-        lasers = new ArrayList<>();
-        for (int i = 0; i < MAPWIDTH; i++) {
-            for (int j = 0; j < MAPHEIGHT; j++) {
-                TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(i, j);
-                int id = cell.getTile().getId();
-                if (id == 929 || id == 646) {
-                    lasers.add(new Position(i * TILESIZE, j * TILESIZE));
-                }
-            }
-        }
     }
 
 
@@ -197,20 +169,6 @@ public class GameScreen implements Screen {
         for (Disposable d : disposables) {
             d.dispose();
         }
-    }
-
-    private void screenshot() {
-        byte[] pixels = ScreenUtils.getFrameBufferPixels(0, 0, Gdx.graphics.getBackBufferWidth(),
-                                                         Gdx.graphics.getBackBufferHeight(), true);
-        for (int i = 4; i < pixels.length; i += 4) {
-            pixels[i - 1] = (byte) 255;
-        }
-
-        Pixmap pixmap = new Pixmap(Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight(),
-                                   Pixmap.Format.RGBA8888);
-        BufferUtils.copy(pixels, 0, pixmap.getPixels(), pixels.length);
-        PixmapIO.writePNG(Gdx.files.external("mypixmap.png"), pixmap);
-        pixmap.dispose();
     }
 
     private void sleep(int ms) {
