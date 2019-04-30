@@ -3,7 +3,6 @@ package inf112.skeleton.app.Helpers;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Enums.Direction;
-import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.ITile;
 
 import static inf112.skeleton.app.Helpers.Constants.TILESIZE;
@@ -65,6 +64,8 @@ public class Position {
     public String toString(){
         return this.x + "," + this.y;
     }
+
+    public boolean equal(Position that) {return this.x == that.x && this.y == that.y; }
 
 
 }
