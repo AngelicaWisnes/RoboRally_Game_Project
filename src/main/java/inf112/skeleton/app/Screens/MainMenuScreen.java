@@ -33,7 +33,7 @@ public class MainMenuScreen implements Screen {
 
         game.batch.begin();
         Texture main_screen = new Texture(Gdx.files.internal("assets/img/end_game/main_screen.png"));
-        game.batch.draw(main_screen, Gdx.graphics.getWidth() / 2 - main_screen.getWidth() / 2, Gdx.graphics.getHeight() / 2 - main_screen.getHeight()/2);
+        game.batch.draw(main_screen, Gdx.graphics.getWidth() / 2 - main_screen.getWidth() / 2, Gdx.graphics.getHeight() / 2 - main_screen.getHeight() / 2);
         game.batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
