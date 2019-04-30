@@ -9,6 +9,8 @@ import inf112.skeleton.app.Robot.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static inf112.skeleton.app.Helpers.Constants.START_POSITION;
+
 public class ProgramSheet {
     private IRobot robot;
     private boolean powerDown;
@@ -23,11 +25,8 @@ public class ProgramSheet {
     public ProgramSheet(TiledMap map, int playerNumber) {
         slots = new Slot[]{new Slot(), new Slot(), new Slot(), new Slot(), new Slot()};
 
-        if (playerNumber == 1) {
-            robot = new Robot(new Position(0, 0), Direction.RIGHT, map, this);
-        } else { //TODO fix starting positions
-            robot = new Robot(new Position(0, 64 * 5), Direction.UP, map, this);
-        }
+        robot = new Robot(START_POSITION.get(playerNumber), Direction.RIGHT, map, this);
+
         powerDown = false;
         lives = 3;
         damage = lastVisitedFlag = 0;
