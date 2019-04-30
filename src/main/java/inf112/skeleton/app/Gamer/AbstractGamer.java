@@ -26,7 +26,7 @@ public class AbstractGamer implements IGamer {
         this.name = name;
         this.playerNumber = playerNumber;
         robotColor = TextureLoader.getRobotColor(playerNumber);
-        sheet = new ProgramSheet(map, playerNumber);
+        sheet = new ProgramSheet(map, playerNumber, gamers);
         cardState = CardState.NOCARDS;
     }
 

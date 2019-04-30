@@ -10,11 +10,13 @@ import inf112.skeleton.app.Card.RotationCard;
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
 import inf112.skeleton.app.Enums.RoundState;
+import inf112.skeleton.app.Gamer.IGamer;
 import inf112.skeleton.app.Helpers.Constants;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
-import inf112.skeleton.app.Screens.GameScreen;
 import inf112.skeleton.app.TileTypes.*;
+
+import java.util.ArrayList;
 
 import static inf112.skeleton.app.Helpers.Position.getTileOnPos;
 
@@ -24,8 +26,10 @@ public abstract class AbstractRobot implements IRobot {
     private Position pos, checkpoint;
     private Direction dir;
     private ProgramSheet programSheet;
+    private ArrayList<IGamer> gamers;
 
-    AbstractRobot(Position pos, Direction dir, TiledMap map, ProgramSheet programSheet) {
+    AbstractRobot(Position pos, Direction dir, TiledMap map, ProgramSheet programSheet, ArrayList<IGamer> gamers) {
+        this.gamers = gamers;
         this.map = map;
         this.dir = dir;
         this.programSheet = programSheet;
