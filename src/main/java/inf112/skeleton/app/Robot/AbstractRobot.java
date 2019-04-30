@@ -185,11 +185,10 @@ public abstract class AbstractRobot implements IRobot {
 
         while (spaces-- > 0) {
             if (hasWall(direction, pos)) continue;
-            IRobot nbr = getNbrRobot(direction);
+            IRobot nbr = getOpponentRobotOnPos(pos.getNeighbour(direction, TILESIZE));
             if (nbr != null && !isPushable(nbr, direction)) continue;
 
             pos = pos.getNeighbour(direction, TILESIZE);
-
             if (hasJustFallen()) return killRobot();
         }
 
@@ -206,8 +205,7 @@ public abstract class AbstractRobot implements IRobot {
         return move(direction, spaces);
     }
 
-    private IRobot getNbrRobot(Direction direction){
-        Position nbr = pos.getNeighbour(direction, TILESIZE);
+    private IRobot getOpponentRobotOnPos(Position nbr){
         for (IGamer g : gamers) if (g.getSheet().getRobot().getPos().equal(nbr)) return g.getSheet().getRobot();
         return null;
     }
@@ -216,8 +214,18 @@ public abstract class AbstractRobot implements IRobot {
     public Position killRobot() {
         programSheet.removeLife();
         programSheet.resetDamage();
+        pushOpponentFromCheckpoint();
         return setPositionCheckpointCorrespondence(pos, checkpoint);
+    }
 
+    private void pushOpponentFromCheckpoint(){
+        IRobot opponent = getOpponentRobotOnPos(checkpoint);
+        if (opponent == null) return;
+        if (isPushable(opponent, dir)) return;
+        if (isPushable(opponent, dir.opposite())) return;
+        if (isPushable(opponent, dir.clockwise())) return;
+        if (isPushable(opponent, dir.counterClockwise())) return;
+        throw new IllegalStateException("Unable to push opponent from checkpoint, after dying");
     }
 
     /**
