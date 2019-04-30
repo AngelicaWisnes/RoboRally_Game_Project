@@ -29,4 +29,6 @@ public interface IRobot {
     Direction testRotation(Rotation turnClockwise);
 
     Position killRobot();
+
+    Position push(Direction dir, int spaces);
 }
