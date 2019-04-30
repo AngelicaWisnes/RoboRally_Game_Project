@@ -28,7 +28,7 @@ public class CardDealer {
 
     public void returnCardList(ArrayList<AbstractCard> used) { for (AbstractCard c : used) returnCard(c); }
 
-    public void returnCard(AbstractCard used) { if (used != null) usedCards.add(used); }
+    public void returnCard(AbstractCard used) { if (used != null && !(used instanceof BlankCard)) usedCards.add(used); }
 
     public AbstractCard dealBlankCard() { return new BlankCard(11); }
 

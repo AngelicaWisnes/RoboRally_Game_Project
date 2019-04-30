@@ -3,6 +3,7 @@ package inf112.skeleton.app.Helpers;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import inf112.skeleton.app.Enums.Direction;
@@ -12,7 +13,7 @@ import inf112.skeleton.app.Robot.IRobot;
 
 import java.util.ArrayList;
 
-import static inf112.skeleton.app.Helpers.Constants.TILESIZE;
+import static inf112.skeleton.app.Helpers.Constants.*;
 
 public class LaserHandler {
 
@@ -87,6 +88,20 @@ public class LaserHandler {
         }
 
         shape.end();
+
+    }
+
+    public static void findLasers(ArrayList<Position> lasers, TiledMap map){
+        for (int i = 0; i < MAPWIDTH; i++) {
+            for (int j = 0; j < MAPHEIGHT; j++) {
+                TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) map.getLayers().get(0)).getCell(i, j);
+                int id = cell.getTile().getId();
+                if (id == 929 || id == 646) {
+                    lasers.add(new Position(i * TILESIZE, j * TILESIZE));
+                }
+            }
+        }
+
 
     }
 }

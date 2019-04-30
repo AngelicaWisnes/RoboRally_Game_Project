@@ -51,7 +51,9 @@ public class Controller {
                 allGamersReady = false;
             }
         }
+
         if (allGamersReady) {
+            listenForPowerDown();
             if (roundCounter < 5) {
                 startRound();
             } else {
@@ -172,7 +174,7 @@ public class Controller {
 
             if (Gdx.input.isKeyJustPressed(key)) {
                 if (!selectedKeys.contains(selectedKey) && selectedKeys.size() < 5) {
-                    if (selectedKey < gamer.getCards().size()){
+                    if (selectedKey < gamer.getCards().size()) {
                         gamer.getSheet().placeCardInSlot(gamer.getCard(selectedKey));
                         selectedKeys.add(selectedKey);
                     }
@@ -201,15 +203,14 @@ public class Controller {
     }
 
     private void AICardSelect() {
-        int counter = gamer.getCards().size()-1; //9 kort
-        System.out.println(counter);
-        while (counter > 0){
-            if (gamer.getSheet().placeCardInSlot(gamer.getCard(counter))){
+        int counter = gamer.getCards().size() - 1; //9 kort
+        while (counter > 0) {
+            if (gamer.getSheet().placeCardInSlot(gamer.getCard(counter))) {
                 gamer.getCards().remove(counter);
             }
             counter--;
         }
-        for (int i = 0; i < gamer.getCards().size(); i++){
+        for (int i = 0; i < gamer.getCards().size(); i++) {
             cardDealer.returnCard(gamer.getCard(i));
         }
         gamer.setCardState(CardState.SELECTEDCARDS);

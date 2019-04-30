@@ -3,7 +3,7 @@ package inf112.skeleton.app;
 
 import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
-import inf112.skeleton.app.Helpers.DummyClassesForTesting.Dummy;
+import inf112.skeleton.app.Assets.Dummy;
 import inf112.skeleton.app.Helpers.Position;
 import inf112.skeleton.app.Robot.Robot;
 import org.junit.Before;
