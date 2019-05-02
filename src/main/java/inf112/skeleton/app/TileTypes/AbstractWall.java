@@ -8,7 +8,6 @@ public abstract class AbstractWall implements ITile {
 
     public AbstractWall(Direction direction) {
         this.direction = direction;
-
     }
 
     /**

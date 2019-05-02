@@ -22,13 +22,34 @@ public interface IRobot {
      */
     void tileRobotImpact(RoundState roundState);
 
+    /**
+     * Moving the robot by using keyboard
+     */
     void keyboardMovesRobot();
 
+    /**
+     *
+     * @param card moving the robot by using game cards
+     */
     void cardMovesRobot(AbstractCard card);
 
-    Direction testRotation(Rotation turnClockwise);
+    /**
+     * Helper-method for testing rotate-method
+     * @param rotation the direction to turn
+     */
+    Direction testRotation(Rotation rotation);
 
+    /**
+     * makes the gamer die
+     * @return die state of the robot
+     */
     Position killRobot();
 
+    /**
+     *
+     * @param dir the direction you get pushed
+     * @param spaces how many spaces you get pushed
+     * @return
+     */
     Position push(Direction dir, int spaces);
 }

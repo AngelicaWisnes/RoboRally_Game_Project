@@ -11,21 +11,57 @@ import java.util.List;
 public interface IGamer {
     ProgramSheet getSheet();
 
+    /**
+     * resets the cards
+     */
     void resetCards();
 
-    void setCards(List<AbstractCard> cardsOnHand);
-
+    /**
+     *
+     * @param i
+     * @return
+     */
     AbstractCard getCard(int i);
 
+    /**
+     *
+     * @return the cards
+     */
     List<AbstractCard> getCards();
 
-    void setCardState(CardState cardState);
+    /**
+     *
+     * @param cardsOnHand list of the cards on hand
+     */
+    void setCards(List<AbstractCard> cardsOnHand);
 
+    /**
+     *
+     * @return status on the card
+     */
     CardState getCardState();
 
+    /**
+     *
+     * @param cardState set the state of the card
+     */
+    void setCardState(CardState cardState);
+
+    /**
+     *
+     * @return the map
+     */
     TiledMap getMap();
 
+    /**
+     *
+     * @return the name of the gamer
+     */
     String getName();
 
+    /**
+     *
+     * @return the image of the gamer
+     */
     String getImage();
 }
