@@ -151,3 +151,19 @@ Hva skal vi gjøre (projectboard avklarer prioriteringen):
 * display av ProgramSheet skal oppgraders og vise andre spillere sine kort
 
 neste møte: 02.05.19
+
+**02.05.19**
+
+Oppmøte: Katarina, Ingrid, Stefan, Roger, Magne
+
+Hva har vi gjort:
+* ferdig med laser
+* kan dytte andre roboter
+* lagd main menu, game over win og game over loose screen
+* refaktorert kode
+* kan legge til flere AI
+* win state
+
+Hva skal vi gjøre:
+* nettverk
+* kan velge antall spillere etc på main menu
