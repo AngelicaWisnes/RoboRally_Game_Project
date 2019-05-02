@@ -25,7 +25,7 @@ public interface IGamer {
     /**
      *
      * @param i
-     * @return 
+     * @return
      */
     AbstractCard getCard(int i);
 
