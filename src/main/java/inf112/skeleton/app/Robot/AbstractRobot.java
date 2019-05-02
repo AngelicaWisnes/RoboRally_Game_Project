@@ -38,19 +38,16 @@ public abstract class AbstractRobot implements IRobot {
         checkpoint = pos.clone();
     }
 
+    @Override
+    public Position getPos() { return pos; }
+
+    @Override
+    public Direction getDir() { return dir; }
+
     /**
-     * @return the current position
+     * If robot is currently on a flag, check if this flag is the next non-visitet flag. If so, update checkpoint
+     * @param flagID ID of tha new flag
      */
-    @Override
-    public Position getPos() {
-        return pos;
-    }
-
-    @Override
-    public Direction getDir() {
-        return dir;
-    }
-
     private void setFlagID(int flagID) {
         if (flagID == programSheet.getLastVisitedFlag() + 1) {
             programSheet.setLastVisitedFlag(flagID);
@@ -71,10 +68,6 @@ public abstract class AbstractRobot implements IRobot {
         return pos;
     }
 
-    /**
-     * The method that is called to see if a tile
-     * should influence the robot.
-     */
     @Override
     public void tileRobotImpact(RoundState roundState) {
         ITile tile = getTileOnPos(pos, map);
@@ -103,10 +96,6 @@ public abstract class AbstractRobot implements IRobot {
         }
     }
 
-    /**
-     * A method that allows user to move robot
-     * with keyboard, useful for testing manually
-     */
     @Override
     public void keyboardMovesRobot() {
         //move the robot one tile in a direction
@@ -116,10 +105,6 @@ public abstract class AbstractRobot implements IRobot {
         if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) rotate(Rotation.TURN_CLOCKWISE);
     }
 
-    /**
-     * @param card the card that is to influence the robot
-     *             moves the robot as the card dictates
-     */
     @Override
     public void cardMovesRobot(AbstractCard card) {
         if (card instanceof MoveBackwards) move(dir.opposite(), 1);

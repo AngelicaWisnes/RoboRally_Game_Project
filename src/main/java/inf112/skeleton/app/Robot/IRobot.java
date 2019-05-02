@@ -9,47 +9,54 @@ import inf112.skeleton.app.Helpers.Position;
 public interface IRobot {
 
     /**
-     * Get the position of the robot
+     * Get the current position of the robot
      *
      * @return the position
      */
     Position getPos();
 
+    /**
+     * Get current facing direction og the robot
+     *
+     * @return the direction
+     */
     Direction getDir();
 
     /**
-     * This is a temporary method for moving the robot with the help of arrow-keys from keyboard.
+     * Check if a tile should have impact on the robot If so, executes those actions.
      */
     void tileRobotImpact(RoundState roundState);
 
     /**
-     * Moving the robot by using keyboard
+     * A method that allows user to move robot with keyboard, useful for testing manually
      */
     void keyboardMovesRobot();
 
     /**
-     *
-     * @param card moving the robot by using game cards
+     * Move the robot by using game cards
+     * @param card the card to use
      */
     void cardMovesRobot(AbstractCard card);
 
     /**
      * Helper-method for testing rotate-method
+     *
      * @param rotation the direction to turn
      */
     Direction testRotation(Rotation rotation);
 
     /**
-     * makes the gamer die
-     * @return die state of the robot
+     * A method to execute all actions when i robot dies
+     *
+     * @return new position of the robot. This is the last registered checkpoint
      */
     Position killRobot();
 
     /**
-     *
-     * @param dir the direction you get pushed
+     * If this robot should be pushed, this method can call the private move-method
+     * @param dir    the direction you get pushed
      * @param spaces how many spaces you get pushed
-     * @return
+     * @return the new position
      */
     Position push(Direction dir, int spaces);
 }
