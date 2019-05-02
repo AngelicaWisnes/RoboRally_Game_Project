@@ -10,7 +10,7 @@ import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractGamer implements IGamer {
+public abstract class AbstractGamer implements IGamer {
 
     private TiledMap map;
     private ProgramSheet sheet;
