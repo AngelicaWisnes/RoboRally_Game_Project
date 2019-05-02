@@ -15,7 +15,7 @@ public abstract class AbstractRepair extends AbstractTile {
 
     /**
      * Quantity number of damagetokens that need to be repaired
-     * @return
+     * @return the repair quantity
      */
     public int getRepairQty() { return repairQty; }
 
