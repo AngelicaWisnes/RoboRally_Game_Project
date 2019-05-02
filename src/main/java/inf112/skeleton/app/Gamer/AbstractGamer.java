@@ -21,6 +21,13 @@ public abstract class AbstractGamer implements IGamer {
 
     protected List<AbstractCard> cardsOnHand;
 
+    /**
+     * The constructor for a gamer
+     * @param map the game board
+     * @param name name of the player
+     * @param playerNumber the number the player has
+     * @param gamers list of gamers
+     */
     public AbstractGamer(TiledMap map, String name, int playerNumber, ArrayList<IGamer> gamers) {
         this.map = map;
         this.name = name;

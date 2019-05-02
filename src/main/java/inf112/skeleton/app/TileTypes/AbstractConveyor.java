@@ -37,7 +37,7 @@ public abstract class AbstractConveyor extends AbstractTile {
             throw new IllegalArgumentException("Illegal direction argument!");
         }
     }
-    
+
     @Override
     public String getImage() {
         return image;
