@@ -24,7 +24,4 @@ public abstract class AbstractCard {
      * of the card
      */
     public abstract String getDescription();
-
-
-
 }

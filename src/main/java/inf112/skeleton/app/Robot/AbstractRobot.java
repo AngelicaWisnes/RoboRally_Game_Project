@@ -33,7 +33,6 @@ public abstract class AbstractRobot implements IRobot {
         this.map = map;
         this.dir = dir;
         this.programSheet = programSheet;
-
         this.pos = pos;
         checkpoint = pos.clone();
     }

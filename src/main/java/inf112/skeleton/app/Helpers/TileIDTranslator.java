@@ -62,8 +62,3 @@ public class TileIDTranslator {
     }
 }
 
-    /**
-     * Future tiles
-     * LaserWall med vegg 		= 	id 109\
-     * LaserWall uten vegg 		= 	id 94\
-     */

@@ -1,13 +1,5 @@
 package inf112.skeleton.app.TileTypes;
 
-public class Pit extends AbstractTile {
+public class Pit implements ITile {
 
-    public Pit() {
-        this.image = "pit";
-    }
-
-    @Override
-    public String getImage() {
-        return image;
-    }
 }

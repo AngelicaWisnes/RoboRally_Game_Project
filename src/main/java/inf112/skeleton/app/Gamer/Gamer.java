@@ -13,6 +13,5 @@ public class Gamer extends AbstractGamer {
 
     public Gamer(TiledMap map, String name, int playerNumber, ArrayList<IGamer> gamers) {
         super(map, name, playerNumber, gamers);
-
     }
 }

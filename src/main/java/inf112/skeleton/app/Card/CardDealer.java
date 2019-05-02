@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Stack;
 
 public class CardDealer {
+
     private static Stack<AbstractCard> cardStack, usedCards;
 
     private static CardDealer ourInstance = new CardDealer();
@@ -38,7 +39,6 @@ public class CardDealer {
             if (cardStack.isEmpty()) reshuffleCards();
             cardsToDeal.add(cardStack.pop());
         }
-
         return cardsToDeal;
     }
 

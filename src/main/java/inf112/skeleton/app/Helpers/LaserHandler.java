@@ -83,9 +83,7 @@ public class LaserHandler {
                     break;
                 }
             }
-
         }
-
         shape.end();
     }
 

@@ -1,6 +1,6 @@
 package inf112.skeleton.app.TileTypes;
 
-public abstract class AbstractRepair extends AbstractTile {
+public abstract class AbstractRepair implements ITile {
 
     int repairQty;
 
@@ -10,7 +10,6 @@ public abstract class AbstractRepair extends AbstractTile {
      */
     public AbstractRepair(int n) {
         this.repairQty = n;
-        this.image = "repair";
     }
 
     /**
@@ -19,8 +18,4 @@ public abstract class AbstractRepair extends AbstractTile {
      */
     public int getRepairQty() { return repairQty; }
 
-    @Override
-    public String getImage() {
-        return image;
-    }
 }

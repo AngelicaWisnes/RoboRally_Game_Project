@@ -145,7 +145,6 @@ public class ProgramSheet {
         } else {
             setLocks(0);
         }
-
     }
 
     private void setLocks(int n) {

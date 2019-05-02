@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Disposable;
+import inf112.skeleton.app.Card.CardDealer;
 import inf112.skeleton.app.Gamer.*;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.*;

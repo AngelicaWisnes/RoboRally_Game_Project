@@ -2,14 +2,12 @@ package inf112.skeleton.app.TileTypes;
 
 import inf112.skeleton.app.Enums.Direction;
 
-public abstract class AbstractConveyor extends AbstractTile {
+public abstract class AbstractConveyor implements ITile {
 
     Direction direction;
-    String image;
 
-    public AbstractConveyor(Direction direction, String type) {
+    public AbstractConveyor(Direction direction) {
         this.direction = direction;
-        setImage(type);
     }
 
     /**
@@ -19,27 +17,4 @@ public abstract class AbstractConveyor extends AbstractTile {
         return direction;
     }
 
-    /**
-     * @param type the type of the conveyor
-     * sets the image of the conveyor when constructed
-     */
-    public void setImage(String type) {
-        if (direction == Direction.UP) {
-            image = type + "_up";
-        } else if (direction == Direction.DOWN) {
-            image = type + "_down";
-        } else if (direction == Direction.RIGHT) {
-            image = type + "_left";
-        } else if (direction == Direction.LEFT) {
-            image = type + "_right";
-
-        } else {
-            throw new IllegalArgumentException("Illegal direction argument!");
-        }
-    }
-
-    @Override
-    public String getImage() {
-        return image;
-    }
 }

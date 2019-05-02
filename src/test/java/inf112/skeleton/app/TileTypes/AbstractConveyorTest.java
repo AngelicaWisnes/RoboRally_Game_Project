@@ -27,8 +27,4 @@ public class AbstractConveyorTest {
         assertEquals(Direction.UP, doubleTile.getDirection());
     }
 
-    @Test
-    public void getImage() {
-        assertEquals("conveyor_right", singleTile.getImage());
-    }
 }

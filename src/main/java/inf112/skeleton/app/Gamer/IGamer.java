@@ -18,12 +18,6 @@ public interface IGamer {
 
     /**
      *
-     * @param cardsOnHand list of the cards on hand
-     */
-    void setCards(List<AbstractCard> cardsOnHand);
-
-    /**
-     *
      * @param i
      * @return
      */
@@ -37,15 +31,21 @@ public interface IGamer {
 
     /**
      *
-     * @param cardState set the state of the card
+     * @param cardsOnHand list of the cards on hand
      */
-    void setCardState(CardState cardState);
+    void setCards(List<AbstractCard> cardsOnHand);
 
     /**
      *
      * @return status on the card
      */
     CardState getCardState();
+
+    /**
+     *
+     * @param cardState set the state of the card
+     */
+    void setCardState(CardState cardState);
 
     /**
      *

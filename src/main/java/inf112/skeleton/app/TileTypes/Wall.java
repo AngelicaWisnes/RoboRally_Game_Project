@@ -7,6 +7,5 @@ public class Wall extends AbstractWall {
 
     public Wall(Direction dir) {
         super(dir);
-        this.image = "wall";
     }
 }
