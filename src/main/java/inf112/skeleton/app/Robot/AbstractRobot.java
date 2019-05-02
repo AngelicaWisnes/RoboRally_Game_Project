@@ -3,7 +3,6 @@ package inf112.skeleton.app.Robot;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.sun.xml.internal.bind.v2.TODO;
 import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.MoveBackwards;
 import inf112.skeleton.app.Card.MoveForward;
