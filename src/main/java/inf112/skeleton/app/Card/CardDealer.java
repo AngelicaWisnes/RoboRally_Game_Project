@@ -39,7 +39,6 @@ public class CardDealer {
             if (cardStack.isEmpty()) reshuffleCards();
             cardsToDeal.add(cardStack.pop());
         }
-
         return cardsToDeal;
     }
 

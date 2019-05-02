@@ -3,6 +3,7 @@ package inf112.skeleton.app.Robot;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.sun.xml.internal.bind.v2.TODO;
 import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.MoveBackwards;
 import inf112.skeleton.app.Card.MoveForward;
@@ -33,7 +34,6 @@ public abstract class AbstractRobot implements IRobot {
         this.map = map;
         this.dir = dir;
         this.programSheet = programSheet;
-
         this.pos = pos;
         checkpoint = pos.clone();
     }
@@ -71,6 +71,7 @@ public abstract class AbstractRobot implements IRobot {
         return pos;
     }
 
+    //TODO fyll inn lasers og eventuelt pushers
     /**
      * The method that is called to see if a tile
      * should influence the robot.

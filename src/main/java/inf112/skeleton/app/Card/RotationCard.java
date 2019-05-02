@@ -32,7 +32,5 @@ public class RotationCard extends AbstractCard {
         else {
             throw new IllegalStateException("rotation incorrect");
         }
-
     }
-
 }

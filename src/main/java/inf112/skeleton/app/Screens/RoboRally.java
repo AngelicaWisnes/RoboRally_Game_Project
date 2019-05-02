@@ -24,6 +24,5 @@ public class RoboRally extends Game {
         batch.dispose();
         font.dispose();
     }
-
 }
 
