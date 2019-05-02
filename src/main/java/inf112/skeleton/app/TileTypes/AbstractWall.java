@@ -2,7 +2,7 @@ package inf112.skeleton.app.TileTypes;
 
 import inf112.skeleton.app.Enums.Direction;
 
-public abstract class AbstractWall extends AbstractTile {
+public abstract class AbstractWall implements ITile {
 
     private Direction direction;
 
@@ -16,14 +16,6 @@ public abstract class AbstractWall extends AbstractTile {
      */
     public Direction getDirection() {
         return direction;
-    }
-
-    /**
-     * @return the image string of the conveyor
-     */
-    @Override
-    public String getImage() {
-        return image;
     }
 
     /**

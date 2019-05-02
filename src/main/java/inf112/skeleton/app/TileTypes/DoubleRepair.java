@@ -4,11 +4,5 @@ public class DoubleRepair extends AbstractRepair {
 
     public DoubleRepair() {
         super(1);
-        this.image = "singleRepair";
-    }
-
-    @Override
-    public String getImage() {
-        return image;
     }
 }
