@@ -16,7 +16,7 @@ public abstract class MovementCard extends AbstractCard {
 
     /**
      *
-     * @return steps 
+     * @return steps
      */
     public int getSteps() {
         return this.steps;
