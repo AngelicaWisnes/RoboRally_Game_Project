@@ -35,7 +35,6 @@ public class CardView {
         font.draw(batch, glyphLayout, (2250  - glyphLayout.width)/2 + (80 * pos + 70), 622);
 
         batch.end();
-
     }
 
     public static void drawCardForHand(SpriteBatch batch, AbstractCard card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos){
@@ -66,5 +65,4 @@ public class CardView {
         font.draw(batch, glyphLayout, (1175 + 75 * pos) + x, 265 + y);
         batch.end();
     }
-
 }

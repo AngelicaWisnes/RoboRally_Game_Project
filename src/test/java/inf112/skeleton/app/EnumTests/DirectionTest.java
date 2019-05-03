@@ -6,6 +6,21 @@ import static org.junit.Assert.assertEquals;
 
 public class DirectionTest {
 
+
+    @Test
+    public void oppositeOfUpReturnsDown() {
+        Direction direction = Direction.UP;
+        Direction newDirection = direction.opposite();
+        assertEquals(Direction.DOWN, newDirection);
+    }
+
+    @Test
+    public void oppositeOfDownReturnsUp() {
+        Direction direction = Direction.DOWN;
+        Direction newDirection = direction.opposite();
+        assertEquals(Direction.UP, newDirection);
+    }
+
     @Test
     public void oppositeOfLeftReturnsRight() {
         Direction direction = Direction.LEFT;
@@ -14,10 +29,10 @@ public class DirectionTest {
     }
 
     @Test
-    public void oppositeOfUpReturnsDown() {
-        Direction direction = Direction.UP;
+    public void oppositeOfRightReturnsLeft() {
+        Direction direction = Direction.RIGHT;
         Direction newDirection = direction.opposite();
-        assertEquals(Direction.DOWN, newDirection);
+        assertEquals(Direction.LEFT, newDirection);
     }
 
     @Test

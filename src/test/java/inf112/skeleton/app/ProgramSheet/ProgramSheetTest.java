@@ -72,14 +72,14 @@ public class ProgramSheetTest {
     }
 
     @Test
-    public void lifeTestOne(){
+    public void lifeTestOneLife(){
         int lives = sheet.getLives();
         sheet.removeLife();
         assertEquals(lives-1, sheet.getLives());
     }
 
     @Test
-    public void lifeTestTwo(){
+    public void lifeTestTwoLives(){
         int lives = sheet.getLives();
         sheet.removeLife();
         sheet.removeLife();
@@ -87,7 +87,7 @@ public class ProgramSheetTest {
     }
 
     @Test
-    public void lifeTestThree(){
+    public void lifeTestThreeLives(){
         int lives = sheet.getLives();
         sheet.removeLife();
         sheet.removeLife();

@@ -195,5 +195,4 @@ public class TileIDTranslatorTest {
         LaserWall tile = (LaserWall) TileIDTranslator.translate_ID(1206);
         assertEquals(tile.hasWall(Direction.DOWN), new LaserWall(Direction.DOWN).hasWall(Direction.DOWN));
     }
-
 }

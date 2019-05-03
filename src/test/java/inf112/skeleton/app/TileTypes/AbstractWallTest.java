@@ -19,7 +19,6 @@ public class AbstractWallTest {
         wallS = new Wall(Direction.DOWN);
         wallE = new Wall(Direction.RIGHT);
         wallW = new Wall(Direction.LEFT);
-
     }
 
     @Test
@@ -41,5 +40,4 @@ public class AbstractWallTest {
     public void getDirectionWallWestTest() {
         assertEquals(Direction.LEFT, wallW.getDirection());
     }
-
 }

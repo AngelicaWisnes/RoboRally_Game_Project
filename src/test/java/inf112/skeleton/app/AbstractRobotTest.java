@@ -104,6 +104,5 @@ public class AbstractRobotTest {
         dummy.setRobot(new Robot(pos, Direction.LEFT, dummy.getMap(), dummy.getSheet(), null));
         assertEquals(dummy.getRobot().testRotation(Rotation.TURN_AROUND), Direction.RIGHT);
     }
-
 }
 
