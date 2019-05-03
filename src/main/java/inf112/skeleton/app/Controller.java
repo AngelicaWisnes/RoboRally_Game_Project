@@ -38,23 +38,23 @@ public class Controller {
     private List<AbstractCard> remainingClientCards, chosenClientCards, cardsToClient, chosenHostCards;
 
     //TODO rewrite to singleton
-    public Controller(StateHolder stateHolder) {
+    public Controller(StateHolder stateHolder, GameScreen gameScreen) {
+        this.gameScreen = gameScreen;
         roundState = stateHolder.getRoundState();
         gameState = stateHolder.getGameState();
         playerTurn = stateHolder.getPlayerTurn();
         cardDealer = CardDealer.getInstance();
         recievePachet = null;
         sendPacket = null;
-        networkHandler = ((LocalClientGamer) gamer).getNetworkHandler();
+        networkHandler = gameScreen.getNetworkHandler();
         remainingClientCards = null;
         chosenClientCards = null;
         cardsToClient = null;
         chosenHostCards = null;
     }
 
-    public StateHolder runGame(StateHolder states, GameScreen gameScreen) {
+    public StateHolder runGame(StateHolder states) {
         gamers = gameScreen.getGamers();
-        this.gameScreen = gameScreen;
         roundState = states.getRoundState();
         gameState = states.getGameState();
         playerTurn = states.getPlayerTurn();

@@ -75,14 +75,13 @@ public class GameScreen implements Screen {
         HUDBatch = new SpriteBatch();
         shape = new ShapeRenderer();
         laserShape = new ShapeRenderer();
-        controller = new Controller(states);
         disposables = new Disposable[]{map, renderer, factoryMusic, pew, robotBatch, HUDBatch, shape, laserShape};
 
 
         online = true;
-        host = false;
+        host = true;
+        networkHandler = new NetworkHandler(host);
         if (online) {
-            networkHandler = new NetworkHandler(host);
             if (host){
                 IGamer localHostGamer = new LocalHostGamer(map, "Host", 1, gamers);
                 localGamer = localHostGamer;
@@ -98,8 +97,14 @@ public class GameScreen implements Screen {
         }else {
             addGamers(numberOfPlayers);
         }
+        controller = new Controller(states, this);
 
 
+
+    }
+
+    public NetworkHandler getNetworkHandler() {
+        return networkHandler;
     }
 
     private void addGamers(int numberOfPlayers) {
@@ -127,7 +132,7 @@ public class GameScreen implements Screen {
             // TODO: Remove this test-purpose-method
             localGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
 
-            states = controller.runGame(states, this);
+            states = controller.runGame(states);
             stateBasedBoardActions();
 
         } else {
