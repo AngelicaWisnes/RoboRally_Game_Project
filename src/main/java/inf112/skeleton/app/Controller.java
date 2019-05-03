@@ -224,7 +224,7 @@ public class Controller {
 
     private void AICardSelect() {
         int counter = gamer.getCards().size() - 1; //9 kort
-        while (counter > 0) {
+        while (counter >= 0) {
             if (gamer.getSheet().placeCardInSlot(gamer.getCard(counter))) {
                 gamer.getCards().remove(counter);
             }

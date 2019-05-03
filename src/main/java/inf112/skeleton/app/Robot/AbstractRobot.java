@@ -56,7 +56,6 @@ public abstract class AbstractRobot implements IRobot {
         if (flagID == programSheet.getLastVisitedFlag() + 1) {
             programSheet.setLastVisitedFlag(flagID);
             setPositionCheckpointCorrespondence(checkpoint, pos);
-            System.out.println("Just updated flagID to " + flagID);
         }
     }
 
@@ -77,23 +76,32 @@ public abstract class AbstractRobot implements IRobot {
         ITile tile = getTileOnPos(pos, map);
         switch (roundState) {
             case PART1:
-                if (tile instanceof DblConveyor) move(((DblConveyor) tile).getDirection(), 1);
+                if (tile instanceof DblConveyor) {
+                    move(((DblConveyor) tile).getDirection(), 1);
+                }
                 break;
             case PART2:
-                if (tile instanceof AbstractConveyor) move(((AbstractConveyor) tile).getDirection(), 1);
+                if (tile instanceof AbstractConveyor) {
+                    move(((AbstractConveyor) tile).getDirection(), 1);
+                }
                 break;
             case PART3:
                 // Pushers
                 break;
             case PART4:
-                if (tile instanceof Rotator) rotate(((Rotator) tile).getRotation());
+                if (tile instanceof Rotator) {
+                    rotate(((Rotator) tile).getRotation());
+                }
                 break;
             case PART5:
                 // Lasers
                 break;
             case PART6:
-                if (tile instanceof Flag) setFlagID(((Flag) tile).getId());
-                else if (tile instanceof AbstractRepair) programSheet.repair(((AbstractRepair) tile).getRepairQty());
+                if (tile instanceof Flag) {
+                    setFlagID(((Flag) tile).getId());
+                } else if (tile instanceof AbstractRepair) {
+                    programSheet.repair(((AbstractRepair) tile).getRepairQty());
+                }
                 break;
             case NONE:
                 break;
@@ -103,17 +111,31 @@ public abstract class AbstractRobot implements IRobot {
     @Override
     public void keyboardMovesRobot() {
         //move the robot one tile in a direction
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) move(dir, 1);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) move(dir.opposite(), 1);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) rotate(Rotation.TURN_COUNTER_CLOCKWISE);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) rotate(Rotation.TURN_CLOCKWISE);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            move(dir, 1);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            move(dir.opposite(), 1);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+            rotate(Rotation.TURN_COUNTER_CLOCKWISE);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+            rotate(Rotation.TURN_CLOCKWISE);
+        }
     }
 
     @Override
     public void cardMovesRobot(AbstractCard card) {
-        if (card instanceof MoveBackwards) move(dir.opposite(), 1);
-        if (card instanceof MoveForward) move(dir, ((MoveForward) card).getSteps());
-        if (card instanceof RotationCard) rotate(((RotationCard) card).getRotation());
+        if (card instanceof MoveBackwards) {
+            move(dir.opposite(), 1);
+        }
+        if (card instanceof MoveForward) {
+            move(dir, ((MoveForward) card).getSteps());
+        }
+        if (card instanceof RotationCard) {
+            rotate(((RotationCard) card).getRotation());
+        }
     }
 
     /**
@@ -143,17 +165,25 @@ public abstract class AbstractRobot implements IRobot {
      * @return the new position
      */
     private Position move(Direction direction, int spaces) {
-        if (spaces < 1 || spaces > 3) throw new IllegalArgumentException("Invalid spaces-input to move");
+        if (spaces < 1 || spaces > 3) {
+            throw new IllegalArgumentException("Invalid spaces-input to move");
+        }
 
         while (spaces-- > 0) {
             Position targetPos = pos.getNeighbour(direction, TILESIZE);
-            if (hasWall(direction, pos)) continue;
+            if (hasWall(direction, pos)) {
+                continue;
+            }
 
             Position temp = pos.clone();
             pos = targetPos.clone();
-            if (!isOpponentPushable(targetPos, direction)) pos = temp;
+            if (!isOpponentPushable(targetPos, direction)) {
+                pos = temp;
+            }
 
-            if (hasJustFallen()) return killRobot();
+            if (hasJustFallen()) {
+                return killRobot();
+            }
         }
 
         return pos;
@@ -167,8 +197,12 @@ public abstract class AbstractRobot implements IRobot {
      */
     private IRobot getOpponentRobotOnPos(Position targetPos) {
         for (IGamer g : gamers) {
-            if (g.getSheet().getRobot() == this) continue;
-            if (g.getSheet().getRobot().getPos().equal(targetPos)) return g.getSheet().getRobot();
+            if (g.getSheet().getRobot() == this) {
+                continue;
+            }
+            if (g.getSheet().getRobot().getPos().equal(targetPos)) {
+                return g.getSheet().getRobot();
+            }
         }
         return null;
     }
@@ -178,10 +212,18 @@ public abstract class AbstractRobot implements IRobot {
      * opponent must be pushed
      */
     private void pushOpponentFromCheckpoint() {
-        if (isOpponentPushable(checkpoint, dir)) return;
-        if (isOpponentPushable(checkpoint, dir.opposite())) return;
-        if (isOpponentPushable(checkpoint, dir.clockwise())) return;
-        if (isOpponentPushable(checkpoint, dir.counterClockwise())) return;
+        if (isOpponentPushable(checkpoint, dir)) {
+            return;
+        }
+        if (isOpponentPushable(checkpoint, dir.opposite())) {
+            return;
+        }
+        if (isOpponentPushable(checkpoint, dir.clockwise())) {
+            return;
+        }
+        if (isOpponentPushable(checkpoint, dir.counterClockwise())) {
+            return;
+        }
         throw new IllegalStateException("Unable to push opponent from checkpoint, after dying");
     }
 
@@ -195,9 +237,13 @@ public abstract class AbstractRobot implements IRobot {
      */
     private boolean isOpponentPushable(Position targetPos, Direction direction) {
         IRobot opponent = getOpponentRobotOnPos(targetPos);
-        if (opponent == null) return true;
+        if (opponent == null) {
+            return true;
+        }
 
-        if (hasWall(direction, opponent.getPos())) return false;
+        if (hasWall(direction, opponent.getPos())) {
+            return false;
+        }
         opponent.push(direction, 1);
         return true;
     }

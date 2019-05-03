@@ -36,8 +36,6 @@ public class OpponentView {
         if (gamer.getCardState().equals(CardState.SELECTEDCARDS)) {
             for (int i = 0; i < 5; i++) {
                 CardView.drawOpponentCard(batch, gamer.getSheet().getSlot(i).getCard(), textureMap, shape, i, count);
-                System.out.println(gamer.getSheet().getSlot(i).getCard()
-                );
             }
         }
 
