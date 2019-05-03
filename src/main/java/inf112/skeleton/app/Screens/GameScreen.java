@@ -216,4 +216,8 @@ public class GameScreen implements Screen {
     public boolean isOnline() {
         return online;
     }
+
+    public IGamer getLocalGamer() {
+        return localGamer;
+    }
 }
