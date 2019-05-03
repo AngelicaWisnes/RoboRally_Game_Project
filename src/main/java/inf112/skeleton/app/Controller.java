@@ -103,7 +103,7 @@ public class Controller {
             if (((PacketFromHost) sendPacket).getChosenHostCards() == null){
                 ((PacketFromHost) sendPacket).setChosenHostCards(chosenHostCards);
             }
-            if (sendPacket.isFull()) networkHandler.sendToClient(sendPacket);
+            if (sendPacket.isFull()) networkHandler.sendPacket(sendPacket);
 
         } else if (gameScreen.getLocalGamer() instanceof LocalClientGamer) {
             if (recievePachet != null) {
@@ -124,7 +124,7 @@ public class Controller {
             if (((PacketFromClient) sendPacket).getRemainingCards() == null){
                 ((PacketFromClient) sendPacket).setRemainingCards(remainingClientCards);
             }
-            if (sendPacket.isFull()) networkHandler.sendToClient(sendPacket);
+            if (sendPacket.isFull()) networkHandler.sendPacket(sendPacket);
         }
     }
 

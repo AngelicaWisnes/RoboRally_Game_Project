@@ -62,8 +62,7 @@ public class NetworkHandler {
 
     }
 
-    public void sendToClient(List<AbstractCard> cardsOnHand){
-        IPacket packet = new PacketFromHost(cardsOnHand, null);
+    public void sendPacket(IPacket packet){
         SocketHints socketHints = new SocketHints();
         socketHints.connectTimeout = 4000;
         Socket socket = Gdx.net.newClientSocket(Net.Protocol.TCP, IPAddress, port, socketHints);

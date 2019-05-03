@@ -17,7 +17,7 @@ public class LocalClientGamer extends AbstractGamer {
     @Override
     public void setCards(List<AbstractCard> cardsOnHand) {
         this.cardsOnHand = cardsOnHand;
-        networkHandler.sendToClient(this.cardsOnHand);
+        networkHandler.sendPacket(this.cardsOnHand);
     }
 
     public NetworkHandler getNetworkHandler() {
