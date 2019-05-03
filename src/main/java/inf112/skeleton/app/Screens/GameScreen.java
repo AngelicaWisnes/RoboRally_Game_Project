@@ -99,7 +99,6 @@ public class GameScreen implements Screen {
         if (!states.getGameState().equals(GameState.GAME_OVER)) {
             ProgramSheetView.drawSheet(HUDBatch, shape, textureMap, hostGamer);
             OpponentView.drawOpponents(gamers, HUDBatch, textureMap, shape);
-            StateTextView.drawStates(HUDBatch, states); //testing purposes only
             hostGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
             states = controller.runGame(states, this);
             stateBasedBoardActions();
