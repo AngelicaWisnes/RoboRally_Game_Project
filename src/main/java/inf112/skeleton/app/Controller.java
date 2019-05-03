@@ -2,6 +2,7 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.CardDealer;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
@@ -13,6 +14,7 @@ import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.StateHolder;
 import inf112.skeleton.app.Screens.GameScreen;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Controller {
@@ -29,7 +31,6 @@ public class Controller {
     private CardDealer cardDealer;
     private IGamer winner;
 
-    //TODO rewrite to singleton
     public Controller(StateHolder stateHolder) {
         roundState = stateHolder.getRoundState();
         gameState = stateHolder.getGameState();
@@ -169,10 +170,19 @@ public class Controller {
     }
 
     private void playCards() {
-        //TODO choose lowest card from each gamer and play them in order
-        //the cards can be sorted by priority
+        TreeMap<AbstractCard, IGamer> tm = new TreeMap<>(new Comparator<AbstractCard>() {
+            @Override
+            public int compare(AbstractCard o1, AbstractCard o2) {
+                return o1.getPriority() - o2.getPriority();
+            }
+        });
+
         for (IGamer g : gamers) {
-            g.getSheet().getRobot().cardMovesRobot(g.getSheet().getSlot(roundCounter).getCard());
+            AbstractCard c = g.getSheet().getSlot(roundCounter).getCard();
+            tm.put(c, g);
+        }
+        for(Map.Entry<AbstractCard, IGamer> entry : tm.entrySet()) {
+            entry.getValue().getSheet().getRobot().cardMovesRobot(entry.getKey());
         }
     }
 
@@ -217,9 +227,6 @@ public class Controller {
             gamer.setCardState(CardState.SELECTEDCARDS);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
-        }
     }
 
     private void AICardSelect() {
