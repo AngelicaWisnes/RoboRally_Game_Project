@@ -15,7 +15,7 @@ import java.util.Queue;
 
 public class NetworkHandler {
 
-    private Queue<AbstractPacket> queue = new ArrayDeque<>();
+    private Queue<IPacket> queue = new ArrayDeque<>();
     private int port = 9029;
     private String IPAddress = "192.168.43.88";
 
@@ -63,7 +63,7 @@ public class NetworkHandler {
     }
 
     public void sendToClient(List<AbstractCard> cardsOnHand){
-        AbstractPacket packet = new PacketFromHost(cardsOnHand, null);
+        IPacket packet = new PacketFromHost(cardsOnHand, null);
         SocketHints socketHints = new SocketHints();
         socketHints.connectTimeout = 4000;
         Socket socket = Gdx.net.newClientSocket(Net.Protocol.TCP, IPAddress, port, socketHints);
@@ -76,7 +76,7 @@ public class NetworkHandler {
         }
     }
 
-    public AbstractPacket getNextPacket() {
+    public IPacket getNextPacket() {
         return queue.poll();
     }
 }

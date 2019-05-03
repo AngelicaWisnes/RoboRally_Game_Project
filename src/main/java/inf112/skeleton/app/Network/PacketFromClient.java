@@ -2,10 +2,9 @@ package inf112.skeleton.app.Network;
 
 import inf112.skeleton.app.Card.AbstractCard;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class PacketFromClient extends AbstractPacket {
+public class PacketFromClient implements IPacket {
     private List<AbstractCard> remainingCards;
     private List<AbstractCard> chosenClientCards;
     //boolean powerDown;
@@ -19,7 +18,20 @@ public class PacketFromClient extends AbstractPacket {
         return remainingCards;
     }
 
+    public void setRemainingCards(List<AbstractCard> remainingCards) {
+        this.remainingCards = remainingCards;
+    }
+
     public List<AbstractCard> getChosenClientCards() {
         return chosenClientCards;
+    }
+
+    public void setChosenClientCards(List<AbstractCard> chosenClientCards) {
+        this.chosenClientCards = chosenClientCards;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return remainingCards == null && chosenClientCards == null;
     }
 }

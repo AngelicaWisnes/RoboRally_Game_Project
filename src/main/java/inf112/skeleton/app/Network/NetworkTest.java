@@ -140,7 +140,7 @@ public class NetworkTest implements ApplicationListener {
                     BufferedReader buffer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     try {
                         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-                        AbstractPacket packet = (AbstractPacket) in.readObject();
+                        IPacket packet = (IPacket) in.readObject();
                         //AbstractCard c = (AbstractCard) in.readObject();
                         labelMessage.setText(packet.getCardsToClient().get(0).getDescription());
                     } catch (Exception e) {
