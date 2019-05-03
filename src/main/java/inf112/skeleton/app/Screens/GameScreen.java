@@ -98,6 +98,7 @@ public class GameScreen implements Screen {
         laserShape.setProjectionMatrix(camera.combined);
         if (!states.getGameState().equals(GameState.GAME_OVER)) {
             ProgramSheetView.drawSheet(HUDBatch, shape, textureMap, hostGamer);
+            OpponentView.drawOpponents(gamers, HUDBatch, textureMap);
             StateTextView.drawStates(HUDBatch, states); //testing purposes only
             hostGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
             states = controller.runGame(states, this);
