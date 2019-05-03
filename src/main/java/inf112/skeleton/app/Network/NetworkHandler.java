@@ -17,7 +17,7 @@ public class NetworkHandler {
 
     private Queue<IPacket> queue = new ArrayDeque<>();
     private int port = 9029;
-    private String IPAddress = "192.168.43.88";
+    private String IPAddress = "192.168.43.174";
 
     public NetworkHandler(final boolean isHost) {
         new Thread(new Runnable() {

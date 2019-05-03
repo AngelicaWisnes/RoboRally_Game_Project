@@ -47,10 +47,10 @@ public class Controller {
         recievePacket = null;
         sendPacket = null;
         networkHandler = gameScreen.getNetworkHandler();
-        //remainingClientCards = null;
-        //chosenClientCards = null;
-        //cardsToClient = null;
-        //chosenHostCards = null;
+        remainingClientCards = null;
+        chosenClientCards = null;
+        cardsToClient = null;
+        chosenHostCards = null;
     }
 
     public StateHolder runGame(StateHolder states) {
@@ -302,7 +302,7 @@ public class Controller {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && gamer.getSheet().allSlotsAreFilled()) {
             for (int i = 0; i < gamer.getCards().size(); i++) {
                 if (!selectedKeys.contains(i)) {
-                    if (gamer instanceof LocalClientGamer) remainingClientCards.add(gamer.getCard(i));
+                    //if (gamer instanceof LocalClientGamer) remainingClientCards.add(gamer.getCard(i));
                     cardDealer.returnCard(gamer.getCard(i));
                 }
             }

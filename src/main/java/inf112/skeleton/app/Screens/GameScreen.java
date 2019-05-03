@@ -79,7 +79,7 @@ public class GameScreen implements Screen {
 
 
         online = true;
-        host = false;
+        host = true;
         networkHandler = new NetworkHandler(host);
         if (online) {
             if (host){
@@ -141,7 +141,7 @@ public class GameScreen implements Screen {
 
         }
 
-        sleep(20);
+        sleep(50);
     }
 
     private void drawRobots() {
