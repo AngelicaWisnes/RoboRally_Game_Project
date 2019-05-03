@@ -84,8 +84,8 @@ public class Controller {
     private void handlePacket() {
         if (recievePachet == null || recievePachet.isEmpty()) recievePachet = networkHandler.getNextPacket();
 
-        if (recievePachet != null) {
-            if (gameScreen.getLocalGamer() instanceof LocalHostGamer) {
+        if (gameScreen.getLocalGamer() instanceof LocalHostGamer) {
+            if (recievePachet != null) {
                 if (remainingClientCards == null) {
                     remainingClientCards = ((PacketFromClient) recievePachet).getRemainingCards();
                     ((PacketFromClient) recievePachet).setRemainingCards(null);
@@ -94,8 +94,19 @@ public class Controller {
                     chosenClientCards = ((PacketFromClient) recievePachet).getRemainingCards();
                     ((PacketFromClient) recievePachet).setChosenClientCards(null);
                 }
-                //sendPacket = new PacketFromHost(null, null);
-            } else if (gameScreen.getLocalGamer() instanceof LocalClientGamer) {
+            }
+
+            if (sendPacket == null) sendPacket = new PacketFromHost(null, null);
+            if (((PacketFromHost) sendPacket).getCardsToClient() == null) {
+                ((PacketFromHost) sendPacket).setCardsToClient(cardsToClient);
+            }
+            if (((PacketFromHost) sendPacket).getChosenHostCards() == null){
+                ((PacketFromHost) sendPacket).setChosenHostCards(chosenHostCards);
+            }
+            if (sendPacket.isFull()) networkHandler.sendToClient(sendPacket);
+
+        } else if (gameScreen.getLocalGamer() instanceof LocalClientGamer) {
+            if (recievePachet != null) {
                 if (cardsToClient == null) {
                     cardsToClient = ((PacketFromHost) recievePachet).getCardsToClient();
                     ((PacketFromHost) recievePachet).setCardsToClient(null);
@@ -104,8 +115,16 @@ public class Controller {
                     chosenHostCards = ((PacketFromHost) recievePachet).getChosenHostCards();
                     ((PacketFromHost) recievePachet).setChosenHostCards(null);
                 }
-                //sendPacket = new PacketFromClient(null, null);
             }
+
+            if (sendPacket == null) sendPacket = new PacketFromClient(null, null);
+            if (((PacketFromClient) sendPacket).getChosenClientCards() == null) {
+                ((PacketFromClient) sendPacket).setChosenClientCards(chosenClientCards);
+            }
+            if (((PacketFromClient) sendPacket).getRemainingCards() == null){
+                ((PacketFromClient) sendPacket).setRemainingCards(remainingClientCards);
+            }
+            if (sendPacket.isFull()) networkHandler.sendToClient(sendPacket);
         }
     }
 
@@ -191,7 +210,7 @@ public class Controller {
             roundState = RoundState.PART5;
         } else if (roundState.equals(RoundState.PART5)) {
             LaserHandler.fireBoardLaser(gameScreen.getLasers(), gamer, gameScreen.getLaserShape(),
-                    gameScreen.getPew(), Constants.TILESIZE);
+                                        gameScreen.getPew(), Constants.TILESIZE);
             for (IGamer gamer : gamers) {
                 LaserHandler.fireRobotLaser(gamer, gamers, gameScreen.getLaserShape());
             }
@@ -221,26 +240,26 @@ public class Controller {
 
     private void dealCards() {
         int cardQuantity = 9 - gamer.getSheet().getDamage();
-        if (gameScreen.isOnline()){
+        if (gameScreen.isOnline()) {
             if (gamer instanceof LocalClientGamer) {
                 if (cardsToClient != null) {
                     gamer.setCards(cardsToClient.subList(0, cardQuantity));
                     cardsToClient = null;
                 }
-            } else if (gamer instanceof ExternalHostGamer){
+            } else if (gamer instanceof ExternalHostGamer) {
                 if (chosenHostCards != null) {
                     gamer.setCards(chosenHostCards);
                     chosenHostCards = null;
                 }
             } else if (gamer instanceof LocalHostGamer) {
                 gamer.setCards(cardDealer.dealCards(cardQuantity));
-            } else if (gamer instanceof ExternalClientGamer){
+            } else if (gamer instanceof ExternalClientGamer) {
                 if (chosenClientCards != null) {
                     gamer.setCards(chosenClientCards);
                     chosenClientCards = null;
                 }
             }
-        } else{
+        } else {
             gamer.setCards(cardDealer.dealCards(cardQuantity));
         }
     }
@@ -291,8 +310,7 @@ public class Controller {
             for (AbstractCard c : gamer.getCards()) gamer.getSheet().placeCardInSlot(c);
             gamer.getCards().clear();
             gamer.setCardState(CardState.SELECTEDCARDS);
-        }
-        else if (gamer instanceof ExternalClientGamer) {
+        } else if (gamer instanceof ExternalClientGamer) {
             for (AbstractCard c : gamer.getCards()) gamer.getSheet().placeCardInSlot(c);
             gamer.getCards().clear();
             if (remainingClientCards != null) {
