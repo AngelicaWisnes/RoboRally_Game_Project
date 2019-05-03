@@ -10,6 +10,7 @@ import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer.AIGamer;
 import inf112.skeleton.app.Gamer.IGamer;
 import inf112.skeleton.app.Gamer.NetworkGamer;
+import inf112.skeleton.app.Gamer.NetworkHostGamer;
 import inf112.skeleton.app.Helpers.Constants;
 import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.StateHolder;
@@ -181,13 +182,19 @@ public class Controller {
 
     private void dealCards() {
         int cardQuantity = 9 - gamer.getSheet().getDamage();
-        if (gamer instanceof NetworkGamer) {
+        if (gameScreen.isOnline()){
             NetworkHandler networkHandler = ((NetworkGamer) gamer).getNetworkHandler();
             Packet packet = networkHandler.getNextPacket();
-            List<AbstractCard> cards = packet.getCardsToClient(); //velg 5 av disse 9
+
+        }
+        if (gamer instanceof NetworkGamer) {
+            List<AbstractCard> cardsToClient = packet.getCardsToClient(); //velg 5 av disse 9
+            List<AbstractCard> cardsToHost = packet.; //velg 5 av disse 9
+
             gamer.setCards(cards.subList(0, cardQuantity));
-        } //TODO distribute cards from host to host-imitation on client machine
-        else{
+        } else if (gamer instanceof NetworkHostGamer){
+            //no cards dealt
+        } else{
             gamer.setCards(cardDealer.dealCards(cardQuantity));
         }
     }
