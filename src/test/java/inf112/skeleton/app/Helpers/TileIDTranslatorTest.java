@@ -49,6 +49,24 @@ public class TileIDTranslatorTest {
         assertEquals(tile.getId(), new Dock(5).getId());
     }
 
+    @Test
+    public void translateIdToTileTestDocking6() {
+        Dock tile = (Dock) TileIDTranslator.translate_ID(184);
+        assertEquals(tile.getId(), new Dock(6).getId());
+    }
+
+    @Test
+    public void translateIdToTileTestDocking7() {
+        Dock tile = (Dock) TileIDTranslator.translate_ID(195);
+        assertEquals(tile.getId(), new Dock(7).getId());
+    }
+
+    @Test
+    public void translateIdToTileTestDocking8() {
+        Dock tile = (Dock) TileIDTranslator.translate_ID(194);
+        assertEquals(tile.getId(), new Dock(8).getId());
+    }
+
 
     @Test
     public void translateIdToTileTestFlag1() {
