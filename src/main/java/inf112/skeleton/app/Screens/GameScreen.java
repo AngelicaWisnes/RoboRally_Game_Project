@@ -79,7 +79,7 @@ public class GameScreen implements Screen {
 
 
         online = true;
-        host = true;
+        host = false;
         networkHandler = new NetworkHandler(host);
         if (online) {
             if (host){
@@ -91,8 +91,9 @@ public class GameScreen implements Screen {
             } else {
                 IGamer externalHostGamer = new ExternalHostGamer(map, "Host", 1, gamers);
                 IGamer localClientGamer = new LocalClientGamer(map, "Client", 2, gamers, networkHandler); //min pc hvis jeg kobler til deg
-                gamers.add(externalHostGamer);
+                localGamer = localClientGamer;
                 gamers.add(localClientGamer);
+                gamers.add(externalHostGamer);
             }
         }else {
             addGamers(numberOfPlayers);

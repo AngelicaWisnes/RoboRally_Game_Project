@@ -137,7 +137,6 @@ public class Controller {
                 this.gamer.setCardState(CardState.SELECTEDCARDS);
             } else {
                 dealCards();
-                this.gamer.setCardState(CardState.DEALTCARDS);
             }
         } else if (this.gamer.getCardState().equals(CardState.DEALTCARDS)) {
             if (gamer instanceof LocalHostGamer || gamer instanceof LocalClientGamer) {
@@ -244,23 +243,28 @@ public class Controller {
             if (gamer instanceof LocalClientGamer) {
                 if (cardsToClient != null) {
                     gamer.setCards(cardsToClient.subList(0, cardQuantity));
+                    this.gamer.setCardState(CardState.DEALTCARDS);
                     cardsToClient = null;
                 }
             } else if (gamer instanceof ExternalHostGamer) {
                 if (chosenHostCards != null) {
                     gamer.setCards(chosenHostCards);
+                    this.gamer.setCardState(CardState.DEALTCARDS);
                     chosenHostCards = null;
                 }
             } else if (gamer instanceof LocalHostGamer) {
                 gamer.setCards(cardDealer.dealCards(cardQuantity));
+                this.gamer.setCardState(CardState.DEALTCARDS);
             } else if (gamer instanceof ExternalClientGamer) {
                 if (chosenClientCards != null) {
                     gamer.setCards(chosenClientCards);
+                    this.gamer.setCardState(CardState.DEALTCARDS);
                     chosenClientCards = null;
                 }
             }
         } else {
             gamer.setCards(cardDealer.dealCards(cardQuantity));
+            this.gamer.setCardState(CardState.DEALTCARDS);
         }
     }
 
