@@ -47,20 +47,17 @@ Retrospektiv:
 
 
 **DEL 3: KODE**
+**Kjente feil og mangler:**
+* Multiplayer AI - her kom vi godt i gang, men vi ville ikke levere et ufullstendig produkt. Vi kunne koble til en ekstern pc via IP-addressen, sende kort fra host-maskinen til klient-maskinen, osv. Det er likevel en del forbedringspotensiale mtp feilhåndtering, brukervennlighet, osv - derfor har vi ikke merget branchen "net" inn til master. Dette er det første vi ville jobbet videre med hvis vi fortsatt med prosjektet
+* Estetikk - det er forbedringspotensiale her også, spesielt med å få spillet til å se bra ut på alle typer skjermer (Retina-skjerm, osv). Vi kunne også brukt en designer på laget til å gjøre inntrykket litt mer gjennomført. 
+* AI - per nå er den ganske dum, og velger bare de første fem kortene. Dette hadde vært gøy å utforske videre. 
+* Animasjoner - dette forsøkte vi oss på et par ganger, men vi fikk aldri noe vi likte til. Derfor tydde vi til sleep() mellom hver runde for å roe ned hastigheten på spillet. 
+* Vi har ingen store bugs vi kommer på, vi har fokusert på å fjerne disse framfor å levere et produkt med flere men dårligere funksjoner. 
 
-* Som en del av denne leveransen skal dere legge ved en liste (og kort beskrivelse?) over kjente feil og
-svakheter i produktet.
+Prosjektet kjøres via main-metoden, som tar deg til menyen hvor du kan velge antall spillere. Tester kan kjøres i en omgang ved å høyreklikke \inf112\skeleton\app og velge "Run tests in..." (Ctrl+Shift+F10). Brukertesting kan gjøres med piltastene for å flytte rundt på roboten uten å måtte spille kort. 
 
-* Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett å teste koden. Under
-vurdering kommer koden også til å brukertestes.
-
-* Produktet skal fungerer på Linux ( Ubuntu / Debian ), Windows og OSX.
-
-* Dokumentér også hvordan testene skal kjøres.
+* Produktet er testet mest på Windows og OSX.
 
 * Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet.
 
 * [Klassediagram](LINK)
-Legg også ved et klassediagram som viser de viktige delene av koden. Tilpass klassediagrammet slik at det gir leseren mest mulig informasjon (feks Intellij kan tilpasse klassediagram som genereres). Hvis deregjør justeringer som feks å ta vekk ubetydelige klasser, skriv noen linjer om hvordan dere har tilpasset
-klassediagrammet). Det er viktig at klassediagrammet viser hovedelementene i programmet og hvordan
-disse kommuniserer. Tenk at dere skal forklare arkitekturen i programmet deres til en ny utvikler.
