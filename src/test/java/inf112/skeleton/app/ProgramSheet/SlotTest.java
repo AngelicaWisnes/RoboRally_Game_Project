@@ -2,7 +2,6 @@ package inf112.skeleton.app.ProgramSheet;
 
 import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.MoveForward;
-import inf112.skeleton.app.ProgramSheet.Slot;
 import org.junit.Before;
 import org.junit.Test;
 
