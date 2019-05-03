@@ -86,10 +86,7 @@ public abstract class AbstractRobot implements IRobot {
                 // Pushers
                 break;
             case PART4:
-                if (tile instanceof Rotator) {
-                    rotate(((Rotator) tile).getRotation());
-                }
-
+                if (tile instanceof Rotator) rotate(((Rotator) tile).getRotation());
                 break;
             case PART5:
                 // Lasers
