@@ -16,7 +16,7 @@ public class OpponentView {
     public static void drawOpponents(ArrayList<IGamer> gamers, SpriteBatch batch, HashMap<String, Texture> textureMap, ShapeRenderer shape) {
         for (int i = 1; i < gamers.size(); i++) {
             drawOpponent(gamers.get(i), batch, textureMap, i - 1);
-            drawOpponendtCards(gamers.get(i), batch, textureMap, shape, i - 1);
+            drawOpponentCards(gamers.get(i), batch, textureMap, shape, i - 1);
         }
     }
 
@@ -32,7 +32,7 @@ public class OpponentView {
         batch.end();
     }
 
-    private static void drawOpponendtCards(IGamer gamer, SpriteBatch batch, HashMap<String, Texture> textureMap, ShapeRenderer shape, int count) {
+    private static void drawOpponentCards(IGamer gamer, SpriteBatch batch, HashMap<String, Texture> textureMap, ShapeRenderer shape, int count) {
         if (gamer.getCardState().equals(CardState.SELECTEDCARDS)) {
             for (int i = 0; i < 5; i++) {
                 CardView.drawOpponentCard(batch, gamer.getSheet().getSlot(i).getCard(), textureMap, shape, i, count);
