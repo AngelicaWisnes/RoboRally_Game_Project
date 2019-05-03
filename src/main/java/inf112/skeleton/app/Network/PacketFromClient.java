@@ -34,4 +34,7 @@ public class PacketFromClient implements IPacket {
     public boolean isEmpty() {
         return remainingCards == null && chosenClientCards == null;
     }
+
+    @Override
+    public boolean isFull() { return remainingCards != null && chosenClientCards != null; }
 }

@@ -7,4 +7,6 @@ public interface IPacket extends Serializable {
 
     boolean isEmpty();
 
+    boolean isFull();
+
 }

@@ -18,6 +18,9 @@ public class PacketFromHost implements IPacket {
         return cardsToClient == null && chosenHostCards == null;
     }
 
+    @Override
+    public boolean isFull() { return cardsToClient != null && chosenHostCards != null; }
+
     public List<AbstractCard> getCardsToClient() {
         return cardsToClient;
     }
