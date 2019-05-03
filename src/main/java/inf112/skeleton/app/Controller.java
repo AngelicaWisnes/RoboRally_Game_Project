@@ -157,7 +157,7 @@ public class Controller {
 
         } else if (roundState.equals(RoundState.PART6)) {
             robotTileImpacts();
-            //isEndState();
+
             roundState = RoundState.NONE;
             roundCounter++;
         }
@@ -230,7 +230,7 @@ public class Controller {
     }
 
     private void AICardSelect() {
-        int counter = gamer.getCards().size() - 1; //9 kort
+        int counter = gamer.getCards().size() - 1;
         while (counter >= 0) {
             if (gamer.getSheet().placeCardInSlot(gamer.getCard(counter))) {
                 gamer.getCards().remove(counter);

@@ -27,7 +27,7 @@ public class LaserHandler {
         for (Position laser : lasers) {
             TiledMapTileLayer.Cell cell = ((TiledMapTileLayer) gamer.getMap().getLayers().get(0)).getCell(laser.getX() / 64, laser.getY() / 64);
             int id = cell.getTile().getId();
-            if (id == 929) { //
+            if (id == 929) {
                 shape.rect(laser.getX() + (TILESIZE / 2), laser.getY() + (TILESIZE / 2) - 5, -(TILESIZE * 3), 10);
                 Rectangle laserRect = new Rectangle(laser.getX() - 3 * TILESIZE, laser.getY() + (TILESIZE / 2), (TILESIZE * 4) - 1, 1);
                 if (laserRect.overlaps(robotRectangle)) {
@@ -51,7 +51,6 @@ public class LaserHandler {
 
     public static void fireRobotLaser(IGamer shooter, ArrayList<IGamer> gamers, ShapeRenderer shape) {
         ArrayList<IGamer> opponents = new ArrayList<>(gamers);
-        //opponents.remove(shooter);
         int x = shooter.getSheet().getRobot().getPos().getX();
         int y = shooter.getSheet().getRobot().getPos().getY();
         Direction dir = shooter.getSheet().getRobot().getDir();

@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "RoboRally!";
-        cfg.useHDPI = true; //comment out if W10
+        cfg.useHDPI = true;
         cfg.width = 1620;
         cfg.height = 972;
         cfg.addIcon("assets/img/icons/icon16.png", Files.FileType.Internal);

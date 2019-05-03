@@ -37,25 +37,25 @@ public class MainMenuScreen implements Screen {
         game.batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)) {
-            game.setScreen(new GameScreen(game, 2)); // number of players
+            game.setScreen(new GameScreen(game, 2)); 
             dispose();
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_3)) {
-            game.setScreen(new GameScreen(game, 3)); // number of players
+            game.setScreen(new GameScreen(game, 3)); 
             dispose();
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_4)) {
-            game.setScreen(new GameScreen(game, 4)); // number of players
+            game.setScreen(new GameScreen(game, 4)); 
             dispose();
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_5)) {
-            game.setScreen(new GameScreen(game, 5)); // number of players
+            game.setScreen(new GameScreen(game, 5)); 
             dispose();
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_6)) {
-            game.setScreen(new GameScreen(game, 6)); // number of players
+            game.setScreen(new GameScreen(game, 6)); 
             dispose();
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_7)) {
-            game.setScreen(new GameScreen(game, 7)); // number of players
+            game.setScreen(new GameScreen(game, 7)); 
             dispose();
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_8)) {
-            game.setScreen(new GameScreen(game, 8)); // number of players
+            game.setScreen(new GameScreen(game, 8)); 
             dispose();
         }
     }
