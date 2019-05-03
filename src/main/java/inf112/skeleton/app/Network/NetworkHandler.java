@@ -40,6 +40,11 @@ public class NetworkHandler {
                         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
                         Packet packet = (Packet) in.readObject();
                         queue.add(packet);
+
+                        System.out.println(packet.getCardsToClient().size());
+                        for (int i = 0; i < packet.getCardsToClient().size(); i++) {
+                            System.out.println(packet.getCardsToClient().get(i).getDescription());
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
