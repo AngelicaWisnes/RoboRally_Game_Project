@@ -43,13 +43,14 @@ public class ProgramSheet {
         return false;
     }
 
-    public void returnLastCardToHandFromSlot() {
+    public int returnLastCardToHandFromSlot() {
         for (int i = 4; i >= 0; i--) {
             if (!slots[i].isAvailable()) {
                 slots[i].removeCard();
-                break;
+                return i;
             }
         }
+        return -1;
     }
 
     public ArrayList<AbstractCard> clearUnlockedSlots() {

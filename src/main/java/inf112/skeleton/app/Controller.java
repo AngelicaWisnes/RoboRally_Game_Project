@@ -32,7 +32,7 @@ public class Controller {
     private GameScreen gameScreen;
     private CardDealer cardDealer;
     private IGamer winner;
-    private IPacket recievePachet;
+    private IPacket recievePacket;
     private IPacket sendPacket;
     private NetworkHandler networkHandler;
     private List<AbstractCard> remainingClientCards, chosenClientCards, cardsToClient, chosenHostCards;
@@ -44,13 +44,13 @@ public class Controller {
         gameState = stateHolder.getGameState();
         playerTurn = stateHolder.getPlayerTurn();
         cardDealer = CardDealer.getInstance();
-        recievePachet = null;
+        recievePacket = null;
         sendPacket = null;
         networkHandler = gameScreen.getNetworkHandler();
-        remainingClientCards = null;
-        chosenClientCards = null;
-        cardsToClient = null;
-        chosenHostCards = null;
+        //remainingClientCards = null;
+        //chosenClientCards = null;
+        //cardsToClient = null;
+        //chosenHostCards = null;
     }
 
     public StateHolder runGame(StateHolder states) {
@@ -82,17 +82,17 @@ public class Controller {
     }
 
     private void handlePacket() {
-        if (recievePachet == null || recievePachet.isEmpty()) recievePachet = networkHandler.getNextPacket();
+        if (recievePacket == null || recievePacket.isEmpty()) recievePacket = networkHandler.getNextPacket();
 
         if (gameScreen.getLocalGamer() instanceof LocalHostGamer) {
-            if (recievePachet != null) {
+            if (recievePacket != null) {
                 if (remainingClientCards == null) {
-                    remainingClientCards = ((PacketFromClient) recievePachet).getRemainingCards();
-                    ((PacketFromClient) recievePachet).setRemainingCards(null);
+                    remainingClientCards = ((PacketFromClient) recievePacket).getRemainingCards();
+                    ((PacketFromClient) recievePacket).setRemainingCards(null);
                 }
                 if (chosenClientCards == null) {
-                    chosenClientCards = ((PacketFromClient) recievePachet).getRemainingCards();
-                    ((PacketFromClient) recievePachet).setChosenClientCards(null);
+                    chosenClientCards = ((PacketFromClient) recievePacket).getRemainingCards();
+                    ((PacketFromClient) recievePacket).setChosenClientCards(null);
                 }
             }
 
@@ -106,14 +106,14 @@ public class Controller {
             if (sendPacket.isFull()) networkHandler.sendPacket(sendPacket);
 
         } else if (gameScreen.getLocalGamer() instanceof LocalClientGamer) {
-            if (recievePachet != null) {
+            if (recievePacket != null) {
                 if (cardsToClient == null) {
-                    cardsToClient = ((PacketFromHost) recievePachet).getCardsToClient();
-                    ((PacketFromHost) recievePachet).setCardsToClient(null);
+                    cardsToClient = ((PacketFromHost) recievePacket).getCardsToClient();
+                    ((PacketFromHost) recievePacket).setCardsToClient(null);
                 }
                 if (chosenHostCards == null) {
-                    chosenHostCards = ((PacketFromHost) recievePachet).getChosenHostCards();
-                    ((PacketFromHost) recievePachet).setChosenHostCards(null);
+                    chosenHostCards = ((PacketFromHost) recievePacket).getChosenHostCards();
+                    ((PacketFromHost) recievePacket).setChosenHostCards(null);
                 }
             }
 
@@ -141,6 +141,7 @@ public class Controller {
         } else if (this.gamer.getCardState().equals(CardState.DEALTCARDS)) {
             if (gamer instanceof LocalHostGamer || gamer instanceof LocalClientGamer) {
                 LocalCardSelect();
+
             } else if (gamer instanceof ExternalHostGamer || gamer instanceof ExternalClientGamer) {
                 ExternalCardSelect();
             } if (gamer instanceof AIGamer) {
@@ -299,6 +300,14 @@ public class Controller {
                 if (!selectedKeys.contains(i)) {
                     cardDealer.returnCard(gamer.getCard(i));
                 }
+            }
+            if (gamer instanceof LocalClientGamer) {
+                chosenClientCards = gamer.getSheet().getChosenCardsFromSlots();
+                remainingClientCards = gamer.getCards();
+                remainingClientCards.removeAll(chosenClientCards);
+            }
+            if (gamer instanceof LocalHostGamer) {
+                chosenHostCards = gamer.getSheet().getChosenCardsFromSlots();
             }
             gamer.setCardState(CardState.SELECTEDCARDS);
         }
