@@ -45,7 +45,7 @@ public class EndGameScreen implements Screen {
         }
         game.batch.end();
         if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
-            game.setScreen(new MainMenuScreen(game)); // number of players
+            game.setScreen(new MainMenuScreen(game));
             dispose();
         }
     }

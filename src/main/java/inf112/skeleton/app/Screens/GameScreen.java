@@ -106,13 +106,8 @@ public class GameScreen implements Screen {
 
         } else {
             game.setScreen(new EndGameScreen(game, controller.getWinner()));
-
         }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-            LaserHandler.fireRobotLaser(hostGamer, gamers, laserShape);
-        }
-        sleep(20);
+        sleep(80);
     }
 
     private void drawRobots() {

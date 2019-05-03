@@ -16,7 +16,7 @@ public class CardView {
     private static BitmapFont font = new BitmapFont();
 
     public static void drawCardForSheet(SpriteBatch batch, AbstractCard card, HashMap<String, Texture> textureMap, ShapeRenderer shape, int pos) {
-        if (card == null) {
+        if (card == null || card.getKey().equals("Blank card")) {
             return;
         }
         shape.begin(ShapeRenderer.ShapeType.Filled);

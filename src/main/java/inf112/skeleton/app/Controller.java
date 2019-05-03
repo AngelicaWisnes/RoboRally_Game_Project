@@ -227,9 +227,6 @@ public class Controller {
             gamer.setCardState(CardState.SELECTEDCARDS);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
-        }
     }
 
     private void AICardSelect() {
