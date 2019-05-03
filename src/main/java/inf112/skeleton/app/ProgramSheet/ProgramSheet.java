@@ -132,7 +132,7 @@ public class ProgramSheet {
         return slots[n];
     }
 
-    public List<AbstractCard> getSlotCards(){
+    public List<AbstractCard> getChosenCardsFromSlots(){
         List<AbstractCard> cards = new ArrayList<>();
         for (int i = 0; i < 5; i++){
             cards.add(getSlot(0).getCard());
