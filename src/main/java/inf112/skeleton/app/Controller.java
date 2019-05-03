@@ -235,10 +235,6 @@ public class Controller {
             } else if (gamer instanceof LocalHostGamer) {
                 gamer.setCards(cardDealer.dealCards(cardQuantity));
             } else if (gamer instanceof ExternalClientGamer){
-                if (remainingClientCards != null) {
-                    cardDealer.returnCardList((ArrayList) remainingClientCards);
-                    remainingClientCards = null;
-                }
                 if (chosenClientCards != null) {
                     gamer.setCards(chosenClientCards);
                     chosenClientCards = null;
@@ -292,17 +288,19 @@ public class Controller {
     private void ExternalCardSelect() {
 
         if (gamer instanceof ExternalHostGamer) {
-            //for (AbstractCard c : ) {  }
+            for (AbstractCard c : gamer.getCards()) gamer.getSheet().placeCardInSlot(c);
+            gamer.getCards().clear();
+            gamer.setCardState(CardState.SELECTEDCARDS);
         }
         else if (gamer instanceof ExternalClientGamer) {
-            //return recievePachet with two arraylists
-            List<AbstractCard> cardsFromHost = new ArrayList<>(gamer.getCards());
-            List<AbstractCard> chosenCards = gamer.getSheet().getChosenCardsFromSlots();
-            cardsFromHost.removeAll(chosenCards);
-            //IPacket recievePachet = new IPacket(cardsFromHost, chosenCards);
-
+            for (AbstractCard c : gamer.getCards()) gamer.getSheet().placeCardInSlot(c);
+            gamer.getCards().clear();
+            if (remainingClientCards != null) {
+                cardDealer.returnCardList((ArrayList) remainingClientCards);
+                remainingClientCards = null;
+            }
+            gamer.setCardState(CardState.SELECTEDCARDS);
         }
-
     }
 
     private void AICardSelect() {
