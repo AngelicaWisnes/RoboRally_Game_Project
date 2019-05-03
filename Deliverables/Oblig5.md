@@ -37,10 +37,6 @@ Retrospektiv:
 * Fungerende samlebånd på brettet som flytter robotene 
 * Fungerende gyroer på brettet som flytter robotene 
 * Game over etter 3 tapte liv 
-**
-* Multiplayer over LAN eller Internett (trenger ikke gjøre noe fancy her, men må kunne spille på ulike maskiner mot hverandre) 
-* Feilhåndtering ved disconnect. (Spillet skal i hvertfall ikke krasje) 
-**
 * Power down 
 * Samlebånd som går i dobbelt tempo 
 * Spille mot AI (single-player-mode), evt spill mot random-roboter
@@ -60,4 +56,6 @@ Prosjektet kjøres via main-metoden, som tar deg til menyen hvor du kan velge an
 
 * Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet.
 
-* [Klassediagram](LINK)
+* [Klassediagram enkel](https://github.com/inf112-v19/The_Terminators/blob/master/Deliverables/klassediagram_enkel.pdf)
+* [Klassediagram](https://github.com/inf112-v19/The_Terminators/blob/master/Deliverables/klassediagram.pdf)
+
