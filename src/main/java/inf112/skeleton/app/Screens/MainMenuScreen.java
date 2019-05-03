@@ -37,7 +37,7 @@ public class MainMenuScreen implements Screen {
         game.batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
-            game.setScreen(new GameScreen(game, 2)); // number of players
+            game.setScreen(new GameScreen(game, 8)); // number of players
             dispose();
         }
     }

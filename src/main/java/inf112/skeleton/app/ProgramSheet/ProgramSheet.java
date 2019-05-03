@@ -147,7 +147,7 @@ public class ProgramSheet {
         }
     }
 
-    private void setLocks(int n) {
+    public void setLocks(int n) {
         for (int i = 4; i > (4 - n); i--) {
             getSlot(i).lockSlot();
         }
