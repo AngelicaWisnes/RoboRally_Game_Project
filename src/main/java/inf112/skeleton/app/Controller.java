@@ -188,8 +188,11 @@ public class Controller {
         selectedKeys = new ArrayList<>();
         for (IGamer g : gamers) {
             g.setCardState(CardState.NOCARDS);
+
             g.resetCards();
-            cardDealer.returnCardList(g.getSheet().clearUnlockedSlots());
+            ArrayList<AbstractCard> cardsToReturn = g.getSheet().clearUnlockedSlots();
+            if (g instanceof LocalClientGamer) remainingClientCards.addAll(cardsToReturn);
+            cardDealer.returnCardList(cardsToReturn);
         }
     }
 
@@ -243,7 +246,7 @@ public class Controller {
         if (gameScreen.isOnline()) {
             if (gamer instanceof LocalClientGamer) {
                 if (cardsToClient != null) {
-                    gamer.setCards(cardsToClient.subList(0, cardQuantity));
+                    gamer.setCards(new ArrayList<>(cardsToClient.subList(0, cardQuantity)));
                     this.gamer.setCardState(CardState.DEALTCARDS);
                     cardsToClient = null;
                 }
@@ -299,6 +302,7 @@ public class Controller {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && gamer.getSheet().allSlotsAreFilled()) {
             for (int i = 0; i < gamer.getCards().size(); i++) {
                 if (!selectedKeys.contains(i)) {
+                    if (gamer instanceof LocalClientGamer) remainingClientCards.add(gamer.getCard(i));
                     cardDealer.returnCard(gamer.getCard(i));
                 }
             }
