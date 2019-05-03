@@ -37,10 +37,6 @@ Retrospektiv:
 * Fungerende samlebånd på brettet som flytter robotene 
 * Fungerende gyroer på brettet som flytter robotene 
 * Game over etter 3 tapte liv 
-**
-* Multiplayer over LAN eller Internett (trenger ikke gjøre noe fancy her, men må kunne spille på ulike maskiner mot hverandre) 
-* Feilhåndtering ved disconnect. (Spillet skal i hvertfall ikke krasje) 
-**
 * Power down 
 * Samlebånd som går i dobbelt tempo 
 * Spille mot AI (single-player-mode), evt spill mot random-roboter
@@ -49,7 +45,7 @@ Retrospektiv:
 **DEL 3: KODE**
 **Kjente feil og mangler:**
 * Multiplayer AI - her kom vi godt i gang, men vi ville ikke levere et ufullstendig produkt. Vi kunne koble til en ekstern pc via IP-addressen, sende kort fra host-maskinen til klient-maskinen, osv. Det er likevel en del forbedringspotensiale mtp feilhåndtering, brukervennlighet, osv - derfor har vi ikke merget branchen "net" inn til master. Dette er det første vi ville jobbet videre med hvis vi fortsatt med prosjektet
-* Estetikk - det er forbedringspotensiale her også, spesielt med å få spillet til å se bra ut på alle typer skjermer (Retina-skjerm, osv). Vi kunne også brukt en designer på laget til å gjøre inntrykket litt mer gjennomført. 
+* Estetikk - det er forbedringspotensiale her også, spesielt med å få spillet til å se bra ut på alle typer skjermer (Retina-skjerm, osv). Vi kunne også brukt en designer på laget til å gjøre inntrykket litt mer gjennomført. Anbefales å kjøres i så høy oppløsning som mulig.
 * AI - per nå er den ganske dum, og velger bare de første fem kortene. Dette hadde vært gøy å utforske videre. 
 * Animasjoner - dette forsøkte vi oss på et par ganger, men vi fikk aldri noe vi likte til. Derfor tydde vi til sleep() mellom hver runde for å roe ned hastigheten på spillet. 
 * Vi har ingen store bugs vi kommer på, vi har fokusert på å fjerne disse framfor å levere et produkt med flere men dårligere funksjoner. 
@@ -60,4 +56,6 @@ Prosjektet kjøres via main-metoden, som tar deg til menyen hvor du kan velge an
 
 * Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet.
 
-* [Klassediagram](LINK)
+* [Klassediagram enkel](https://github.com/inf112-v19/The_Terminators/blob/master/Deliverables/klassediagram_enkel.pdf)
+* [Klassediagram](https://github.com/inf112-v19/The_Terminators/blob/master/Deliverables/klassediagram.pdf)
+
