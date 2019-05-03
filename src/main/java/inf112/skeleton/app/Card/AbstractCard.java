@@ -1,6 +1,8 @@
 package inf112.skeleton.app.Card;
 
-public abstract class AbstractCard {
+import java.io.Serializable;
+
+public abstract class AbstractCard implements Serializable {
 
     private int priority;
 

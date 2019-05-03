@@ -3,6 +3,7 @@ package inf112.skeleton.app;
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import inf112.skeleton.app.Network.NetworkTest;
 import inf112.skeleton.app.Screens.RoboRally;
 
 public class Main {

@@ -41,14 +41,15 @@ public class GameScreen implements Screen {
     private SpriteBatch robotBatch;
     private SpriteBatch HUDBatch;
 
-    private Gamer hostGamer;
+    private IGamer hostGamer;
     private Controller controller;
     private ArrayList<IGamer> gamers = new ArrayList<>();
 
     private ArrayList<Position> lasers = new ArrayList<>();
 
     private Disposable[] disposables;
-
+    boolean host;
+    boolean online;
 
     public GameScreen(final RoboRally game, int numberOfPlayers) {
         this.game = game;
@@ -73,9 +74,27 @@ public class GameScreen implements Screen {
         shape = new ShapeRenderer();
         laserShape = new ShapeRenderer();
         controller = new Controller(states);
-        addGamers(numberOfPlayers);
-
         disposables = new Disposable[]{map, renderer, factoryMusic, pew, robotBatch, HUDBatch, shape, laserShape};
+
+
+        online = true;
+        host = true;
+        if (online) {
+            if (host){
+                IGamer localhostgamer = new Gamer(map, "Host", 1, gamers);
+                hostGamer = localhostgamer;
+                IGamer networkclientgamer = new NetworkGamer(map, "Client", 2, gamers);
+                gamers.add(localhostgamer);
+                gamers.add(networkclientgamer);
+            } else {
+                IGamer networkhostgamer;
+                IGamer localclientgamer;
+            }
+        }else {
+            addGamers(numberOfPlayers);
+        }
+
+
     }
 
     private void addGamers(int numberOfPlayers) {

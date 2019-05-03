@@ -2,12 +2,14 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import inf112.skeleton.app.Card.AbstractCard;
 import inf112.skeleton.app.Card.CardDealer;
 import inf112.skeleton.app.Enums.CardState;
 import inf112.skeleton.app.Enums.GameState;
 import inf112.skeleton.app.Enums.RoundState;
 import inf112.skeleton.app.Gamer.AIGamer;
 import inf112.skeleton.app.Gamer.IGamer;
+import inf112.skeleton.app.Gamer.NetworkGamer;
 import inf112.skeleton.app.Helpers.Constants;
 import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.StateHolder;
@@ -79,8 +81,10 @@ public class Controller {
         } else if (this.gamer.getCardState().equals(CardState.DEALTCARDS)) {
             if (gamer instanceof AIGamer) {
                 AICardSelect();
-            } else {
-                selectCard();
+            } else if (gamer instanceof NetworkGamer){
+                NetworkCardSelect();
+            }else {
+                CardSelect();
             }
         }
     }
@@ -185,7 +189,7 @@ public class Controller {
         }
     }
 
-    private void selectCard() {
+    private void CardSelect() {
         for (int key : keys) {
             int selectedKey = key - KEY_OFFSET;
 
@@ -217,6 +221,17 @@ public class Controller {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             gamer.getSheet().placeCardInSlot(cardDealer.dealBlankCard());
         }
+    }
+
+    private void NetworkCardSelect(){
+        
+        //ArrayList<AbstractCard> cards = NetworkHandler.receiveFromClient();
+        //sende 9 kort over nettverk
+
+        //avvente
+
+        //motta 5 + 4 kort over nettverk
+
     }
 
     private void AICardSelect() {
