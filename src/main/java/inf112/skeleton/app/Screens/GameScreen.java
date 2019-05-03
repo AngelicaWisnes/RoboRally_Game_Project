@@ -15,6 +15,7 @@ import inf112.skeleton.app.Gamer.*;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.*;
 import inf112.skeleton.app.Helpers.*;
+import inf112.skeleton.app.Network.NetworkHandler;
 import inf112.skeleton.app.Views.*;
 
 import java.util.ArrayList;
@@ -48,8 +49,10 @@ public class GameScreen implements Screen {
     private ArrayList<Position> lasers = new ArrayList<>();
 
     private Disposable[] disposables;
+
     boolean host;
     boolean online;
+    private NetworkHandler networkHandler;
 
     public GameScreen(final RoboRally game, int numberOfPlayers) {
         this.game = game;
@@ -80,15 +83,16 @@ public class GameScreen implements Screen {
         online = true;
         host = true;
         if (online) {
+            networkHandler = new NetworkHandler();
             if (host){
                 IGamer localhostgamer = new Gamer(map, "Host", 1, gamers);
                 hostGamer = localhostgamer;
-                IGamer networkclientgamer = new NetworkGamer(map, "Client", 2, gamers);
+                IGamer networkclientgamer = new NetworkGamer(map, "Client", 2, gamers, networkHandler);
                 gamers.add(localhostgamer);
                 gamers.add(networkclientgamer);
             } else {
                 IGamer networkhostgamer;
-                IGamer localclientgamer;
+                IGamer localclientgamer; //min pc hvis jeg kobler til deg
             }
         }else {
             addGamers(numberOfPlayers);

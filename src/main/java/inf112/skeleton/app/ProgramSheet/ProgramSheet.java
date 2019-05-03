@@ -8,6 +8,7 @@ import inf112.skeleton.app.Robot.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static inf112.skeleton.app.Helpers.Constants.START_POSITION;
 
@@ -129,6 +130,14 @@ public class ProgramSheet {
 
     public Slot getSlot(int n) {
         return slots[n];
+    }
+
+    public List<AbstractCard> getSlotCards(){
+        List<AbstractCard> cards = new ArrayList<>();
+        for (int i = 0; i < 5; i++){
+            cards.add(getSlot(0).getCard());
+        }
+        return cards;
     }
 
     public int getLastVisitedFlag() {

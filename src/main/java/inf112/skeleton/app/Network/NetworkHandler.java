@@ -11,22 +11,47 @@ import inf112.skeleton.app.Card.RotationCard;
 import inf112.skeleton.app.Enums.Rotation;
 
 import java.io.*;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
 public class NetworkHandler {
 
-    private Queue<Packet> queue;
+    private Queue<Packet> queue = new ArrayDeque<>();
     private int port = 9029;
     private String IPAddress = "192.168.43.88";
 
     public NetworkHandler() {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                ServerSocketHints serverSocketHint = new ServerSocketHints();
+                serverSocketHint.reuseAddress = true;
+                serverSocketHint.acceptTimeout = 0;
+                ServerSocket serverSocket = Gdx.net.newServerSocket(Net.Protocol.TCP, port, serverSocketHint);
+
+                while (true) {
+                    // Create a socket
+                    Socket socket = serverSocket.accept(null);
+
+                    try {
+                        ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+                        Packet packet = (Packet) in.readObject();
+                        queue.add(packet);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
 
     }
 
     public void sendToClient(List<AbstractCard> cardsOnHand){
-        Packet packet = new Packet(cardsOnHand);
+        Packet packet = new Packet(true, cardsOnHand, null);
         SocketHints socketHints = new SocketHints();
         socketHints.connectTimeout = 4000;
         Socket socket = Gdx.net.newClientSocket(Net.Protocol.TCP, IPAddress, port, socketHints);
@@ -37,6 +62,10 @@ public class NetworkHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Packet getNextPacket() {
+        return queue.poll();
     }
 }
 

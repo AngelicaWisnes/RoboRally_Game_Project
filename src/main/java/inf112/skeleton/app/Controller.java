@@ -13,6 +13,8 @@ import inf112.skeleton.app.Gamer.NetworkGamer;
 import inf112.skeleton.app.Helpers.Constants;
 import inf112.skeleton.app.Helpers.LaserHandler;
 import inf112.skeleton.app.Helpers.StateHolder;
+import inf112.skeleton.app.Network.NetworkHandler;
+import inf112.skeleton.app.Network.Packet;
 import inf112.skeleton.app.Screens.GameScreen;
 
 import java.util.*;
@@ -81,9 +83,9 @@ public class Controller {
         } else if (this.gamer.getCardState().equals(CardState.DEALTCARDS)) {
             if (gamer instanceof AIGamer) {
                 AICardSelect();
-            } else if (gamer instanceof NetworkGamer){
+            } else if (gamer instanceof NetworkGamer) {
                 NetworkCardSelect();
-            }else {
+            } else {
                 CardSelect();
             }
         }
@@ -109,7 +111,7 @@ public class Controller {
                 winner = g;
                 gameState = GameState.GAME_OVER;
             } else if (g.getSheet().getLives() <= 0) {
-                for (int i = 0; i < g.getCards().size(); i++){
+                for (int i = 0; i < g.getCards().size(); i++) {
                     cardDealer.returnCard(g.getCard(i));
                 }
                 gamers.set(gamers.indexOf(g), null);
@@ -179,7 +181,15 @@ public class Controller {
 
     private void dealCards() {
         int cardQuantity = 9 - gamer.getSheet().getDamage();
-        gamer.setCards(cardDealer.dealCards(cardQuantity));
+        if (gamer instanceof NetworkGamer) {
+            NetworkHandler networkHandler = ((NetworkGamer) gamer).getNetworkHandler();
+            Packet packet = networkHandler.getNextPacket();
+            List<AbstractCard> cards = packet.getCardsToClient(); //velg 5 av disse 9
+            gamer.setCards(cards.subList(0, cardQuantity));
+        } //TODO distribute cards from host to host-imitation on client machine
+        else{
+            gamer.setCards(cardDealer.dealCards(cardQuantity));
+        }
     }
 
     private void powerDownRound() {
@@ -199,7 +209,6 @@ public class Controller {
                         gamer.getSheet().placeCardInSlot(gamer.getCard(selectedKey));
                         selectedKeys.add(selectedKey);
                     }
-
                 }
             }
         }
@@ -223,14 +232,14 @@ public class Controller {
         }
     }
 
-    private void NetworkCardSelect(){
-        
-        //ArrayList<AbstractCard> cards = NetworkHandler.receiveFromClient();
-        //sende 9 kort over nettverk
+    private void NetworkCardSelect() {
+        CardSelect();
+        //return packet with two arraylists
+        List<AbstractCard>  cardsFromHost = new ArrayList<>(gamer.getCards());
+        List<AbstractCard> chosenCards = gamer.getSheet().getSlotCards();
+        cardsFromHost.removeAll(chosenCards);
+        Packet packet = new Packet(false, cardsFromHost, chosenCards);
 
-        //avvente
-
-        //motta 5 + 4 kort over nettverk
 
     }
 

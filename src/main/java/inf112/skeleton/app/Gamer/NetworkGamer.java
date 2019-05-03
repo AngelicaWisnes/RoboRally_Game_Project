@@ -8,18 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NetworkGamer extends AbstractGamer {
-    public NetworkGamer(TiledMap map, String name, int playerNumber, ArrayList<IGamer> gamers) {
+    private NetworkHandler networkHandler;
+    public NetworkGamer(TiledMap map, String name, int playerNumber, ArrayList<IGamer> gamers, NetworkHandler networkHandler) {
         super(map, name, playerNumber, gamers);
+        this.networkHandler = networkHandler;
     }
 
     @Override
     public void setCards(List<AbstractCard> cardsOnHand) {
         this.cardsOnHand = cardsOnHand;
-        NetworkHandler networkHandler = new NetworkHandler();
         networkHandler.sendToClient(this.cardsOnHand);
     }
 
-
-
-
+    public NetworkHandler getNetworkHandler() {
+        return networkHandler;
+    }
 }
