@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Disposable;
-import inf112.skeleton.app.Card.CardDealer;
 import inf112.skeleton.app.Gamer.*;
 import inf112.skeleton.app.Controller;
 import inf112.skeleton.app.Enums.*;
@@ -42,7 +41,7 @@ public class GameScreen implements Screen {
     private SpriteBatch robotBatch;
     private SpriteBatch HUDBatch;
 
-    private IGamer hostGamer;
+    private IGamer localGamer;
     private Controller controller;
     private ArrayList<IGamer> gamers = new ArrayList<>();
 
@@ -83,19 +82,18 @@ public class GameScreen implements Screen {
         online = true;
         host = false;
         if (online) {
-            networkHandler = new NetworkHandler();
+            networkHandler = new NetworkHandler(host);
             if (host){
-                IGamer localhostgamer = new Gamer(map, "Host", 1, gamers);
-                hostGamer = localhostgamer;
-                IGamer networkclientgamer = new NetworkGamer(map, "Client", 2, gamers, networkHandler);
-                gamers.add(localhostgamer);
-                gamers.add(networkclientgamer);
+                IGamer localHostGamer = new LocalHostGamer(map, "Host", 1, gamers);
+                localGamer = localHostGamer;
+                IGamer externalClientGamer = new ExternalClientGamer(map, "Client", 2, gamers, networkHandler);
+                gamers.add(localHostGamer);
+                gamers.add(externalClientGamer);
             } else {
-                IGamer networkhostgamer = new NetworkHostGamer(map, "Host", 1, gamers);
-                IGamer localclientgamer; //min pc hvis jeg kobler til deg
-                gamers.add(networkhostgamer);
-                gamers.add(localclientgamer);
-
+                IGamer externalHostGamer = new ExternalHostGamer(map, "Host", 1, gamers);
+                IGamer localClientGamer = new LocalClientGamer(map, "Client", 2, gamers, networkHandler); //min pc hvis jeg kobler til deg
+                gamers.add(externalHostGamer);
+                gamers.add(localClientGamer);
             }
         }else {
             addGamers(numberOfPlayers);
@@ -105,9 +103,9 @@ public class GameScreen implements Screen {
     }
 
     private void addGamers(int numberOfPlayers) {
-        hostGamer = new Gamer(map, "Player1", 1, gamers);
+        localGamer = new LocalHostGamer(map, "Player1", 1, gamers);
 
-        gamers.add(hostGamer);
+        gamers.add(localGamer);
         for (int i = 1; i < numberOfPlayers; i++) {
             gamers.add(new AIGamer(map, "AI-" + i, i + 1, gamers));
         }
@@ -123,9 +121,12 @@ public class GameScreen implements Screen {
         drawRobots();
         laserShape.setProjectionMatrix(camera.combined);
         if (!states.getGameState().equals(GameState.GAME_OVER)) {
-            ProgramSheetView.drawSheet(HUDBatch, shape, textureMap, hostGamer.getSheet());
+            ProgramSheetView.drawSheet(HUDBatch, shape, textureMap, localGamer.getSheet());
             StateTextView.drawStates(HUDBatch, states); //testing purposes only
-            hostGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
+
+            // TODO: Remove this test-purpose-method
+            localGamer.getSheet().getRobot().keyboardMovesRobot(); //testing purposes only
+
             states = controller.runGame(states, this);
             stateBasedBoardActions();
 
@@ -134,9 +135,6 @@ public class GameScreen implements Screen {
 
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-            LaserHandler.fireRobotLaser(hostGamer, gamers, laserShape);
-        }
         sleep(20);
     }
 
@@ -153,7 +151,7 @@ public class GameScreen implements Screen {
 
     private void stateBasedBoardActions() {
         if (gamers.get(0).getCardState().equals(CardState.DEALTCARDS)) {
-            DealtCardsView.drawCards(HUDBatch, shape, textureMap, hostGamer);
+            DealtCardsView.drawCards(HUDBatch, shape, textureMap, localGamer);
         }
     }
 

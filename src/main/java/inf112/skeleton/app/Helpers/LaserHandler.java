@@ -7,7 +7,6 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import inf112.skeleton.app.Enums.Direction;
-import inf112.skeleton.app.Gamer.Gamer;
 import inf112.skeleton.app.Gamer.IGamer;
 import inf112.skeleton.app.Robot.IRobot;
 

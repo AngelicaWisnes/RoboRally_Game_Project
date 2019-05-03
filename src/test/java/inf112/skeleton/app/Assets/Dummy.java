@@ -8,7 +8,7 @@ import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import inf112.skeleton.app.Gamer.Gamer;
+import inf112.skeleton.app.Gamer.LocalHostGamer;
 import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import inf112.skeleton.app.Robot.IRobot;
 
@@ -30,7 +30,7 @@ public class Dummy {
 
     private TiledMap map;
     private IRobot robot;
-    private Gamer gamer;
+    private LocalHostGamer localHostGamer;
     private ProgramSheet sheet;
 
     public Dummy() {
@@ -43,13 +43,13 @@ public class Dummy {
         //Now we load our map...
 
         map = new TmxMapLoader().load("assets/maps/Originalmap.tmx");
-        gamer = new Gamer(map, "Player1", 1, null);
-        sheet = gamer.getSheet();
+        localHostGamer = new LocalHostGamer(map, "Player1", 1, null);
+        sheet = localHostGamer.getSheet();
         robot = sheet.getRobot();
     }
 
     public void setRobot(IRobot robot) {
-        gamer.getSheet().setRobot(robot);
+        localHostGamer.getSheet().setRobot(robot);
         this.robot = robot;
     }
 
@@ -59,7 +59,7 @@ public class Dummy {
 
     public ProgramSheet getSheet() { return sheet; }
 
-    public Gamer getGamer() { return gamer; }
+    public LocalHostGamer getLocalHostGamer() { return localHostGamer; }
 
 
 

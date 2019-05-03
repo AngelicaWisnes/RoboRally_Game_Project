@@ -1,3 +1,4 @@
+/*
 package inf112.skeleton.app.Network;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -19,15 +20,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import inf112.skeleton.app.Card.AbstractCard;
-import inf112.skeleton.app.Card.CardDealer;
-import inf112.skeleton.app.Card.MoveForward;
 import inf112.skeleton.app.Card.RotationCard;
-import inf112.skeleton.app.Enums.Direction;
 import inf112.skeleton.app.Enums.Rotation;
-import inf112.skeleton.app.Gamer.Gamer;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -144,7 +140,7 @@ public class NetworkTest implements ApplicationListener {
                     BufferedReader buffer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     try {
                         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-                        Packet packet = (Packet) in.readObject();
+                        AbstractPacket packet = (AbstractPacket) in.readObject();
                         //AbstractCard c = (AbstractCard) in.readObject();
                         labelMessage.setText(packet.getCardsToClient().get(0).getDescription());
                     } catch (Exception e) {
@@ -210,3 +206,4 @@ public class NetworkTest implements ApplicationListener {
     public void resume() {
     }
 }
+*/

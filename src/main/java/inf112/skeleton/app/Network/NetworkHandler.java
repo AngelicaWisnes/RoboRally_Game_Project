@@ -7,22 +7,19 @@ import com.badlogic.gdx.net.ServerSocketHints;
 import com.badlogic.gdx.net.Socket;
 import com.badlogic.gdx.net.SocketHints;
 import inf112.skeleton.app.Card.AbstractCard;
-import inf112.skeleton.app.Card.RotationCard;
-import inf112.skeleton.app.Enums.Rotation;
 
 import java.io.*;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
 public class NetworkHandler {
 
-    private Queue<Packet> queue = new ArrayDeque<>();
+    private Queue<AbstractPacket> queue = new ArrayDeque<>();
     private int port = 9029;
     private String IPAddress = "192.168.43.88";
 
-    public NetworkHandler() {
+    public NetworkHandler(final boolean isHost) {
         new Thread(new Runnable() {
 
             @Override
@@ -38,13 +35,23 @@ public class NetworkHandler {
 
                     try {
                         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-                        Packet packet = (Packet) in.readObject();
-                        queue.add(packet);
+                        if (isHost)  {
+                            PacketFromClient packet = (PacketFromClient) in.readObject();
+                            queue.add(packet);
 
-                        System.out.println(packet.getCardsToClient().size());
-                        for (int i = 0; i < packet.getCardsToClient().size(); i++) {
-                            System.out.println(packet.getCardsToClient().get(i).getDescription());
                         }
+                        else {
+                            PacketFromHost packet = (PacketFromHost) in.readObject();
+                            queue.add(packet);
+
+                            System.out.println(packet.getCardsToClient().size());
+                            for (int i = 0; i < packet.getCardsToClient().size(); i++) {
+                                System.out.println(packet.getCardsToClient().get(i).getDescription());
+                            }
+                        }
+
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -56,7 +63,7 @@ public class NetworkHandler {
     }
 
     public void sendToClient(List<AbstractCard> cardsOnHand){
-        Packet packet = new Packet(true, cardsOnHand, null);
+        AbstractPacket packet = new PacketFromHost(cardsOnHand, null);
         SocketHints socketHints = new SocketHints();
         socketHints.connectTimeout = 4000;
         Socket socket = Gdx.net.newClientSocket(Net.Protocol.TCP, IPAddress, port, socketHints);
@@ -69,7 +76,7 @@ public class NetworkHandler {
         }
     }
 
-    public Packet getNextPacket() {
+    public AbstractPacket getNextPacket() {
         return queue.poll();
     }
 }

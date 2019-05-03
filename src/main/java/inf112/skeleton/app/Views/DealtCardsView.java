@@ -3,7 +3,6 @@ package inf112.skeleton.app.Views;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import inf112.skeleton.app.Card.AbstractCard;
-import inf112.skeleton.app.Gamer.Gamer;
 import com.badlogic.gdx.graphics.Texture;
 import inf112.skeleton.app.Gamer.IGamer;
 

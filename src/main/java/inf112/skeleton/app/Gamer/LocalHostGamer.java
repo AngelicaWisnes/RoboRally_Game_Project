@@ -9,9 +9,9 @@ import inf112.skeleton.app.ProgramSheet.ProgramSheet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gamer extends AbstractGamer {
+public class LocalHostGamer extends AbstractGamer {
 
-    public Gamer(TiledMap map, String name, int playerNumber, ArrayList<IGamer> gamers) {
+    public LocalHostGamer(TiledMap map, String name, int playerNumber, ArrayList<IGamer> gamers) {
         super(map, name, playerNumber, gamers);
     }
 }

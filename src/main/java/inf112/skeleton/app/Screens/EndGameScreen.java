@@ -6,7 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import inf112.skeleton.app.Gamer.Gamer;
+import inf112.skeleton.app.Gamer.LocalHostGamer;
 import inf112.skeleton.app.Gamer.IGamer;
 
 public class EndGameScreen implements Screen {
@@ -38,7 +38,7 @@ public class EndGameScreen implements Screen {
         game.font.draw(game.batch, winner.getName() + " has won", 150, Gdx.graphics.getHeight() / 2 + 300);
         Texture game_over_win = new Texture(Gdx.files.internal("assets/img/end_game/game_over_win.png"));
         Texture game_over_lose = new Texture(Gdx.files.internal("assets/img/end_game/game_over_lose.png"));
-        if (winner instanceof Gamer) {
+        if (winner instanceof LocalHostGamer) {
             game.batch.draw(game_over_win, Gdx.graphics.getWidth() / 2 - game_over_win.getWidth() / 2, Gdx.graphics.getHeight() / 2 - game_over_win.getHeight() / 2);
         } else {
             game.batch.draw(game_over_lose, Gdx.graphics.getWidth() / 2 - game_over_win.getWidth() / 2, Gdx.graphics.getHeight() / 2 - game_over_win.getHeight() / 2);

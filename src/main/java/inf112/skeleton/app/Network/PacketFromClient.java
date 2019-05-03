@@ -5,38 +5,21 @@ import inf112.skeleton.app.Card.AbstractCard;
 import java.io.Serializable;
 import java.util.List;
 
-public class PacketFromClient implements Serializable {
-    private List<AbstractCard> cardsToClient;
+public class PacketFromClient extends AbstractPacket {
     private List<AbstractCard> remainingCards;
-    private List<AbstractCard> chosenCards;
+    private List<AbstractCard> chosenClientCards;
     //boolean powerDown;
 
-    public PacketFromClient(boolean isHost, List<AbstractCard> list1, List<AbstractCard> list2) {
-        if (isHost){
-            PacketFromHost(list1, list2);
-        } else {
-            PacketFromClient(list1, list2);
-        }
-    }
-    private void PacketFromHost(List<AbstractCard> cardsToClient, List<AbstractCard> chosenCards){
-        this.chosenCards = chosenCards;
-        this.cardsToClient = cardsToClient;
-    }
-
-    private void PacketFromClient(List<AbstractCard> chosenCards, List<AbstractCard> remainingCards){
-        this.chosenCards = chosenCards;
+    public PacketFromClient(List<AbstractCard> chosenCards, List<AbstractCard> remainingCards){
+        this.chosenClientCards = chosenCards;
         this.remainingCards = remainingCards;
-    }
-
-    public List<AbstractCard> getCardsToClient() {
-        return cardsToClient;
     }
 
     public List<AbstractCard> getRemainingCards() {
         return remainingCards;
     }
 
-    public List<AbstractCard> getChosenCards() {
-        return chosenCards;
+    public List<AbstractCard> getChosenClientCards() {
+        return chosenClientCards;
     }
 }
