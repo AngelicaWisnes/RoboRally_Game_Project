@@ -257,6 +257,7 @@ public class Controller {
                 gamer.setCards(cardDealer.dealCards(cardQuantity));
                 this.gamer.setCardState(CardState.DEALTCARDS);
             } else if (gamer instanceof ExternalClientGamer) {
+                if (cardsToClient == null) cardsToClient = cardDealer.dealCards(cardQuantity);
                 if (chosenClientCards != null) {
                     gamer.setCards(chosenClientCards);
                     this.gamer.setCardState(CardState.DEALTCARDS);
