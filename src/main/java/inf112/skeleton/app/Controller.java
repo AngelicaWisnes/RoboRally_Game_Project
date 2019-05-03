@@ -307,17 +307,21 @@ public class Controller {
     private void ExternalCardSelect() {
 
         if (gamer instanceof ExternalHostGamer) {
-            for (AbstractCard c : gamer.getCards()) gamer.getSheet().placeCardInSlot(c);
-            gamer.getCards().clear();
-            gamer.setCardState(CardState.SELECTEDCARDS);
-        } else if (gamer instanceof ExternalClientGamer) {
-            for (AbstractCard c : gamer.getCards()) gamer.getSheet().placeCardInSlot(c);
-            gamer.getCards().clear();
-            if (remainingClientCards != null) {
-                cardDealer.returnCardList((ArrayList) remainingClientCards);
-                remainingClientCards = null;
+            if (chosenHostCards != null) {
+                for (AbstractCard c : gamer.getCards()) gamer.getSheet().placeCardInSlot(c);
+                gamer.getCards().clear();
+                gamer.setCardState(CardState.SELECTEDCARDS);
             }
-            gamer.setCardState(CardState.SELECTEDCARDS);
+        } else if (gamer instanceof ExternalClientGamer) {
+            if (chosenClientCards != null) {
+                for (AbstractCard c : gamer.getCards()) gamer.getSheet().placeCardInSlot(c);
+                gamer.getCards().clear();
+                if (remainingClientCards != null) {
+                    cardDealer.returnCardList((ArrayList) remainingClientCards);
+                    remainingClientCards = null;
+                }
+                gamer.setCardState(CardState.SELECTEDCARDS);
+            }
         }
     }
 
