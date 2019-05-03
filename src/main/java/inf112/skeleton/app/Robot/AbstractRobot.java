@@ -38,13 +38,18 @@ public abstract class AbstractRobot implements IRobot {
     }
 
     @Override
-    public Position getPos() { return pos; }
+    public Position getPos() {
+        return pos;
+    }
 
     @Override
-    public Direction getDir() { return dir; }
+    public Direction getDir() {
+        return dir;
+    }
 
     /**
      * If robot is currently on a flag, check if this flag is the next non-visitet flag. If so, update checkpoint
+     *
      * @param flagID ID of tha new flag
      */
     private void setFlagID(int flagID) {
@@ -81,7 +86,10 @@ public abstract class AbstractRobot implements IRobot {
                 // Pushers
                 break;
             case PART4:
-                if (tile instanceof Rotator) rotate(((Rotator) tile).getRotation());
+                if (tile instanceof Rotator) {
+                    rotate(((Rotator) tile).getRotation());
+                }
+
                 break;
             case PART5:
                 // Lasers
@@ -119,10 +127,14 @@ public abstract class AbstractRobot implements IRobot {
      */
     private Direction rotate(Rotation rotation) {
         switch (rotation) {
-            case TURN_CLOCKWISE: return dir = dir.clockwise();
-            case TURN_COUNTER_CLOCKWISE: return dir = dir.counterClockwise();
-            case TURN_AROUND: return dir = dir.opposite();
-            default: throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
+            case TURN_CLOCKWISE:
+                return dir = dir.clockwise();
+            case TURN_COUNTER_CLOCKWISE:
+                return dir = dir.counterClockwise();
+            case TURN_AROUND:
+                return dir = dir.opposite();
+            default:
+                throw new IllegalArgumentException("Must have valid rotation-input to rotate robot");
         }
     }
 
@@ -152,10 +164,11 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Get opponent's robot on target position
+     *
      * @param targetPos target position
      * @return opponents robot, if it exists on position, null otherwise
      */
-    private IRobot getOpponentRobotOnPos(Position targetPos){
+    private IRobot getOpponentRobotOnPos(Position targetPos) {
         for (IGamer g : gamers) {
             if (g.getSheet().getRobot() == this) continue;
             if (g.getSheet().getRobot().getPos().equal(targetPos)) return g.getSheet().getRobot();
@@ -167,7 +180,7 @@ public abstract class AbstractRobot implements IRobot {
      * If a robot dies, it should return to last checkpoint. If said checkpoint is occupied by opponent, this
      * opponent must be pushed
      */
-    private void pushOpponentFromCheckpoint(){
+    private void pushOpponentFromCheckpoint() {
         if (isOpponentPushable(checkpoint, dir)) return;
         if (isOpponentPushable(checkpoint, dir.opposite())) return;
         if (isOpponentPushable(checkpoint, dir.clockwise())) return;
@@ -177,10 +190,11 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Find out if there is an opponent at target position and if so, if this opponent is pushable
+     *
      * @param targetPos target position
      * @param direction direction to push
      * @return false if there is an opponent in target position, and this opponent is not pushable, true if pushable,
-     *         and true if there is no opponent in target position.
+     * and true if there is no opponent in target position.
      */
     private boolean isOpponentPushable(Position targetPos, Direction direction) {
         IRobot opponent = getOpponentRobotOnPos(targetPos);
@@ -192,10 +206,13 @@ public abstract class AbstractRobot implements IRobot {
     }
 
     @Override
-    public Position push(Direction direction, int spaces) { return move(direction, spaces); }
+    public Position push(Direction direction, int spaces) {
+        return move(direction, spaces);
+    }
 
     /**
      * Check if there is a wall in the given direction
+     *
      * @param direction to check
      * @return true if wall, false otherwise
      */
@@ -208,6 +225,7 @@ public abstract class AbstractRobot implements IRobot {
 
     /**
      * Checks if robot has just fallen (pit or edge).
+     *
      * @return true if dead, false otherwise
      */
     private boolean hasJustFallen() {

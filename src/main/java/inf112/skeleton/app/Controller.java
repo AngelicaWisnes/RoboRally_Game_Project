@@ -142,6 +142,7 @@ public class Controller {
             robotTileImpacts();
             roundState = RoundState.PART4;
         } else if (roundState.equals(RoundState.PART4)) {
+            robotTileImpacts();
             roundState = RoundState.PART5;
         } else if (roundState.equals(RoundState.PART5)) {
             LaserHandler.fireBoardLaser(gameScreen.getLasers(), gamer, gameScreen.getLaserShape(),
